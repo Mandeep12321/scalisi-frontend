@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="28" height="12" viewBox="711 444 28 12"><g data-name="Group 2549"><path d="M711 444h13v5h-13v-5z" fill="#bc0a0e" fill-rule="evenodd" data-name="Rectangle 1396"/><path d="M726 444h13v5h-13v-5z" fill="#bc0a0e" fill-rule="evenodd" data-name="Rectangle 1399"/><path d="M711 451h13v5h-13v-5z" fill="#bc0a0e" fill-rule="evenodd" data-name="Rectangle 1397"/><path d="M726 451h13v5h-13v-5z" fill="#bc0a0e" fill-rule="evenodd" data-name="Rectangle 1398"/></g></svg>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Document -->
+  <rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.5"></rect>
+
+  <!-- Lines -->
+  <line x1="9" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.5"></line>
+  <line x1="9" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"></line>
+
+  <!-- Check -->
+  <path d="M7 8.5L8 9.5L10 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>

@@ -1,29 +1,25 @@
 "use client";
 
-"use client";
-
-import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
-import LandingHero from "./components/LandingHero";
-import PaginationComponent from "@/components/molecules/PaginationComponent";
-import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
-import { mergeClass } from "@/resources/utils/helper";
+import { Container, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import classes from "./LandingPageView.module.css";
-import LandingFilters from "./components/LandingFilters";
-import useCategories from "./hooks/useCategories";
+import { useEffect, useState } from "react";
+
 import ProductGrid from "./components/ProductGrid";
 import ProductListView from "./components/ProductList";
+import LandingHero from "./components/LandingHero";
+import LandingFilters from "./components/LandingFilters";
 import useProducts from "./hooks/useProducts";
+import useCategories from "./hooks/useCategories";
+
+import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
+import { mergeClass } from "@/resources/utils/helper";
 import OrderGuideView from "./components/OrderGuideView";
-import SearchInput from "@/components/molecules/SearchInput";
-import useDebounce from "@/resources/hooks/useDebounce";
-import DropDown from "@/components/molecules/DropDown/DropDown";
-import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
-import { ReactSVG } from "react-svg";
-import Image from "next/image";
+
+import PaginationComponent from "@/components/molecules/PaginationComponent";
+import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
+
+import classes from "./LandingPageView.module.css";
 
 export default function LandingPageView({ cmsData }) {
   const router = useRouter();
@@ -33,19 +29,25 @@ export default function LandingPageView({ cmsData }) {
   const [dropDown, setDropDown] = useState("Newest");
 
   const [catalogType, setCatalogType] = useState("orderGuide");
+  const [viewType, setViewType] = useState("card");
+
   // ✅ Store FULL object (react-select)
   const [subCategory, setSubCategory] = useState(null);
-  const [search, setSearch] = useState("");
-  const [cardViewType, setCardViewType] = useState("card");
-  const debouncedSearch = useDebounce(search, 500);
-  const [isMob768, setIsMob768] = useState(false);
-  const [is375, setIs375] = useState(false);
 
   // ✅ HOOKS
-  const { productData, setProductData, totalRecords, loading, fetchProducts } =
-    useProducts();
+  const {
+    productData,
+    setProductData,
+    totalRecords,
+    loading,
+    fetchProducts,
+  } = useProducts();
 
-  const { categories, loading: catLoading, fetchCategories } = useCategories();
+  const {
+    categories,
+    loading: catLoading,
+    fetchCategories,
+  } = useCategories();
 
   // ✅ Fetch categories
   useEffect(() => {
@@ -61,8 +63,6 @@ export default function LandingPageView({ cmsData }) {
 
   // ✅ Fetch products
   useEffect(() => {
-    if (!subCategory) return;
-
     fetchProducts({
       page,
       limit: PRODUCT_RECORDS_LIMIT,
@@ -70,7 +70,7 @@ export default function LandingPageView({ cmsData }) {
       location,
       sort: dropDown,
       type: catalogType,
-      subCategory: subCategory?.value || null,
+      subCategory: subCategory?.value || null, // ✅ FIX
     });
   }, [isLogin, location, page, dropDown, catalogType, subCategory]);
 
@@ -96,25 +96,23 @@ export default function LandingPageView({ cmsData }) {
           </div>
         </Col>
 
+        {/* FILTERS */}
         <LandingFilters
-          search={search}
-          setSearch={setSearch}
           dropDown={dropDown}
-          setCatalogType={setCatalogType}
           setDropDown={setDropDown}
-          cardViewType={cardViewType}
-          setCardViewType={setCardViewType}
-          isMob768={isMob768}
-          is375={is375}
+          catalogType={catalogType}
+          setCatalogType={setCatalogType}
+          viewType={viewType}
+          setViewType={setViewType}
           subCategory={subCategory}
           setSubCategory={setSubCategory}
           subCategoryOptions={categories}
-          catalogType={catalogType}
+          catLoading={catLoading}
         />
 
         {/* CONTENT */}
         <Col md={12} style={{ marginTop: "40px" }}>
-          {catalogType !== "orderGuide" && cardViewType === "card" && (
+          {catalogType !== "orderGuide" && viewType === "card" && (
             <ProductGrid
               productData={productData}
               loading={loading}
@@ -123,7 +121,7 @@ export default function LandingPageView({ cmsData }) {
             />
           )}
 
-          {catalogType !== "orderGuide" && cardViewType === "list" && (
+          {catalogType !== "orderGuide" && viewType === "list" && (
             <ProductListView
               productData={productData}
               loading={loading}
@@ -148,6 +146,15 @@ export default function LandingPageView({ cmsData }) {
 
                     setPage(p);
 
+                    fetchProducts({
+                      page: p,
+                      limit: PRODUCT_RECORDS_LIMIT,
+                      isLogin,
+                      location,
+                      sort: dropDown,
+                      type: catalogType,
+                      subCategory: subCategory?.value || null, // ✅ FIX
+                    });
                   }}
                 />
               </div>

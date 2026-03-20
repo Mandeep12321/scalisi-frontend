@@ -42,6 +42,8 @@ export default function ProductsPageView({ cmsData }) {
   const [is375, setIs375] = useState(false);
   const [is768, setIs768] = useState(false);
 
+  console.log(SORT_BY_DROPDOWN, "==SORT_BY_DROPDOWN")
+
   useEffect(() => {
     isMobileViewHook(setIsMob768, 768);
     isMobileViewHook(setIs375, 376);

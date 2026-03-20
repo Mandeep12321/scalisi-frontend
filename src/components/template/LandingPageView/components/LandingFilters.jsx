@@ -1,155 +1,178 @@
 "use client";
 
 import { Col } from "react-bootstrap";
-import { mergeClass } from "@/resources/utils/helper";
-import Image from "next/image";
-import { ReactSVG } from "react-svg";
-import classes from "../LandingPageView.module.css";
 import DropDown from "@/components/molecules/DropDown/DropDown";
-import { SORT_BY_DROPDOWN } from "@/developmentContent/constants";
+import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
+import { ReactSVG } from "react-svg";
+import Image from "next/image";
+import { mergeClass } from "@/resources/utils/helper";
+import classes from "../LandingPageView.module.css";
 
 export default function LandingFilters({
+  setCatalogType,
   dropDown,
   setDropDown,
   cardViewType,
   setCardViewType,
   isMob768,
   is375,
+  subCategory,
+  subCategoryOptions,
+  setSubCategory,
+  catalogType,
 }) {
   return (
     <>
-      {/* ORDER GUIDE / FULL CATALOG TOGGLE */}
-      <Col md={4} sm={12} lg={4} className="mt-sm-2 mt-0">
+      {/* LEFT SECTION (ORDER GUIDE / FULL CATALOG) */}
+      <Col md={4} sm={12} lg={4} className="d-flex align-items-center">
         <div className={classes.cardsView}>
           {/* ORDER GUIDE */}
           <div
             className={mergeClass(
               classes.viewTypeDiv,
-              cardViewType === "orderGuide" && classes.listIconActive
+              catalogType === "orderGuide" && classes.listIconActive
             )}
-            onClick={() => setCardViewType("orderGuide")}
+            onClick={() => {
+              setCatalogType("orderGuide");
+              setCardViewType("card"); // optional reset
+            }}
           >
-            <div className={classes.gridIcon}>
+            <div className={classes.gridIcon} style={{
+    width: "30px",
+    height: "30px",
+  }} >
               <Image
                 src={"/assets/images/svg/orderGuideIcon.svg"}
                 fill
-                alt="order-guide-icon"
+                alt="order-guide"
               />
             </div>
-            <p className={mergeClass("fw-700 fs-18", cardViewType === "orderGuide" && classes.listIconActive)}>
-              Order Guide
-            </p>
+            <p className="fw-700 fs-18">Order Guide</p>
           </div>
 
           {/* FULL CATALOG */}
           <div
             className={mergeClass(
               classes.viewTypeDiv,
-              cardViewType === "fullCatalog" && classes.listIconActive
+              catalogType === "fullCatalog" && classes.listIconActive
             )}
-            onClick={() => setCardViewType("fullCatalog")}
+            onClick={() => setCatalogType("fullCatalog")}
           >
-            <div className={classes.gridIcon}>
+            <div className={classes.gridIcon} style={{
+    width: "30px",
+    height: "30px",
+  }}>
               <Image
                 src={"/assets/images/svg/fullCatalogIcon.svg"}
                 fill
-                alt="full-catalog-icon"
+                alt="catalog"
               />
             </div>
-            <p className={mergeClass("fw-700 fs-18", cardViewType === "fullCatalog" && classes.listIconActive)}>
-              Full Catalog
-            </p>
+            <p className="fw-700 fs-18">Full Catalog</p>
           </div>
         </div>
       </Col>
 
-      {/* SORT & VIEW TOGGLE */}
-      <Col
-        md={8}
-        lg={8}
-        sm={12}
-        className="mt-sm-2 mt-0 d-flex justify-content-end align-items-center"
-      >
-        <div className={classes.filtersDiv}>
-          {/* SORT */}
-          <div className={classes.sortByDiv}>
-            <p className="fs-18 white-space">Sort by</p>
+      {/* RIGHT SECTION (FILTERS) */}
+      {catalogType !== "orderGuide" && (
+        <Col
+          md={8}
+          lg={8}
+          sm={12}
+          className="mt-sm-2 mt-0 d-flex justify-content-end align-items-center"
+        >
+          <div className={classes.filtersDiv}>
+            {/* DROPDOWNS */}
+            <div className={classes.sortByDiv}>
+              {/* CATEGORY */}
+              <DropDown
+                placeholder="Category"
+                dropDownContainer={classes.dropDownContainer}
+                value={subCategory}
+                setValue={setSubCategory}
+                options={subCategoryOptions}
+              />
 
-            <DropDown
-              customStyle={{
-                fontWeight: "700",
-                paddingLeft: "1px",
-                paddingTop: is375 ? "0px" : "2px",
-                paddingBottom: is375 ? "0px" : "2px",
-                fontSize: isMob768 ? "14px !important" : "18px !important",
-              }}
-              isHoverColor={true}
-              dropDownContainer={classes.dropDownContainer}
-              value={dropDown}
-              setValue={setDropDown}
-              options={SORT_BY_DROPDOWN}
-            />
-          </div>
-
-          {/* CARD / LIST VIEW */}
-          <div className={classes.cardViewDivMain}>
-            <div className={classes.viewCardTypeDiv}>
-              <p className="fs-18">View</p>
+              {/* SORT */}
+              <DropDown
+                customStyle={{
+                  fontWeight: "700",
+                  paddingLeft: "1px",
+                  paddingTop: is375 ? "0px" : "2px",
+                  paddingBottom: is375 ? "0px" : "2px",
+                  fontSize: isMob768 ? "14px" : "18px",
+                }}
+                isHoverColor
+                dropDownContainer={classes.dropDownContainer}
+                value={dropDown}
+                setValue={setDropDown}
+                options={SORT_BY_DROPDOWN}
+              />
             </div>
 
-            <div className={classes.cardsView}>
-              {/* CARD VIEW */}
-              <div
-                className={classes.viewTypeDiv}
-                onClick={() => setCardViewType("card")}
-              >
-                <div className={classes.gridIcon}>
-                  {!isMob768 ? (
-                    <Image
-                      src={"/assets/images/svg/card-grid-icon.svg"}
-                      fill
-                      alt="card-view-image"
-                    />
-                  ) : (
-                    <Image
-                      src={"/assets/images/app-images/cardGrid.png"}
-                      fill
-                      alt="card-view-image"
-                    />
-                  )}
-                </div>
-                <p className={mergeClass("fw-700 fs-18", cardViewType === "card" && classes.listIconActive)}>
-                  Cards
-                </p>
+            {/* VIEW TOGGLE */}
+            <div className={classes.cardViewDivMain}>
+              <div className={classes.viewCardTypeDiv}>
+                <p className="fs-18">View</p>
               </div>
 
-              {/* LIST VIEW */}
-              <div
-                className={classes.listViewTypeDiv}
-                onClick={() => setCardViewType("list")}
-              >
-                <ReactSVG
-                  src={"/assets/images/svg/productListIcon.svg"}
+              <div className={classes.cardsView}>
+                {/* CARD VIEW */}
+                <div
                   className={mergeClass(
-                    "fw-700",
-                    cardViewType === "list" && classes.listIconActive,
-                    classes.listIcon
+                    classes.viewTypeDiv,
+                    cardViewType === "card" && classes.listIconActive
                   )}
-                />
-                <p
+                  onClick={() => setCardViewType("card")}
+                >
+                  <div className={classes.gridIcon}>
+                    <Image
+                      src={
+                        !isMob768
+                          ? "/assets/images/svg/card-grid-icon.svg"
+                          : "/assets/images/app-images/cardGrid.png"
+                      }
+                      fill
+                      alt="card-view"
+                    />
+                  </div>
+
+                  <p className={mergeClass("fw-700 fs-18", classes.cardTitle)}>
+                    Cards
+                  </p>
+                </div>
+
+                {/* LIST VIEW */}
+                <div
                   className={mergeClass(
-                    "fs-18",
-                    classes.listTitle,
+                    classes.listViewTypeDiv,
                     cardViewType === "list" && classes.listIconActive
                   )}
+                  onClick={() => setCardViewType("list")}
                 >
-                  List
-                </p>
+                  <ReactSVG
+                    src={"/assets/images/svg/productListIcon.svg"}
+                    className={mergeClass(
+                      classes.listIcon,
+                      cardViewType === "list" && classes.listIconActive
+                    )}
+                  />
+
+                  <p
+                    className={mergeClass(
+                      "fs-18",
+                      classes.listTitle,
+                      cardViewType === "list" && classes.listIconActive
+                    )}
+                  >
+                    List
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Col>
+        </Col>
+      )}
     </>
   );
 }

@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="721 442 22 16"><g data-name="Group 2549"><path d="M721 442h22v4h-22v-4z" fill="#434343" fill-rule="evenodd" data-name="Rectangle 1396"/><path d="M721 448h22v4h-22v-4z" fill="#434343" fill-rule="evenodd" data-name="Rectangle 1401"/><path d="M721 454h22v4h-22v-4z" fill="#434343" fill-rule="evenodd" data-name="Rectangle 1402"/></g></svg>
+<svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grid (Catalog) -->
+  <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"></rect>
+  <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"></rect>
+  <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"></rect>
+  <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"></rect>
+</svg>

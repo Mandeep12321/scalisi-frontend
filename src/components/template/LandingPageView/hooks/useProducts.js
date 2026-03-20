@@ -15,6 +15,7 @@ export default function useProducts() {
     search = "",
     isLogin,
     location,
+    subCategory
   }) => {
     setLoading(true);
 
@@ -23,6 +24,7 @@ export default function useProducts() {
         const res = await jackApi.getProducts({
           pageNumber: page,
           pageSize: limit,
+          subCategory
         });
 
 
