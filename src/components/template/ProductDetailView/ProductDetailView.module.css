@@ -1,0 +1,578 @@
+.sortByDiv {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.sortCards {
+  display: flex;
+  gap: 45px;
+}
+.cardsView {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.filtersDiv {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.pagination {
+  padding-top: 60.8px;
+}
+.productDetail {
+  margin-top: 60px;
+  margin-bottom: 38px;
+}
+
+.productDetail > div {
+  height: 252px !important;
+}
+
+.productDetail > div > div:first-child {
+  width: 287px !important;
+}
+
+.productDetail > div > div:last-child {
+  padding-top: 50px !important;
+  padding-left: 47px !important;
+  gap: 0px !important;
+  justify-content: flex-start !important;
+}
+
+.productDetail > div > div:last-child > h3 {
+  text-align: left;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  min-height: max-content !important;
+  margin-bottom: 33px !important;
+}
+
+.productDetail > div > div:last-child > p {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  margin-bottom: 38px !important;
+}
+
+.productDetail > div > div:last-child > *:nth-child(3) {
+  gap: 30px !important;
+  height: 52px !important;
+  margin-bottom: 12px !important;
+}
+
+.productDetail > div > div:last-child > *:nth-child(3) * {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+.productDetail > div > div:last-child > *:nth-child(3) > div:nth-child(2) > * {
+  display: flex !important;
+  align-items: center !important;
+  width: 100px !important;
+  height: 52px !important;
+}
+.productFilterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 50px 30px;
+}
+.productDetail
+  > div
+  > div:last-child
+  > *:nth-child(3)
+  > div:first-child
+  > div
+  > div
+  > div {
+  height: 52px !important;
+  width: 475px !important;
+}
+
+.productDetail > div > div:last-child > *:nth-child(3) > button {
+  height: 52px !important;
+  width: 245px !important;
+}
+
+.productDetail > div > div:last-child > *:nth-child(3) > div:nth-child(4) svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.productDetail > div > div:last-child > *:nth-child(3) > div:nth-child(4) p {
+  font-size: 15px !important;
+  color: #494b49 !important;
+}
+
+.dropDownContainer {
+  width: 170px;
+  height: 36px;
+}
+
+.viewCardTypeDiv p {
+  color: var(--heading-text-color);
+}
+
+.viewTypeDiv,
+.listViewTypeDiv {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.gridIcon {
+  position: relative;
+  width: 28px;
+  height: 12px;
+}
+
+.button_textGray svg {
+  padding-right: 10px;
+}
+
+.cardTitle {
+  color: var(--text-color-v1);
+}
+
+.listTitle {
+  color: var(--gray-color-v);
+}
+
+.listViewTypeDiv:hover .listTitle,
+.listViewTypeDiv:hover .listIcon,
+.listIconActive {
+  color: var(--primary-color) !important;
+}
+
+.listIconActive svg rect {
+  fill: var(--primary-color) !important;
+}
+
+.listIcon {
+  width: 29px !important;
+  height: 23px !important;
+  color: var(--gray-color-v);
+}
+.listIcon svg rect {
+  fill: var(--gray-color-v) !important;
+}
+.searchSortOption {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+
+.productCard__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2.8rem;
+  column-gap: 2.45rem;
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  @media screen and (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media screen and (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  @media screen and (max-width: 375px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  @media screen and (max-width: 340px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1580px) {
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    height: 52px !important;
+    width: 350px !important;
+  }
+}
+
+@media (max-width: 1500px) {
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    flex-wrap: wrap;
+    height: auto !important;
+  }
+
+  .productDetail > div {
+    height: 100% !important;
+  }
+  .productDetail > div > div:last-child > *:nth-child(3) > button {
+    width: 225px !important;
+  }
+}
+@media (max-width: 1440px) {
+  .productDetail > div > div:last-child {
+    padding-left: 25px !important;
+    padding-top: 35px !important;
+  }
+  .cardsView {
+    gap: 25px;
+  }
+  .viewCardTypeDiv {
+    padding-inline: 0px 9px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    height: 52px !important;
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 1366px) {
+  .productDetail > div > div:first-child {
+    width: 245px !important;
+  }
+
+  .productDetail > div > div:last-child > *:nth-child(3) > button {
+    width: 200px !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .productFilterRow {
+    padding-block: 30px 20px;
+  }
+  .productDetail > div > div:last-child {
+    padding-top: 30px;
+  }
+  .productDetail > div > div:last-child > *:nth-child(3) > button {
+    width: 160px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .productDetail > div > div:last-child > *:nth-child(3) * {
+    font-size: 14px !important;
+  }
+
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    gap: 20px !important;
+    flex-wrap: wrap;
+    height: auto !important;
+  }
+
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    height: 52px !important;
+    width: 220px !important;
+  }
+
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .productDetail > div > div:last-child > *:nth-child(3) > button {
+    width: 145px !important;
+  }
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .productDetail > div > div:first-child {
+    width: 215px !important;
+  }
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    gap: 18px !important;
+  }
+  .filtersDiv {
+    gap: 20px;
+    padding-top: 0px;
+  }
+
+  .cardViewDivMain {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .announcementLeft {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  .sortCards {
+    gap: 7px;
+  }
+  .filtersDiv,
+  .cardsView,
+  .sortByDiv {
+    gap: 10px;
+  }
+  /* .productDetail > div > div:last-child > *:nth-child(3) > button {
+    width: 120px !important;
+  } */
+
+  .productDetail > div > div:last-child > *:nth-child(3) > div:nth-child(4) p {
+    font-size: 12px !important;
+  }
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:nth-child(4)
+    svg {
+    width: 20px !important;
+    height: 18px !important;
+  }
+  .productDetail > div {
+    height: 100% !important;
+  }
+  .productDetail > div > div:last-child {
+    padding-top: 40px !important;
+  }
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    gap: 10px !important;
+    /* height: 75px !important; */
+  }
+  .productDetail > div > div:last-child > p,
+  .productDetail > div > div:last-child > h3 {
+    margin-bottom: 20px !important;
+  }
+
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 13px;
+  }
+  .announcementRight {
+    padding-right: 13px;
+  }
+}
+
+@media (max-width: 900px) {
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    height: 52px !important;
+    width: 217px !important;
+  }
+}
+
+@media (max-width: 840px) {
+  .viewCardTypeDiv {
+    padding-inline: 0px 9px;
+  }
+}
+
+@media (max-width: 800px) {
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    width: 180px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .filtersDiv {
+    gap: 50px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .searchSortOption {
+    width: 100%;
+  }
+  .dropDownContainer {
+    width: 130px;
+    height: 36px;
+  }
+  .searchSortOption {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .productFilterRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding-block: 10px;
+  }
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    height: 35px !important;
+  }
+  .sortCards {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+  }
+  .sortByDiv {
+    gap: 12px;
+  }
+  .productDetail > div {
+    height: 100% !important;
+    gap: 20px;
+  }
+  .productDetail > div > div:first-child {
+    width: 100% !important;
+    height: 150px;
+  }
+  .productDetail > div > div:last-child {
+    padding-top: 5px !important;
+    padding-left: 0 !important;
+  }
+  .productDetail
+    > div
+    > div:last-child
+    > *:nth-child(3)
+    > div:first-child
+    > div
+    > div
+    > div {
+    width: auto !important;
+    height: 100% !important;
+  }
+  .gridIcon {
+    width: 24px;
+    height: 16px;
+  }
+  .listIcon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .filtersDiv {
+    gap: 25px;
+  }
+  .sortByDiv {
+    flex-direction: column;
+    align-items: start;
+  }
+  .productDetail > div {
+    height: 100% !important;
+    gap: 20px;
+    max-width: 100%;
+  }
+  .productDetail > div > div:last-child > h3 {
+    font-size: 16px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    height: 37px !important;
+    margin-block: 0px !important;
+  }
+
+  .productDetail div[class*="controlButtons"] {
+    width: 253px !important;
+    max-width: 255px !important;
+  }
+
+  .productDetail div[class*="dropdownDiv"] > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 40px;
+  }
+
+  .announcementRight {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .sortCards {
+    gap: 10px;
+    flex-direction: column;
+    align-items: start;
+
+    gap: 18px;
+    padding-bottom: 6px;
+  }
+}
+
+@media (max-width: 375px) {
+  .productDetail > div > div:last-child > *:nth-child(3) {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 370px) {
+  .productDetail div[class*="controlButtons"] {
+    width: 235px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .productDetail div[class*="controlButtons"] {
+    width: 210px !important;
+  }
+}

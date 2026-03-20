@@ -1,0 +1,70 @@
+.body {
+  padding: 40px;
+}
+
+.buttonBox {
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.modal :global(.modal-content) {
+  border-radius: 20px !important;
+}
+
+/* For Header */
+.iconDiv {
+  margin-bottom: 6px;
+}
+
+.modalHeader {
+  padding: 0px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+
+.message {
+  line-height: 1.5;
+  color: var(--black-color);
+}
+
+.aCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 75%;
+  margin: auto;
+}
+
+.header {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border: none;
+  position: static;
+}
+
+.headerSubDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noBtn,
+.yesBtn {
+  min-width: 120px;
+  padding: 7px;
+}

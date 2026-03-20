@@ -1,0 +1,142 @@
+.mainDiv {
+  background: var(--white-color);
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 6px;
+
+  min-height: 618px;
+}
+
+.noPadding {
+  padding: 0px !important;
+}
+.customColumSpace {
+  padding-bottom: 38px !important;
+}
+.customMargin {
+  margin-top: 31px !important;
+}
+
+.mainDivTwo {
+  background: var(--white-color);
+  box-shadow: none;
+  border-radius: 6px;
+  padding: 30px;
+  height: 100%;
+}
+
+.header {
+  padding-bottom: 20px;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.label,
+.labelPhone {
+  font-weight: 700 !important;
+  font-size: 18px;
+  margin-bottom: 21px !important;
+}
+
+.labelClass {
+  font-weight: 700 !important;
+  font-size: 18px;
+  margin-bottom: 21px !important;
+  margin-top: 0px !important;
+}
+
+.header h1 {
+  text-align: left;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+.buttonDiv {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  min-width: 111px;
+  min-height: 46px;
+}
+
+.dropDownContainerClass input {
+  height: 31px !important;
+}
+
+@media (max-device-width: 767px) {
+  .postalCode {
+    padding-bottom: 8px;
+    margin-top: 14px !important;
+  }
+  .buttonDiv button {
+    width: 100%;
+  }
+
+  .customMargin {
+    margin-top: 15px !important;
+  }
+
+  .customColumSpace {
+    padding-bottom: 0px !important;
+    margin-top: 14px !important;
+  }
+
+  .buttonDiv button {
+    font-size: 14px;
+  }
+
+  .button {
+    min-width: 80px !important;
+    min-height: 44px;
+    font-size: 15px !important;
+    padding: 13.5px !important;
+  }
+
+  .label {
+    font-weight: 700 !important;
+    font-size: 15px;
+    margin-bottom: 6px !important;
+  }
+
+  .labelPhone {
+    font-weight: 700 !important;
+    font-size: 15px;
+    margin-bottom: 4px !important;
+  }
+
+  .mainDiv {
+    padding: 20px 0px !important;
+    min-height: 685px !important;
+    padding-bottom: 0px !important;
+  }
+  .header {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 7px;
+    border-bottom: none !important;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  .header h1 {
+    padding-top: 3px;
+  }
+
+  .editableHeader button {
+    min-width: 69px !important;
+    font-weight: 400 !important;
+  }
+
+  .editableHeader h1 {
+    font-size: 16px !important;
+    font-weight: 700;
+    line-height: 20px;
+  }
+}

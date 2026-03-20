@@ -1,0 +1,86 @@
+.card {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid rgba(142, 142, 142, 0.1);
+  background-color: var(--white-color);
+  margin-bottom: 10px;
+  border-radius: 7px;
+  box-shadow: -1px -1px 129px -62px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: -1px -1px 129px -62px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: -1px -1px 129px -62px rgba(0, 0, 0, 0.22);
+}
+.titleMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400 !important;
+}
+
+.titleMain h5 {
+  font-size: 18px;
+}
+.titleMain p {
+  font-size: 16px;
+}
+
+.designation {
+  color: var(--red-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+.email {
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .email {
+    font-size: 14px;
+  }
+  .designation {
+    font-size: 14px;
+  }
+  .titleMain p {
+    font-size: 14px;
+  }
+  .titleMain h5 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .titleMain h5 {
+    font-size: 18px !important;
+    line-height: 29px !important;
+    font-weight: 500 !important;
+  }
+
+  .titleMain p {
+    font-size: 16px;
+  }
+
+  .email {
+    font-size: 16px !important;
+    line-height: 15px !important;
+  }
+
+  .designation {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-weight: 700 !important;
+  }
+
+  .card {
+    padding: 16px 10px 16px 20px;
+    gap: 16px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    height: 134px;
+  }
+
+  .representativeRow {
+    row-gap: 2px;
+  }
+}

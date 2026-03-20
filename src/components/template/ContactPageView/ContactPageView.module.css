@@ -1,0 +1,217 @@
+.mainDivContact {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
+  padding: 48px 0px 33px 0px;
+}
+
+.contactDiv {
+  margin-block: 40px !important;
+}
+
+.mainDiv .container {
+  max-width: 1536px !important;
+  padding-inline: 0px !important;
+}
+
+.heroSection {
+  background-color: var(--border-green);
+}
+
+.mainDiv table tbody {
+  max-width: 800px;
+  overflow-x: scroll;
+}
+.mainDiv table tbody tr td div {
+  font-size: 21px !important;
+  padding-block: 2px;
+}
+
+.contactLeftCol {
+  width: 63%;
+}
+.rightColText {
+  width: 10%;
+}
+
+.tableDiv {
+  padding: 20px;
+  margin-bottom: 114px;
+  padding: 0 !important;
+  box-shadow: 0px 5px 25px #0000000d !important;
+}
+.representative {
+  display: none;
+}
+.tableHeading {
+  margin-top: 29px !important;
+  margin-bottom: 55px !important;
+}
+.articleImg {
+  width: 100%;
+  height: 499px;
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 6px;
+}
+.articleImg img {
+  position: relative !important;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: left;
+}
+.contactMapCol {
+  display: flex;
+  flex-direction: column;
+  height: 831px;
+  justify-content: space-between;
+  gap: 65px;
+  margin-left: 20px;
+}
+
+.tableBodyClass tr td div {
+  font-weight: 600 !important;
+}
+
+.tablePadding {
+  padding: 0px 36px !important;
+}
+
+.tablePadding > div {
+  height: 100% !important;
+}
+
+.representative {
+  background-color: rgb(255, 254, 254);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1400px) {
+  .mainDiv table tbody tr {
+    min-width: 1100px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .mapComp {
+    width: 100%;
+  }
+  .contactMapCol {
+    gap: 30px;
+    margin-left: 0px;
+    flex-direction: column;
+    margin-top: 00px;
+    max-height: 400px;
+  }
+  .articleImg {
+    min-height: 400px;
+    height: 400px;
+  }
+  .mainDiv table tbody tr td div {
+    font-size: 20px !important;
+  }
+
+  .mainDiv table tbody tr td {
+    padding-block: 22px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .mainDivContact {
+    gap: 0px;
+  }
+  .mainDiv table tbody tr td div {
+    font-size: 18px !important;
+    padding-block: 0px !important;
+  }
+  .mainDiv table tbody tr td {
+    padding-block: 20px !important;
+  }
+  .contactLeftCol {
+    width: 95%;
+  }
+  .contactMapCol {
+    flex-direction: row;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainDiv table tbody tr td div {
+    font-size: 18px !important;
+  }
+  .mainDiv .tableHeader {
+    border: none !important;
+  }
+  .tableDiv {
+    padding: 0px;
+    margin-bottom: 40px !important;
+  }
+  .representative {
+    display: block;
+  }
+  .tableHeading {
+    margin-top: 15px !important;
+    margin-bottom: 35px !important;
+  }
+
+  .tablePadding {
+    padding: 20px !important;
+  }
+  .contactMapCol {
+    flex-direction: column;
+    margin-top: 20px;
+    height: 100%;
+    max-height: 100%;
+  }
+  .tableDiv {
+    display: none;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .articleImg {
+    height: 245px;
+  }
+
+  .heroSection {
+    height: 400px;
+  }
+
+  .contactDiv {
+    margin-block: 32px !important;
+  }
+
+  .representative {
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 45px;
+    border-radius: 6px;
+  }
+
+  .tableHeading {
+    font-size: 32px !important;
+    line-height: 43px !important;
+    margin-top: 17px !important;
+    margin-bottom: 19px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .articleImg {
+    height: 235px;
+    min-height: 235px;
+  }
+}
+
+@media (max-width: 400px) {
+  .heroSection {
+    height: 458px;
+  }
+}
+
+@media (max-width: 375px) {
+  .heroSection {
+    height: 458px;
+  }
+}

@@ -1,0 +1,408 @@
+.searchInput {
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  border-bottom: 3px solid #d7d5d1 !important;
+  letter-spacing: 0px;
+  padding: 19px 0px 29px 0px !important;
+  font-size: 18px !important;
+  color: #434343;
+  padding-right: 35px !important;
+}
+.searchDiv {
+  width: 382px;
+}
+
+.__desc {
+  width: 86%;
+  margin: auto;
+  color: var(--black-color);
+}
+.heroSectionHeading {
+  color: var(--black-color);
+}
+
+.searchInput::placeholder {
+  font-size: 18px !important;
+  color: #434343 !important;
+  opacity: 0.68;
+  font-weight: 600 !important;
+  line-height: 21px !important;
+}
+.searchIcon {
+  right: 0px !important;
+  opacity: 0.68 !important;
+  top: 10px !important;
+}
+.cardsView {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.sortByDiv,
+.currencyDiv {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-right: 35px;
+}
+.bannerSec {
+  margin-bottom: 51px;
+}
+
+.img {
+  width: 25px;
+  height: 25px;
+}
+
+.img:hover svg path {
+  fill: yellow !important;
+}
+
+.sortByDiv p {
+  color: var(--heading-text-color);
+}
+
+.cardViewDivMain {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.viewDiv {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.filtersDiv {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+}
+.dropDownContainer {
+  width: 100%;
+  flex-wrap: nowrap;
+  background-color: #fdf8ee !important;
+  max-height: 43px;
+  min-width: 177px;
+}
+.listAndCard {
+  margin-top: 54px;
+}
+.viewCardTypeDiv {
+  padding-inline: 37px 9px;
+}
+.viewCardTypeDiv p {
+  color: var(--heading-text-color);
+}
+
+.pagination {
+  padding-top: 60.8px;
+}
+
+.viewTypeDiv {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  cursor: pointer;
+  padding-bottom: 1px;
+}
+
+.listViewTypeDiv {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.gridIcon {
+  position: relative;
+  width: 28px;
+  height: 12px;
+}
+.barIcon {
+  position: relative;
+  width: 29px;
+  height: 16px;
+}
+
+.barIcon img {
+  filter: opacity(0.6);
+  fill: green !important;
+}
+.cardTitle {
+  color: var(--text-color-v1);
+  line-height: 21px;
+}
+
+.listTitle {
+  color: var(--gray-color-v);
+  line-height: 21px;
+}
+
+.listViewTypeDiv:hover .listTitle,
+.listViewTypeDiv:hover .listIcon,
+.listIconActive {
+  color: var(--primary-color) !important;
+}
+
+.listIconActive svg rect {
+  fill: var(--primary-color) !important;
+}
+
+.listIcon {
+  width: 28px !important;
+  color: var(--gray-color-v);
+}
+.listIcon svg rect {
+  fill: var(--gray-color-v) !important;
+}
+.sortCards {
+  display: flex;
+  gap: 40px;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+
+.skeletonList,
+.skeletonWid {
+  width: 100% !important;
+}
+
+.productCard__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2.8rem;
+  column-gap: 2.45rem;
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  @media screen and (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media screen and (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  @media screen and (max-width: 375px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+.mainDiv .imageDivTextLeft h1,
+.mainDiv .imageDivTextLeft p {
+  text-align: center !important;
+  z-index: 1;
+}
+.mainDiv h1 {
+  z-index: 1;
+
+  margin-top: -13px !important;
+  line-height: 50px !important;
+  margin-left: 2px !important;
+  margin-bottom: 22px !important;
+  text-align: center;
+}
+
+@media (max-width: 1440px) {
+  .cardsView {
+    gap: 25px;
+  }
+  .viewCardTypeDiv {
+    padding-inline: 0px 9px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 1130px) {
+  .searchDiv {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .searchDiv {
+    width: 265px;
+  }
+  .filtersDiv {
+    gap: 17px;
+    padding-top: 0px;
+  }
+
+  .cardViewDivMain {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .searchDiv {
+    width: 225px;
+  }
+  .filtersDiv,
+  .sortByDiv {
+    gap: 10px;
+  }
+
+  .cardsView {
+    gap: 11px;
+  }
+  .dropDownContainer {
+    min-width: 150px;
+  }
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 840px) {
+  .viewCardTypeDiv {
+    padding-inline: 0px 9px;
+  }
+  .dropDownContainer {
+    min-width: 125px;
+  }
+}
+
+@media screen and (max-device-width: 767px) {
+  .afterHeroCard .featureCardContainer:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .searchDiv,
+  .displayNone,
+  .headingClass {
+    display: none;
+  }
+
+  .bannerSec {
+    margin-bottom: 0px;
+  }
+  .mainDiv h1 {
+    margin-bottom: 0px !important;
+  }
+  .__desc {
+    width: 100%;
+    line-height: 18px !important;
+  }
+  .listIcon {
+    width: 22px !important;
+    height: 29px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+  }
+
+  .filtersDiv {
+    margin-top: 20px;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .gridIcon {
+    width: 24px;
+    height: 16px;
+  }
+  .sortByDiv {
+    flex-direction: column;
+    align-items: start;
+
+    gap: 7px;
+    margin-right: 0px;
+  }
+  .sortByDiv > p {
+    margin-top: 2.5px !important;
+  }
+  .pagination {
+    padding-top: 40.8px;
+  }
+
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-right: 0px;
+  }
+  .announcementRight {
+    padding-top: 16px;
+    padding-bottom: 40px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .viewTypeDiv {
+    gap: 5px;
+  }
+  .dropDownContainer {
+    min-width: 150px !important;
+    max-width: 150px !important;
+    height: 40px !important;
+  }
+  .sortByDiv p {
+    margin-top: 6px;
+  }
+
+  .cardViewDivMain {
+    margin-inline-start: 0px;
+    gap: 16px;
+    padding-bottom: 1px;
+    flex-direction: column;
+    align-items: start;
+  }
+  .listViewTypeDiv {
+    gap: 13px;
+  }
+  .listAndCard {
+    margin-top: 21px;
+  }
+
+  .mainDiv > div[class*="imageDiv"] {
+    padding: 26px 22px 19px 21px;
+  }
+
+  .mainDiv p {
+    font-weight: 400 !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .gridIcon {
+    width: 18px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .listViewTypeDiv {
+    gap: 5px;
+  }
+}

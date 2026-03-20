@@ -1,0 +1,183 @@
+.mainDiv {
+  width: 100%;
+  height: 250px;
+  /* background: var(--white-color);
+  box-shadow: 0px 5px 25px #0000000d; */
+  border-radius: 8px;
+  gap: 50px;
+  /* padding: 10px; */
+  display: flex;
+}
+.imageDiv {
+  position: relative;
+  flex: none;
+  min-height: 250px;
+  width: 280px;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0px 5px 25px #0000000d;
+}
+.imageDiv img {
+  object-fit: contain;
+}
+
+.cardBody {
+  width: 100%;
+  min-height: 250px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding: 10px 40px;
+  box-shadow: 0px 5px 25px #0000000d;
+}
+
+.cardBodyInCart {
+  width: 100%;
+  min-height: 295px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding: 10px 40px;
+  box-shadow: 0px 5px 25px #0000000d;
+}
+
+.imageDivInCart {
+  position: relative;
+  flex: none;
+  min-height: 295px;
+  width: 280px;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0px 5px 25px #0000000d;
+}
+.imageDivInCart img {
+  object-fit: contain;
+}
+
+.title,
+.productId,
+.link {
+  color: var(--text-color-v1);
+}
+.productId,
+.link {
+  opacity: 0.78;
+}
+.title {
+  min-height: 45px;
+}
+.button {
+  height: 39px;
+  width: 100%;
+}
+.noteIcon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+.counterDiv {
+  display: flex;
+  gap: 10px;
+}
+.addNote {
+  min-width: 130px;
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  text-decoration: underline;
+}
+.addNote:hover,
+.addNote:hover p {
+  color: var(--green-color-v);
+  opacity: 0.8;
+}
+
+/* @media (max-width: 1500px) {
+  .cardBodyInCart {
+    width: 100%;
+    min-height: 340px;
+    max-height: auto !important;
+  }
+} */
+
+@media (max-width: 1440px) {
+  .cardBody {
+    padding: 10px 20px;
+  }
+  .addNote {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .mainDiv {
+    gap: 30px;
+  }
+  .cardBodyInCart {
+    max-height: max-content !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .imageDivInCart {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .counterDiv {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .mainDiv {
+    height: 100%;
+    gap: 20px;
+  }
+  .imageDiv {
+    min-height: 225px;
+  }
+  .cardBody {
+    width: 100%;
+    min-height: 225px;
+    max-height: 225px;
+  }
+
+  .imageDivInCart {
+    min-height: 270px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainDiv {
+    flex-direction: column;
+    height: 100%;
+    gap: 0px;
+  }
+  .imageDiv {
+    min-height: 250px;
+    width: 100%;
+  }
+}
+
+/* @media (max-width: 575px) {
+  .mainDiv {
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+  }
+  .imageDiv {
+    width: 100%;
+  }
+} */

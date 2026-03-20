@@ -1,0 +1,342 @@
+.cardContainer {
+  display: flex;
+  height: 100%;
+  height: 251px;
+  width: 100%;
+  background-color: var(--white-color);
+  overflow: hidden;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0px 5px 25px #0000000d;
+}
+
+.cardContainer::after {
+  content: "";
+  background-image: url("/assets/images/app-images/support-card-vector-bg.png");
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: 0;
+  left: -10px;
+  width: 100%;
+  height: 60%;
+}
+
+.imageContainer {
+  position: relative;
+  width: calc(40% - 30px);
+  height: 174px;
+  z-index: 1;
+  margin-left: 30px;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  width: calc(60% - 50px);
+  gap: 54px;
+  padding-left: 2px;
+}
+
+.title {
+  font-weight: bold;
+  color: var(--heading-text-color);
+  text-align: left;
+  font-size: 24px;
+}
+
+.title h3 {
+  font-size: 25px;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  padding-inline: 20px;
+  height: 46px;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+.subscribeContainer {
+  display: flex;
+  border-radius: 6px;
+  width: max-content;
+  max-width: 100%;
+}
+
+.support button {
+  padding: 12px 50px;
+  height: 45px;
+  font-weight: 600 !important;
+}
+
+.supportSpanish button {
+  padding: 17px 15px !important;
+  white-space: wrap !important;
+}
+
+.subscribeContainer .input {
+  color: #434343c7;
+  background-color: var(--bg-light);
+  border-radius: 6px 0 0 6px;
+  padding: 16px 5px 14px 20px;
+  border: 2px solid #3636364a;
+  border-right: 0;
+  max-width: 175px;
+  min-height: 47px;
+}
+
+.subscribeContainer Button {
+  padding: 10px 20px;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600 !important;
+}
+
+.subscribeButton:hover {
+  background-color: var(--button-hover);
+}
+
+.errorText {
+  color: var(--red-color);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+@media (max-width: 1366px) {
+  .cardContainer {
+    gap: 0px;
+  }
+  .imageContainer {
+    margin-left: 0px;
+  }
+  .title h3 {
+    font-size: 22px;
+  }
+  .support button {
+    padding: 12px 35px;
+  }
+  .subscribeContainer .input {
+    max-width: 153px;
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .contentContainer {
+    width: calc(60% - 20px);
+    gap: 45px;
+  }
+  .imageContainer {
+    width: calc(40% - 48px);
+    height: 138px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .contentContainer {
+    gap: 35px;
+  }
+
+  .support button {
+    padding: 12px 35px;
+    height: 42px;
+  }
+  .subscribeContainer input {
+    width: 100%;
+  }
+
+  .contentContainer span h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cardContainer {
+    height: 212px;
+  }
+  .contentContainer span h3 {
+    font-size: 18px;
+  }
+
+  .subscribeContainer .input {
+    padding: 12px 5px 12px 20px;
+    min-height: 28px;
+  }
+}
+
+@media (max-width: 991px) {
+  .contentContainer {
+    width: calc(82% - 0px);
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .support button {
+    padding: 12px 50px;
+    height: 42px;
+  }
+  .subscribeContainer .input {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .contentContainer span h3 {
+    font-size: 22px;
+  }
+
+  .cardContainer {
+    gap: 0px;
+    height: 190px;
+  }
+}
+
+@media (max-width: 850px) {
+  .support button {
+    padding: 12px 38px;
+    height: 42px;
+  }
+
+  .imageContainer {
+    width: calc(43% - 50px);
+    height: 138px;
+  }
+  .subscribeContainer Button {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .subscribeContainer {
+    width: 278px;
+    margin-top: 4px;
+    margin-inline-start: 1px;
+  }
+  .subscribeContainer input {
+    width: 100%;
+    max-width: 215px !important;
+  }
+
+  .subscribeContainer Button {
+    width: 106px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .announcementRight {
+    padding-left: 0px;
+  }
+  .newLetterSection span h3 {
+    margin-inline-start: 2px;
+  }
+
+  .subscribeBtn {
+    padding-inline: 10px !important;
+  }
+
+  .contentContainer span h3 {
+    font-size: 24px !important;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+    margin-inline-start: 1px;
+  }
+  .support {
+    margin-inline-start: 4px;
+  }
+  .imageContainer {
+    display: block;
+    width: 255px;
+    height: 177px;
+    scale: 1.06;
+    padding-bottom: 10px;
+    margin-top: 18px;
+    margin-left: 2.5px;
+  }
+  .imageContainer img {
+    position: relative !important;
+  }
+  .newLetterSection {
+    margin-block: 18px 34px;
+    gap: 18px;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .updatesImage {
+    display: block;
+    z-index: 1;
+    position: relative;
+    width: 241px;
+    height: 150px;
+    margin-left: 2.5px;
+  }
+
+  .inputContainer input::placeholder {
+    font-weight: 400 !important;
+  }
+
+  /* css */
+
+  .subscribeBtn {
+    padding-inline: 15px !important;
+  }
+  .cardContainer {
+    flex-direction: column-reverse;
+    height: 320px;
+    padding: 10px;
+    gap: 0px;
+  }
+
+  .contentContainer {
+    flex-direction: column !important;
+
+    justify-content: space-between;
+    padding-inline: 0px;
+    gap: 13px;
+    margin-block: 20px 2px;
+    width: 90% !important;
+  }
+
+  .subscribeBtn {
+    padding-inline: 20px !important;
+  }
+
+  .cardContainer::after {
+    bottom: -45px;
+    left: 0px;
+    height: 60% !important;
+  }
+  .support button {
+    font-size: 14px !important;
+    padding-top: 14px;
+    font-weight: 700 !important;
+    width: 240px !important;
+    height: 40px;
+  }
+  .title h3 {
+    font-size: 24px !important;
+  }
+}

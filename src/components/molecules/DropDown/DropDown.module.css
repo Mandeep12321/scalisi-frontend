@@ -1,0 +1,35 @@
+.dropdownContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdownContainer:focus-within,
+.dropdownContainer:hover {
+  z-index: 10;
+}
+.reactSelect {
+  letter-spacing: 0px !important;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 2;
+}
+
+.dropdownMenu {
+  position: absolute;
+  z-index: 3;
+}
+
+.cursorDisabled {
+  cursor: not-allowed;
+}
+
+.customOption {
+  transition: background-color 0.2s ease;
+}
+
+.customOption:hover {
+  background-color: var(--red-color) !important;
+  color: white !important;
+}

@@ -1,0 +1,391 @@
+.mainDiv {
+  margin-block: 120px 100px;
+}
+.leftCol {
+  width: 45%;
+  justify-content: center;
+  display: flex;
+}
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  padding-left: 15px;
+}
+.title {
+  font-size: 53px;
+  font-weight: 700;
+  color: var(--black-color);
+}
+.descriptionDiv {
+  margin-block: 65px 0px;
+}
+.description,
+.description p {
+  font-size: 23px;
+  line-height: 35px;
+}
+.subDiv {
+  display: flex;
+}
+.bgImage {
+  width: 385px;
+  height: 385px;
+  position: relative;
+}
+.bgImage > img {
+  left: -15px !important;
+}
+.descriptionTwo {
+  margin-block-start: 64px;
+}
+.descriptionTwo,
+.descriptionTwo p,
+.descriptionTwo h4 {
+  font-size: 24px;
+  line-height: 35px;
+  color: var(--black-color-v2);
+}
+.centerImage,
+.bottomImage,
+.topImage {
+  overflow: hidden;
+  border-radius: 10px;
+  position: absolute;
+}
+.centerImage {
+  width: 317px;
+  height: 180px;
+  top: 40px;
+  left: -92px;
+}
+.bottomImage {
+  left: 30px;
+  bottom: 0px;
+  width: 238px;
+  height: 183px;
+}
+.topImage {
+  width: 289px;
+  height: 155px;
+  bottom: 115px;
+  right: -70px;
+}
+.bottomImage img,
+.centerImage img,
+.topImage img {
+  object-fit: cover;
+}
+.bgImage::before {
+  background: url("/assets/images/app-images/dot-vector-two.png") no-repeat;
+  content: " ";
+  position: absolute;
+  right: 35px;
+  z-index: 1;
+  width: 100px;
+  height: 108px;
+}
+
+.bgImage::after {
+  background: url("/assets/images/app-images/dot-vector-three.png") no-repeat;
+  content: " ";
+  position: absolute;
+  left: -55px;
+  bottom: 17px;
+
+  width: 100px;
+  height: 108px;
+}
+@media (max-width: 1250px) {
+  .mainDiv {
+    margin-block: 80px;
+  }
+  .descriptionDiv {
+    margin-block: 35px 0px;
+  }
+  .title {
+    font-size: 45px;
+  }
+  .description,
+  .description p {
+    font-size: 20px;
+    line-height: 29px;
+  }
+  .descriptionTwo,
+  .descriptionTwo p,
+  .descriptionTwo h4 {
+    font-size: 21px;
+    line-height: 32px;
+  }
+  .topImage {
+    right: -25px;
+  }
+  .centerImage {
+    left: -50px;
+  }
+}
+@media (max-width: 1024px) {
+  .topImage {
+    right: -10px;
+  }
+  .centerImage {
+    left: -30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .subDiv {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .rightCol {
+    width: 100% !important;
+    padding-left: 0px !important;
+  }
+  .leftCol {
+    width: 100%;
+    margin-block: 30px;
+  }
+  .mainDiv {
+    margin-block: 75px;
+  }
+  .descriptionTwo {
+    margin-block-start: 25px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+  .description,
+  .description p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .descriptionTwo,
+  .descriptionTwo p,
+  .descriptionTwo h4 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .centerImage {
+    left: -110px;
+  }
+  .topImage {
+    right: -45px;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .mainDiv {
+    margin-block: 71px;
+    margin-bottom: 40px;
+    padding-block: 0px 0px !important;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .descriptionDiv {
+    margin-block: 18px 0px;
+  }
+
+  .descriptionTwo h4 strong {
+    font-size: 20px;
+  }
+
+  .centerImage {
+    left: -110px;
+  }
+  .topImage {
+    right: -45px;
+  }
+}
+@media (max-width: 650px) {
+  .centerImage {
+    width: 247px;
+    height: 180px;
+    top: 60px;
+    left: -45px;
+  }
+  .bgImage {
+    width: 375px;
+    height: 375px;
+    position: relative;
+    margin-top: 20px;
+  }
+  .bottomImage {
+    left: 45px;
+    bottom: -30px;
+    width: 188px;
+    height: 183px;
+  }
+  .topImage {
+    width: 249px;
+    height: 155px;
+    bottom: 90px;
+    right: -35px;
+  }
+}
+@media (max-width: 485px) {
+  .centerImage {
+    width: 210px;
+    height: 124px;
+    top: 28px;
+    left: -60px;
+  }
+  .bottomImage {
+    left: 25px;
+    bottom: -13px;
+    width: 186px;
+    height: 140px;
+  }
+
+  .topImage {
+    width: 215px;
+    height: 120px;
+    bottom: 80px;
+    right: -60px;
+  }
+  .bgImage > img {
+    left: 0 !important;
+  }
+  .bgImage {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 425px) {
+  .topImage {
+    width: 190px;
+    height: 120px;
+    bottom: 80px;
+    right: -38px;
+  }
+  .centerImage {
+    width: 175px;
+    height: 124px;
+    top: 28px;
+    left: -40px;
+  }
+  .bottomImage {
+    left: 25px;
+    bottom: -3px;
+    width: 186px;
+    height: 130px;
+  }
+  .bgImage::after {
+    display: none;
+  }
+  .leftCol {
+    margin-bottom: 0px;
+  }
+  .description,
+  .description p,
+  .descriptionTwo,
+  .descriptionTwo p,
+  .descriptionTwo h4 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .descriptionTwo h4 strong {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .bgImage {
+    margin-top: 30px;
+    width: 236px;
+    height: 236px;
+  }
+  .bgImage::before {
+    background: url("/assets/images/app-images/mobDot.png") no-repeat;
+    content: " ";
+    right: 23px;
+    bottom: 170px;
+    width: 60px;
+    height: 70px;
+  }
+  .title {
+    font-size: 24px;
+    padding-left: 0px;
+    padding-top: 6px;
+  }
+  .description {
+    padding-left: 0px;
+  }
+  .descriptionDiv {
+    margin-block: 17px 0px;
+  }
+  .rightCol {
+    margin-top: 0px;
+  }
+  .leftCol {
+    margin: 16px 0px;
+  }
+  .topImage {
+    right: -50px;
+    bottom: 66px;
+  }
+  .centerImage {
+    top: 25px;
+    width: 194px;
+    height: 110px;
+    left: -50px;
+  }
+  .bottomImage {
+    left: 24px;
+    bottom: -4px;
+    width: 160px;
+    height: 125px;
+  }
+  .topImage {
+    width: 177px;
+    height: 95px;
+    right: -50px;
+    bottom: 66px;
+  }
+}
+@media (max-width: 355px) {
+  .centerImage {
+    top: 27px;
+    left: -33px;
+    width: 170px;
+  }
+
+  .topImage {
+    bottom: 80px;
+    right: -30px;
+    width: 155px;
+  }
+
+  .bgImage {
+    width: 236px;
+    height: 236px;
+  }
+}
+
+@media (max-width: 325px) {
+  .centerImage {
+    width: 157px;
+    height: 102px;
+    top: 35px;
+    left: -22px;
+  }
+  .bottomImage {
+    left: 35px;
+    bottom: -16px;
+    width: 145px;
+    height: 115px;
+  }
+  .topImage {
+    width: 147px;
+    height: 92px;
+    bottom: 61px;
+    right: -28px;
+  }
+  .bgImage {
+    width: 230px;
+    height: 230px;
+  }
+}

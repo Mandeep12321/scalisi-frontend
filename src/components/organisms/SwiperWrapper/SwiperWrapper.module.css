@@ -1,0 +1,9 @@
+.carouselWrapper {
+  position: relative;
+}
+
+.rec-pagination {
+  position: absolute !important;
+  bottom: 11% !important;
+  left: 13% !important;
+}

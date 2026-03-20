@@ -1,0 +1,311 @@
+.formBox,
+.formBox2 {
+  max-width: 753px;
+  padding: 33.5px 24.3px;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 61px;
+  background-color: var(--white-color);
+  box-shadow: 0px 5px 25px #0000000d;
+}
+
+.mainDivClass {
+  margin-top: 3px !important;
+}
+
+.jobTitle {
+  margin-bottom: -18px;
+}
+
+.mainDivClass div {
+  position: relative !important;
+  width: 100%;
+  background-color: var(--border-green) !important;
+  height: 192px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 5px 25px #0000000d;
+  align-items: start !important;
+  padding: 11px !important;
+  gap: 37px !important;
+}
+
+.TopInputDiv {
+  margin-top: 9.5px;
+}
+
+.formBox h2 {
+  margin-block-end: 20px;
+}
+
+.inputDiv {
+  margin: 2px 0px 30px 0px;
+}
+
+.inputPhoneNumber {
+  margin: 2px 0px 30px 0px;
+}
+.jobTitle {
+  margin: 2px 0px 10px 0px !important;
+}
+
+.formBox2 .inputClass {
+  margin: 2px 0px 0px 0px;
+}
+
+.PrivacyDiv {
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 29px;
+}
+.submitBtn {
+  width: 100%;
+  padding-block: 16px;
+}
+
+.dropDownClass {
+  padding-bottom: 20px;
+}
+.dropDownClass input {
+  height: 29px;
+}
+
+.colorTextClass {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.colorHeadingClass {
+  font-size: 31px;
+}
+
+.registerBtn {
+  text-align: center;
+}
+
+.registerBtn p {
+  padding-block: 10px 0px;
+}
+
+.registerBtn p span {
+  margin-left: 5px;
+}
+
+.labelClass {
+  margin-bottom: 14px !important;
+  font-weight: 600 !important;
+}
+
+.heroSecColor {
+  background-color: var(--border-green);
+}
+
+.checkboxMain {
+  margin-top: 5px !important;
+  gap: 5px !important;
+  padding-top: 0px !important;
+}
+
+.checkboxMain input:checked ~ span {
+  background-color: var(--primary-color) !important;
+  border: 2px solid #ffffff4a !important;
+}
+
+.checkboxMain input:checked ~ span::after {
+  left: 5px !important;
+  top: 1px !important;
+}
+.headingText,
+.formBox h2 {
+  margin-bottom: 30px !important;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 18px;
+}
+.announcementRight {
+  padding-left: 18px;
+}
+
+@media (max-width: 1200px) {
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .mainDivClass {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+  .mainDivClass h1 {
+    line-height: 32px !important;
+  }
+  .labelClass {
+    margin-bottom: 5.5px !important;
+    font-size: 15.8px;
+  }
+  .inputClass {
+    margin: 2px 0px 14px 0px;
+  }
+  .submitBtn {
+    margin-block: 0px;
+    padding-block: 15px;
+  }
+  .PrivacyDiv {
+    font-size: 12px;
+    margin-top: 18px;
+    font-weight: 400;
+  }
+  .btnParent {
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
+  }
+  .formBox2 {
+    padding: 27.5px 21px 22px 21px !important;
+    margin-bottom: 3px;
+    margin-top: 39px;
+  }
+  .announcementLeft {
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+  .announcementRight {
+    padding-left: 0px;
+  }
+
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 0px;
+  }
+  .announcementRight {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+  .registerBtn p {
+    line-height: 20px;
+  }
+
+  .mainDivClass div {
+    gap: 14px !important;
+    padding: 24px 11px 20px !important;
+  }
+  .formBox {
+    margin-top: 40px;
+  }
+  .formBox h2 {
+    margin-bottom: -1px !important;
+  }
+  .mainDivClass {
+    margin-bottom: 24px !important;
+    margin-top: 20px !important;
+  }
+  .inputClass {
+    margin: 2px 0px 14px 0px;
+  }
+  .mainDivClass h1 {
+    line-height: 29px !important;
+  }
+
+  .colorHeadingClass {
+    font-size: 24px !important;
+    line-height: 29px !important;
+  }
+  .colorTextClass {
+    font-size: 25px !important;
+    line-height: 20px !important;
+  }
+  .submitBtn {
+    margin-block: 0px;
+  }
+  .registerBtn p {
+    line-height: 15px;
+    padding-top: 6px;
+  }
+
+  .announcementRight {
+    padding-top: 0px;
+    padding-bottom: 37px;
+    padding-right: 0px !important;
+  }
+  .headingText {
+    font-size: 20px !important;
+  }
+  .checkboxMain {
+    margin-top: 0px !important;
+  }
+
+  .labelClass {
+    margin-bottom: 5.5px !important;
+    font-size: 15.8px;
+  }
+
+  .registerBtn button {
+    font-size: 16px;
+  }
+  .checkboxMain {
+    padding-block: 4px !important;
+  }
+
+  .PrivacyDiv {
+    font-size: 12px;
+    margin-top: 18px;
+    font-weight: 400;
+  }
+
+  .PrivacyDiv span {
+    display: block;
+  }
+  .inputPhoneNumber {
+    margin-bottom: 11px !important;
+  }
+
+  .formBox {
+    padding: 27.5px 21px 29px 21px !important;
+    margin-bottom: 3px;
+  }
+  .formBox2 {
+    padding: 27.5px 21px 22px 21px !important;
+    margin-bottom: 3px;
+    margin-top: 39px;
+  }
+  .TopInputDiv {
+    margin-top: 25px;
+  }
+  .btnParent {
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
+  }
+  .inputDiv {
+    margin-bottom: 3px !important;
+  }
+
+  .mainDivClass div {
+    height: 190px !important;
+  }
+}

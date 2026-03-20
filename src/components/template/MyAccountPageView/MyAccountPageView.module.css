@@ -1,0 +1,430 @@
+.mainDivClass {
+  height: 138px !important;
+  margin: 0px !important;
+}
+
+.colorHeadingClass {
+  font-size: 31px;
+  padding-top: 7px !important;
+}
+
+.userLoginField {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 25px 40px 40px 25px;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.userLoginField > div:first-child {
+  width: 30%;
+}
+
+.shippingDetailsMain {
+  padding-inline: 18px !important;
+}
+
+.userLoginField button {
+  height: 46px;
+  padding-inline: 38px;
+}
+
+.userLoginField button svg {
+  margin-right: 10px;
+}
+
+.loginHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.loginHead button {
+  height: 50px;
+}
+
+.loginHead button svg {
+  margin-right: 10px;
+}
+
+.heroSecColor {
+  background-color: var(--border-green);
+}
+
+.mainDivClass h1 {
+  margin-top: 30px;
+  height: 140px !important;
+}
+
+.loginProfile {
+  padding-block-end: 45px;
+}
+
+.ownerProfileLeft {
+  width: 62%;
+  padding: 8px;
+}
+
+.labelClassName {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+
+.ownerProfileRight {
+  margin-right: 20px;
+  width: 38%;
+  padding: 20px;
+  padding-top: 50px;
+}
+
+.loginBox {
+  background-color: var(--white-color);
+  margin-block: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 6px;
+}
+
+.loginLeft {
+  width: 100%;
+  border-right: 2px solid #e5e5e5;
+}
+
+/* .loginRight {
+  width: 31%;
+  padding: 20px;
+} */
+
+.loginLeft p {
+  padding-block: 20px;
+  font-size: 14px;
+  padding-inline-start: 20px;
+}
+
+.loginProfile h3 {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.languageDiv h3,
+.displayDiv h3 {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.displayDiv {
+  padding-block: 20px;
+}
+
+.languageDivField,
+.displayDivField {
+  padding-block: 31px;
+}
+
+.ownerNotice p {
+  color: var(--red-color);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.ownerNotice span svg {
+  color: var(--red-color);
+}
+
+.ownerNotice {
+  display: flex;
+  gap: 7px !important;
+  flex-direction: column;
+  border: 2px solid var(--red-color);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: var(--light-red-color);
+}
+
+.loginProfileBox {
+  background-color: var(--white-color);
+  margin-block-start: 30px;
+  margin-block-end: 18px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 6px;
+}
+
+.label {
+  font-size: 15px !important;
+  margin-top: 6px;
+  margin-bottom: 15px;
+}
+
+.subText {
+  margin-block: 8px;
+}
+
+.userLoginField > div:nth-child(2) {
+  margin-left: 5px;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+.MdInfo {
+  font-size: 25px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+
+@media screen and (min-width: 1440px) {
+  .loginRight > div {
+    margin-bottom: 15px;
+  }
+
+  .loginRight > div > div {
+    border: 3px solid #e5e5e5;
+    box-shadow: none;
+  }
+
+  .shippingDetailsMain button[type="submit"] {
+    padding-inline: 38px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .userLoginField {
+    flex-wrap: wrap;
+  }
+
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+}
+
+@media (max-width: 991px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+
+  .userLoginField {
+    padding: 25px;
+  }
+
+  .loginProfileBox {
+    flex-direction: row;
+  }
+
+  .ownerProfileRight {
+    width: 35%;
+  }
+
+  .ownerProfileLeft {
+    width: 75%;
+  }
+
+  .loginBox {
+    flex-direction: row;
+    margin-top: 60px;
+  }
+
+  .loginLeft {
+    width: 70%;
+  }
+  .loginRight {
+    width: 30%;
+  }
+  .languageDivField,
+  .displayDivField {
+    padding-block: 20px;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .myAccountContainer {
+    margin-block: 41px 40px !important;
+  }
+  .loginLeft {
+    border: none;
+    width: 100%;
+  }
+  .loginBox {
+    margin-top: 20px;
+    flex-direction: column-reverse;
+  }
+  .loginProfileBox {
+    flex-direction: column-reverse;
+  }
+  .changeBtn {
+    width: 100%;
+  }
+  .ownerNotice {
+    flex-direction: row;
+  }
+  .ownerProfileLeft,
+  .ownerProfileRight {
+    width: 100%;
+  }
+  .announcementLeft {
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+  .announcementRight {
+    padding-left: 0px;
+  }
+
+  .loginRight {
+    width: 100%;
+  }
+  .uploadImageBox {
+    height: 130px !important;
+    width: 150px;
+    margin-left: -20px;
+  }
+
+  .loginRight > div {
+    height: 100% !important;
+  }
+
+  .mainDivClass {
+    height: 110px !important;
+  }
+
+  .loginRight {
+    padding: 39px 42px 39px 42px !important;
+    border-bottom: 2px solid #00000012;
+  }
+  .userLoginField {
+    padding: 20px !important;
+    gap: 15px !important;
+  }
+  .userLoginField > div:nth-child(2) {
+    margin-left: 0px;
+  }
+
+  .loginLeft p {
+    margin-block: 0px !important;
+  }
+
+  .myAccountContainer {
+    margin-block: 41px 40px !important;
+  }
+  .displayDiv {
+    padding-block: 24px;
+  }
+  .label {
+    font-size: 15px !important;
+    margin-top: 3.5px !important;
+    margin-bottom: 7px;
+  }
+  .changeBtn {
+    margin-top: 5px !important;
+  }
+  .MdInfo {
+    font-size: 31px;
+  }
+
+  .loginBox {
+    margin-top: 20px;
+  }
+  .mainDivClass h1 {
+    margin-top: 20px;
+  }
+  .loginLeft p {
+    padding-block: 19px !important;
+  }
+
+  .loginProfile {
+    padding-block-end: 19px;
+  }
+  .loginProfileBox {
+    margin-block-start: 22px;
+  }
+
+  .loginProfile h3 {
+    font-size: 20px;
+  }
+  .ownerNotice {
+    flex-direction: row;
+    padding: 6px 8px 10px 6px !important;
+  }
+  .ownerNotice p {
+    font-size: 12px;
+    padding-bottom: 1px;
+    line-height: 19px !important;
+  }
+  .languageDivField,
+  .displayDivField {
+    padding-block: 17px;
+  }
+
+  .ownerProfileRight {
+    padding: 20px 20px;
+    padding-bottom: 0px;
+  }
+
+  .ownerProfileLeft {
+    padding: 10px 14px 21px;
+  }
+
+  .shipBtn {
+    margin-top: -6px !important;
+  }
+
+  .labelPhoneClass {
+    margin-bottom: 0px !important;
+  }
+
+  .languageDiv h3,
+  .displayDiv h3 {
+    font-size: 20px !important;
+  }
+
+  .shippingDetailsMain {
+    padding-inline: 7px !important;
+    padding-top: 10px;
+    padding-bottom: 0px;
+  }
+
+  .announcementLeft {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px;
+  }
+
+  .announcementRight {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px !important;
+  }
+}

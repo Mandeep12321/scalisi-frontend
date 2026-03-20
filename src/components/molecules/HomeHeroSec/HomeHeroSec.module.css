@@ -1,0 +1,137 @@
+.homeHeroContent {
+  position: absolute;
+
+  top: 52px;
+  left: 59px;
+  color: #fff;
+  width: 459px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.homeHeroContent h1 {
+  margin-bottom: 22px;
+}
+.homeHeroContent p {
+  margin-bottom: 26px;
+  line-height: 19px;
+  color: #fdfdfd;
+  opacity: 0.95;
+  font-size: 15px;
+  letter-spacing: 0.1px;
+}
+.homeHeroContent button {
+  margin-bottom: 21px !important;
+  width: 231px !important;
+  height: 46px !important;
+  padding: 14px 46px 13px 51px !important;
+  border-radius: 6px !important;
+  line-height: 19px !important;
+}
+
+.homeHeroMain {
+  width: 100%;
+  position: relative;
+  box-shadow: 0px 5px 25px #0000000d;
+}
+
+.homeHeroContent button {
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  margin-bottom: 21px;
+  color: #14110c !important;
+  height: 46px;
+  width: 231px !important;
+}
+
+.homeHeroImg {
+  width: 100%;
+  height: 310px;
+}
+.homeHeroImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 12px;
+}
+
+.homeHeroImg:after {
+  position: absolute;
+  content: " ";
+  z-index: 0;
+  opacity: 0.88;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  height: 100%;
+  width: 55%;
+  border-radius: 12px;
+}
+
+@media (max-width: 1024px) {
+  .homeHeroContent {
+    left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeHeroContent h1 {
+    font-size: 38px !important;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .homeHeroContent {
+    width: 100%;
+    top: 40px !important;
+    left: 20px !important;
+    max-width: 241px;
+  }
+  .homeHeroImg {
+    width: 100%;
+    height: 317px;
+  }
+
+  .homeHeroContent button {
+    font-size: 14px !important;
+    width: 180px !important;
+    height: 36px !important;
+    padding: 14px 50px 13px 51px !important;
+  }
+
+  .homeHeroContent h1 {
+    font-size: 32px !important;
+    /* width: 240px; */
+    line-height: 36px !important;
+    margin-bottom: 18px;
+  }
+  .homeHeroContent p {
+    width: 241px;
+    margin-bottom: 25px;
+    line-height: 17px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .homeHeroImg:after {
+    background: linear-gradient(
+      90deg,
+      #000000d1,
+      rgb(0 0 0 / 21%) 100%,
+      transparent
+    );
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .homeHeroContent h1 {
+    width: 280px; /* 240px change to 280px */
+  }
+}

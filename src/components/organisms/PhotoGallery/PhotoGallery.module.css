@@ -1,0 +1,256 @@
+.imageDiv {
+  opacity: 0.6;
+  width: 100%;
+  height: 152px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.activeImageDiv {
+  opacity: 1;
+}
+.imageDiv img {
+  object-fit: cover;
+}
+.photoGallerySwiperDiv {
+  display: flex;
+  width: 100%;
+  margin-inline: 40px;
+  height: 100%;
+  flex-direction: column;
+}
+.imagesDiv {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
+  margin-top: 45px;
+}
+.footer {
+  height: 201px;
+  border-radius: 0px 0px 12px 12px;
+  background-color: var(--black-color-v3);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.carouselWrapper {
+  position: relative;
+}
+.rec-pagination {
+  position: absolute !important;
+  bottom: 11% !important;
+  left: 13% !important;
+}
+.photoDiv {
+  height: 412px;
+  width: 100%;
+  border-radius: 12px 12px 0px 0px;
+  overflow: hidden;
+  position: relative;
+}
+.photoDiv img {
+  object-fit: cover;
+}
+.footer h1 {
+  /* height: 100%; */
+  /* display: flex; */
+  padding: 50px;
+  width: 90%;
+  /* align-items: start; */
+  color: var(--white-color);
+  line-height: 53px;
+  text-decoration: none !important;
+}
+.heading {
+  text-align: center;
+  padding-block: 100px 75px;
+}
+@media (max-width: 1440px) {
+  .heading {
+    padding-block: 50px;
+  }
+}
+@media (max-width: 1024px) {
+  .heading {
+    padding-block: 50px;
+  }
+  .footer {
+    height: 120px;
+  }
+  .footer h1 {
+    line-height: 28px;
+    font-size: 20px !important;
+  }
+  .photoDiv {
+    height: 220px;
+  }
+}
+@media (max-width: 800px) {
+  .heading {
+    padding-block: 35px;
+  }
+  .footer {
+    padding: 42px 28px;
+  }
+}
+@media (max-width: 1200px) {
+  .imagesDiv {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .footer h1 {
+    width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .imagesDiv {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .photoDiv {
+    height: 200px;
+    width: 100%;
+  }
+  .footer {
+    height: auto;
+    padding: 0px 28px;
+  }
+  .footer h1 {
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageDiv {
+    min-width: 320px !important;
+    height: 140px;
+  }
+  .imagesDiv {
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    min-width: 200px !important;
+    overflow: auto;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 700px) {
+  .imageDiv {
+    min-width: 290px !important;
+    height: 140px;
+  }
+}
+
+@media (max-width: 650px) {
+  .imageDiv {
+    min-width: 260px !important;
+    height: 130px;
+  }
+}
+
+@media (max-width: 575px) {
+  .imageDiv {
+    min-width: 225px !important;
+    height: 120px;
+    margin-top: 0px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .imageDiv {
+    min-width: 190px !important;
+    height: 100px;
+  }
+}
+
+@media (max-width: 499px) {
+  .footer h1 {
+    width: 100%;
+    font-size: 18px;
+  }
+  .photoGallerySwiperDiv {
+    margin-inline: 0px;
+  }
+  .imagesDiv {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 480px) {
+  .imageDiv {
+    gap: 20px;
+    min-width: 150px !important;
+    height: 100px !important;
+  }
+  .footer {
+    height: auto;
+  }
+  .footer h1 {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 425px) {
+  .heading {
+    padding-block: 34px 34px;
+  }
+  .footer h1 {
+    line-height: 28px;
+    font-size: 17px !important;
+  }
+  .photoDiv {
+    height: 180px;
+  }
+  .imagesDiv {
+    gap: 18px;
+  }
+  .imageDiv {
+    min-width: 156px !important;
+    height: 77px !important;
+  }
+}
+@media (max-width: 376px) {
+  .footer h1 {
+    font-size: 14px !important;
+    line-height: 22px;
+    padding: 20px 23px;
+  }
+  .footer {
+    height: 110px;
+    padding: 0px;
+  }
+  .photoDiv {
+    height: 213px;
+  }
+  .heading {
+    padding-block: 33px 22px;
+    font-size: 24px;
+  }
+  .imagesDiv {
+    gap: 12px;
+  }
+  .imageDiv {
+    min-width: 162px !important;
+    height: 77px;
+  }
+}
+
+@media (max-width: 350px) {
+  .imageDiv {
+    min-width: 140px !important;
+    height: 77px;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer h1 {
+    font-size: 14px !important;
+    line-height: 21px;
+  }
+  .footer {
+    height: auto;
+    padding: 0px;
+  }
+  .photoDiv {
+    height: 150px;
+  }
+}

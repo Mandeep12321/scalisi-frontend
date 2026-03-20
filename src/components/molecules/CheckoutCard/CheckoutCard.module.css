@@ -1,0 +1,157 @@
+.checkoutCardMain {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background-color: white;
+  border-radius: 10px;
+}
+
+.cardContainer {
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0px 5px 25px #00000010;
+  border: 2px solid #8e8e8e1a;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1px 15px;
+}
+
+.cardTop p {
+  font-size: 14px;
+}
+
+.type,
+.removeLink {
+  font-size: 15px;
+  white-space: nowrap;
+  width: fit-content;
+  text-align: center;
+}
+
+.removeLink {
+  font-size: 15px !important;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 16px;
+}
+.cardWrapper h3 {
+  width: 100%;
+}
+.cardWrapper,
+.priceDiv {
+  min-height: 90px;
+}
+.imageDiv {
+  flex-shrink: 0;
+  width: 90px;
+  height: 84px;
+  border-radius: 8px;
+  border: 2px solid #7070701c;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageDiv img {
+  object-fit: contain;
+  scale: 0.95;
+}
+.cardDetails {
+  width: 100%;
+  margin-top: 4px;
+}
+.cardDetails h3 {
+  line-height: 18px;
+}
+.cardDetails span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+.productId {
+  color: var(--text-color-v1);
+  opacity: 78%;
+}
+.addNote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.removeLink {
+  text-decoration: underline 1px solid #bc0a0e;
+  color: #bc0a0e;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  margin-bottom: 1px;
+  margin-right: 3px;
+}
+
+.removeLink:hover {
+  opacity: 60%;
+}
+
+.type {
+  color: var(--text-color-v1);
+  text-transform: uppercase;
+  opacity: 78%;
+}
+.addNote p,
+.cancelNote p,
+.removeNote p {
+  color: var(--text-gray-color);
+  opacity: 78%;
+
+  text-decoration: 1px solid underline var(--text-gray-color);
+}
+
+.addNote p {
+  text-underline-offset: 4px;
+  margin-bottom: 3px;
+}
+.addNote:hover {
+  color: var(--green-color-v);
+}
+.textArea {
+  resize: none;
+}
+
+.price {
+  margin-top: 5px;
+}
+
+.noteRow {
+  margin-block: 10px 20px;
+}
+.noteIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-gray-color);
+  margin-right: 6px;
+}
+
+.cancelNote,
+.removeNote {
+  display: flex;
+  align-items: center;
+  gap: 8.1px;
+}
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.counterDiv > div > div[class*="controlButtons"] {
+  width: 148px;
+}

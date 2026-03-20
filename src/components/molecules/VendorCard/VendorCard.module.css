@@ -1,0 +1,86 @@
+.vendorCardMain {
+  background-color: var(--white-color);
+  padding-inline-start: 30px;
+  padding-inline-end: 20px;
+  box-shadow: 0px 5px 30px #0000000d;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  min-height: 153px;
+}
+
+.vendorTop {
+  max-width: 99%;
+  padding-inline-end: 60px;
+  padding-inline-start: 35px;
+}
+
+.vendorTop h3 {
+  font-weight: 600;
+  color: var(--black-color-v2);
+}
+
+.vendorCardImage {
+  flex: none;
+  width: 152px;
+  height: 100px;
+}
+
+.vendorCardImage img {
+  width: 100%;
+  object-fit: contain;
+  position: relative !important;
+}
+@media screen and (max-width: 1500px) {
+  .vendorTop h3,
+  .vendorCardMain h3 {
+    line-height: 1.4;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .vendorTop h3 {
+    max-width: 200px;
+  }
+}
+@media (max-width: 992px) {
+  .vendorTop {
+    max-width: 100%;
+    padding-inline-end: 20px;
+    padding-inline-start: 30px;
+  }
+
+  .vendorCardImage {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media screen and (max-device-width: 767px) {
+  .vendorCardMain {
+    min-height: 70px;
+  }
+
+  .vendorTop h3 {
+    max-width: 500px;
+  }
+
+  .vendorCardMain h3,
+  .vendorTop h3 {
+    font-weight: 400;
+    width: 184px;
+  }
+  .vendorTop h3 {
+    max-width: auto;
+    font-size: 16px !important;
+  }
+  .vendorCardMain,
+  .vendorTop {
+    padding-inline-end: 21px;
+    padding-inline-start: 20px;
+  }
+  .vendorCardImage {
+    width: 75.55px !important;
+    height: 50px !important;
+  }
+}

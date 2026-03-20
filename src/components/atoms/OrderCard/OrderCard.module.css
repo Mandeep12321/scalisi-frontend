@@ -1,0 +1,142 @@
+.card {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid rgba(142, 142, 142, 0.1);
+  background-color: var(--white-color);
+  margin-bottom: 10px;
+  border-radius: 7px;
+  box-shadow: -1px -1px 129px -62px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: -1px -1px 129px -62px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: -1px -1px 129px -62px rgba(0, 0, 0, 0.22);
+}
+.titleMain {
+  align-items: center;
+  font-weight: 400 !important;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 2.8rem;
+  column-gap: 2.45rem;
+}
+.titleMain span {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.productContent h5,
+.titleMain span h5 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  opacity: 0.75;
+  color: var(--black-color-v4);
+}
+.titleMain span p {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black-color-v2);
+}
+
+.productDetails p {
+  line-height: 20px;
+  min-height: 41px;
+}
+
+.productContent {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+.viewAllButton {
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.viewAllButton:hover {
+  color: var(--green-color-v);
+}
+.orderReceiptText {
+  margin-right: 9px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  width: 100%;
+  height: 46px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.designation {
+  color: var(--red-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+.email {
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .email {
+    font-size: 14px;
+  }
+  .designation {
+    font-size: 14px;
+  }
+  .titleMain {
+    column-gap: 0.8rem;
+  }
+  .titleMain p {
+    font-size: 14px;
+  }
+  .titleMain h5 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .card {
+    padding: 13px 20px;
+    gap: 12px;
+  }
+
+  .titleMain {
+    column-gap: 0.8rem;
+    row-gap: 1.4rem;
+  }
+
+  .titleMain span {
+    gap: 8px;
+  }
+
+  .productContent {
+    padding-bottom: 7px;
+  }
+
+  .titleMain button {
+    width: 165px;
+    margin-top: 10px;
+  }
+
+  .actionButton {
+    gap: 6px;
+  }
+}

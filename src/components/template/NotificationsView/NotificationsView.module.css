@@ -1,0 +1,301 @@
+.colorTextClass {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.colorHeadingClass {
+  font-size: 31px;
+}
+
+.heroSecColor {
+  background-color: var(--border-green);
+}
+
+.main {
+  max-width: 1426px;
+  min-height: 536px;
+}
+
+.toggleBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e5e5e5;
+  padding: 32px 0;
+  margin-left: 40px;
+}
+.mainDivClass {
+  margin-top: 0px;
+  height: 137px !important;
+}
+.mainDivClass h1 {
+  margin: 42px 0px 0px -11px;
+  height: 140px !important;
+}
+.toggleBtn:last-child {
+  border-bottom: 0px;
+}
+
+.NotifyDiv {
+  display: flex;
+
+  gap: 36px;
+}
+
+.notifyList {
+  width: calc(65% + 5px);
+}
+
+.emailNotificationsSide {
+  padding: 9.5px 20px 10px 39px;
+  border-left: 2px solid #e5e5e5;
+  max-height: 320px;
+  max-width: 400px;
+  margin: 8px 0 0 24px;
+}
+
+.emailNotificationsSide h1 {
+  white-space: nowrap;
+  margin-bottom: 28px;
+  color: var(--primary-color);
+}
+
+.emailNotificationsSide p {
+  width: 303px;
+  min-height: 87px;
+  color: var(--black-color);
+  opacity: 0.65;
+  margin-top: 7px;
+  line-height: 17px;
+}
+
+.mainNotifySec {
+  min-height: 536px;
+  padding: 30px 10px 20px 0px;
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 8px;
+  background-color: var(--white-color);
+}
+
+.emailHeader h1 {
+  margin-block: 20px;
+  letter-spacing: 0px;
+  color: var(--primary-color);
+}
+
+.emailHeader {
+  margin-left: 40px;
+  height: auto;
+}
+
+.emailHeader p {
+  opacity: 0.8;
+  margin-bottom: 31px;
+  max-width: 803px;
+  word-wrap: break-word;
+  margin-top: 34px !important;
+}
+.labelText {
+  color: #0d0c22;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 67px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+
+@media (max-width: 1400px) {
+  .notifyList {
+    width: 60%;
+  }
+
+  .emailNotificationsSide {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1366px) {
+  .emailNotificationsSide {
+    width: 40%;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .notifyList {
+    width: 95%;
+  }
+  .emailNotificationsSide {
+    padding: 9.5px 20px 10px 20px;
+    margin: 8px 0 0 10px;
+    width: 50%;
+  }
+
+  .emailNotificationsSide p {
+    width: 100%;
+    min-height: auto;
+  }
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+}
+@media (max-width: 1024px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+}
+@media (max-width: 992px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 991px) {
+  .toggleBtn {
+    margin-left: 21px;
+  }
+
+  .emailHeader {
+    margin-left: 21px;
+  }
+
+  .notifyList {
+    width: 95%;
+  }
+  .emailNotificationsSide {
+    width: 100%;
+    margin-inline: 40px;
+    margin-block-start: 20px;
+    padding-inline: 0px;
+    border-top: 2px solid #e5e5e5;
+    border-left: 0px;
+    padding-top: 25px;
+    max-width: 91%;
+    margin-left: 20px;
+  }
+
+  .NotifyDiv {
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .emailNotificationsSide {
+    width: 100%;
+    max-width: 92.4%;
+    margin: auto;
+    margin-left: 20px;
+    padding-inline: 0px 5px;
+    padding-block-start: 25px;
+  }
+
+  .emailNotificationsSide p {
+    font-size: 12px;
+    margin-left: 0px;
+    min-height: auto;
+    width: 100%;
+  }
+  .mainNotifySec {
+    padding: 10px 10px 20px 0px;
+    min-height: auto;
+  }
+  .announcementLeft {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px;
+  }
+  .announcementRight {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-left: 0px;
+    padding-right: 0px !important;
+  }
+
+  .emailNotificationsSide h1 {
+    white-space: unset;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+
+  .NotifyDiv {
+    display: flex;
+    gap: 0px;
+  }
+
+  .mainDivClass {
+    margin-top: 0px;
+    height: 112px !important;
+  }
+
+  .emailHeader {
+    margin-inline: 18px;
+  }
+  .notifyList {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-left: -2px;
+  }
+
+  .toggleBtn {
+    padding: 18px 0px;
+    gap: 0px;
+  }
+
+  .mainDivClass h1 {
+    margin: 29px 0px 0px -11px;
+  }
+  .ColRow {
+    margin-top: 2rem !important;
+    margin-bottom: 2.6rem !important;
+  }
+
+  .emailHeader h1 {
+    font-size: 20px;
+    margin-top: 19px;
+    margin-bottom: -19px;
+    letter-spacing: 0px;
+    color: var(--primary-color);
+  }
+  .emailHeader p {
+    line-height: 1.25;
+    padding-bottom: 0px;
+    margin-bottom: 0;
+  }
+  .labelText {
+    font-size: 11.5px;
+    white-space: nowrap;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 370px) {
+  .labelText {
+    white-space: wrap;
+  }
+  .toggleBtn {
+    gap: 5px;
+  }
+}

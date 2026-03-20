@@ -1,0 +1,49 @@
+"use client"
+
+import MainCard from "@/views/ArticlesCardMain/ArticlesCardMain";
+import React, { useState } from "react";
+import { Col, Row } from "react-bootstrap";
+
+export default function Page() {
+  const [BlogData,setBlogData]=useState(cardData || [])
+ 
+
+  return (
+    <Row className="g-4 "> 
+      {cardData.map((card) => (
+        <Col key={card.id} md={12} lg={12} > 
+          <MainCard
+            title={card.title}
+            date={card.date}
+            detail={card.detail}
+          />
+        </Col>
+      ))}
+      <Col>
+     
+      </Col>
+    </Row>
+  );
+}
+
+export const cardData = [
+  {
+    id: 1,
+    title: "Lorem ipsum dolor sit amet adispicing elit. Lorem ipsum dolor sit amet adispicing elit. Lorem ipsum dolor sit amet adispicing elit. Lorem ipsum dolor sit amet adispicing elit. ",
+    date: "December 18th, 2024",
+    detail: " Lorem ipsum. This is the first card's details. It provides information about this specific card.This is the first card's details. It provides information about this specific card.This is the first card's details. It provides information about this specific card.This is the second card's details. It has different information from the first card.",
+  },
+  
+  {
+    id: 2,
+    title: "Lorem ipsum dolor sit amet adispicing elit.",
+    date: "January 1st, 2025",
+    detail: "This is the first card's details. It provides information about this specific card.This is the first card's details. It provides information about this specific card.This is the first card's details. It provides information about this specific card.This is the second card's details. It has different information from the first card.",
+  },
+  {
+    id: 3,
+    title: "Card Title 3",
+    date: "February 14th, 2025",
+    detail: "Details for the third card go here. It provides yet another perspective.",
+  },
+];

@@ -1,0 +1,115 @@
+.colorTextClass {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 24px;
+  padding-block-start: 17px !important;
+}
+
+.colorHeadingClass {
+  font-size: 31px;
+}
+.main {
+  overflow-x: hidden;
+}
+.heroSecColor {
+  background-color: var(--border-green);
+}
+.blogsCard {
+  padding-block-start: 16px;
+  padding-inline: 11px;
+}
+.blogsDiv {
+  padding-inline: 5px;
+}
+
+.mainDivClass {
+  height: 172px !important;
+  margin-top: 22px !important;
+}
+.mainDiv {
+  padding: 11px !important;
+  box-shadow: none !important;
+}
+
+.blogCardWrapper {
+  margin-top: 25px !important;
+}
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+@media (max-width: 1200px) {
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+  .colorTextClass {
+    line-height: 32px;
+  }
+  .blogCardWrapper {
+    margin-top: 0px !important;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .mainDivClass {
+    height: 116px !important;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+  }
+  .announcementLeft {
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+  .announcementRight {
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 575px) {
+  .colorTextClass {
+    line-height: 18px;
+  }
+  .mainDivClass {
+    height: 112px !important;
+  }
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 0px;
+  }
+  .announcementRight {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 375px) {
+  .announcementRight {
+    padding-top: 2px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+  }
+}

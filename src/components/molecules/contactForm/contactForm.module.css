@@ -1,0 +1,151 @@
+.main {
+  padding: 17px 27px 30px 21px;
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 6px;
+  background-color: var(--white-color);
+  min-height: 831px;
+  margin-right: 20px;
+}
+.inputClass {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.inputClassWithError {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.labelClassWithError {
+  margin-bottom: 0px !important;
+}
+
+.main h1 {
+  font-weight: bold;
+  color: var(--red-color);
+  padding: 19px 0px !important;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.subBtn {
+  margin-top: 10px;
+  height: 46px;
+  border: none;
+  width: 302px;
+}
+
+.labelClass {
+  font-size: 18px !important;
+  margin-bottom: 10px !important;
+  margin-top: 11px !important;
+  line-height: 21px !important;
+}
+.textArealabelClass {
+  margin-bottom: 20px !important;
+  margin-top: 16px !important;
+  font-size: 18px !important;
+}
+
+.phoneInputClass {
+  margin-block: 10px 15px !important;
+}
+
+.phoneInputClassWithError {
+  margin-block: 10px 0px !important;
+}
+
+@media (max-width: 1199px) {
+  .main {
+    margin-right: 0px;
+  }
+}
+@media (max-width: 700px) {
+  .inputClass {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 575px) {
+  .formGroup {
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .labelClass {
+    font-size: 16px !important;
+  }
+  .inputClass {
+    margin-top: 0px;
+  }
+  .subBtn {
+    width: 100%;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .main h1 {
+    font-size: 24px !important;
+  }
+
+  .subBtn {
+    font-size: 16px;
+    margin-top: 17px !important;
+  }
+
+  .labelClass {
+    font-size: 15px !important;
+    opacity: 100% !important;
+
+    margin-bottom: 5px !important;
+    padding-top: 3px;
+  }
+
+  .labelClass_padLess {
+    padding-top: 0px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .textArealabelClass {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .textAreaClass {
+    border: 2px solid rgba(142, 142, 142, 0.45) !important;
+  }
+
+  .main {
+    padding: 28px 20px !important;
+    min-height: 738px !important;
+  }
+
+  .main h1 {
+    padding-bottom: 12px !important;
+    padding-top: 0px !important;
+    letter-spacing: -0.5px;
+  }
+
+  .main input {
+    margin-bottom: 6px !important;
+  }
+
+  .textArealabelClass {
+    margin-top: 9px !important;
+    letter-spacing: -0.5px;
+    margin-bottom: 7px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .main {
+    min-height: 662px !important;
+    /* max-height: 659px; */
+    max-height: auto !important;
+  }
+}

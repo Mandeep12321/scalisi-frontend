@@ -1,0 +1,71 @@
+.featureCardImg img {
+  position: relative !important;
+  object-fit: cover;
+  object-position: top;
+}
+.featureCardMain,
+.featureCardImg {
+  height: 133px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.featureCardImg:after {
+  position: absolute;
+  content: " ";
+  z-index: 1;
+  opacity: 0.8;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 100%;
+  width: 100%;
+  border-radius: 7px;
+  left: 0;
+  bottom: 0;
+}
+.featureCardMain:hover .featureCardImg:after {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.5) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  transition: 0.2s ease-in-out;
+}
+.featureCardText {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+}
+.featureCardText p {
+  color: var(--white-color);
+  padding-left: 30px;
+  padding-bottom: 26px;
+  line-height: 24px;
+}
+@media (max-device-width: 767px) {
+  .featureCardText p {
+    font-size: 18px !important;
+    padding-left: 20px;
+    padding-bottom: 19px !important;
+  }
+  .featureCardMain,
+  .featureCardImg {
+    height: 113px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .featureCardText {
+    bottom: 0px;
+    left: 0px;
+  }
+  .homeHeroContent button {
+    padding: 14px 50px 13px 51px !important;
+  }
+}

@@ -1,0 +1,45 @@
+.headClass {
+    font-weight: 700;
+    color: #fff !important;
+    padding-inline: 0px !important;
+    font-size: 20px !important;
+  }
+
+  .modalBody {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+  }
+
+  .mainDiv{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mainDiv p{
+    margin-bottom: 20px;
+  }
+
+  .checkboxMain {
+    margin-top: 5px !important;
+    gap: 5px !important;
+    padding-top: 0px !important;
+  }
+
+  .actionButton {
+    justify-content: center;
+    gap: 10px;
+    white-space: nowrap;
+    width: 100%;
+    height: 46px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: auto;
+  }
+
+  .mainHeight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

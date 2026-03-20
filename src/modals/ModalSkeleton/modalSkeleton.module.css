@@ -1,0 +1,60 @@
+.modal {
+  border-radius: 25px;
+}
+
+.modal :global(.btn-close) {
+  display: none;
+}
+
+.header {
+  padding: 15px;
+  background: var(--primary-color);
+  position: static;
+}
+
+.header h2 {
+  color: var(--text-black-clr);
+}
+
+.body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 380px;
+  height: auto;
+
+  overflow-y: scroll;
+}
+
+.faq {
+  padding-top: 20px;
+  height: auto;
+  padding-bottom: 0;
+  height: 343px;
+  overflow-y: scroll;
+}
+
+.iconBox {
+  padding: 16px;
+  background-color: var(--primary-clr);
+  position: absolute;
+  right: 0px;
+  top: -105px;
+  z-index: 10;
+  transform: translateY(50%);
+  border-radius: 50%;
+  background-color: var(--white-color);
+}
+
+.iconBox svg {
+  color: var(--black-color);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .iconBox svg {
+    width: 28px;
+    height: 28px;
+  }
+}

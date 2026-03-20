@@ -1,0 +1,15 @@
+.switchDiv {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-right: 10px;
+}
+.switchDiv p {
+  margin-bottom: 0;
+}
+.switch span {
+  color: var(--primary-color) !important;
+}
+.switch :global(.MuiSwitch-track) {
+  background-color: var(--primary-color) !important;
+}

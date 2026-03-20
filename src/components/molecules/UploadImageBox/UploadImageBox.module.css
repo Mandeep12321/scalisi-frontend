@@ -1,0 +1,198 @@
+.box {
+  user-select: none;
+  height: 120px;
+  width: 120px;
+  margin: auto;
+}
+
+.box label {
+  color: var(--secondary-color);
+  font-size: 20px;
+}
+
+.uploadImageBox {
+  width: 136px !important;
+  border-radius: 50%;
+  height: 136px !important;
+  /* box-shadow: 0px 0 5px 2px #00000034; */
+  border: 3px solid #e9e9e9;
+  position: relative;
+}
+
+.uploadBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.uploadBox .icon {
+  height: 52px;
+  width: 52px;
+  color: var(--text-gray-color);
+}
+
+.uploadBox .uploadIcon {
+  position: absolute;
+  right: -16px;
+  top: 65px;
+  background-color: var(--text-gray-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.uploadBox .uploadIcon svg {
+  color: var(--white-color);
+  font-size: 15px;
+}
+
+/* Image Uploaded */
+.imageUploaded {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: relative;
+  background-color: rgb(220, 220, 220);
+}
+
+.imageUploaded img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: inherit;
+}
+
+.imageUploaded .editAndDelete {
+  position: absolute;
+  top: 10px;
+  right: -15px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.imageUploaded .editAndDelete .icon {
+  background-color: var(--black-color);
+  padding: 8px;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px 1px #afa8a8;
+}
+
+.imageUploaded .editAndDelete .icon svg {
+  color: var(--white-color);
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  display: inherit;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  background-color: var(--black-color);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px 1px #afa8a8;
+  z-index: 2;
+}
+
+.closeIcon svg {
+  color: var(--white-color);
+  vertical-align: middle;
+  display: flex;
+}
+
+.label {
+  color: var(--secondary-color);
+  text-transform: capitalize;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.iosAdd {
+  font-size: 48px !important;
+}
+.addIcon {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  background-color: var(--background-color);
+}
+
+.user {
+  position: relative;
+  width: 53px;
+  height: 53px;
+}
+
+@media screen and (max-device-width: 767px) {
+  .box {
+    width: 106px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .box {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .box {
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .box {
+    height: 140px;
+  }
+
+  .uploadBox .uploadIcon {
+    position: absolute;
+    right: -12px;
+    top: 70px;
+    background-color: var(--text-gray-color);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .uploadBox .uploadIcon {
+    position: absolute;
+    right: -13px;
+    top: 67px;
+    background-color: var(--text-gray-color);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .addIcon {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    background-color: var(--background-color);
+  }
+
+  .user {
+    margin-bottom: 5px;
+  }
+}

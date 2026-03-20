@@ -1,0 +1,358 @@
+.colorTextClass {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.colorHeadingClass {
+  font-size: 31px;
+  padding-top: 46px;
+}
+
+.vendorMapSecBox {
+  background-color: var(--white-color);
+}
+
+.vendorCardDiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 35px;
+}
+
+.vendorCardDivTwo {
+  display: grid;
+  margin-block-end: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 38px;
+}
+
+.vendorCardClass {
+  max-width: 445px !important;
+}
+
+.vendorsCardDiv {
+  margin-block: 17px;
+}
+
+.mainDivClass {
+  height: 195px !important;
+  margin: 0px;
+}
+
+.mainDiv {
+  box-shadow: none !important;
+  gap: 38px;
+}
+
+.VendorMapImage img {
+  position: relative !important;
+}
+
+.locationList {
+  padding-block-start: 55px;
+}
+
+.heroSecColor {
+  background-color: var(--border-green);
+}
+
+.vendorMapHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 78px 51px;
+}
+
+.vendorMapHead span {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+}
+
+.vendorMapHead button {
+  width: fit-content;
+  padding-block: 18px;
+  font-size: 18px;
+  padding-inline: 122px;
+}
+
+.vendorMapHead button svg {
+  margin-right: 20px;
+}
+
+/* ------ */
+.vendorMapSecBox {
+  background-color: var(--white-color);
+  padding: 0 20px;
+}
+
+.VendorMapImage {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.VendorMapImage img {
+  object-fit: cover;
+}
+
+.locationList {
+  width: 94%;
+}
+
+.affiliationHeading {
+  margin-top: 84px;
+  margin-bottom: 35px;
+}
+
+.headingTwo {
+  margin-block: 45px 70px;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+
+@media screen and (max-width: 1532px) {
+  .vendorCardDiv {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .vendorCardDiv {
+    gap: 20px;
+
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  .vendorCardDivTwo {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    margin-block-end: 0px;
+  }
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .vendorMapHead {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .colorTextClass {
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  .vendorCardDiv {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .vendorCardDivTwo {
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  }
+  .vendorMapHead {
+    align-items: flex-start;
+  }
+
+  .headingTwo {
+    margin-block: 30px;
+  }
+
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .vendorCardDivTwo {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .mainDiv {
+    gap: 20px;
+  }
+
+  .vendorCardDiv {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  .vendorCardDivTwo {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  }
+
+  .vendorCardClass {
+    max-width: 100% !important;
+  }
+  .affiliationHeading {
+    margin-top: 20px;
+  }
+
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .vendorMapSecBox {
+    padding: 10px;
+  }
+  .colorHeadingClass {
+    padding-top: 39px;
+  }
+
+  .locationList {
+    width: 100%;
+  }
+  .vendorCardDivTwo {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+  .VendorMapImage {
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .vendorCardDiv {
+    margin-block-start: 14px;
+    gap: 20px;
+
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+
+  .locationList {
+    padding-block-start: 20px;
+  }
+
+  .vendorMapHead {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 0px;
+    gap: 20px;
+  }
+
+  .vendorMapHead span {
+    gap: 22px;
+  }
+
+  .headingText {
+    font-size: 24px;
+  }
+
+  .vendorCardDivTwo {
+    gap: 11px;
+  }
+  .colorHeadingClass {
+    padding-top: 00px;
+  }
+
+  .vendorMapSecBox {
+    padding: 10px 0px;
+  }
+  .headingTwo {
+    margin-block: 28px 22px;
+  }
+  .VendorMapImage {
+    height: 306px;
+    margin-top: 28px;
+    width: 336px;
+    margin-bottom: 31px;
+    margin-inline: auto;
+  }
+  .vendorMapHead p {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .affiliationHeading {
+    margin-top: 28px;
+  }
+  .vendorCardDiv {
+    margin-block-start: 11px;
+    gap: 10px;
+  }
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 0px;
+  }
+
+  .vendorMapHead {
+    margin-block: 27px 21px;
+  }
+
+  .affiliationHeading {
+    margin-bottom: 20px;
+  }
+
+  .mainDivClass {
+    height: 144px !important;
+    margin-top: 30px !important;
+    margin-bottom: 32px !important;
+  }
+  .vendorsCardDiv {
+    margin-block: 0px !important;
+  }
+  .headingText {
+    padding-block: 25px 22px;
+  }
+  .colorTextClass {
+    line-height: 20px !important;
+    word-spacing: -0.55px;
+  }
+  .colorTextClass {
+    letter-spacing: 0px;
+  }
+  .mainDiv {
+    gap: 12px;
+    padding: 11px 12px;
+  }
+
+  .vendorMapHead button {
+    display: none;
+  }
+  .headingTwo {
+    font-size: 24px;
+  }
+
+  .affiliationDiv .vendorsCardDiv {
+    margin-block: 0px !important;
+  }
+
+  .announcementRight {
+    padding-top: 2px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .vendorCardDivTwo {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  .vendorCardDiv {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}

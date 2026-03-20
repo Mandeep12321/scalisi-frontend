@@ -1,0 +1,259 @@
+.mainDiv {
+  width: 100%;
+  height: 454px;
+  background: var(--white-color);
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 8px;
+  gap: 30px;
+  padding: 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.imageDiv {
+  position: relative;
+  max-width: 250px;
+  height: 162px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-left: 0px;
+  margin-inline: 11px;
+}
+
+.imageDiv img {
+  /* object-fit: cover; */
+  object-fit: contain;
+}
+
+.dropdownDiv {
+  height: 36px;
+  margin-top: 26px;
+  padding-left: 0px !important;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.title,
+.productId,
+.link {
+  color: var(--text-color-v1);
+}
+
+.productId {
+  opacity: 0.78;
+  padding-top: 14px;
+}
+
+.link {
+  opacity: 0.78;
+  margin-top: 29.8px;
+}
+
+.title {
+  min-height: 55px;
+  line-height: 28px;
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  height: 39px;
+  width: 100%;
+}
+
+.counterDiv {
+  display: flex;
+  gap: 19px;
+  margin-top: 22px;
+}
+
+@media (max-width: 1366px) {
+  .counterDiv {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .imageDiv {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .mainDiv {
+    padding: 13px 16px;
+    gap: 15px;
+    height: 345px;
+  }
+  .link {
+    white-space: wrap;
+  }
+  .imageDiv {
+    height: 135px;
+    width: 100%;
+  }
+  .title {
+    font-size: 16px;
+    line-height: 20px;
+    min-height: auto;
+  }
+  .counterDiv {
+    margin-top: 10px;
+  }
+  .productId {
+    padding-top: 13px;
+  }
+  .dropdownDiv {
+    margin-top: 11px;
+    height: auto;
+  }
+}
+
+@media (max-width: 630px) {
+  .title {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .mainDiv {
+    padding: 15px;
+    gap: 10px;
+    height: auto;
+  }
+  .link {
+    white-space: wrap;
+    line-height: 15px;
+    margin-top: 12px;
+  }
+  .imageDiv {
+    height: 125px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 430px) {
+  .mainDiv {
+    padding: 15px;
+    max-width: 185px;
+  }
+  .button {
+    padding: 12px !important;
+    height: 40px;
+    width: 40px;
+  }
+  .counterDiv {
+    margin-block: 10px 4px;
+    gap: 10px;
+    margin-top: 10px !important;
+  }
+  .imageDiv {
+    height: 95px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 375px) {
+  .mainDiv {
+    max-width: 160px;
+    padding: 13px 16px;
+    gap: 15px;
+    height: 294px;
+  }
+
+  .imageDiv {
+    height: 84.32px;
+    width: 100%;
+  }
+  .imageDiv img {
+    object-fit: contain;
+  }
+  .button {
+    padding: 12px !important;
+    height: 40px;
+    width: 40px;
+  }
+  .link {
+    white-space: wrap;
+    line-height: 16px;
+    margin-top: 10px;
+  }
+  .title {
+    font-size: 16px;
+    line-height: 20px;
+    min-height: auto;
+  }
+  .productId {
+    padding-top: 13px;
+  }
+
+  .counterDiv {
+    margin-block: 10px 4px;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .counterDiv button svg {
+    height: 30px !important;
+    width: 30px !important;
+    scale: 1.1;
+  }
+  .counterDiv > div > div {
+    width: 80px !important;
+    max-width: 80px !important;
+  }
+  .dropdownDiv {
+    margin-top: 11px;
+  }
+
+  .dropdownWidthClass {
+    width: 130px !important;
+    margin-inline-start: 0px !important;
+  }
+}
+
+@media (max-width: 370px) {
+  .counterDiv button svg {
+    height: 17px !important;
+    width: 17px !important;
+    scale: 1;
+  }
+  .mainDiv {
+    max-width: 152px;
+    padding: 12px 12px;
+  }
+  .counterDiv > div > div {
+    width: 69px !important;
+  }
+  .dropdownWidthClass {
+    width: 128px !important;
+  }
+  .button {
+    height: 39px;
+    width: 100%;
+    padding: 5px 12px !important;
+  }
+}
+@media (max-width: 340px) {
+  .mainDiv {
+    max-width: 295px;
+    padding: 15px 9px;
+    gap: 15px;
+    height: auto;
+  }
+
+  .productId {
+    padding-top: 18px;
+  }
+  .counterDiv {
+    margin-top: 18px;
+  }
+  .dropdownDiv {
+    margin-top: 18px;
+  }
+}

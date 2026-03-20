@@ -1,0 +1,341 @@
+.navbarMain {
+  top: 0;
+  background-color: var(--white-color);
+  /* position: sticky; */
+  /* display: none; */
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0px 5px 20px #00000005;
+  /* box-shadow: 0 5px 23px #00000012; */
+}
+
+.navbarMain label {
+  background-color: unset !important;
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  border-radius: 50%;
+  right: -9px;
+  top: -5px;
+  height: 23px;
+  width: 23px;
+  position: absolute;
+  padding: 0;
+
+  margin-left: 20px;
+}
+
+.imgDiv {
+  position: relative;
+  width: 29px !important;
+  height: 22px !important;
+}
+
+.imgDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.navBtnLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding-inline: 10px;
+  padding-block: 10px 25px;
+}
+
+.main_logo_main {
+  width: 150px;
+  height: 70px;
+}
+
+.main_logo_main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.userCardDiv {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.userCardDiv span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.userCardDiv span svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
+
+.cartDiv {
+  position: relative;
+  border: 2px solid #e1e1e1;
+  padding: 10px;
+  border-radius: 50%;
+  height: 46px;
+  width: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.userDiv svg,
+.cartDiv svg {
+  width: 27px !important;
+  height: 19px !important;
+}
+
+.userDiv {
+  position: relative;
+  border: 2px solid #e1e1e1;
+  /* padding: 11px 12px !important; */
+  padding: 10px;
+  border-radius: 50%;
+  height: 46px;
+  width: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawerIcon {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cartIcon {
+  color: #4a4a4a;
+}
+
+.divider {
+  height: 40px;
+  border: 1px solid;
+  width: 2px;
+  background-color: #000000;
+  opacity: 12%;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbarRight .count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -4px;
+  right: -7px;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  border-radius: 50px;
+  height: 23px;
+  width: 23px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.drawer {
+  width: 284px !important;
+  background-color: var(--body-color) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto !important;
+}
+
+.drawerContent {
+  flex: 1;
+  border-bottom: 1px solid var(--black-color-v1);
+  /* overflow: auto !important; */
+}
+.drawerHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  height: 76px;
+  box-shadow: 0px 5px 40px #00000020;
+}
+
+.drawer_logo {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 100px; */
+  background-color: var(--white-color);
+  padding: 20px 0;
+}
+.navbarCustom__style {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  margin-block: 25px;
+  /* row-gap: 18px; */
+  padding-inline: 20px;
+}
+.drawerSignup {
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  padding-inline: 20px !important;
+}
+
+.drawerLogin,
+.drawerSignup {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 15px !important;
+}
+.navbarLinks {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding-left: 15px !important;
+  margin-bottom: 12px;
+  height: 20px;
+  padding-block: 18px;
+  font-family: var(--inter);
+}
+.navbarLinks:hover {
+  background-color: var(--primary-color-light);
+  height: 20px;
+  padding-block: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+.navbarLinks svg {
+  margin-right: 14px;
+  opacity: 0.9;
+}
+
+.dflex {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.navBtn {
+  width: 100%;
+  padding-inline: 20px;
+  padding-block: 10px;
+  row-gap: 10px;
+  column-gap: 8px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+}
+.navActive {
+  /* background-color: var(--primary-color-light); */
+  background-color: rgba(15, 154, 8, 0.1);
+  border-radius: 6px;
+  height: 20px;
+  color: var(--primary-color);
+  transition: background-color 0.3s ease;
+  padding-left: 14px;
+  padding-block: 18px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.navActive svg path {
+  fill: var(--primary-color);
+}
+
+.navBtn button {
+  width: 100%;
+  height: 46px;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  padding-inline: 10px !important;
+}
+.navBtn button:first-child {
+  padding-inline: 0px !important;
+}
+.drawerToggle {
+  background-color: var(--primary-color) !important;
+}
+
+.separator {
+  position: relative;
+  height: 1.5px;
+  border: none;
+  margin: 4px 0 26px 0;
+  background: linear-gradient(to right, transparent, #707070, transparent);
+}
+
+@media (max-width: 1200px) {
+  .userDiv {
+    padding: 6px;
+  }
+  .userDiv svg {
+    width: 31px !important;
+    height: 30px !important;
+  }
+}
+
+@media (max-device-width: 767px) {
+  .drawerIcon {
+    margin-right: 4px;
+  }
+  .userDiv svg {
+    width: unset !important;
+    height: unset !important;
+    scale: 1.35;
+  }
+  .main_logo_main {
+    width: 90px;
+    height: 56.43px;
+  }
+  .navbarRight {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    padding-top: 6px;
+  }
+  .cartDiv svg {
+    width: 25px !important;
+    height: 29px !important;
+    scale: 1;
+    margin-left: -1px;
+  }
+  .navbarRight .count {
+    z-index: 1;
+    top: -5px;
+    right: -6px;
+  }
+
+  .separator {
+    position: relative;
+    height: 1.5px;
+    border: none;
+    margin: 4px 0 26px 0;
+    background: linear-gradient(to right, transparent, #707070, transparent);
+  }
+
+  .navbarLinks {
+    line-height: 20px !important;
+  }
+  .navbarLinks > div {
+    line-height: 17px !important;
+  }
+}

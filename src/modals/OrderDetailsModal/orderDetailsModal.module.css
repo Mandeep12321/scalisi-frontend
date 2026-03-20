@@ -1,0 +1,210 @@
+.modal {
+  padding-top: 80px;
+}
+.modal > div {
+  max-width: 1244px;
+}
+
+.modalClass {
+  padding: 49px 44px 60px 44px;
+}
+
+.body {
+  padding: 40px 40px 0;
+  width: 100%;
+}
+
+.tableHeadStyle {
+  padding-bottom: 37px;
+}
+
+.tableHeadStyle tr th {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  padding-left: 0px !important;
+}
+.tableBorderClass {
+  border-bottom: none;
+}
+
+.tableBorderClass td {
+  padding: 20px !important;
+}
+
+.tableHeaderClass {
+  box-shadow: none !important;
+  padding: unset !important;
+}
+
+.tableClass {
+  box-shadow: none !important;
+}
+
+.orderSummary {
+  max-height: 90px;
+  font-weight: 500;
+}
+
+.tableHeadings {
+  color: var(--primary-color) !important;
+}
+
+.orderRecieipt {
+  width: 100%;
+  height: 160px;
+}
+
+.orderSummaryHead {
+  margin-top: 46px;
+}
+.orderSummaryHead table thead tr th {
+  font-size: 20px !important;
+}
+.orderSummary tbody div tr td {
+  padding-block: 34px 37px;
+
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #212121;
+}
+.tableBodyClass {
+  padding-right: 20px;
+  height: auto !important;
+  max-height: 500px !important;
+  overflow-y: auto;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.tableBodyClass::-webkit-scrollbar {
+  width: 10px;
+  display: block;
+}
+
+.tableBodyClass::-webkit-scrollbar-track {
+  margin: 28px 0 28px 10px !important;
+  background: #e5e5e5;
+}
+
+.tableBodyClass::-webkit-scrollbar-thumb {
+  background: #363636;
+  border-radius: 5px;
+  min-height: 20px;
+}
+
+.tableBodyClass::-webkit-scrollbar:horizontal {
+  display: none !important;
+}
+.customTableClass tr {
+  padding: 0;
+}
+.customTableClass tr td {
+  padding-block: 34px 37px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.customTableClass p {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  color: #363636;
+}
+
+@media (max-width: 1750px) {
+  .tableBodyClass {
+    max-height: 250px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .actionButton {
+    gap: 5px;
+    padding: 5px 10px;
+
+    font-weight: 700;
+    white-space: nowrap;
+    width: 116px;
+    height: 46px;
+  }
+}
+@media (max-width: 1650px) {
+  .modal {
+    padding-top: 50px;
+  }
+}
+@media (max-width: 1400px) {
+  .modal {
+    padding-top: 60px;
+  }
+  .tableBodyClass {
+    height: 300px !important;
+  }
+  .modal > div {
+    max-width: 1100px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .modal > div {
+    max-width: 900px;
+  }
+}
+@media (max-width: 1024px) {
+  .modal > div {
+    max-width: 1000px;
+  }
+  .modal > div > div {
+    zoom: 0.85;
+  }
+  .modal > div {
+    max-width: 700px;
+  }
+}
+@media (max-width: 768px) {
+  .modal > div > div {
+    zoom: 0.8;
+  }
+  .orderSummaryHead table thead tr th {
+    font-size: 16px !important;
+  }
+  .modal > div {
+    max-width: 500px;
+  }
+}
+@media (max-width: 768px) {
+  .tableBodyClass {
+    max-height: 400px !important;
+    height: auto !important;
+  }
+  .customTableClass tr td {
+    padding: 10px;
+  }
+  .customTableClass p {
+    font-size: 16px;
+  }
+  .orderSummary tbody div tr td {
+    padding-block: 10px;
+    font-size: 14px;
+  }
+  .modalClass {
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .modal > div {
+    margin: auto;
+    max-width: 380px;
+  }
+}
+@media (max-width: 425px) {
+  .modalClass {
+    padding: 20px 20px 0px 20px;
+  }
+  .modal > div {
+    margin: auto;
+    max-width: 300px;
+  }
+}

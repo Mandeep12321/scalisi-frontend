@@ -1,0 +1,93 @@
+.mapCard {
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-bottom: 49px;
+}
+
+.mapCardText {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.cardNumber {
+  width: 37px;
+  height: 37px;
+  background: var(--yellow-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.mapCard p {
+  line-height: 1.1;
+}
+
+.locationDesc {
+  color: var(--text-color-v3);
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.locationName {
+  font-size: 22px;
+}
+
+@media screen and (max-width: 992px) {
+  .mapCard {
+    gap: 16px;
+    padding-bottom: 40px;
+  }
+  .mapCardText {
+    gap: 16px;
+  }
+  .locationName {
+    font-size: 21px;
+  }
+
+  .mapCard p {
+    line-height: 1.4;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mapCard p {
+    line-height: 1.92;
+  }
+  .mapCard {
+    padding-bottom: 11px !important;
+    flex-direction: row;
+    gap: 15px;
+  }
+  .locationName {
+    font-size: 18px;
+  }
+  .mapCardText {
+    gap: 5.9px !important;
+    margin-block-start: 11px;
+  }
+  .locationDesc {
+    font-weight: 400;
+  }
+
+  .locationDesc {
+    font-size: 16px;
+  }
+  .mapCard p {
+    font-size: 16px;
+  }
+  .cardNumber p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .cardNumber {
+    min-width: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}

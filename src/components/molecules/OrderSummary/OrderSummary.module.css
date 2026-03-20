@@ -1,0 +1,143 @@
+.mainClass {
+  background: var(--white-color);
+  box-shadow: 0px 5px 25px #0000000d;
+  border-radius: 6px;
+  width: 100%;
+  max-height: 682px;
+  padding: 20px 40px 40px 34px;
+}
+
+.dateDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 0 23px 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.dateHead,
+.purchaseOrderClass {
+  color: var(--black-color);
+}
+
+.title {
+  color: var(--primary-color);
+}
+.borderBottom {
+  padding-block: 22px 23px !important;
+
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.borderBottom,
+.quantityDiv,
+.totalDiv {
+  padding-block: 10px 20px;
+}
+.purchaseOrderClass {
+  padding-block: 25px 23px;
+}
+.deliveryDateDiv {
+  display: flex;
+}
+.quantityDiv {
+  margin-block-start: 11px;
+  display: flex;
+  justify-content: space-between;
+}
+.orderNoteClass {
+  padding-block-start: 22px;
+}
+.textArea textarea {
+  border: 2px solid var(--black-color-v1);
+}
+
+.orderNote {
+  margin-block-start: 10px !important;
+}
+.totalDiv {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  padding-top: 25px;
+}
+.buttonDiv {
+  width: 100%;
+  height: 46px;
+  margin-block-start: 20px;
+}
+
+@media (max-width: 1366px) {
+  .mainClass {
+    padding: 0px 40px 22px 40px;
+  }
+}
+@media (max-width: 575px) {
+  .mainClass {
+    padding: 0px 18px 22px 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .mainClass {
+    padding: 0px 20px 22px 20px;
+  }
+
+  .dateDiv {
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dateHead,
+  .orderNoteClass,
+  .purchaseOrderClass,
+  .quantityTitle,
+  .totalTitle,
+  .deliveryDateClass {
+    font-size: 18px;
+  }
+
+  .orderNoteClass {
+    padding-block-start: 18px;
+  }
+
+  .purchaseOrderClass {
+    padding-block: 18px 6px;
+  }
+  .quantityDiv {
+    margin-block-start: 4px;
+  }
+
+  .borderBottom {
+    padding-block: 23px 24px !important;
+  }
+
+  .textArea {
+    padding-top: 8px !important;
+  }
+
+  .textArea textArea {
+    height: 85px !important;
+  }
+
+  .deliveryDateClass {
+    margin-right: 9px;
+  }
+
+  .price {
+    font-size: 24px;
+    margin-right: 3px !important;
+  }
+
+  .totalDiv {
+    padding-top: 24px;
+  }
+
+  .buttonDiv {
+    margin-block-start: 15px;
+  }
+
+  .quantityDiv {
+    padding-block: 18px 16px !important;
+  }
+}

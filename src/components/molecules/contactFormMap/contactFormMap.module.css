@@ -1,0 +1,43 @@
+.mapContainer {
+  width: 100%;
+  min-height: 267px;
+}
+
+.map {
+  min-height: 267px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0px 5px 25px var(--box-shadow);
+}
+
+@media (max-width: 1199px) {
+  .map {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .map {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  .map {
+    min-height: 250px;
+  }
+
+  .mapContainer {
+    max-width: 984px;
+    width: 100%;
+    max-height: 259px;
+    overflow: auto;
+    border-radius: 6px;
+    min-height: unset !important;
+  }
+
+  .mapContainer iframe {
+    min-height: unset !important;
+  }
+}

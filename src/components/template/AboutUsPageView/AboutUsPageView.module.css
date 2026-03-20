@@ -1,0 +1,73 @@
+.heroSection {
+  background-color: var(--border-green);
+}
+
+.announcement {
+  padding-bottom: 106px;
+}
+
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+.announcementRight {
+  padding-left: 27px;
+}
+
+@media (max-width: 1200px) {
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 0px;
+  }
+  .announcementRight {
+    padding-right: 0px;
+  }
+}
+
+@media screen and (max-device-width: 767px) {
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .announcementRight {
+    padding: 0px !important;
+    padding-bottom: 41px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .aboutTitle {
+    margin-bottom: 20px !important;
+  }
+  .aboutSubTitle {
+    padding-top: 2px !important;
+    line-height: 26px !important;
+  }
+  .aboutSubTitle p {
+    font-size: 23px !important;
+  }
+  .announcementLeft > div > div:first-child {
+    scale: 1.07;
+  }
+  .announcementRight {
+    padding: 0px !important;
+    padding-bottom: 41px !important;
+  }
+}
