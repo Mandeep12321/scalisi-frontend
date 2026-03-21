@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "scalisi-backend-dd-414f134a66de.herokuapp.com",
+        hostname: "scalisi-backend-nodejs.onrender.com"
       },
       {
         protocol: "https",
