@@ -29,13 +29,7 @@ export default function useProducts() {
 
 
         const formatted = formatProducts(res.data.Items);
-
-        
-
         let filtered = formatted;
-          console.log("API items:", res.data.Items.length);
-console.log("Formatted:", formatted.length);
-console.log("Final:", filtered.length);
 
         // ⚠️ IMPORTANT: search is still client-side (optional improvement later)
         if (search) {
@@ -50,17 +44,20 @@ console.log("Final:", filtered.length);
         setTotalRecords(res.data.TotalCount);
       } else {
         // Logged-in users: use your internal API
-        const res = await apiClient.post(
-          `/products?page=${page}&limit=${limit}&search=${search}`,
-          {
+        const res = await jackApi.getAuthProducts({
+          pageNumber: page,
+          pageSize: limit,
+          payload: {
             custno: location?.ERP_CID,
             cshipno: location?.ERP_SID,
             date: new Date().toISOString().split("T")[0],
-          }
-        );
+          },
+          subCategory
+        });
+        const formatted = formatProducts(res.data.Items, true);
 
-        setProductData(res?.data?.data || []);
-        setTotalRecords(res?.data?.totalRecords || 0);
+        setProductData(formatted);
+        setTotalRecords(res?.data?.totalRecords || res?.data?.TotalCount);
       }
     } catch (err) {
       console.error("Error fetching products:", err);

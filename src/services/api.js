@@ -1,4 +1,7 @@
 import axios from "axios";
+import Cookies from "js-cookie";
+import momentTimezone from "moment-timezone";
+import { handleDecrypt } from "@/resources/utils/helper";
 
 // ===============================
 // 🌐 JACK API INSTANCE
@@ -6,9 +9,6 @@ import axios from "axios";
 export const jackApiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_JACK_API_BASE_URL,
   timeout: 10000,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 // ===============================
@@ -16,13 +16,28 @@ export const jackApiClient = axios.create({
 // ===============================
 jackApiClient.interceptors.request.use(
   (config) => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
+    // ✅ Get token from cookie
+    const token = Cookies.get("_xpdx");
 
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
+    // ✅ Default headers
+    config.headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      timezone: momentTimezone.tz.guess(),
+
+      // ✅ Attach token if exists
+      ...(token && {
+        Authorization: `Bearer ${handleDecrypt(token)}`,
+      }),
+
+      ...config.headers,
+    };
+
+    // ✅ Handle FormData automatically
+    if (config.data instanceof FormData) {
+      config.headers["Content-Type"] = "multipart/form-data";
     }
+
     return config;
   },
   (error) => Promise.reject(error)
@@ -37,13 +52,20 @@ jackApiClient.interceptors.response.use(
     if (error.response) {
       const { status } = error.response;
 
+      // 🔐 Handle Unauthorized
       if (status === 401) {
         if (typeof window !== "undefined") {
-          localStorage.removeItem("token");
+          Cookies.remove("_xpdx"); // ✅ remove cookie
           window.location.href = "/login";
         }
       }
+
+      // ❌ Optional: log other errors
+      console.error("API ERROR:", error.response);
+    } else {
+      console.error("NETWORK ERROR:", error.message);
     }
+
     return Promise.reject(error);
   }
 );

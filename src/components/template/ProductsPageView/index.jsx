@@ -23,26 +23,29 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ReactSVG } from "react-svg";
 import classes from "./ProductsPageView.module.css";
+import LandingFilters from "../LandingPageView/components/LandingFilters";
+import useCategories from "../LandingPageView/hooks/useCategories";
+import FiltersBar from "@/components/common/FiltersBar";
+import ProductGrid from "@/components/common/ProductGrid";
+import useProducts from "../LandingPageView/hooks/useProducts";
+import ProductListView from "../LandingPageView/components/ProductList";
 
 export default function ProductsPageView({ cmsData }) {
   const _cmsData = cmsData;
   const router = useRouter();
   const { isLogin, location } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-  const [productData, setProductData] = useState([]);
   const [showLocationsModal, setShowLocationsModal] = useState(false);
-  const [loading, setLoading] = useState("");
   const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[0]);
   const [page, setPage] = useState(1);
-  const [totalRecords, setTotalRecords] = useState(0);
   const [search, setSearch] = useState("");
   const [cardViewType, setCardViewType] = useState("card");
   const debouncedSearch = useDebounce(search, 500);
   const [isMob768, setIsMob768] = useState(false);
   const [is375, setIs375] = useState(false);
   const [is768, setIs768] = useState(false);
-
-  console.log(SORT_BY_DROPDOWN, "==SORT_BY_DROPDOWN")
+  const [subCategory, setSubCategory] = useState(null);
+  const [catalogType, setCatalogType] = useState("orderGuide");
 
   useEffect(() => {
     isMobileViewHook(setIsMob768, 768);
@@ -50,88 +53,52 @@ export default function ProductsPageView({ cmsData }) {
     isMobileViewHook(setIs768, 768);
   });
 
-  const getProductsData = async ({
-    pg = page,
-    limit = PRODUCT_RECORDS_LIMIT,
-    search = debouncedSearch,
-    location,
-    isLogin,
-  }) => {
-    setLoading("fetchProducts");
+  const { productData, setProductData, totalRecords, loading, fetchProducts } =
+    useProducts();
 
-    const route = isLogin ? "products" : "products/public";
-    const apiMethod = isLogin ? Post : Get;
+  // 👇 ADD LOGS HERE
+  console.log("totalRecords:", totalRecords);
+  console.log("PRODUCT_RECORDS_LIMIT:", PRODUCT_RECORDS_LIMIT);
+  console.log("productData length:", productData?.length);
 
-    const params = new URLSearchParams({
-      page: pg,
-      limit,
-      search,
-    }).toString();
+  const { categories, loading: catLoading, fetchCategories } = useCategories();
 
-    const locationData = {
-      custno: location?.ERP_CID,
-      cshipno: location?.ERP_SID,
-      date: new Date().toISOString().split("T")[0],
-    };
-
-    const { response } = await apiMethod({
-      route: `${route}?${params}`,
-      data: locationData,
-    });
-
-    let data = response?.data?.data || response?.data || [];
-
-    if (!data.length) data = ALL_PRODUCT_DATA;
-
-    // const formattedData = data.map((item) => ({
-    //   ...item,
-    //   selectedVariant: {
-    //     label: `${
-    //       item?.productVariant?.[0]?.type || "Default"
-    //     } / ${getFormattedPrice(item?.productVariant?.[0]?.price || 0)}`,
-    //     value: `${item?.productVariant?.[0]?.value || "default"} ${
-    //       item?.productVariant?.[0]?.price || 0
-    //     }`,
-    //   },
-    //   selectedCount: 1,
-    // }));
-    const formattedData = data.map((item) => {
-      // Use the first UOM as default variant if available
-      const defaultUom = item?.uoms?.[0];
-      const defaultVariant = {
-        label: defaultUom
-          ? `${defaultUom.erp_uom} / ${getFormattedPrice(defaultUom.price)}`
-          : "Default / $0.00",
-        value: defaultUom ? defaultUom.erp_uom : "default 0",
-      };
-
-      return {
-        ...item,
-        selectedVariant: defaultVariant,
-        selectedCount: 1,
-      };
-    });
-
-    setProductData(formattedData);
-    setPage(pg);
-    setTotalRecords(response?.data?.totalRecords || formattedData.length);
-    setLoading("");
-  };
+  // ✅ Fetch categories
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     if (isLogin && !location) {
-      setShowLocationsModal(true);
-      setProductData([]);
-      setTotalRecords(0);
-      return;
+      let timeout = setTimeout(() => {
+        setShowLocationsModal(true);
+        return;
+      }, 1500);
+      return () => clearTimeout(timeout);
     }
 
-    if (isLogin && location) getProductsData({ pg: 1, location, isLogin });
+    if (isLogin && location) fetchProducts({ pg: 1, location, isLogin });
   }, [isLogin, location]);
 
+  // ✅ Fetch products
   useEffect(() => {
-    if (!isLogin && !location) getProductsData({ pg: 1 });
-  }, []);
+    if (!subCategory) return;
+
+    fetchProducts({
+      page,
+      limit: PRODUCT_RECORDS_LIMIT,
+      isLogin,
+      location,
+      sort: dropDown,
+      type: catalogType,
+      subCategory: subCategory?.value || null,
+    });
+  }, [isLogin, location, page, dropDown, catalogType, subCategory]);
+
+  // ✅ Reset page on filter change
+  useEffect(() => {
+    setPage(1);
+  }, [catalogType, subCategory]);
 
   return (
     <Container>
@@ -148,199 +115,61 @@ export default function ProductsPageView({ cmsData }) {
           </div>
         </Col>
 
-        <Col md={4} sm={12} lg={4} className="mt-2">
-          <div className={classes.searchDiv}>
-            <SearchInput
-              search={search}
-              setSearch={setSearch}
-              noBorder
-              rightIconClass={classes.searchIcon}
-              placeholder={"Search for products..."}
-              rightIconColor={"var(--gray-color-v1)"}
-              inputClass={classes.searchInput}
-            />
-          </div>
-        </Col>
+        <Col md={4} sm={12} lg={4} className="d-flex align-items-center"></Col>
+
         <Col
           md={8}
           lg={8}
           sm={12}
-          className="mt-2 d-flex justify-content-end align-items-center"
+          className="mt-sm-2 mt-0 d-flex justify-content-end align-items-center"
         >
-          <div className={classes.filtersDiv}>
-            <div className={classes.sortByDiv}>
-              <p className="fs-18 white-space">Sort by</p>
-              <DropDown
-                customStyle={{
-                  fontWeight: "600",
-                  paddingLeft: is375 ? "4px" : "1px",
-                  paddingTop: is375 ? "5px" : "2px",
-                  paddingBottom: "1px",
-                  minHeight: "40px",
-                  fontSize: is768 ? "14px !important" : "18px !important",
-                }}
-                isHoverColor={true}
-                dropDownContainer={classes.dropDownContainer}
-                value={dropDown}
-                setValue={setDropDown}
-                options={SORT_BY_DROPDOWN}
-              />
-            </div>
-            <div className={classes.cardViewDivMain}>
-              <div className={classes.viewCardTypeDiv}>
-                <p className="fs-18">View</p>
-              </div>
-              <div className={classes.cardsView}>
-                <div
-                  className={classes.viewTypeDiv}
-                  onClick={() => setCardViewType("card")}
-                >
-                  <div className={classes.gridIcon}>
-                    {!is768 ? (
-                      <Image
-                        src={"/assets/images/svg/card-grid-icon.svg"}
-                        fill
-                        alt="card-view-image"
-                      />
-                    ) : (
-                      <Image
-                        src={"/assets/images/app-images/cardGrid.png"}
-                        fill
-                        alt="card-view-image"
-                      />
-                    )}
-                  </div>
-                  <p className={mergeClass("fw-700 fs-18", classes.cardTitle)}>
-                    Cards
-                  </p>
-                </div>
-
-                <div
-                  className={classes.listViewTypeDiv}
-                  onClick={() => setCardViewType("list")}
-                >
-                  <ReactSVG
-                    src={"/assets/images/svg/productListIcon.svg"}
-                    className={mergeClass(
-                      "fw-700",
-                      cardViewType === "list" && classes.listIconActive,
-                      classes.listIcon
-                    )}
-                  />
-
-                  <p
-                    className={mergeClass(
-                      "fs-18",
-                      classes.listTitle,
-                      cardViewType === "list" && classes.listIconActive
-                    )}
-                  >
-                    List
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FiltersBar
+            subCategory={subCategory}
+            subCategoryOptions={categories}
+            setSubCategory={setSubCategory}
+            dropDown={dropDown}
+            setDropDown={setDropDown}
+            cardViewType={cardViewType}
+            setCardViewType={setCardViewType}
+            isMob768={isMob768}
+            is375={is375}
+          />
         </Col>
 
-        {cardViewType === "card" ? (
-          <Col
-            md={12}
-            style={{
-              marginTop: isMob768 ? "20px" : "50.8px",
-            }}
-          >
-            <div className={classes.productCard__wrapper}>
-              {loading === "fetchProducts"
-                ? Array.from({ length: 12 }).map((_, index) => (
-                    <Skeleton
-                      key={index}
-                      variant="rectangular"
-                      // width={280}
-                      height={380}
-                      className={classes.skeletonList}
-                    />
-                  ))
-                : productData?.map((e, index) => (
-                    <ProductCard
-                      key={index}
-                      data={e}
-                      onClick={() => {
-                        router?.push(`/products/${index}`);
-                        dispatch(setTheProductData(e));
-                      }}
-                      setVariantSelect={(selectedItems) => {
-                        let dataCopy = structuredClone(productData);
-                        dataCopy.splice(index, 1, {
-                          ...e,
-                          ...selectedItems,
-                        });
-                        setProductData(dataCopy);
-                      }}
-                    />
-                  ))}
+        <Col md={12} style={{ marginTop: "40px" }}>
+          {cardViewType === "card" && (
+            <ProductGrid
+              productData={productData}
+              loading={loading}
+              setProductData={setProductData}
+              onCardClick={(item, index) => router.push(`/products/${index}`)}
+            />
+          )}
+
+          {cardViewType === "list" && (
+            <ProductListView
+              productData={productData}
+              loading={loading}
+              router={router}
+              setProductData={setProductData}
+            />
+          )}
+        </Col>
+
+        {totalRecords > PRODUCT_RECORDS_LIMIT && (
+          <Col md={12}>
+            <div style={{ marginTop: "40px" }}>
+              <PaginationComponent
+                totalRecords={totalRecords}
+                currentPage={page}
+                setCurrentPage={(p) => {
+                  if (p === page) return;
+
+                  setPage(p);
+                }}
+              />
             </div>
           </Col>
-        ) : (
-          <Col
-            md={12}
-            style={{
-              marginTop: isMob768 ? "20px" : "50.8px",
-            }}
-          >
-            <Row className="gy-2 gy-sm-4">
-              {loading === "fetchProducts"
-                ? Array.from({ length: 12 }).map((_, index) => (
-                    <Skeleton
-                      key={index}
-                      variant="rectangular"
-                      // width={280}
-                      height={150}
-                      className={classes.skeletonList}
-                    />
-                  ))
-                : productData?.map((e, index) => (
-                    <Col md={12} lg={12} xl={6} key={index}>
-                      <ProductListCard
-                        data={e}
-                        onClick={() => {
-                          router?.push(`/products/${index}`);
-                          dispatch(setTheProductData(e));
-                        }}
-                        setVariantSelect={(selectedItems) => {
-                          let dataCopy = structuredClone(productData);
-                          dataCopy.splice(index, 1, {
-                            ...e,
-                            ...selectedItems,
-                          });
-                          setProductData(dataCopy);
-                        }}
-                      />
-                    </Col>
-                  ))}
-            </Row>
-          </Col>
-        )}
-        {totalRecords > PRODUCT_RECORDS_LIMIT && (
-          <>
-            <Col md={12}>
-              <div className={classes.pagination}>
-                <PaginationComponent
-                  totalRecords={totalRecords}
-                  currentPage={page}
-                  setCurrentPage={(p) => {
-                    if (p === page) return;
-                    getProductsData({
-                      pg: p,
-                      limit: PRODUCT_RECORDS_LIMIT,
-                      location,
-                      isLogin,
-                    });
-                  }}
-                />
-              </div>
-            </Col>
-          </>
         )}
       </Row>
       <Row className="g-0">
@@ -362,7 +191,7 @@ export default function ProductsPageView({ cmsData }) {
       <LocationsModal
         show={showLocationsModal}
         setShow={setShowLocationsModal}
-        cb={(location) => getProductsData({ pg: 1, location })}
+        cb={(location) => fetchProducts({ pg: 1, location, isLogin })}
       />
     </Container>
   );

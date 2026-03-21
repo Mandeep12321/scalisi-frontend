@@ -18,19 +18,41 @@ import { Button } from "../../atoms/Button";
 import Counter from "../Counter";
 import DropDown from "../DropDown/DropDown";
 import classes from "./ProductCard.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback  } from "react";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { useItemNote } from "@/components/common/hooks/useItemNote";
+import { BiSolidFilePlus } from "react-icons/bi";
+import { IoIosRemoveCircle } from "react-icons/io";
 
 export default function ProductCard({ data, setVariantSelect, onClick }) {
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
   const { cart } = useSelector((state) => state?.cartReducer);
 
+  const getItem = useCallback(() => {
+    const key = `${data.itemid}_${data.selectedVariant?.value || "default"}`;
+    return {
+      note: localStorage.getItem(key) || "",
+    };
+  }, [data.itemid, data.selectedVariant?.value]);
+
+  const existingNote = getItem()?.note || "";
+
   // Early return if data is null or undefined
   if (!data) {
     return null;
   }
+
+const {
+  noteValue,
+  setNoteValue,
+  isEditing,
+  hasNote,
+  handleNoteClick,
+  handleCancelNote,
+  handleRemoveNote,
+} = useItemNote({ data });
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -63,7 +85,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
   const isInCart = cart.some(
     (item) =>
       item.itemid === data.itemid &&
-      item.selectedVariant?.value === data.selectedVariant?.value
+      item.selectedVariant?.value === data.selectedVariant?.value,
   );
 
   // Get quantity from cart if item is in cart, otherwise use local state
@@ -71,7 +93,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
     ? cart.find(
         (item) =>
           item.itemid === data.itemid &&
-          item.selectedVariant?.value === data.selectedVariant?.value
+          item.selectedVariant?.value === data.selectedVariant?.value,
       )?.selectedCount || 1
     : data?.selectedCount || 1;
 
@@ -107,7 +129,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
         removeProductFromCart({
           _id: data.itemid,
           productVariant: data.selectedVariant?.value,
-        })
+        }),
       );
       RenderToast({
         type: "success",
@@ -135,15 +157,66 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
         <h3
           className={mergeClass(
             classes.title,
-            "fs-20 maxLine2 fw-500 cursor-pointer"
+            "fs-20 maxLine2 fw-500 cursor-pointer",
           )}
           onClick={onClick}
         >
           {data?.description}
         </h3>
-        <p className={mergeClass("fs-12 fw-500", classes.productId)}>
-          {data?.itemid}
-        </p>
+        <div
+          className={mergeClass(
+            "d-flex justify-content-between align-items-center flexWrap",
+          )}
+        >
+          <p className={mergeClass("fs-12 fw-500", classes.productId)}>
+            {data?.itemid}
+          </p>
+
+          <div
+            className={mergeClass(
+              "cursor-pointer d-flex align-items-center",
+              classes.addNote,
+            )}
+            onClick={handleNoteClick}
+          >
+            <BiSolidFilePlus size={20} color="var(--text-gray-color)" />
+            <p className="fs-15 fw-700 mb-0">
+              {isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note"}
+            </p>
+          </div>
+        </div>
+        {isEditing && (
+          <div className={classes.noteWrapper}>
+            <div className={classes.noteBox}>
+              <input
+                type="text"
+                placeholder="Add a Note"
+                value={noteValue}
+                onChange={(e) => setNoteValue(e.target.value)}
+                className="fs-14 fw-400"
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck={false}
+              />
+
+              <div className={classes.actions}>
+                <button
+                  className={classes.cancelBtn}
+                  onClick={handleCancelNote}
+                >
+                  Cancel
+                </button>
+
+                  <IoIosRemoveCircle className={classes.noteIcon} />
+                    <p onClick={handleRemoveNote} className="fs-15 fw-700">
+                      {"Remove Note"}
+                    </p>
+                
+              </div>
+            </div>
+          </div>
+        )}
         {accessToken ? (
           <>
             <DropDown
@@ -215,7 +288,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
                 className={mergeClass(
                   "fs-15 fw-600",
                   classes.removeFromCartButton,
-                  classes.button
+                  classes.button,
                 )}
               />
             </div>

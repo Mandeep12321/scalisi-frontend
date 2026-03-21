@@ -24,8 +24,12 @@ import DropDown from "@/components/molecules/DropDown/DropDown";
 import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
 import { ReactSVG } from "react-svg";
 import Image from "next/image";
+import LocationsModal from "@/modals/LocationsModal/LocationsModal";
+
 
 export default function LandingPageView({ cmsData }) {
+
+  console.log(cmsData, "cmsData");
   const router = useRouter();
   const { isLogin, location } = useSelector((state) => state.authReducer);
 
@@ -40,6 +44,8 @@ export default function LandingPageView({ cmsData }) {
   const debouncedSearch = useDebounce(search, 500);
   const [isMob768, setIsMob768] = useState(false);
   const [is375, setIs375] = useState(false);
+    const [showLocationsModal, setShowLocationsModal] = useState(false);
+  
 
   // ✅ HOOKS
   const { productData, setProductData, totalRecords, loading, fetchProducts } =
@@ -59,9 +65,20 @@ export default function LandingPageView({ cmsData }) {
     }
   }, [categories]);
 
+   useEffect(() => {
+    if (isLogin && !location) {
+      let timeout = setTimeout(() => {
+        setShowLocationsModal(true);
+        return;
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+
+  }, [isLogin, location]);
+
   // ✅ Fetch products
   useEffect(() => {
-    if (!subCategory) return;
+    if (!subCategory || (isLogin && !location)) return;
 
     fetchProducts({
       page,
@@ -113,6 +130,8 @@ export default function LandingPageView({ cmsData }) {
         />
 
         {/* CONTENT */}
+  
+
         <Col md={12} style={{ marginTop: "40px" }}>
           {catalogType !== "orderGuide" && cardViewType === "card" && (
             <ProductGrid
@@ -172,6 +191,11 @@ export default function LandingPageView({ cmsData }) {
           </div>
         </Col>
       </Row>
+      <LocationsModal
+              show={showLocationsModal}
+              setShow={setShowLocationsModal}
+              cb={(location) => fetchProducts({ pg: 1, location, isLogin })}
+            />
     </Container>
   );
 }

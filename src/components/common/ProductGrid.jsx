@@ -2,20 +2,19 @@
 
 import ProductCard from "@/components/molecules/ProductCard";
 import { Skeleton } from "@mui/material";
-import classes from "../LandingPageView.module.css";
+import classes from "../template/LandingPageView/LandingPageView.module.css";
 
 export default function ProductGrid({
-  productData,
+  productData = [],
   loading,
-  router,
+  onCardClick,
   setProductData,
+  skeletonCount = 12,
 }) {
-    console.log("Product Data:", productData);
-
   return (
     <div className={classes.productCard__wrapper}>
       {loading
-        ? Array.from({ length: 12 }).map((_, index) => (
+        ? Array.from({ length: skeletonCount }).map((_, index) => (
             <Skeleton
               key={index}
               variant="rectangular"
@@ -25,10 +24,14 @@ export default function ProductGrid({
           ))
         : productData?.map((item, index) => (
             <ProductCard
-              key={index}
+              key={item?.itemid || index}
               data={item}
-              onClick={() => router.push(`/products/${index}`)}
+              onClick={() =>
+                onCardClick ? onCardClick(item, index) : null
+              }
               setVariantSelect={(selectedItems) => {
+                if (!setProductData) return;
+
                 const dataCopy = structuredClone(productData);
 
                 dataCopy.splice(index, 1, {

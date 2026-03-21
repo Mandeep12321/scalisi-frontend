@@ -62,7 +62,7 @@ export default function HeroSection({
             ) : (
               <Image
                 fill
-                src={mediaUrl(data?.image)}
+                src={mediaUrl(data?.image || imgSrc)}
                 alt="hero-section-image"
               />
             )}
