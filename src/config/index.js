@@ -1,5 +1,5 @@
 export const config = {
-  apiBaseUrl: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
+  apiBaseUrl: process.env.SCALISI_BASE_URL,
   secretKey: "scalisi-secret-key",
   stripePublicKey: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
   S3_URL: "https://scalisi-produce.s3.us-east-2.amazonaws.com",
