@@ -157,7 +157,7 @@ const {
         <h3
           className={mergeClass(
             classes.title,
-            "fs-20 maxLine2 fw-500 cursor-pointer",
+            "fs-20 maxLine2 fw-500 cursor-pointer mb-3",
           )}
           onClick={onClick}
         >
@@ -168,7 +168,7 @@ const {
             "d-flex justify-content-between align-items-center flexWrap",
           )}
         >
-          <p className={mergeClass("fs-12 fw-500", classes.productId)}>
+          <p className={mergeClass("fs-12 fw-500 pt-0", classes.productId)}>
             {data?.itemid}
           </p>
 
@@ -179,8 +179,7 @@ const {
             )}
             onClick={handleNoteClick}
           >
-            <BiSolidFilePlus size={20} color="var(--text-gray-color)" />
-            <p className="fs-15 fw-700 mb-0">
+            <p className="fs-15 fw-600 mb-0">
               {isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note"}
             </p>
           </div>
@@ -193,25 +192,26 @@ const {
                 placeholder="Add a Note"
                 value={noteValue}
                 onChange={(e) => setNoteValue(e.target.value)}
-                className="fs-14 fw-400"
+                className={`${classes.input_field} fs-14 fw-400`}
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="off"
                 spellCheck={false}
               />
 
-              <div className={classes.actions}>
+              <div className={`${classes.actions} d-flex align-items-center justify-content-between mt-2`} >
                 <button
                   className={classes.cancelBtn}
                   onClick={handleCancelNote}
                 >
                   Cancel
                 </button>
-
+                <div className="d-flex align-items-center gap-1">
                   <IoIosRemoveCircle className={classes.noteIcon} />
                     <p onClick={handleRemoveNote} className="fs-15 fw-700">
                       {"Remove Note"}
                     </p>
+                  </div>
                 
               </div>
             </div>

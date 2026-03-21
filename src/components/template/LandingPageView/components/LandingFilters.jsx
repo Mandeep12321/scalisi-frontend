@@ -30,19 +30,22 @@ export default function LandingFilters({
           <div
             className={mergeClass(
               classes.viewTypeDiv,
-              catalogType === "orderGuide" && classes.listIconActive
+              catalogType === "orderGuide" && classes.listIconActive,
             )}
             onClick={() => {
               setCatalogType("orderGuide");
               setCardViewType("card"); // optional reset
             }}
           >
-            <div className={classes.gridIcon} style={{
-    width: "30px",
-    height: "30px",
-  }} >
+            <div
+              className={classes.gridIcon}
+              style={{
+                width: "25px",
+                height: "25px",
+              }}
+            >
               <Image
-                src={"/assets/images/svg/orderGuideIcon.svg"}
+                src={"/assets/images/svg/guide-icon.png"}
                 fill
                 alt="order-guide"
               />
@@ -54,16 +57,19 @@ export default function LandingFilters({
           <div
             className={mergeClass(
               classes.viewTypeDiv,
-              catalogType === "fullCatalog" && classes.listIconActive
+              catalogType === "fullCatalog" && classes.listIconActive,
             )}
             onClick={() => setCatalogType("fullCatalog")}
           >
-            <div className={classes.gridIcon} style={{
-    width: "30px",
-    height: "30px",
-  }}>
+            <div
+              className={classes.gridIcon}
+              style={{
+                width: "25px",
+                height: "25px",
+              }}
+            >
               <Image
-                src={"/assets/images/svg/fullCatalogIcon.svg"}
+                src={"/assets/images/svg/catalog-icon.png"}
                 fill
                 alt="catalog"
               />
@@ -79,7 +85,7 @@ export default function LandingFilters({
           md={8}
           lg={8}
           sm={12}
-          className="mt-sm-2 mt-0 d-flex justify-content-end align-items-center"
+          className="d-flex justify-content-end align-items-center"
         >
           <div className={classes.filtersDiv}>
             {/* DROPDOWNS */}
@@ -121,7 +127,7 @@ export default function LandingFilters({
                 <div
                   className={mergeClass(
                     classes.viewTypeDiv,
-                    cardViewType === "card" && classes.listIconActive
+                    cardViewType === "card" && classes.listIconActive,
                   )}
                   onClick={() => setCardViewType("card")}
                 >
@@ -146,7 +152,7 @@ export default function LandingFilters({
                 <div
                   className={mergeClass(
                     classes.listViewTypeDiv,
-                    cardViewType === "list" && classes.listIconActive
+                    cardViewType === "list" && classes.listIconActive,
                   )}
                   onClick={() => setCardViewType("list")}
                 >
@@ -154,7 +160,7 @@ export default function LandingFilters({
                     src={"/assets/images/svg/productListIcon.svg"}
                     className={mergeClass(
                       classes.listIcon,
-                      cardViewType === "list" && classes.listIconActive
+                      cardViewType === "list" && classes.listIconActive,
                     )}
                   />
 
@@ -162,7 +168,7 @@ export default function LandingFilters({
                     className={mergeClass(
                       "fs-18",
                       classes.listTitle,
-                      cardViewType === "list" && classes.listIconActive
+                      cardViewType === "list" && classes.listIconActive,
                     )}
                   >
                     List

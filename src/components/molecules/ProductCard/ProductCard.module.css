@@ -91,24 +91,30 @@
     gap: 15px;
     height: 345px;
   }
+
   .link {
     white-space: wrap;
   }
+
   .imageDiv {
     height: 135px;
     width: 100%;
   }
+
   .title {
     font-size: 16px;
     line-height: 20px;
     min-height: auto;
   }
+
   .counterDiv {
     margin-top: 10px;
   }
+
   .productId {
     padding-top: 13px;
   }
+
   .dropdownDiv {
     margin-top: 11px;
     height: auto;
@@ -127,11 +133,13 @@
     gap: 10px;
     height: auto;
   }
+
   .link {
     white-space: wrap;
     line-height: 15px;
     margin-top: 12px;
   }
+
   .imageDiv {
     height: 125px;
     object-fit: contain;
@@ -141,18 +149,20 @@
 @media (max-width: 430px) {
   .mainDiv {
     padding: 15px;
-    max-width: 185px;
   }
+
   .button {
     padding: 12px !important;
     height: 40px;
     width: 40px;
   }
+
   .counterDiv {
     margin-block: 10px 4px;
     gap: 10px;
     margin-top: 10px !important;
   }
+
   .imageDiv {
     height: 95px;
     object-fit: contain;
@@ -161,7 +171,6 @@
 
 @media (max-width: 375px) {
   .mainDiv {
-    max-width: 160px;
     padding: 13px 16px;
     gap: 15px;
     height: 294px;
@@ -171,24 +180,29 @@
     height: 84.32px;
     width: 100%;
   }
+
   .imageDiv img {
     object-fit: contain;
   }
+
   .button {
     padding: 12px !important;
     height: 40px;
     width: 40px;
   }
+
   .link {
     white-space: wrap;
     line-height: 16px;
     margin-top: 10px;
   }
+
   .title {
     font-size: 16px;
     line-height: 20px;
     min-height: auto;
   }
+
   .productId {
     padding-top: 13px;
   }
@@ -198,15 +212,18 @@
     gap: 10px;
     margin-top: 10px;
   }
+
   .counterDiv button svg {
     height: 30px !important;
     width: 30px !important;
     scale: 1.1;
   }
-  .counterDiv > div > div {
+
+  .counterDiv>div>div {
     width: 80px !important;
     max-width: 80px !important;
   }
+
   .dropdownDiv {
     margin-top: 11px;
   }
@@ -223,25 +240,28 @@
     width: 17px !important;
     scale: 1;
   }
+
   .mainDiv {
-    max-width: 152px;
     padding: 12px 12px;
   }
-  .counterDiv > div > div {
+
+  .counterDiv>div>div {
     width: 69px !important;
   }
+
   .dropdownWidthClass {
     width: 128px !important;
   }
+
   .button {
     height: 39px;
     width: 100%;
     padding: 5px 12px !important;
   }
 }
+
 @media (max-width: 340px) {
   .mainDiv {
-    max-width: 295px;
     padding: 15px 9px;
     gap: 15px;
     height: auto;
@@ -250,10 +270,31 @@
   .productId {
     padding-top: 18px;
   }
+
   .counterDiv {
     margin-top: 18px;
   }
+
   .dropdownDiv {
     margin-top: 18px;
   }
+}
+
+/********Button CSS*********/
+.input_field {
+  border: 2px solid #bdbbbb;
+  border-radius: 6px;
+  padding: 5px 8px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cancelBtn {
+  background-color: #212529;
+  padding: 6px 9px;
+  border-radius: 6px;
+  border: 1px solid #828282;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 400;
 }

@@ -8,6 +8,7 @@
   color: #434343;
   padding-right: 35px !important;
 }
+
 .searchDiv {
   width: 382px;
 }
@@ -29,11 +30,13 @@
 .mainHero {
   padding-block: 40px 16px;
 }
+
 .cardsView {
   display: flex;
   align-items: center;
   gap: 40px;
 }
+
 .viewCardTypeDiv {
   padding-inline: 37px 9px;
 }
@@ -48,9 +51,11 @@
   align-items: center;
   gap: 25px;
 }
+
 .sortByDiv p {
   color: var(--heading-text-color);
 }
+
 .filtersDiv {
   display: flex;
   align-items: center;
@@ -163,6 +168,7 @@
 .announcementLeft {
   padding-right: 27px;
 }
+
 .announcementRight {
   padding-left: 27px;
 }
@@ -172,6 +178,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .skeletonList,
 .skeletonWid {
   width: 100% !important;
@@ -182,24 +189,29 @@
   grid-template-columns: repeat(4, 1fr);
   row-gap: 2.8rem;
   column-gap: 2.45rem;
+
   @media screen and (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.8rem;
   }
+
   @media screen and (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
+
   @media screen and (max-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 1.2rem;
   }
+
   @media screen and (max-width: 375px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 16px;
   }
+
   @media screen and (max-width: 375px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 7px;
   }
 }
@@ -208,16 +220,22 @@
   .cardsView {
     gap: 25px;
   }
+
   .viewCardTypeDiv {
     padding-inline: 0px 9px;
   }
 }
 
 @media (max-width: 1200px) {
+
   .announcementRight,
   .announcementLeft {
     padding-top: 70px;
     padding-bottom: 80px;
+  }
+
+  .filtersDiv {
+    justify-content: end;
   }
 }
 
@@ -231,10 +249,11 @@
   .searchDiv {
     width: 265px;
   }
-  .filtersDiv {
+
+  /* .filtersDiv {
     gap: 20px;
     padding-top: 0px;
-  }
+  } */
 
   .cardViewDivMain {
     gap: 20px;
@@ -245,22 +264,26 @@
   .searchDiv {
     width: 225px;
   }
-  .filtersDiv,
+
   .cardsView,
   .sortByDiv {
     gap: 10px;
   }
+
   .dropDownContainer {
     min-width: 150px;
   }
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
+
   .announcementRight {
     padding-left: 10px;
   }
@@ -270,6 +293,7 @@
   .viewCardTypeDiv {
     padding-inline: 0px 9px;
   }
+
   .dropDownContainer {
     min-width: 125px;
     max-width: 150px;
@@ -290,40 +314,49 @@
   .mainHero {
     padding-block: 40px 23px;
   }
+
   .viewTypeDiv {
     gap: 5px;
   }
+
   .listIcon {
     width: 22px !important;
     height: 22px !important;
   }
+
   .cardsView {
     gap: 15px;
   }
+
   .cardViewDivMain {
     gap: 18px;
     padding-bottom: 6px;
     flex-direction: column;
     align-items: start;
   }
+
   .listViewTypeDiv {
     gap: 8px;
   }
+
   .gridIcon {
     width: 24px;
     height: 16px;
   }
+
   .filtersDiv {
-    margin-top: 20px;
+    margin-top: 15px;
     gap: 10px;
     width: 100%;
     justify-content: space-between;
   }
+
   .sortByDiv {
     align-items: start;
     flex-direction: column;
     gap: 10px;
   }
+
   .dropDownContainer {
     min-width: 150px;
     max-width: 150px !important;
@@ -334,19 +367,48 @@
     padding-top: 40px;
   }
 
-  .announcementRight > div > div:first-child {
+  .announcementRight>div>div:first-child {
     padding-top: 15px;
   }
+
   .announcementLeft {
     padding-top: 40px;
     padding-bottom: 40px;
     padding-right: 0px !important;
   }
+
   .announcementRight {
     padding-top: 0px;
     padding-bottom: 40px;
     padding-right: 0px !important;
     padding-left: 0px;
+  }
+
+  .viewCardTypeDiv {
+    margin-left: auto;
+  }
+}
+
+@media(max-width:476px) {
+  .filtersDiv {
+    display: block;
+  }
+
+  .dropDownContainer {
+    width: 100%;
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+
+  .cardViewDivMain {
+    margin-top: 13px;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .viewCardTypeDiv {
+    margin-left: unset !important;
   }
 }
 
@@ -355,9 +417,11 @@
     width: 18px;
     height: 12px;
   }
+
   .cardsView {
-    gap: 7px;
+    gap: 10px;
   }
+
   /* .skeletonCard {
     max-width: 100px !important;
   } */
@@ -368,14 +432,17 @@
     min-width: 140px;
     height: 40px;
   }
+
   .listIcon {
     width: 15px !important;
     height: 22px !important;
   }
+
   .listIcon svg {
     width: 18px !important;
     height: 18px !important;
   }
+
   .cardsView {
     gap: 7px;
   }
