@@ -3,14 +3,17 @@
 import ProductCard from "@/components/molecules/ProductCard";
 import { Skeleton } from "@mui/material";
 import classes from "../LandingPageView.module.css";
+import { useDispatch } from "react-redux";
+import { setTheProductData } from "@/store/common/commonSlice";
+import { useRouter } from "next/navigation";
 
 export default function ProductGrid({
   productData,
   loading,
-  router,
   setProductData,
 }) {
-    console.log("Product Data:", productData);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   return (
     <div className={classes.productCard__wrapper}>
@@ -27,15 +30,16 @@ export default function ProductGrid({
             <ProductCard
               key={index}
               data={item}
-              onClick={() => router.push(`/products/${index}`)}
+              onClick={() => {
+                dispatch(setTheProductData(item));
+                router.push(`/products/${item?.itemid || index}`);
+              }}
               setVariantSelect={(selectedItems) => {
                 const dataCopy = structuredClone(productData);
-
                 dataCopy.splice(index, 1, {
                   ...item,
                   ...selectedItems,
                 });
-
                 setProductData(dataCopy);
               }}
             />

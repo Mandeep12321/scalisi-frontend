@@ -1,72 +1,105 @@
 "use client";
 
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
-import DropDown from "@/components/molecules/DropDown/DropDown";
-import ProductCard from "@/components/molecules/ProductCard";
-
 import PaginationComponent from "@/components/molecules/PaginationComponent";
+import ProductCard from "@/components/molecules/ProductCard";
 import ProductDetailCard from "@/components/molecules/ProductDetailCard";
-import ProductListCard from "@/components/molecules/ProductListCard";
 import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
 import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
-import { ALL_PRODUCT_DATA } from "@/developmentContent/mock-data";
-import { Get, Post } from "@/interceptor/axiosInterceptor";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
-import useDebounce from "@/resources/hooks/useDebounce";
 import { getFormattedPrice, mergeClass } from "@/resources/utils/helper";
-import { Skeleton } from "@mui/material";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { ReactSVG } from "react-svg";
+import { clearProductData, setTheProductData } from "@/store/common/commonSlice";
 import classes from "./ProductDetailView.module.css";
-import {
-  clearProductData,
-  setTheProductData,
-} from "@/store/common/commonSlice";
+import landingClasses from "../LandingPageView/LandingPageView.module.css";
+import useProducts from "../LandingPageView/hooks/useProducts";
+import ProductGrid from "@/components/common/ProductGrid";
+import ProductListView from "../LandingPageView/components/ProductList";
+import LandingFilters from "../LandingPageView/components/LandingFilters";
 
-let singleProduct = ALL_PRODUCT_DATA[0];
+// Convert raw ERP_Category string → slug used by the API
+// e.g. "DAIRY PRODUCTS" → "dairy-products"
+const toSlug = (str) =>
+  str ? str.toLowerCase().trim().replace(/\s+/g, "-") : null;
 
 export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const support = cmsSupportData;
   const updates = cmsUpdateData;
+
   const { productData: commonProductData } = useSelector(
     (state) => state.commonReducer
   );
   const { isLogin, location } = useSelector((state) => state.authReducer);
 
+  // ── Main product local state ──────────────────────────────────────────────
   const [productData, setProductData] = useState(commonProductData);
-  const [relatedProducts, setRelatedProducts] = useState([]);
-  const [loading, setLoading] = useState("");
-  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[0]);
-  const [page, setPage] = useState(1);
-  const [totalRecords, setTotalRecords] = useState(0);
-  const [search, setSearch] = useState("");
-  const [cardViewType, setCardViewType] = useState("card");
-  const debounce = useDebounce(search, 500);
-
   const [isMobile, setIsMobile] = useState(false);
+
+  // ── Related products list / filter state ──────────────────────────────────
+  const [page, setPage] = useState(1);
+  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[0]);
+  const [cardViewType, setCardViewType] = useState("card");
+  const [isMob768, setIsMob768] = useState(false);
   const [is375, setIs375] = useState(false);
 
-  console.log("commonProductData", productData);
-  useEffect(() => {
-    isMobileViewHook(setIs375, 376);
-    isMobileViewHook(setIsMobile, 769);
-  });
+  // ── Derive category slug once from the main product (stable initial value) ─
+  const initialCatSlug = toSlug(
+    commonProductData?.category || commonProductData?.mastercategory || ""
+  );
+  const initialCatOption = initialCatSlug
+    ? { label: commonProductData?.category || initialCatSlug, value: initialCatSlug }
+    : null;
 
-  const getProductsData = async () => {
-    // Transform the data structure to match component expectations
-    if (commonProductData && commonProductData.uoms) {
-      const transformedData = {
+  const [subCategory, setSubCategory] = useState(initialCatOption);
+
+  // ── Refs – same pattern as ProductsPageView ────────────────────────────────
+  const pageRef = useRef(1);
+  const dropDownRef = useRef(dropDown);
+  const subCatRef = useRef(initialCatOption);   // pre-seeded → category goes in API
+  const locationRef = useRef(location);
+
+  // ── Fetch trigger — only dep of the fetch effect ──────────────────────────
+  const [fetchTrigger, setFetchTrigger] = useState(0);
+  const triggerFetch = () => setFetchTrigger((n) => n + 1);
+
+  // ── useProducts hook — same as landing / products pages ───────────────────
+  const {
+    productData: relatedProducts,
+    setProductData: setRelatedProducts,
+    totalRecords,
+    loading,
+    fetchProducts,
+  } = useProducts();
+
+  // ── Keep refs in sync ──────────────────────────────────────────────────────
+  useEffect(() => {
+    locationRef.current = location;
+  }, [location]);
+
+  useEffect(() => {
+    isMobileViewHook(setIsMobile, 769);
+    isMobileViewHook(setIsMob768, 768);
+    isMobileViewHook(setIs375, 376);
+  }, []);
+
+  // ── Redirect if no product in Redux; transform data for ProductDetailCard ──
+  useEffect(() => {
+    if (!commonProductData) {
+      router.push("/products");
+      return;
+    }
+    if (commonProductData?.uoms) {
+      setProductData({
         ...commonProductData,
         productVariant: commonProductData.uoms.map((uom) => ({
           type: uom.erp_uom,
           value: uom.erp_uom,
-          price: uom.price || 0, // Handle null price
+          price: uom.price || 0,
         })),
         selectedVariant: {
           label: `${commonProductData.uoms[0]?.erp_uom} / ${getFormattedPrice(
@@ -76,333 +109,150 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
           price: commonProductData.uoms[0]?.price || 0,
         },
         selectedCount: 1,
-      };
-      setProductData(transformedData);
+      });
     } else {
-      let newCopy = {
-        ...singleProduct,
-        selectedVariant: {
-          label: `${
-            singleProduct?.productVariant[0]?.type
-          } / ${getFormattedPrice(singleProduct?.productVariant[0]?.price)}`,
-          value: `${singleProduct?.productVariant[0]?.value}`,
-          price: singleProduct?.productVariant[0]?.price,
-        },
-        selectedCount: 1,
-      };
       setProductData(commonProductData);
     }
-  };
+  }, [commonProductData]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const getRelatedProductData = async ({
-    pg = page,
-    limit = PRODUCT_RECORDS_LIMIT,
-    search = debounce,
-    location,
-    isLogin,
-  }) => {
-    setLoading("fetchRelatedProducts");
-
-    const route = isLogin ? "products" : "products/public";
-    const apiMethod = isLogin ? Post : Get;
-
-    const params = new URLSearchParams({
-      page: pg,
-      limit,
-      search,
-    }).toString();
-
-    const locationData = {
-      custno: location?.ERP_CID,
-      cshipno: location?.ERP_SID,
-      date: new Date().toISOString().split("T")[0],
-    };
-
-    try {
-      const { response } = await apiMethod({
-        route: `${route}?${params}`,
-        data: locationData,
-      });
-
-      let data = response?.data?.data || response?.data || [];
-
-      if (!data.length) data = ALL_PRODUCT_DATA;
-
-      const formattedData = data.map((item) => {
-        // Use the first UOM as default variant if available
-        const defaultUom = item?.uoms?.[0];
-        const defaultVariant = {
-          label: defaultUom
-            ? `${defaultUom.erp_uom} / ${getFormattedPrice(defaultUom.price)}`
-            : "Default / $0.00",
-          value: defaultUom ? defaultUom.erp_uom : "default 0",
-        };
-
-        return {
-          ...item,
-          selectedVariant: defaultVariant,
-          selectedCount: 1,
-        };
-      });
-
-      setRelatedProducts(formattedData);
-      setPage(pg);
-      setTotalRecords(response?.data?.totalRecords || formattedData.length);
-    } catch (error) {
-      console.error("Error fetching related products:", error);
-      // Fallback to mock data
-      let newCopy = ALL_PRODUCT_DATA?.map((item, index) => ({
-        ...item,
-        selectedVariant: {
-          label: `${item?.productVariant[0]?.type} / ${getFormattedPrice(
-            item?.productVariant[0]?.price
-          )}`,
-          value: `${item?.productVariant[0]?.value}`,
-          price: item?.productVariant[0]?.price,
-        },
-        selectedCount: 1,
-      }));
-      setRelatedProducts(newCopy);
-    }
-
-    setLoading("");
-  };
-
+  // ── Trigger initial related-products fetch once product is ready ──────────
   useEffect(() => {
-    // when productData is null, redirect to products page
-    if (!commonProductData) {
-      router.push("/products");
-    }
-    getProductsData();
-  }, [dispatch]);
+    if (!commonProductData) return;
+    if (isLogin && !locationRef.current) return;
+    triggerFetch();
+  }, [commonProductData, isLogin, location]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── THE fetch effect — fires only when fetchTrigger increments ─────────────
   useEffect(() => {
-    if (isLogin && !location) {
-      // Show loading or handle no location case
-      return;
-    }
+    if (isLogin && !locationRef.current) return;
 
-    if (isLogin && location) {
-      getRelatedProductData({ pg: 1, location, isLogin });
-    } else if (!isLogin) {
-      getRelatedProductData({ pg: 1 });
-    }
-  }, [debounce, isLogin, location]);
+    fetchProducts({
+      page: pageRef.current,
+      limit: PRODUCT_RECORDS_LIMIT,
+      isLogin,
+      location: locationRef.current,
+      sort: dropDownRef.current,
+      subCategory: subCatRef.current?.value || null,  // ← category slug goes here
+    });
+  }, [fetchTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Cleanup function to clear Redux data when component unmounts due to navigation
+  // ── Cleanup Redux on unmount ───────────────────────────────────────────────
   useEffect(() => {
     return () => {
-      // Only clear data when navigating away, not on page refresh
-      // This will be called when the component unmounts due to navigation
       dispatch(clearProductData());
     };
   }, [dispatch]);
 
+  // ── Handlers (same pattern as ProductsPageView) ────────────────────────────
+  const handleSubCategoryChange = (val) => {
+    subCatRef.current = val;
+    setSubCategory(val);
+    pageRef.current = 1;
+    setPage(1);
+    triggerFetch();
+  };
+
+  const handleDropDownChange = (val) => {
+    dropDownRef.current = val;
+    setDropDown(val);
+    pageRef.current = 1;
+    setPage(1);
+    triggerFetch();
+  };
+
+  const goToPage = (p) => {
+    if (p === pageRef.current) return;
+    pageRef.current = p;
+    setPage(p);
+    triggerFetch();
+  };
+
+  const handleRelatedCardClick = (item) => {
+    dispatch(setTheProductData(item));
+    router.push(`/products/${item?.itemid || item?._id}`);
+  };
+
   return (
     <Container>
       <Row>
+        {/* ── Main product card ── */}
         <Col md={12}>
           <div className={classes.productDetail}>
             {isMobile ? (
               <ProductCard
                 data={productData}
                 setVariantSelect={(selectedItems) => {
-                  let dataCopy = structuredClone(productData);
-                  dataCopy = {
-                    ...dataCopy,
-                    ...selectedItems,
-                  };
-                  setProductData(dataCopy);
+                  setProductData((prev) => ({ ...prev, ...selectedItems }));
                 }}
               />
             ) : (
               <ProductDetailCard
                 data={productData}
                 setVariantSelect={(selectedItems) => {
-                  let dataCopy = structuredClone(productData);
-                  dataCopy = {
-                    ...dataCopy,
-                    ...selectedItems,
-                  };
-                  setProductData(dataCopy);
+                  setProductData((prev) => ({ ...prev, ...selectedItems }));
                 }}
               />
             )}
           </div>
         </Col>
 
-        <div className={classes.productFilterRow}>
-          <h3 className="fs-40 fw-700"> Related Products </h3>
+        {/* ── Related products section heading ── */}
+        <Col md={12} style={{ marginTop: "40px" }}>
+          <h3 className="fs-40 fw-700">Related Products</h3>
+        </Col>
 
-          <div className={classes.searchSortOption}>
-            <div className={classes.filtersDiv}>
-              <div className={classes.sortByDiv}>
-                <p className="fs-18 white-space">Sort By</p>
-                <DropDown
-                  dropDownContainer={classes.dropDownContainer}
-                  customStyle={{
-                    fontWeight: "700",
-                    paddingLeft: "1px",
-                    paddingTop: "2px",
-                    paddingBottom: "3px",
-                  }}
-                  container
-                  value={dropDown}
-                  setValue={setDropDown}
-                  options={SORT_BY_DROPDOWN}
-                />
-              </div>
-              <div className={classes.sortCards}>
-                <div className={classes.viewCardTypeDiv}>
-                  <p className="fs-18">View</p>
-                </div>
-                <div className={classes.cardsView}>
-                  <div
-                    className={classes.viewTypeDiv}
-                    onClick={() => setCardViewType("card")}
-                  >
-                    <div className={classes.gridIcon}>
-                      {!isMobile ? (
-                        <Image
-                          src={"/assets/images/svg/card-grid-icon.svg"}
-                          fill
-                          alt="card-view-image"
-                        />
-                      ) : (
-                        <Image
-                          src={"/assets/images/app-images/cardGrid.png"}
-                          fill
-                          alt="card-view-image"
-                        />
-                      )}
-                    </div>
-                    <p
-                      className={mergeClass("fw-700 fs-18", classes.cardTitle)}
-                    >
-                      Cards
-                    </p>
-                  </div>
+        <Col md={4}>
+        </Col>
 
-                  <div
-                    className={classes.listViewTypeDiv}
-                    onClick={() => setCardViewType("list")}
-                  >
-                    <ReactSVG
-                      src={"/assets/images/svg/productListIcon.svg"}
-                      className={mergeClass(
-                        "fw-700",
-                        cardViewType === "list" && classes.listIconActive,
-                        classes.listIcon
-                      )}
-                    />
+        {/* ── LandingFilters — view toggle + sort + category (same as ProductsPageView) ── */}
+        <LandingFilters
+          dropDown={dropDown}
+          setDropDown={handleDropDownChange}
+          cardViewType={cardViewType}
+          setCardViewType={setCardViewType}
+          isMob768={isMob768}
+          is375={is375}
+          subCategory={subCategory}
+          setSubCategory={handleSubCategoryChange}
+          subCategoryOptions={[]}   // no category tabs needed here (pre-filtered)
+          catalogType="fullCatalog" // always show products (no order guide toggle)
+          isLogin={isLogin}
+          hideCatalogTabs           // hides the Order Guide / Full Catalog tabs
+        />
 
-                    <p
-                      className={mergeClass(
-                        "fs-18",
-                        classes.listTitle,
-                        cardViewType === "list" && classes.listIconActive
-                      )}
-                    >
-                      List
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {cardViewType === "card" ? (
-          <Col
-            md={12}
-            style={{
-              marginTop: "19.8px",
-            }}
-          >
-            <div className={classes.productCard__wrapper}>
-              {loading === "fetchRelatedProducts"
-                ? Array.from({ length: 12 }).map((_, index) => (
-                    <Skeleton
-                      key={index}
-                      variant="rectangular"
-                      height={380}
-                      className={classes.skeletonList}
-                    />
-                  ))
-                : relatedProducts?.map((e, index) => (
-                    <ProductCard
-                      key={index}
-                      data={e}
-                      onClick={() => {
-                        router?.push(`/products/${index}`);
-                        dispatch(setTheProductData(e));
-                      }}
-                      setVariantSelect={(selectedItems) => {
-                        let dataCopy = structuredClone(relatedProducts);
-                        dataCopy.splice(index, 1, {
-                          ...e,
-                          ...selectedItems,
-                        });
-                        setRelatedProducts(dataCopy);
-                      }}
-                    />
-                  ))}
-            </div>
-          </Col>
-        ) : (
-          <Col md={12} className="my-5">
-            <Row className="gy-4">
-              {loading === "fetchRelatedProducts"
-                ? Array.from({ length: 12 }).map((_, index) => (
-                    <Skeleton
-                      key={index}
-                      variant="rectangular"
-                      height={150}
-                      className={classes.skeletonList}
-                    />
-                  ))
-                : relatedProducts?.map((e, index) => (
-                    <Col md={12} lg={12} xl={6} key={index}>
-                      <ProductListCard
-                        data={e}
-                        onClick={() => {
-                          router?.push(`/products/${index}`);
-                          dispatch(setTheProductData(e));
-                        }}
-                        setVariantSelect={(selectedItems) => {
-                          let dataCopy = structuredClone(relatedProducts);
-                          dataCopy.splice(index, 1, {
-                            ...e,
-                            ...selectedItems,
-                          });
-                          setRelatedProducts(dataCopy);
-                        }}
-                      />
-                    </Col>
-                  ))}
-            </Row>
-          </Col>
-        )}
+        {/* ── Related products grid ── */}
+        <Col md={12} style={{ marginTop: "40px" }}>
+          {cardViewType === "card" ? (
+            <ProductGrid
+              productData={relatedProducts}
+              loading={loading}
+              setProductData={setRelatedProducts}
+              onCardClick={(item) => handleRelatedCardClick(item)}
+            />
+          ) : (
+            <ProductListView
+              productData={relatedProducts}
+              loading={loading}
+              setProductData={setRelatedProducts}
+            />
+          )}
+        </Col>
 
+        {/* ── Pagination ── */}
         {totalRecords > PRODUCT_RECORDS_LIMIT && (
           <Col md={12}>
             <div className={classes.pagination}>
               <PaginationComponent
                 totalRecords={totalRecords}
                 currentPage={page}
-                setCurrentPage={(p) => {
-                  if (p === page) return;
-                  getRelatedProductData({
-                    pg: p,
-                    limit: PRODUCT_RECORDS_LIMIT,
-                    location,
-                    isLogin,
-                  });
-                }}
+                setCurrentPage={goToPage}
               />
             </div>
           </Col>
         )}
       </Row>
+
+      {/* ── Announcements ── */}
       <Row className="g-0">
         <Col sm={6} md={6} lg={6}>
           <div className={mergeClass(classes.announcementLeft)}>

@@ -26,7 +26,7 @@
 .cardBody {
   width: 100%;
   min-height: 250px;
-  max-height: 300px;
+  max-height: max-content;
   display: flex;
   flex-direction: column;
   background-color: var(--white-color);
@@ -40,7 +40,7 @@
 .cardBodyInCart {
   width: 100%;
   min-height: 295px;
-  max-height: 300px;
+  max-height: max-content;
   display: flex;
   flex-direction: column;
   background-color: var(--white-color);
@@ -82,26 +82,82 @@
   height: 39px;
   width: 100%;
 }
-.noteIcon {
-  flex: none;
-  width: 16px;
-  height: 16px;
-}
 .counterDiv {
   display: flex;
   gap: 10px;
 }
-.addNote {
-  min-width: 130px;
-  align-items: center;
+/* ── Note feature ── */
+.noteRow {
   display: flex;
-  gap: 5px;
-  text-decoration: underline;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
 }
-.addNote:hover,
-.addNote:hover p {
-  color: var(--green-color-v);
-  opacity: 0.8;
+
+.noteTriggerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.noteTriggerBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+}
+
+.noteTriggerBtnHasNote {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+.noteTriggerBtnSave {
+  border-color: #16a34a;
+  color: #16a34a;
+  background: #f0fdf4;
+}
+
+.noteTriggerBtnSave:hover {
+  background: #dcfce7;
+  border-color: #15803d;
+  color: #15803d;
+}
+
+.noteTextarea {
+  width: 100%;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #374151;
+  resize: vertical;
+  min-height: 52px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.noteTextarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
+}
+
+.noteTextarea::placeholder {
+  color: #9ca3af;
 }
 
 /* @media (max-width: 1500px) {

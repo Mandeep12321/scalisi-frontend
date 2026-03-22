@@ -23,10 +23,12 @@ export default function LandingFilters({
   setSubCategory,
   catalogType,
   isLogin,
+  hideCatalogTabs = false,   // ← new: hides Order Guide / Full Catalog tabs
 }) {
   return (
     <>
-      {/* LEFT SECTION — Catalog Type Tabs */}
+      {/* LEFT SECTION — Catalog Type Tabs (hidden when hideCatalogTabs is true) */}
+      {!hideCatalogTabs && (
       <Col md={4} sm={12} lg={4} className="d-flex align-items-center">
         <div className={classes.catalogTabsRow}>
 
@@ -70,6 +72,7 @@ export default function LandingFilters({
 
         </div>
       </Col>
+      )}
 
       {/* RIGHT SECTION (FILTERS) */}
       {catalogType !== "orderGuide" && (

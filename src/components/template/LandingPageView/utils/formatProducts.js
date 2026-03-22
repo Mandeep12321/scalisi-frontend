@@ -21,7 +21,7 @@ export const formatProducts = (data = [], isLoggedIn = false) => {
         ],
 
     AdvancePurchaseDays: null,
-    category: item.ERP_Category,
+    category: item.ERP_Category || item.category,
     mastercategory: item.master_category,
 
     // ✅ image (unchanged)
