@@ -496,3 +496,11 @@
     gap: 7px;
   }
 }
+
+.catalogTabLabel {
+  font-family: var(--font-primary); /* or your app font */
+  font-size: 18px;
+  font-weight: 600;  /* instead of 700 (too bold usually) */
+  line-height: 24px;
+  color: var(--text-color-v1);
+}

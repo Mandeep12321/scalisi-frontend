@@ -290,7 +290,7 @@
   gap: 5px;
   background: transparent;
   border: 1.5px solid #d1d5db;
-  border-radius: 20px;
+  border-radius: 7px;
   padding: 3px 10px;
   font-size: 12px;
   font-weight: 600;
@@ -414,4 +414,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.dropdownDiv {
+  margin-top: 26px;
+}
+
+.dropdownTight {
+  margin-top: 10px; /* or 8px */
 }

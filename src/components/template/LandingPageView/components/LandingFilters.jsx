@@ -7,6 +7,8 @@ import { ReactSVG } from "react-svg";
 import Image from "next/image";
 import { mergeClass } from "@/resources/utils/helper";
 import classes from "../LandingPageView.module.css";
+import { MdOutlineMenuBook } from "react-icons/md";
+import { MdOutlineGridView } from "react-icons/md";
 
 export default function LandingFilters({
   setCatalogType,
@@ -41,13 +43,9 @@ export default function LandingFilters({
               }}
             >
               <div className={classes.catalogTabIcon}>
-                <Image
-                  src={"/assets/images/svg/guide-icon.png"}
-                  fill
-                  alt="order-guide"
-                />
+                 <MdOutlineMenuBook size={22} />
               </div>
-              <p className={mergeClass("fw-700 fs-18", classes.catalogTabLabel)}>
+              <p className={mergeClass("fs-18", classes.cardTitle)}>
                 Order Guide
               </p>
             </div>
@@ -63,13 +61,9 @@ export default function LandingFilters({
             onClick={() => isLogin && setCatalogType("fullCatalog")}
           >
             <div className={classes.catalogTabIcon}>
-              <Image
-                src={"/assets/images/svg/catalog-icon.png"}
-                fill
-                alt="catalog"
-              />
+                <MdOutlineGridView size={22} />
             </div>
-            <p className={mergeClass("fw-700 fs-18", classes.catalogTabLabel)}>
+            <p className={mergeClass("fs-18", classes.cardTitle)}>
               Full Catalog
             </p>
           </div>
@@ -141,7 +135,7 @@ export default function LandingFilters({
                     />
                   </div>
 
-                  <p className={mergeClass("fw-700 fs-18", classes.cardTitle)}>
+                  <p className={mergeClass(classes.cardTitle)}>
                     Cards
                   </p>
                 </div>

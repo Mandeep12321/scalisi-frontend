@@ -187,7 +187,10 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
         {accessToken ? (
           <>
             <DropDown
-              dropDownContainer={classes.dropdownDiv}
+              dropDownContainer={mergeClass(
+                classes.dropdownDiv,
+                isEditing && classes.dropdownTight
+              )}
               dropdownWidth={classes.dropdownWidthClass}
               customStyle={{
                 minHeight: "36px",
