@@ -1,14 +1,12 @@
 "use client";
 
-"use client";
-
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
 import LandingHero from "./components/LandingHero";
 import PaginationComponent from "@/components/molecules/PaginationComponent";
 import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
 import { mergeClass } from "@/resources/utils/helper";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import classes from "./LandingPageView.module.css";
@@ -18,83 +16,146 @@ import ProductGrid from "./components/ProductGrid";
 import ProductListView from "./components/ProductList";
 import useProducts from "./hooks/useProducts";
 import OrderGuideView from "./components/OrderGuideView";
-import SearchInput from "@/components/molecules/SearchInput";
 import useDebounce from "@/resources/hooks/useDebounce";
-import DropDown from "@/components/molecules/DropDown/DropDown";
-import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
-import { ReactSVG } from "react-svg";
-import Image from "next/image";
 import LocationsModal from "@/modals/LocationsModal/LocationsModal";
 
-
 export default function LandingPageView({ cmsData }) {
-
-  console.log(cmsData, "cmsData");
   const router = useRouter();
   const { isLogin, location } = useSelector((state) => state.authReducer);
 
+  // ── UI state (drives rendering only) ──────────────────────────────────────
   const [page, setPage] = useState(1);
   const [dropDown, setDropDown] = useState("Newest");
-
-  const [catalogType, setCatalogType] = useState("orderGuide");
-  // ✅ Store FULL object (react-select)
+  // Guests always start on fullCatalog; logged-in users start on orderGuide
+  const [catalogType, setCatalogType] = useState(
+    isLogin ? "orderGuide" : "fullCatalog"
+  );
   const [subCategory, setSubCategory] = useState(null);
   const [search, setSearch] = useState("");
   const [cardViewType, setCardViewType] = useState("card");
   const debouncedSearch = useDebounce(search, 500);
   const [isMob768, setIsMob768] = useState(false);
   const [is375, setIs375] = useState(false);
-    const [showLocationsModal, setShowLocationsModal] = useState(false);
-  
+  const [showLocationsModal, setShowLocationsModal] = useState(false);
 
-  // ✅ HOOKS
+  // ── Refs: authoritative values for API calls ───────────────────────────────
+  // These are always up-to-date synchronously; the fetch effect reads from them.
+  const pageRef       = useRef(1);
+  const dropDownRef   = useRef("Newest");
+  const catalogRef    = useRef(isLogin ? "orderGuide" : "fullCatalog");
+  const subCatRef     = useRef(null);
+  const locationRef   = useRef(location);
+  const savedScrollY  = useRef(0);
+
+  // Tracks which catalog tabs have been explicitly activated.
+  // Logged-in users: fullCatalog starts absent so API is skipped until clicked.
+  const fetchedCatalogTypes = useRef(
+    new Set(!isLogin ? ["fullCatalog"] : [])
+  );
+
+  // The ONLY dependency of the fetch useEffect.
+  // Incrementing it is the sole trigger for an API call.
+  const [fetchTrigger, setFetchTrigger] = useState(0);
+
+  // ── Data hooks ─────────────────────────────────────────────────────────────
   const { productData, setProductData, totalRecords, loading, fetchProducts } =
     useProducts();
+  const { categories, fetchCategories } = useCategories();
 
-  const { categories, loading: catLoading, fetchCategories } = useCategories();
+  // Keep locationRef in sync with Redux
+  useEffect(() => {
+    locationRef.current = location;
+  }, [location]);
 
-  // ✅ Fetch categories
+  // ── Fetch categories once on mount ─────────────────────────────────────────
   useEffect(() => {
     fetchCategories();
   }, []);
 
-  // ✅ Auto select "All"
+  // ── Auto-select first category once categories load ────────────────────────
   useEffect(() => {
-    if (categories.length && !subCategory) {
+    if (categories.length && !subCatRef.current) {
+      subCatRef.current = categories[0];
       setSubCategory(categories[0]);
+      // Trigger first fetch only if we should be showing products
+      if (!(isLogin && catalogRef.current === "orderGuide")) {
+        triggerFetch();
+      }
     }
   }, [categories]);
 
-   useEffect(() => {
+  // ── Show location modal for logged-in users without a location ─────────────
+  useEffect(() => {
     if (isLogin && !location) {
-      let timeout = setTimeout(() => {
-        setShowLocationsModal(true);
-        return;
-      }, 1500);
+      const timeout = setTimeout(() => setShowLocationsModal(true), 1500);
       return () => clearTimeout(timeout);
     }
-
   }, [isLogin, location]);
 
-  // ✅ Fetch products
+  // ── THE fetch effect ───────────────────────────────────────────────────────
+  // Fires ONLY when fetchTrigger changes. All values come from refs so they
+  // are always fresh regardless of React's render cycle.
   useEffect(() => {
-    if (!subCategory || (isLogin && !location)) return;
+    if (!subCatRef.current) return;
+    if (isLogin && !locationRef.current) return;
+    if (isLogin && catalogRef.current === "orderGuide") return;
+    if (isLogin && !fetchedCatalogTypes.current.has(catalogRef.current)) return;
 
     fetchProducts({
-      page,
-      limit: PRODUCT_RECORDS_LIMIT,
+      page:        pageRef.current,
+      limit:       PRODUCT_RECORDS_LIMIT,
       isLogin,
-      location,
-      sort: dropDown,
-      type: catalogType,
-      subCategory: subCategory?.value || null,
+      location:    locationRef.current,
+      sort:        dropDownRef.current,
+      type:        catalogRef.current,
+      subCategory: subCatRef.current?.value || null,
     });
-  }, [isLogin, location, page, dropDown, catalogType, subCategory]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchTrigger]);
 
-  // ✅ Reset page on filter change
-  useEffect(() => {
+  // ── Helper: increment the trigger (fires one API call) ────────────────────
+  const triggerFetch = () => setFetchTrigger((n) => n + 1);
+
+  // ── Helper: save scroll → reset page → fetch → restore scroll ────────────
+  const resetPageAndFetch = () => {
+    savedScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
+    pageRef.current = 1;
     setPage(1);
-  }, [catalogType, subCategory]);
+    triggerFetch();
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: savedScrollY.current, behavior: "instant" });
+    });
+  };
+
+  // ── Action handlers ────────────────────────────────────────────────────────
+  const handleCatalogTypeChange = (type) => {
+    fetchedCatalogTypes.current.add(type);
+    catalogRef.current = type;
+    setCatalogType(type);
+    if (type !== "orderGuide") {
+      resetPageAndFetch();
+    }
+  };
+
+  const handleSubCategoryChange = (val) => {
+    subCatRef.current = val;
+    setSubCategory(val);
+    resetPageAndFetch();
+  };
+
+  const handleSortChange = (val) => {
+    dropDownRef.current = val;
+    setDropDown(val);
+    resetPageAndFetch();
+  };
+
+  // Pagination: go to a specific page without resetting scroll position
+  const goToPage = (p) => {
+    if (p === pageRef.current) return;
+    pageRef.current = p;
+    setPage(p);
+    triggerFetch();
+  };
 
   return (
     <Container>
@@ -117,21 +178,20 @@ export default function LandingPageView({ cmsData }) {
           search={search}
           setSearch={setSearch}
           dropDown={dropDown}
-          setCatalogType={setCatalogType}
-          setDropDown={setDropDown}
+          setCatalogType={handleCatalogTypeChange}
+          setDropDown={handleSortChange}
           cardViewType={cardViewType}
           setCardViewType={setCardViewType}
           isMob768={isMob768}
           is375={is375}
           subCategory={subCategory}
-          setSubCategory={setSubCategory}
+          setSubCategory={handleSubCategoryChange}
           subCategoryOptions={categories}
           catalogType={catalogType}
+          isLogin={isLogin}
         />
 
         {/* CONTENT */}
-  
-
         <Col md={12} style={{ marginTop: "40px" }}>
           {catalogType !== "orderGuide" && cardViewType === "card" && (
             <ProductGrid
@@ -162,12 +222,7 @@ export default function LandingPageView({ cmsData }) {
                 <PaginationComponent
                   totalRecords={totalRecords}
                   currentPage={page}
-                  setCurrentPage={(p) => {
-                    if (p === page) return;
-
-                    setPage(p);
-
-                  }}
+                  setCurrentPage={goToPage}
                 />
               </div>
             </Col>
@@ -191,11 +246,15 @@ export default function LandingPageView({ cmsData }) {
           </div>
         </Col>
       </Row>
+
       <LocationsModal
-              show={showLocationsModal}
-              setShow={setShowLocationsModal}
-              cb={(location) => fetchProducts({ pg: 1, location, isLogin })}
-            />
+        show={showLocationsModal}
+        setShow={setShowLocationsModal}
+        cb={(loc) => {
+          locationRef.current = loc;
+          triggerFetch();
+        }}
+      />
     </Container>
   );
 }

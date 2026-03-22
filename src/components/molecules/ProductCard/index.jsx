@@ -201,12 +201,12 @@ const {
 
               <div className={`${classes.actions} d-flex align-items-center justify-content-between mt-2`} >
                 <button
-                  className={classes.cancelBtn}
+                  className={classes.cancelBtn} style={{ cursor: "pointer" }}
                   onClick={handleCancelNote}
                 >
                   Cancel
                 </button>
-                <div className="d-flex align-items-center gap-1">
+                <div className="d-flex align-items-center gap-1" style={{ cursor: "pointer" }}>
                   <IoIosRemoveCircle className={classes.noteIcon} />
                     <p onClick={handleRemoveNote} className="fs-15 fw-700">
                       {"Remove Note"}

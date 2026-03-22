@@ -20,53 +20,51 @@ export default function LandingFilters({
   subCategoryOptions,
   setSubCategory,
   catalogType,
+  isLogin,
 }) {
   return (
     <>
-      {/* LEFT SECTION (ORDER GUIDE / FULL CATALOG) */}
+      {/* LEFT SECTION */}
       <Col md={4} sm={12} lg={4} className="d-flex align-items-center">
         <div className={classes.cardsView}>
-          {/* ORDER GUIDE */}
-          <div
-            className={mergeClass(
-              classes.viewTypeDiv,
-              catalogType === "orderGuide" && classes.listIconActive,
-            )}
-            onClick={() => {
-              setCatalogType("orderGuide");
-              setCardViewType("card"); // optional reset
-            }}
-          >
+          {/* ORDER GUIDE — only for logged-in users */}
+          {isLogin && (
             <div
-              className={classes.gridIcon}
-              style={{
-                width: "25px",
-                height: "25px",
+              className={mergeClass(
+                classes.viewTypeDiv,
+                catalogType === "orderGuide" && classes.listIconActive,
+              )}
+              onClick={() => {
+                setCatalogType("orderGuide");
+                setCardViewType("card");
               }}
             >
-              <Image
-                src={"/assets/images/svg/guide-icon.png"}
-                fill
-                alt="order-guide"
-              />
+              <div
+                className={classes.gridIcon}
+                style={{ width: "25px", height: "25px" }}
+              >
+                <Image
+                  src={"/assets/images/svg/guide-icon.png"}
+                  fill
+                  alt="order-guide"
+                />
+              </div>
+              <p className="fw-700 fs-18">Order Guide</p>
             </div>
-            <p className="fw-700 fs-18">Order Guide</p>
-          </div>
+          )}
 
-          {/* FULL CATALOG */}
+          {/* FULL CATALOG — always visible */}
           <div
             className={mergeClass(
               classes.viewTypeDiv,
               catalogType === "fullCatalog" && classes.listIconActive,
             )}
-            onClick={() => setCatalogType("fullCatalog")}
+            onClick={() => isLogin && setCatalogType("fullCatalog")}
+            style={!isLogin ? { cursor: "default" } : {}}
           >
             <div
               className={classes.gridIcon}
-              style={{
-                width: "25px",
-                height: "25px",
-              }}
+              style={{ width: "25px", height: "25px" }}
             >
               <Image
                 src={"/assets/images/svg/catalog-icon.png"}
