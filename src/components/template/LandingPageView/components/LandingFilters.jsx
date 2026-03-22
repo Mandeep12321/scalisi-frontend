@@ -93,13 +93,7 @@ export default function LandingFilters({
 
               {/* SORT */}
               <DropDown
-                customStyle={{
-                  fontWeight: "700",
-                  paddingLeft: "1px",
-                  paddingTop: is375 ? "0px" : "2px",
-                  paddingBottom: is375 ? "0px" : "2px",
-                  fontSize: isMob768 ? "14px" : "18px",
-                }}
+                placeholder="Sort"
                 isHoverColor
                 dropDownContainer={classes.dropDownContainer}
                 value={dropDown}
