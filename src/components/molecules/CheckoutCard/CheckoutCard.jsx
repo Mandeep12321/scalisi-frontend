@@ -1,6 +1,5 @@
 "use client";
 
-import { Input } from "@/components/atoms/Input/Input";
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import { mergeClass, getFormattedPrice } from "@/resources/utils/helper";
 import {
@@ -9,48 +8,108 @@ import {
   updateNoteInCart,
 } from "@/store/cart/cartSlice";
 import Image from "next/image";
-import { BiSolidFilePlus } from "react-icons/bi";
-import { IoIosRemoveCircle } from "react-icons/io";
+import { MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import Counter from "../Counter";
 import classes from "./CheckoutCard.module.css";
 import Cookies from "js-cookie";
+import { useItemNote } from "@/components/common/hooks/useItemNote";
 
-const CheckoutCard = ({
-  tableData,
-  noteIndex,
-  addNote,
-  setAddNote,
-  handleAddNote,
-  updateNoteInCart,
-}) => {
+/**
+ * Per-item note UI — single button, textarea opens on click & saves on 2nd click.
+ * Stays in sync with localStorage (shared with ProductCard / ProductListCard).
+ */
+function CartItemNote({ item }) {
+  const dispatch = useDispatch();
+  const googleTrans = Cookies.get("googtrans");
+  const isSpanish = googleTrans === "/en/es";
+
+  const {
+    noteValue,
+    setNoteValue,
+    isEditing,
+    hasNote,
+    handleNoteClick,
+  } = useItemNote({ data: item });
+
+  // Wrap handleNoteClick so that when the user saves, we also sync Redux cart
+  const handleClick = () => {
+    const isCurrentlySaving = isEditing;
+    handleNoteClick(); // toggles isEditing / saves to localStorage
+
+    if (isCurrentlySaving) {
+      const trimmed = noteValue.trim();
+      dispatch(
+        updateNoteInCart({
+          note: trimmed,
+          productId: item?.itemid,
+          productVariant: item?.selectedVariant?.value,
+        })
+      );
+    }
+  };
+
+  const noteBtnLabel = isEditing
+    ? isSpanish ? "Guardar nota" : "Save Note"
+    : hasNote
+    ? isSpanish ? "Editar nota" : "Edit Note"
+    : isSpanish ? "Añadir nota" : "Add Note";
+
+  return (
+    <div className={classes.noteSection}>
+      <button
+        className={mergeClass(
+          classes.noteTriggerBtn,
+          hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+          isEditing && classes.noteTriggerBtnSave,
+        )}
+        onClick={handleClick}
+      >
+        {isEditing ? <MdOutlineEdit size={13} /> : <MdOutlineNoteAdd size={13} />}
+        <span>{noteBtnLabel}</span>
+      </button>
+
+      {/* Textarea — opens on first click, closes/saves on second click */}
+      {isEditing && (
+        <div className={classes.noteWrapper}>
+          <textarea
+            rows={2}
+            placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
+            value={noteValue}
+            onChange={(e) => setNoteValue(e.target.value)}
+            className={classes.noteTextarea}
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </div>
+      )}
+
+    </div>
+  );
+}
+
+const CheckoutCard = ({ tableData }) => {
   const dispatch = useDispatch();
 
-  // Language detection
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
 
   const calculateItemPrice = (item) => {
-    // Always find the correct UOM based on selectedVariant value
     const selectedUom = item?.uoms?.find(
       (uom) => uom.erp_uom === item?.selectedVariant?.value
     );
-
-    // If no UOM found, fallback to first UOM
     const finalUom = selectedUom || item?.uoms?.[0];
     const itemPrice = finalUom?.price || 0;
     const totalPrice = itemPrice * item?.selectedCount;
-
     return getFormattedPrice(totalPrice);
   };
 
   return (
     <div className={classes.checkoutCardMain}>
-      {tableData?.map((item, index) => (
+      {tableData?.map((item) => (
         <div className={classes.cardContainer} key={item._id}>
           <div className={classes.cardTop}>
-            <p className={mergeClass(" fw-600 cursor-pointer", classes.type)}>
+            <p className={mergeClass("fw-600 cursor-pointer", classes.type)}>
               {item?.selectedVariant?.value || "CASE"}
             </p>
             <p
@@ -87,9 +146,7 @@ const CheckoutCard = ({
                 />
               </div>
               <div className={classes.cardDetails}>
-                <h3
-                  className={mergeClass(classes.title, "fs-13 fw-500 maxLine2")}
-                >
+                <h3 className={mergeClass(classes.title, "fs-13 fw-500 maxLine2")}>
                   {item?.description || item?.title}
                 </h3>
                 <span>
@@ -106,54 +163,8 @@ const CheckoutCard = ({
 
           <div className={classes.cardEnd}>
             <div className={classes.cardBottom}>
-              <span>
-                <div
-                  className={mergeClass("cursor-pointer", classes.addNote)}
-                  onClick={() => handleAddNote(index)}
-                >
-                  <BiSolidFilePlus
-                    size={27}
-                    color="var(--text-gray-color)"
-                    style={{
-                      marginLeft: "-4px",
-                      marginBottom: "3px",
-                    }}
-                  />
-                  <p className="fs-15 fw-700">
-                    {noteIndex === index
-                      ? isSpanish
-                        ? "Enviar nota"
-                        : "Submit Note"
-                      : item?.note
-                      ? isSpanish
-                        ? "Editar nota"
-                        : "Edit Note"
-                      : isSpanish
-                      ? "Añadir nota"
-                      : "Add note"}
-                  </p>
-                </div>
-
-                {item?.note && noteIndex !== index && (
-                  <div
-                    className={mergeClass("cursor-pointer", classes.removeNote)}
-                    onClick={() =>
-                      dispatch(
-                        updateNoteInCart({
-                          note: "",
-                          productId: item?.itemid,
-                          productVariant: item?.selectedVariant?.value,
-                        })
-                      )
-                    }
-                  >
-                    <IoIosRemoveCircle className={classes.noteIcon} />
-                    <p className="fs-15 fw-700">
-                      {isSpanish ? "Eliminar nota" : "Remove Note"}
-                    </p>
-                  </div>
-                )}
-              </span>
+              {/* Note section */}
+              <CartItemNote item={item} />
 
               <div className={classes.counterDiv}>
                 <Counter
@@ -170,23 +181,6 @@ const CheckoutCard = ({
                 />
               </div>
             </div>
-
-            {(item?.note || noteIndex === index) && (
-              <div
-                style={{
-                  paddingBlock: "10px",
-                }}
-              >
-                <Input
-                  type="text"
-                  inputClass={classes.inputClass}
-                  placeholder={isSpanish ? "Añadir una nota" : "Add a Note"}
-                  value={noteIndex == index ? addNote : item?.note || ""}
-                  setValue={setAddNote}
-                  disabled={noteIndex !== index}
-                />
-              </div>
-            )}
           </div>
         </div>
       ))}

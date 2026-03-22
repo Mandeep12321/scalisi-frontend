@@ -16,12 +16,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { MdRemoveShoppingCart, MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../atoms/Button";
 import Counter from "../Counter";
 import DropDown from "../DropDown/DropDown";
 import classes from "./ProductListCard.module.css";
-import { MdRemoveShoppingCart } from "react-icons/md";
+import { useItemNote } from "@/components/common/hooks/useItemNote";
 
 export default function ProductListCard({
   data,
@@ -43,6 +44,16 @@ export default function ProductListCard({
   // Language detection - check on every render to ensure it's always current
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
+
+  const {
+    noteValue,
+    setNoteValue,
+    isEditing,
+    hasNote,
+    handleNoteClick,
+    handleCancelNote,
+    handleRemoveNote,
+  } = useItemNote({ data });
 
   // Force re-render when cart changes
   useEffect(() => {
@@ -97,7 +108,6 @@ export default function ProductListCard({
       let productDataCopy = { ...data };
       delete productDataCopy?.productVariant;
 
-      // Ensure selectedVariant is set
       if (!productDataCopy.selectedVariant && dropDownOptions?.length > 0) {
         productDataCopy.selectedVariant = dropDownOptions[0];
       }
@@ -105,9 +115,7 @@ export default function ProductListCard({
       dispatch(addProductToCart(productDataCopy));
       RenderToast({
         type: "success",
-        message: isSpanish
-          ? "Artículo añadido al carrito"
-          : "Item added to cart",
+        message: isSpanish ? "Artículo añadido al carrito" : "Item added to cart",
       });
     } else if (action === "remove") {
       dispatch(
@@ -118,16 +126,57 @@ export default function ProductListCard({
       );
       RenderToast({
         type: "success",
-        message: isSpanish
-          ? "Artículo eliminado del carrito"
-          : "Item removed from cart",
+        message: isSpanish ? "Artículo eliminado del carrito" : "Item removed from cart",
       });
     }
   };
 
+  // Smart note button label
+  const noteBtnLabel = isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note";
+
+  // Shared note UI block
+  const NoteBlock = () => (
+    <div className={classes.noteSection}>
+      {/* ID row + note button */}
+      <div className={classes.noteRow}>
+        <p className={mergeClass("fs-12 fw-500", classes.productId)}>
+          {data?.itemid}
+        </p>
+        <button
+          className={mergeClass(
+            classes.noteTriggerBtn,
+            hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+            isEditing && classes.noteTriggerBtnSave,
+          )}
+          onClick={handleNoteClick}
+        >
+          {isEditing ? <MdOutlineEdit size={13} /> : <MdOutlineNoteAdd size={13} />}
+          <span>{noteBtnLabel}</span>
+        </button>
+      </div>
+
+      {/* Textarea — opens on button click, closes on Save */}
+      {isEditing && (
+        <div className={classes.noteWrapper}>
+          <textarea
+            rows={2}
+            placeholder="Add a note for this item…"
+            value={noteValue}
+            onChange={(e) => setNoteValue(e.target.value)}
+            className={classes.noteTextarea}
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </div>
+      )}
+
+    </div>
+  );
+
   return (
     <>
       {!isMobile ? (
+        /* ── DESKTOP layout ── */
         <div className={classes.mainDiv}>
           <div className={classes.imageDiv}>
             <Image fill alt={data?.itemid} src={data?.fullimagepath} />
@@ -143,11 +192,10 @@ export default function ProductListCard({
             >
               {data?.description}
             </h3>
-            <p className={mergeClass("fs-12 fw-500", classes.productId)}>
-              {data?.itemid}
-            </p>
 
-            {/* !ADD  */}
+            <NoteBlock />
+
+            {/* Cart controls */}
             {accessToken ? (
               <>
                 <DropDown
@@ -213,6 +261,7 @@ export default function ProductListCard({
           </div>
         </div>
       ) : (
+        /* ── MOBILE layout ── */
         <div className={classes.mainDivMobCard}>
           <div className={classes.cardHead}>
             <div className={classes.imageDiv}>
@@ -228,21 +277,17 @@ export default function ProductListCard({
               >
                 {data?.description}
               </h3>
-              <p className={mergeClass("fs-12 fw-500", classes.productId)}>
-                {data?.itemid}
-              </p>
+              <NoteBlock />
             </div>
           </div>
 
           <div className={classes.cardBody}>
-            {/* !ADD  */}
             {accessToken ? (
               <div className={classes.counterDiv}>
                 <DropDown
                   customStyle={{
                     height: "37px",
                     padding: "0px",
-                    height: "40px",
                     fontWeight: "600",
                     fontSize: "13px",
                   }}

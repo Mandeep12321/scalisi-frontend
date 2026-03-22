@@ -109,7 +109,9 @@
   align-items: center;
 }
 
-.userCardDiv span svg {
+/* Icon badge spans (cart / user / location) — scoped to avoid
+   bleeding into spans inside the cart popup / note buttons */
+.userCardDiv > span svg {
   width: 22px;
   height: 20px;
   display: flex;
@@ -117,7 +119,7 @@
   justify-content: center;
 }
 
-.userCardDiv span {
+.userCardDiv > span {
   padding: 10px;
   border: 2px solid #e1e1e1;
   border-radius: 50%;

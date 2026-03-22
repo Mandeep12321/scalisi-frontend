@@ -18,42 +18,15 @@ import { Button } from "../../atoms/Button";
 import Counter from "../Counter";
 import DropDown from "../DropDown/DropDown";
 import classes from "./ProductCard.module.css";
-import { useEffect, useState, useCallback  } from "react";
+import { useEffect, useState } from "react";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import { FaShoppingCart } from "react-icons/fa";
-import { MdRemoveShoppingCart } from "react-icons/md";
+import { MdRemoveShoppingCart, MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
 import { useItemNote } from "@/components/common/hooks/useItemNote";
-import { BiSolidFilePlus } from "react-icons/bi";
-import { IoIosRemoveCircle } from "react-icons/io";
 
 export default function ProductCard({ data, setVariantSelect, onClick }) {
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
   const { cart } = useSelector((state) => state?.cartReducer);
-
-  const getItem = useCallback(() => {
-    const key = `${data.itemid}_${data.selectedVariant?.value || "default"}`;
-    return {
-      note: localStorage.getItem(key) || "",
-    };
-  }, [data.itemid, data.selectedVariant?.value]);
-
-  const existingNote = getItem()?.note || "";
-
-  // Early return if data is null or undefined
-  if (!data) {
-    return null;
-  }
-
-const {
-  noteValue,
-  setNoteValue,
-  isEditing,
-  hasNote,
-  handleNoteClick,
-  handleCancelNote,
-  handleRemoveNote,
-} = useItemNote({ data });
-
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -65,6 +38,16 @@ const {
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
 
+  const {
+    noteValue,
+    setNoteValue,
+    isEditing,
+    hasNote,
+    handleNoteClick,
+    handleCancelNote,
+    handleRemoveNote,
+  } = useItemNote({ data });
+
   // Force re-render when cart changes
   useEffect(() => {
     setForceUpdate((prev) => prev + 1);
@@ -74,6 +57,11 @@ const {
     isMobileViewHook(setIsMobile, 576);
     isMobileViewHook(setIsMobile375, 376);
   });
+
+  // Early return if data is null or undefined
+  if (!data) {
+    return null;
+  }
 
   const dropDownOptions = data?.uoms?.map((e) => ({
     label: `${e?.erp_uom} / ${getFormattedPrice(e?.price)}`,
@@ -112,7 +100,6 @@ const {
       let productDataCopy = { ...data };
       delete productDataCopy?.productVariant;
 
-      // Ensure selectedVariant is set
       if (!productDataCopy.selectedVariant && dropDownOptions?.length > 0) {
         productDataCopy.selectedVariant = dropDownOptions[0];
       }
@@ -120,9 +107,7 @@ const {
       dispatch(addProductToCart(productDataCopy));
       RenderToast({
         type: "success",
-        message: isSpanish
-          ? "Artículo añadido al carrito"
-          : "Item added to cart",
+        message: isSpanish ? "Artículo añadido al carrito" : "Item added to cart",
       });
     } else if (action === "remove") {
       dispatch(
@@ -133,12 +118,13 @@ const {
       );
       RenderToast({
         type: "success",
-        message: isSpanish
-          ? "Artículo eliminado del carrito"
-          : "Item removed from cart",
+        message: isSpanish ? "Artículo eliminado del carrito" : "Item removed from cart",
       });
     }
   };
+
+  // Smart button label
+  const noteBtnLabel = isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note";
 
   return (
     <div className={mergeClass(classes.mainDiv)}>
@@ -148,11 +134,10 @@ const {
       >
         <Image fill alt={data?.itemid} src={data?.fullimagepath} />
       </div>
+
       <div
         className={classes.cardBody}
-        style={{
-          paddingBottom: accessToken ? "0px" : "15px",
-        }}
+        style={{ paddingBottom: accessToken ? "0px" : "15px" }}
       >
         <h3
           className={mergeClass(
@@ -163,60 +148,42 @@ const {
         >
           {data?.description}
         </h3>
-        <div
-          className={mergeClass(
-            "d-flex justify-content-between align-items-center flexWrap",
-          )}
-        >
+
+        {/* ID row + Note trigger */}
+        <div className="d-flex justify-content-between align-items-center flexWrap">
           <p className={mergeClass("fs-12 fw-500 pt-0", classes.productId)}>
             {data?.itemid}
           </p>
 
-          <div
+          {/* Single smart note button */}
+          <button
             className={mergeClass(
-              "cursor-pointer d-flex align-items-center",
-              classes.addNote,
+              classes.noteTriggerBtn,
+              hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+              isEditing && classes.noteTriggerBtnSave,
             )}
             onClick={handleNoteClick}
           >
-            <p className="fs-15 fw-600 mb-0">
-              {isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note"}
-            </p>
-          </div>
+            {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
+            <span>{noteBtnLabel}</span>
+          </button>
         </div>
+
+        {/* Note editing area — opens on button click, closes on Save */}
         {isEditing && (
           <div className={classes.noteWrapper}>
-            <div className={classes.noteBox}>
-              <input
-                type="text"
-                placeholder="Add a Note"
-                value={noteValue}
-                onChange={(e) => setNoteValue(e.target.value)}
-                className={`${classes.input_field} fs-14 fw-400`}
-                autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="off"
-                spellCheck={false}
-              />
-
-              <div className={`${classes.actions} d-flex align-items-center justify-content-between mt-2`} >
-                <button
-                  className={classes.cancelBtn} style={{ cursor: "pointer" }}
-                  onClick={handleCancelNote}
-                >
-                  Cancel
-                </button>
-                <div className="d-flex align-items-center gap-1" style={{ cursor: "pointer" }}>
-                  <IoIosRemoveCircle className={classes.noteIcon} />
-                    <p onClick={handleRemoveNote} className="fs-15 fw-700">
-                      {"Remove Note"}
-                    </p>
-                  </div>
-                
-              </div>
-            </div>
+            <textarea
+              rows={2}
+              placeholder="Add a note for this item…"
+              value={noteValue}
+              onChange={(e) => setNoteValue(e.target.value)}
+              className={classes.noteTextarea}
+              autoComplete="off"
+              spellCheck={false}
+            />
           </div>
         )}
+
         {accessToken ? (
           <>
             <DropDown
@@ -230,9 +197,7 @@ const {
                 color: isMobile375 ? "#36363696 !important" : undefined,
                 paddingLeft: "0px !important",
               }}
-              placeholderColor={
-                isMobile375 ? "#36363696 !important" : undefined
-              }
+              placeholderColor={isMobile375 ? "#36363696 !important" : undefined}
               container
               options={dropDownOptions}
               setValue={(e) => {
@@ -244,9 +209,7 @@ const {
               value={data?.selectedVariant}
             />
 
-            <div
-              className={mergeClass(classes.counterDivTwo, classes.counterDiv)}
-            >
+            <div className={mergeClass(classes.counterDivTwo, classes.counterDiv)}>
               <Counter
                 iconStyle={"fs-18"}
                 data={currentQuantity}
@@ -268,17 +231,9 @@ const {
                 }}
                 label={
                   isMobile ? (
-                    isInCart ? (
-                      <MdRemoveShoppingCart />
-                    ) : (
-                      <FaShoppingCart />
-                    )
+                    isInCart ? <MdRemoveShoppingCart /> : <FaShoppingCart />
                   ) : isInCart ? (
-                    isSpanish ? (
-                      "Eliminar artículo"
-                    ) : (
-                      "Remove Item"
-                    )
+                    isSpanish ? "Eliminar artículo" : "Remove Item"
                   ) : isSpanish ? (
                     "Añadir a la cesta"
                   ) : (

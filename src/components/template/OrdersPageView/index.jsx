@@ -55,8 +55,7 @@ export default function OrdersPageView() {
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const [noteIndex, setNoteIndex] = useState(-1);
-  const [addNote, setAddNote] = useState("");
+
   const [isMobile375, setIsMobile375] = useState(false);
   const [isMobile768, setIsMobile768] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -586,11 +585,6 @@ export default function OrdersPageView() {
                       <div className={classes.cardDiv}>
                         <CheckoutCard
                           tableData={data}
-                          noteIndex={noteIndex}
-                          addNote={addNote}
-                          setAddNote={setAddNote}
-                          handleAddNote={handleAddNote}
-                          updateNoteInCart={updateNoteInCart}
                         />
                       </div>
                     )}

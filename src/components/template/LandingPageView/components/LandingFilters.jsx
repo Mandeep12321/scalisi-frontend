@@ -24,56 +24,56 @@ export default function LandingFilters({
 }) {
   return (
     <>
-      {/* LEFT SECTION */}
+      {/* LEFT SECTION — Catalog Type Tabs */}
       <Col md={4} sm={12} lg={4} className="d-flex align-items-center">
-        <div className={classes.cardsView}>
+        <div className={classes.catalogTabsRow}>
+
           {/* ORDER GUIDE — only for logged-in users */}
           {isLogin && (
             <div
               className={mergeClass(
-                classes.viewTypeDiv,
-                catalogType === "orderGuide" && classes.listIconActive,
+                classes.catalogTab,
+                catalogType === "orderGuide" && classes.catalogTabActive,
               )}
               onClick={() => {
                 setCatalogType("orderGuide");
                 setCardViewType("card");
               }}
             >
-              <div
-                className={classes.gridIcon}
-                style={{ width: "25px", height: "25px" }}
-              >
+              <div className={classes.catalogTabIcon}>
                 <Image
                   src={"/assets/images/svg/guide-icon.png"}
                   fill
                   alt="order-guide"
                 />
               </div>
-              <p className="fw-700 fs-18">Order Guide</p>
+              <p className={mergeClass("fw-700 fs-18", classes.catalogTabLabel)}>
+                Order Guide
+              </p>
             </div>
           )}
 
           {/* FULL CATALOG — always visible */}
           <div
             className={mergeClass(
-              classes.viewTypeDiv,
-              catalogType === "fullCatalog" && classes.listIconActive,
+              classes.catalogTab,
+              catalogType === "fullCatalog" && classes.catalogTabActive,
+              !isLogin && classes.catalogTabDisabled,
             )}
             onClick={() => isLogin && setCatalogType("fullCatalog")}
-            style={!isLogin ? { cursor: "default" } : {}}
           >
-            <div
-              className={classes.gridIcon}
-              style={{ width: "25px", height: "25px" }}
-            >
+            <div className={classes.catalogTabIcon}>
               <Image
                 src={"/assets/images/svg/catalog-icon.png"}
                 fill
                 alt="catalog"
               />
             </div>
-            <p className="fw-700 fs-18">Full Catalog</p>
+            <p className={mergeClass("fw-700 fs-18", classes.catalogTabLabel)}>
+              Full Catalog
+            </p>
           </div>
+
         </div>
       </Col>
 

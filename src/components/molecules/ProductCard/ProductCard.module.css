@@ -279,21 +279,139 @@
   }
 }
 
-/********Button CSS*********/
-.input_field {
-  border: 2px solid #bdbbbb;
-  border-radius: 6px;
-  padding: 5px 8px;
-  width: 100%;
-  margin-top: 10px;
+/* ══════════════════════════════════
+   NOTE FEATURE STYLES
+══════════════════════════════════ */
+
+/* Smart single trigger button */
+.noteTriggerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
 }
 
-.cancelBtn {
-  background-color: #212529;
-  padding: 6px 9px;
-  border-radius: 6px;
-  border: 1px solid #828282;
-  color: #FFFFFF;
-  font-size: 14px;
+.noteTriggerBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+}
+
+/* State: note already exists */
+.noteTriggerBtnHasNote {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+/* State: currently editing / save */
+.noteTriggerBtnSave {
+  border-color: #16a34a;
+  color: #16a34a;
+  background: #f0fdf4;
+}
+
+.noteTriggerBtnSave:hover {
+  background: #dcfce7;
+  border-color: #15803d;
+  color: #15803d;
+}
+
+/* Note editing container */
+.noteWrapper {
+  margin-top: 8px;
+}
+
+/* 2-row resizable textarea */
+.noteTextarea {
+  width: 100%;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
   font-weight: 400;
+  color: #374151;
+  resize: vertical;
+  min-height: 56px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.noteTextarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
+}
+
+.noteTextarea::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Action row below textarea */
+.noteActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.noteCancelBtn {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.noteCancelBtn:hover {
+  border-color: #6b7280;
+  color: #374151;
+}
+
+.noteRemoveBtn {
+  background: transparent;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.noteRemoveBtn:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* Saved note preview strip */
+.notePreview {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #f9fafb;
+  border-left: 3px solid var(--primary-color);
+  border-radius: 0 6px 6px 0;
+  padding: 4px 8px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
