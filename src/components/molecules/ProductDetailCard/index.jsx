@@ -145,23 +145,25 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
           <p className={mergeClass("fs-12 fw-500", classes.productId)}>
             {data?.itemid}
           </p>
-          <button
-            className={mergeClass(
-              classes.noteTriggerBtn,
-              hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-              isEditing && classes.noteTriggerBtnSave,
-            )}
-            onClick={handleClick}
-          >
-            {isEditing
-              ? <MdOutlineEdit size={13} />
-              : <MdOutlineNoteAdd size={13} />}
-            <span>{noteBtnLabel}</span>
-          </button>
+          {accessToken && (
+            <button
+              className={mergeClass(
+                classes.noteTriggerBtn,
+                hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+                isEditing && classes.noteTriggerBtnSave,
+              )}
+              onClick={handleClick}
+            >
+              {isEditing
+                ? <MdOutlineEdit size={13} />
+                : <MdOutlineNoteAdd size={13} />}
+              <span>{noteBtnLabel}</span>
+            </button>
+          )}
         </div>
 
         {/* 2-row textarea — opens on button click, saves on second click */}
-        {isEditing && (
+        {accessToken && isEditing && (
           <textarea
             rows={2}
             placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
