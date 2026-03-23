@@ -34,7 +34,7 @@
 .cardsView {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 25px;
 }
 
 .viewCardTypeDiv {
@@ -93,7 +93,7 @@
 .cardViewDivMain {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
 }
 
 .viewTypeDiv {
@@ -126,8 +126,15 @@
   opacity: 0.85;
 }
 
-.catalogTabActive {
+/* .catalogTabActive {
   border-bottom: 3px solid var(--primary-color) !important;
+} */
+
+.catalogTabActive .catalogTabIcon svg{
+  fill: rgb(200, 1, 1);
+}
+.catalogTabActive .cardTitle{
+  font-weight: 600;
 }
 
 .catalogTabActive .catalogTabLabel {
@@ -181,6 +188,7 @@
 .cardTitle {
   color: var(--text-color-v1);
   line-height: 21px;
+  font-size: 18px !important;
 }
 
 .listTitle {
@@ -188,11 +196,11 @@
   line-height: 21px;
 }
 
-.listViewTypeDiv:hover .listTitle,
+/* .listViewTypeDiv:hover .listTitle,
 .listViewTypeDiv:hover .listIcon,
 .listIconActive {
   color: var(--primary-color) !important;
-}
+} */
 
 .listIconActive svg rect {
   fill: var(--primary-color) !important;
@@ -503,4 +511,20 @@
   font-weight: 600;  /* instead of 700 (too bold usually) */
   line-height: 24px;
   color: var(--text-color-v1);
+}
+.gridIcon img{
+  filter: grayscale(1) brightness(2.5);
+}
+.listIconActive div img{
+  filter:unset !important;
+}
+.listIconActive .cardTitle{
+font-weight: 600;
+}
+.listIconActive p{
+  font-weight: 600;
+  color: #363636 !important;
+}
+.listIconActive svg {
+  filter: brightness(0) saturate(100%) invert(5%) sepia(100%) saturate(10000%) hue-rotate(0deg);
 }
