@@ -85,12 +85,17 @@ export default function LandingPageView({ cmsData }) {
   }, [categories]);
 
   // ── Show location modal for logged-in users without a location ─────────────
-  useEffect(() => {
-    if (isLogin && !location) {
-      const timeout = setTimeout(() => setShowLocationsModal(true), 1500);
-      return () => clearTimeout(timeout);
-    }
-  }, [isLogin, location]);
+useEffect(() => {
+  if (isLogin !== true) return;
+
+  if (!location) {
+    const timeout = setTimeout(() => {
+      setShowLocationsModal(true);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }
+}, [isLogin, location]);
 
   // ── THE fetch effect ───────────────────────────────────────────────────────
   // Fires ONLY when fetchTrigger changes. All values come from refs so they
@@ -247,14 +252,16 @@ export default function LandingPageView({ cmsData }) {
         </Col>
       </Row>
 
-      <LocationsModal
-        show={showLocationsModal}
-        setShow={setShowLocationsModal}
-        cb={(loc) => {
-          locationRef.current = loc;
-          triggerFetch();
-        }}
-      />
+      {isLogin === true && showLocationsModal && (
+        <LocationsModal
+          show={showLocationsModal}
+          setShow={setShowLocationsModal}
+          cb={(loc) => {
+            locationRef.current = loc;
+            triggerFetch();
+          }}
+        />
+      )}
     </Container>
   );
 }

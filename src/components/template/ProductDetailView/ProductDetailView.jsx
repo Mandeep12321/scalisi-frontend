@@ -196,29 +196,86 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
           </div>
         </Col>
 
-        {/* ── Related products section heading ── */}
-        <Col md={12} style={{ marginTop: "40px" }}>
-          <h3 className="fs-40 fw-700">Related Products</h3>
-        </Col>
+        <div className={classes.productFilterRow}>
+          <h3 className="fs-40 fw-700"> Related Products </h3>
 
-        <Col md={4}>
-        </Col>
+          <div className={classes.searchSortOption}>
+            <div className={classes.filtersDiv}>
+              <div className={classes.sortByDiv}>
+                <p className="fs-18 white-space">Sort By</p>
+                <DropDown
+                  dropDownContainer={classes.dropDownContainer}
+                  customStyle={{
+                    fontWeight: "700",
+                    paddingLeft: "1px",
+                    paddingTop: "2px",
+                    paddingBottom: "3px",
+                  }}
+                  container
+                  value={dropDown}
+                  setValue={setDropDown}
+                  options={SORT_BY_DROPDOWN}
+                />
+              </div>
+              <div className={classes.sortCards}>
+                <div className={classes.viewCardTypeDiv}>
+                  <p className="fs-18">View</p>
+                </div>
+                <div className={classes.cardsView}>
+                  <div
+                    className={classes.viewTypeDiv}
+                    onClick={() => setCardViewType("card")}
+                  >
+                    <div className={classes.gridIcon}>
+                      {!isMobile ? (
+                        <Image
+                          src={"/assets/images/svg/card-grid-icon.svg"}
+                          fill
+                          alt="card-view-image"
+                        />
+                      ) : (
+                        <Image
+                          src={"/assets/images/app-images/cardGrid.png"}
+                          fill
+                          alt="card-view-image"
+                        />
+                      )}
+                    </div>
+                    <p
+                      className={mergeClass("fw-700 fs-18", classes.cardTitle)}
+                    >
+                      Cards
+                    </p>
+                  </div>
 
-        {/* ── LandingFilters — view toggle + sort + category (same as ProductsPageView) ── */}
-        <LandingFilters
-          dropDown={dropDown}
-          setDropDown={handleDropDownChange}
-          cardViewType={cardViewType}
-          setCardViewType={setCardViewType}
-          isMob768={isMob768}
-          is375={is375}
-          subCategory={subCategory}
-          setSubCategory={handleSubCategoryChange}
-          subCategoryOptions={[]}   // no category tabs needed here (pre-filtered)
-          catalogType="fullCatalog" // always show products (no order guide toggle)
-          isLogin={isLogin}
-          hideCatalogTabs           // hides the Order Guide / Full Catalog tabs
-        />
+                  <div
+                    className={classes.listViewTypeDiv}
+                    onClick={() => setCardViewType("list")}
+                  >
+                    <ReactSVG
+                      src={"/assets/images/svg/productListIcon.svg"}
+                      className={mergeClass(
+                        "fw-700",
+                        cardViewType === "list" && classes.listIconActive,
+                        classes.listIcon
+                      )}
+                    />
+
+                    <p
+                      className={mergeClass(
+                        "fs-18",
+                        classes.listTitle,
+                        cardViewType === "list" && classes.listIconActive
+                      )}
+                    >
+                      List
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* ── Related products grid ── */}
         <Col md={12} style={{ marginTop: "40px" }}>
