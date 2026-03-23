@@ -142,21 +142,23 @@ export default function ProductListCard({
         <p className={mergeClass("fs-12 fw-500", classes.productId)}>
           {data?.itemid}
         </p>
-        <button
-          className={mergeClass(
-            classes.noteTriggerBtn,
-            hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-            isEditing && classes.noteTriggerBtnSave,
-          )}
-          onClick={handleNoteClick}
-        >
-          {isEditing ? <MdOutlineEdit size={13} /> : <MdOutlineNoteAdd size={13} />}
-          <span>{noteBtnLabel}</span>
-        </button>
+        {accessToken && (
+          <button
+            className={mergeClass(
+              classes.noteTriggerBtn,
+              hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+              isEditing && classes.noteTriggerBtnSave,
+            )}
+            onClick={handleNoteClick}
+          >
+            {isEditing ? <MdOutlineEdit size={13} /> : <MdOutlineNoteAdd size={13} />}
+            <span>{noteBtnLabel}</span>
+          </button>
+        )}
       </div>
 
       {/* Textarea — opens on button click, closes on Save */}
-      {isEditing && (
+      {accessToken && isEditing && (
         <div className={classes.noteWrapper}>
           <textarea
             rows={2}

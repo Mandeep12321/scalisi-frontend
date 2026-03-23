@@ -4,7 +4,8 @@ import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/Announ
 import LandingHero from "./components/LandingHero";
 import PaginationComponent from "@/components/molecules/PaginationComponent";
 import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
-import { mergeClass } from "@/resources/utils/helper";
+import { mergeClass, handleDecrypt } from "@/resources/utils/helper";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -21,7 +22,17 @@ import LocationsModal from "@/modals/LocationsModal/LocationsModal";
 
 export default function LandingPageView({ cmsData }) {
   const router = useRouter();
-  const { isLogin, location } = useSelector((state) => state.authReducer);
+  const { isLogin: reduxIsLogin, location } = useSelector((state) => state.authReducer);
+  const authState = useSelector((state) => state.authReducer);
+
+  // Fallback to false if the physical cookie token has expired/been cleared
+  const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
+  const isLogin = reduxIsLogin && !!accessToken;
+
+
+useEffect(() => {
+  console.log("Auth State:", authState);
+}, [authState]);
 
   // ── UI state (drives rendering only) ──────────────────────────────────────
   const [page, setPage] = useState(1);
@@ -40,12 +51,12 @@ export default function LandingPageView({ cmsData }) {
 
   // ── Refs: authoritative values for API calls ───────────────────────────────
   // These are always up-to-date synchronously; the fetch effect reads from them.
-  const pageRef       = useRef(1);
-  const dropDownRef   = useRef("Newest");
-  const catalogRef    = useRef(isLogin ? "orderGuide" : "fullCatalog");
-  const subCatRef     = useRef(null);
-  const locationRef   = useRef(location);
-  const savedScrollY  = useRef(0);
+  const pageRef = useRef(1);
+  const dropDownRef = useRef("Newest");
+  const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
+  const subCatRef = useRef(null);
+  const locationRef = useRef(location);
+  const savedScrollY = useRef(0);
 
   // Tracks which catalog tabs have been explicitly activated.
   // Logged-in users: fullCatalog starts absent so API is skipped until clicked.
@@ -85,17 +96,17 @@ export default function LandingPageView({ cmsData }) {
   }, [categories]);
 
   // ── Show location modal for logged-in users without a location ─────────────
-useEffect(() => {
-  if (isLogin !== true) return;
+  useEffect(() => {
+    if (isLogin !== true) return;
 
-  if (!location) {
-    const timeout = setTimeout(() => {
-      setShowLocationsModal(true);
-    }, 1500);
+    if (!location) {
+      const timeout = setTimeout(() => {
+        setShowLocationsModal(true);
+      }, 1500);
 
-    return () => clearTimeout(timeout);
-  }
-}, [isLogin, location]);
+      return () => clearTimeout(timeout);
+    }
+  }, [isLogin, location]);
 
   // ── THE fetch effect ───────────────────────────────────────────────────────
   // Fires ONLY when fetchTrigger changes. All values come from refs so they
@@ -107,15 +118,15 @@ useEffect(() => {
     if (isLogin && !fetchedCatalogTypes.current.has(catalogRef.current)) return;
 
     fetchProducts({
-      page:        pageRef.current,
-      limit:       PRODUCT_RECORDS_LIMIT,
+      page: pageRef.current,
+      limit: PRODUCT_RECORDS_LIMIT,
       isLogin,
-      location:    locationRef.current,
-      sort:        dropDownRef.current,
-      type:        catalogRef.current,
+      location: locationRef.current,
+      sort: dropDownRef.current,
+      type: catalogRef.current,
       subCategory: subCatRef.current?.value || null,
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchTrigger]);
 
   // ── Helper: increment the trigger (fires one API call) ────────────────────

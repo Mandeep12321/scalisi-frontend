@@ -49,6 +49,11 @@ const MobileHeader = ({
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showLocationsModal, setShowLocationsModal] = useState(false);
   const [showEmptyCartModal, setShowEmptyCartModal] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     dispatch(setDrawerOpen(isDrawerOpen));
@@ -68,6 +73,8 @@ const MobileHeader = ({
 
   // renderContent
   const renderContent = () => {
+    if (!mounted) return null;
+
     if (accessToken) {
       return (
         <div className={Style.navBtn}>
@@ -147,30 +154,35 @@ const MobileHeader = ({
   };
 
   const logout = async () => {
-    // Clear all cookies
-    Cookies.remove("_xpdx_u");
-    Cookies.remove("_xpdx");
-    Cookies.remove("_xpdx_rf");
+    // Clear all cookies aggressively
+    Cookies.remove("_xpdx_u", { path: "/" });
+    Cookies.remove("_xpdx", { path: "/" });
+    Cookies.remove("_xpdx_rf", { path: "/" });
 
     // Clear localStorage
     localStorage.removeItem("orderPlaced");
     localStorage.removeItem("RT_ERROR_IDENTIFIER");
+    localStorage.removeItem("persist:root");
 
     // Clear all Redux state
     dispatch(signOutRequest());
     dispatch(clearCart());
     setIsDrawerOpen(false);
 
+    // Clear Redux persisted state safely
+    persistor.pause();
+    await persistor.flush();
     await persistor.purge();
 
     // Show success message
+    const isSpanish = language === "ES";
     RenderToast({
       type: "success",
       message: isSpanish ? "Cierre de sesión exitoso" : "Successfully logout",
     });
 
-    // Navigate to homepage - use window.location for more reliable logout redirect
-    window.location.href = "/";
+    // Navigate to login
+    window.location.href = "/login";
   };
 
   return (

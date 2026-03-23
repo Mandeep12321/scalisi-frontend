@@ -156,21 +156,23 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
           </p>
 
           {/* Single smart note button */}
-          <button
-            className={mergeClass(
-              classes.noteTriggerBtn,
-              hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-              isEditing && classes.noteTriggerBtnSave,
-            )}
-            onClick={handleNoteClick}
-          >
-            {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
-            <span>{noteBtnLabel}</span>
-          </button>
+          {accessToken && (
+            <button
+              className={mergeClass(
+                classes.noteTriggerBtn,
+                hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+                isEditing && classes.noteTriggerBtnSave,
+              )}
+              onClick={handleNoteClick}
+            >
+              {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
+              <span>{noteBtnLabel}</span>
+            </button>
+          )}
         </div>
 
         {/* Note editing area — opens on button click, closes on Save */}
-        {isEditing && (
+        {accessToken && isEditing && (
           <div className={classes.noteWrapper}>
             <textarea
               rows={2}

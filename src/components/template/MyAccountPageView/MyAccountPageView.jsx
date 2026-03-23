@@ -66,10 +66,10 @@ export default function MyAccountPageView() {
     const googleTrans = Cookies.get("googtrans");
     const isSpanish = googleTrans === "/en/es";
 
-    // Clear all cookies
-    Cookies.remove("_xpdx_u");
-    Cookies.remove("_xpdx");
-    Cookies.remove("_xpdx_rf");
+    // Clear all cookies aggressively
+    Cookies.remove("_xpdx_u", { path: "/" });
+    Cookies.remove("_xpdx", { path: "/" });
+    Cookies.remove("_xpdx_rf", { path: "/" });
     Cookies.remove("googtrans", { path: "/" });
     Cookies.remove("googtrans", {
       path: "/",
@@ -83,12 +83,15 @@ export default function MyAccountPageView() {
     // Clear localStorage
     localStorage.removeItem("orderPlaced");
     localStorage.removeItem("RT_ERROR_IDENTIFIER");
+    localStorage.removeItem("persist:root");
 
     // Clear all Redux state
     dispatch(signOutRequest());
     dispatch(clearCart());
 
-    // Clear Redux persisted state
+    // Clear Redux persisted state safely
+    persistor.pause();
+    await persistor.flush();
     await persistor.purge();
 
     // Show success message
@@ -97,8 +100,8 @@ export default function MyAccountPageView() {
       message: isSpanish ? "Cierre de sesión exitoso" : "Successfully logout",
     });
 
-    // Navigate to homepage - use window.location for more reliable logout redirect
-    window.location.href = "/";
+    // Navigate to login
+    window.location.href = "/login";
   };
 
   // handleUpdate

@@ -56,6 +56,11 @@ const DesktopHeader = ({
     moment().format("DD/MM/YYYY")
   );
   const [deliveryDates, setDeliveryDates] = useState([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const getDeliveryDate = async (location) => {
     setLoading("getDeliveryDate");
@@ -93,6 +98,8 @@ const DesktopHeader = ({
   }, [location, accessToken]);
 
   const renderContent = () => {
+    if (!mounted) return null;
+
     if (accessToken) {
       return (
         <div className={Style.navBtnLogin}>
