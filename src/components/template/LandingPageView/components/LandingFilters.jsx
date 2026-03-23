@@ -58,9 +58,8 @@ export default function LandingFilters({
             className={mergeClass(
               classes.catalogTab,
               catalogType === "fullCatalog" && classes.catalogTabActive,
-              !isLogin && classes.catalogTabDisabled,
             )}
-            onClick={() => isLogin && setCatalogType("fullCatalog")}
+            onClick={() => setCatalogType("fullCatalog")}
           >
             <div className={classes.catalogTabIcon}>
                 <MdOutlineGridView size={22} />

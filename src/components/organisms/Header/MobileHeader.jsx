@@ -276,26 +276,30 @@ const MobileHeader = ({
           <div className={Style.drawerHead}>{renderContent()}</div>
 
           <Nav className={`ms-auto ${Style.navbarCustom__style}`} gap={5}>
-            {MOBILE_HEADER_LINK?.map(({ Icon, separator, ...item }, index) => (
-              <div key={index}>
-                {separator ? (
-                  <hr className={Style.separator} />
-                ) : (
-                  <Link
-                    href={item?.path}
-                    className={[
-                      Style.navbarLinks,
-                      pathname === item?.path && Style.navActive,
-                    ].join(" ")}
-                    onClick={() => setIsDrawerOpen(false)}
-                  >
-                    {Icon && <Icon size={18} />}
-                    {item?.imageUrl && <ReactSVG src={item?.imageUrl} />}
-                    {item?.label}
-                  </Link>
-                )}
-              </div>
-            ))}
+            {MOBILE_HEADER_LINK?.map(({ Icon, separator, ...item }, index) => {
+              if (!accessToken && item?.label === "Order Guide") return null;
+              
+              return (
+                <div key={index}>
+                  {separator ? (
+                    <hr className={Style.separator} />
+                  ) : (
+                    <Link
+                      href={item?.path}
+                      className={[
+                        Style.navbarLinks,
+                        pathname === item?.path && Style.navActive,
+                      ].join(" ")}
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      {Icon && <Icon size={18} />}
+                      {item?.imageUrl && <ReactSVG src={item?.imageUrl} />}
+                      {item?.label}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </Nav>
         </div>
         <div className={Style.dflex}>
