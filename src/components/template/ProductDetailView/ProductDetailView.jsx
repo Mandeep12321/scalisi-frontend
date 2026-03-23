@@ -19,6 +19,12 @@ import useProducts from "../LandingPageView/hooks/useProducts";
 import ProductGrid from "@/components/common/ProductGrid";
 import ProductListView from "../LandingPageView/components/ProductList";
 import LandingFilters from "../LandingPageView/components/LandingFilters";
+import DropDown from "@/components/molecules/DropDown/DropDown";
+import { ReactSVG } from "react-svg";
+import Image from "next/image";
+
+
+
 
 // Convert raw ERP_Category string → slug used by the API
 // e.g. "DAIRY PRODUCTS" → "dairy-products"
