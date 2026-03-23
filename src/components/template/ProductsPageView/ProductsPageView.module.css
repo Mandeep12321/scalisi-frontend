@@ -141,22 +141,28 @@
   line-height: 21px;
 }
 
-.listViewTypeDiv:hover .listTitle,
-.listViewTypeDiv:hover .listIcon,
-.listIconActive {
-  color: var(--primary-color) !important;
+.catalogTabLabel {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-color-v1);
 }
-
-.listIconActive svg rect {
-  fill: var(--primary-color) !important;
+.gridIcon img{
+  filter: grayscale(1) brightness(2.5);
 }
-
-.listIcon {
-  width: 28px !important;
-  color: var(--gray-color-v);
+.listIconActive div img{
+  filter:unset !important;
 }
-.listIcon svg rect {
-  fill: var(--gray-color-v) !important;
+.listIconActive .cardTitle{
+font-weight: 600;
+}
+.listIconActive p{
+  font-weight: 600;
+  color: #363636 !important;
+}
+.listIconActive svg {
+  filter: brightness(0) saturate(100%) invert(5%) sepia(100%) saturate(10000%) hue-rotate(0deg);
 }
 .sortCards {
   display: flex;

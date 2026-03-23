@@ -27,6 +27,8 @@ import { useItemNote } from "@/components/common/hooks/useItemNote";
 export default function ProductCard({ data, setVariantSelect, onClick }) {
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
   const { cart } = useSelector((state) => state?.cartReducer);
+  const { isLogin } = useSelector((state) => state?.authReducer);
+  const isAuthenticated = accessToken && isLogin;
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -137,7 +139,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
 
       <div
         className={classes.cardBody}
-        style={{ paddingBottom: accessToken ? "0px" : "15px" }}
+        style={{ paddingBottom: isAuthenticated ? "0px" : "15px" }}
       >
         <h3
           className={mergeClass(
@@ -156,7 +158,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
           </p>
 
           {/* Single smart note button */}
-          {accessToken && (
+          {isAuthenticated && (
             <button
               className={mergeClass(
                 classes.noteTriggerBtn,
@@ -172,7 +174,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
         </div>
 
         {/* Note editing area — opens on button click, closes on Save */}
-        {accessToken && isEditing && (
+        {isAuthenticated && isEditing && (
           <div className={classes.noteWrapper}>
             <textarea
               rows={2}
@@ -186,7 +188,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
           </div>
         )}
 
-        {accessToken ? (
+        {isAuthenticated ? (
           <>
             <DropDown
               dropDownContainer={mergeClass(

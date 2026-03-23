@@ -75,99 +75,98 @@ export default function LandingFilters({
         )}
 
         {/* RIGHT SECTION (FILTERS) */}
-        {catalogType !== "orderGuide" && (
-          <Col
-            md={8}
-            lg={8}
-            sm={12}
-            className="d-flex justify-content-end align-items-center"
-          >
-            <div className={classes.filtersDiv}>
-              {/* DROPDOWNS */}
-              <div className={classes.sortByDiv}>
-                {/* CATEGORY */}
-                <DropDown
-                  placeholder="Category"
-                  dropDownContainer={classes.dropDownContainer}
-                  value={subCategory}
-                  setValue={setSubCategory}
-                  options={subCategoryOptions}
-                />
+        <Col
+          md={8}
+          lg={8}
+          sm={12}
+          className="d-flex justify-content-end align-items-center"
+          style={{ visibility: catalogType === "orderGuide" ? "hidden" : "visible" }}
+        >
+          <div className={classes.filtersDiv}>
+            {/* DROPDOWNS */}
+            <div className={classes.sortByDiv}>
+              {/* CATEGORY */}
+              <DropDown
+                placeholder="Category"
+                dropDownContainer={classes.dropDownContainer}
+                value={subCategory}
+                setValue={setSubCategory}
+                options={subCategoryOptions}
+              />
 
-                {/* SORT */}
-                <DropDown
-                  placeholder="Sort"
-                  isHoverColor
-                  dropDownContainer={classes.dropDownContainer}
-                  value={dropDown}
-                  setValue={setDropDown}
-                  options={SORT_BY_DROPDOWN}
-                />
+              {/* SORT */}
+              <DropDown
+                placeholder="Sort"
+                isHoverColor
+                dropDownContainer={classes.dropDownContainer}
+                value={dropDown}
+                setValue={setDropDown}
+                options={SORT_BY_DROPDOWN}
+              />
+            </div>
+
+            {/* VIEW TOGGLE */}
+            <div className={classes.cardViewDivMain}>
+              <div className={classes.viewCardTypeDiv}>
+                <p className="fs-18">View</p>
               </div>
 
-              {/* VIEW TOGGLE */}
-              <div className={classes.cardViewDivMain}>
-                <div className={classes.viewCardTypeDiv}>
-                  <p className="fs-18">View</p>
+              <div className={classes.cardsView}>
+                {/* CARD VIEW */}
+                <div
+                  className={mergeClass(
+                    classes.viewTypeDiv,
+                    cardViewType === "card" && classes.listIconActive,
+                  )}
+                  onClick={() => setCardViewType("card")}
+                >
+                  <div className={classes.gridIcon}>
+                    <Image
+                      src={
+                        !isMob768
+                          ? "/assets/images/svg/card-grid-icon.svg"
+                          : "/assets/images/app-images/cardGrid.png"
+                      }
+                      fill
+                      alt="card-view"
+                    />
+                  </div>
+
+                  <p className={mergeClass(classes.cardTitle)}>
+                    Cards
+                  </p>
                 </div>
 
-                <div className={classes.cardsView}>
-                  {/* CARD VIEW */}
-                  <div
+                {/* LIST VIEW */}
+                <div
+                  className={mergeClass(
+                    classes.listViewTypeDiv,
+                    cardViewType === "list" && classes.listIconActive,
+                  )}
+                  onClick={() => setCardViewType("list")}
+                >
+                  <ReactSVG
+                    src={"/assets/images/svg/productListIcon.svg"}
                     className={mergeClass(
-                      classes.viewTypeDiv,
-                      cardViewType === "card" && classes.listIconActive,
-                    )}
-                    onClick={() => setCardViewType("card")}
-                  >
-                    <div className={classes.gridIcon}>
-                      <Image
-                        src={
-                          !isMob768
-                            ? "/assets/images/svg/card-grid-icon.svg"
-                            : "/assets/images/app-images/cardGrid.png"
-                        }
-                        fill
-                        alt="card-view"
-                      />
-                    </div>
-
-                    <p className={mergeClass(classes.cardTitle)}>
-                      Cards
-                    </p>
-                  </div>
-
-                  {/* LIST VIEW */}
-                  <div
-                    className={mergeClass(
-                      classes.listViewTypeDiv,
+                      classes.listIcon,
                       cardViewType === "list" && classes.listIconActive,
                     )}
-                    onClick={() => setCardViewType("list")}
-                  >
-                    <ReactSVG
-                      src={"/assets/images/svg/productListIcon.svg"}
-                      className={mergeClass(
-                        classes.listIcon,
-                        cardViewType === "list" && classes.listIconActive,
-                      )}
-                    />
+                  />
 
-                    <p
-                      className={mergeClass(
-                        "fs-18",
-                        classes.listTitle,
-                        cardViewType === "list" && classes.listIconActive,
-                      )}
-                    >
-                      List
-                    </p>
-                  </div>
+                  <p
+                    className={mergeClass(
+                      "fs-18",
+                      classes.listTitle,
+                      cardViewType === "list" && classes.listIconActive,
+                    )}
+                  >
+                    List
+                  </p>
                 </div>
               </div>
             </div>
-          </Col>
-        )}
+          </div>
+        </Col>
       </Row>
     </>
   );

@@ -26,6 +26,8 @@ import { useItemNote } from "@/components/common/hooks/useItemNote";
 export default function ProductDetailCard({ data, setVariantSelect }) {
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
   const { cart } = useSelector((state) => state?.cartReducer);
+  const { isLogin } = useSelector((state) => state?.authReducer);
+  const isAuthenticated = accessToken && isLogin;
   const dispatch = useDispatch();
 
   const [forceUpdate, setForceUpdate] = useState(0);
@@ -145,7 +147,7 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
           <p className={mergeClass("fs-12 fw-500", classes.productId)}>
             {data?.itemid}
           </p>
-          {accessToken && (
+          {isAuthenticated && (
             <button
               className={mergeClass(
                 classes.noteTriggerBtn,
@@ -163,7 +165,7 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
         </div>
 
         {/* 2-row textarea — opens on button click, saves on second click */}
-        {accessToken && isEditing && (
+        {isAuthenticated && isEditing && (
           <textarea
             rows={2}
             placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
@@ -175,7 +177,7 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
           />
         )}
 
-        {accessToken ? (
+        {isAuthenticated ? (
           <div className={classes.counterDiv}>
             <DropDown
               customStyle={{

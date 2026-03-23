@@ -32,7 +32,9 @@ export default function ProductListCard({
   isApi = false,
 }) {
   const { cart } = useSelector((state) => state?.cartReducer);
+  const { isLogin } = useSelector((state) => state?.authReducer);
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
+  const isAuthenticated = accessToken && isLogin;
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -142,7 +144,7 @@ export default function ProductListCard({
         <p className={mergeClass("fs-12 fw-500", classes.productId)}>
           {data?.itemid}
         </p>
-        {accessToken && (
+        {isAuthenticated && (
           <button
             className={mergeClass(
               classes.noteTriggerBtn,
@@ -158,7 +160,7 @@ export default function ProductListCard({
       </div>
 
       {/* Textarea — opens on button click, closes on Save */}
-      {accessToken && isEditing && (
+      {isAuthenticated && isEditing && (
         <div className={classes.noteWrapper}>
           <textarea
             rows={2}
@@ -198,7 +200,7 @@ export default function ProductListCard({
             <NoteBlock />
 
             {/* Cart controls */}
-            {accessToken ? (
+            {isAuthenticated ? (
               <>
                 <DropDown
                   customStyle={{
@@ -284,7 +286,7 @@ export default function ProductListCard({
           </div>
 
           <div className={classes.cardBody}>
-            {accessToken ? (
+            {isAuthenticated ? (
               <div className={classes.counterDiv}>
                 <DropDown
                   customStyle={{
