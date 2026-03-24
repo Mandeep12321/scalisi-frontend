@@ -9,7 +9,8 @@ import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setTheProductData } from "@/store/common/commonSlice";
 import classes from "./ProductsPageView.module.css";
 import landingClasses from "../LandingPageView/LandingPageView.module.css";
 import LandingFilters from "../LandingPageView/components/LandingFilters";
@@ -22,6 +23,7 @@ import OrderGuideView from "../LandingPageView/components/OrderGuideView";
 export default function ProductsPageView({ cmsData }) {
   const _cmsData = cmsData;
   const router = useRouter();
+  const dispatch = useDispatch();
   const { isLogin, location } = useSelector((state) => state.authReducer);
 
   const [showLocationsModal, setShowLocationsModal] = useState(false);
@@ -184,6 +186,10 @@ export default function ProductsPageView({ cmsData }) {
               productData={productData}
               loading={loading}
               setProductData={setProductData}
+              onCardClick={(item) => {
+                dispatch(setTheProductData(item));
+                router.push(`/products/${item?._id || item?.itemid}`);
+              }}
             />
           )}
 
