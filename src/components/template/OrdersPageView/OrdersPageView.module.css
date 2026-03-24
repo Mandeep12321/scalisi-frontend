@@ -58,12 +58,13 @@
   color: var(--text-gray-color);
   opacity: 78%;
 
-  text-decoration: 1px solid underline var(--text-gray-color);
+  text-decoration: none;
 }
 
 .addNote p {
   text-underline-offset: 4px;
 }
+
 .addNote:hover {
   color: var(--green-color-v);
 }
@@ -136,9 +137,8 @@
 }
 
 .removeLink {
-  text-decoration: underline 1px solid var(--red-color);
   color: var(--red-color);
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
   margin-bottom: 1px;
@@ -221,9 +221,11 @@
 .announcementLeft {
   padding-right: 18px;
 }
+
 .announcementRight {
   padding-left: 18px;
 }
+
 .cardDiv {
   background-color: var(--white-color);
   padding: 9px;
@@ -235,16 +237,16 @@
     gap: 1.4%;
   }
 
-  .customRow > div:first-child,
-  .customRow > div:nth-child(3) {
+  .customRow>div:first-child,
+  .customRow>div:nth-child(3) {
     width: 64.6%;
   }
 
-  .customRow > div:nth-child(2) {
+  .customRow>div:nth-child(2) {
     width: 34%;
   }
 
-  .customRow > div:nth-child(3) > div > div {
+  .customRow>div:nth-child(3)>div>div {
     padding-inline: 50px !important;
   }
 
@@ -263,6 +265,7 @@
 }
 
 @media (max-width: 1199px) {
+
   .announcementRight,
   .announcementLeft {
     padding-top: 70px;
@@ -274,6 +277,7 @@
   .customRow {
     row-gap: 40px;
   }
+
   .tableBodyClass,
   .tableHeadClass {
     min-width: auto !important;
@@ -282,14 +286,17 @@
 }
 
 @media (max-width: 992px) {
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
+
   .announcementRight {
     padding-left: 10px;
   }
@@ -322,6 +329,7 @@
     gap: 0px !important;
     height: 85px !important;
   }
+
   .tableBodyClass * {
     font-size: 14px;
   }
@@ -336,11 +344,11 @@
     gap: 15px;
   }
 
-  .priceDiv > p {
+  .priceDiv>p {
     font-size: 15px;
   }
 
-  .customRow > div:nth-child(2) div[class*="mainClass"] {
+  .customRow>div:nth-child(2) div[class*="mainClass"] {
     padding-inline: 20px;
   }
 
@@ -358,6 +366,7 @@
     padding-right: 0px;
     padding-bottom: 0px;
   }
+
   .announcementRight {
     padding-left: 0px;
   }
@@ -367,18 +376,22 @@
   .mainDiv {
     padding-top: 41px;
   }
+
   .announcementLeft {
     padding-right: 0px;
     padding-top: 40px;
     padding-bottom: 40px;
   }
+
   .announcementRight {
     padding-top: 20px;
     padding-bottom: 50px;
   }
+
   .orderPlacedContainer {
     zoom: 0.6;
   }
+
   .colorDivClass {
     padding: 11px 13px;
   }
@@ -386,12 +399,14 @@
   .mainDivClass {
     margin-block: 29px 28px !important;
   }
+
   .descriptionClass {
     margin-top: 11px !important;
   }
 }
 
 @media screen and (max-width: 500px) {
+
   .tableBodyClass,
   .tableHeadClass {
     overflow-x: scroll !important;
@@ -402,7 +417,7 @@
     font-size: 12px;
   }
 
-  .customRow > div:nth-child(3) div[class*="header"] {
+  .customRow>div:nth-child(3) div[class*="header"] {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -411,12 +426,12 @@
     padding-top: 10px;
   }
 
-  .customRow > div:nth-child(3) div[class*="buttonDiv"] {
+  .customRow>div:nth-child(3) div[class*="buttonDiv"] {
     display: flex;
     flex-direction: column-reverse;
   }
 
-  .customRow > div:nth-child(3) div[class*="buttonDiv"] button {
+  .customRow>div:nth-child(3) div[class*="buttonDiv"] button {
     min-height: unset;
   }
 }
@@ -427,18 +442,23 @@
     padding-bottom: 40px;
     padding-right: 0px !important;
   }
+
   .heroSecColor {
     height: 141px;
   }
+
   .mainDivClass p {
     padding-top: 5px !important;
   }
+
   .colorDivClass {
     padding: 9px 13px !important;
   }
+
   .customRow {
     row-gap: 40px;
   }
+
   .colorHeadingClass {
     font-weight: 700;
   }

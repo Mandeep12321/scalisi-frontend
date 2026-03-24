@@ -32,7 +32,7 @@ export default function ProductGrid({
               data={item}
               onClick={() => {
                 dispatch(setTheProductData(item));
-                router.push(`/products/${item?.itemid || index}`);
+                router.push(`/products/${item?._id || item?.itemid}`);
               }}
               setVariantSelect={(selectedItems) => {
                 const dataCopy = structuredClone(productData);

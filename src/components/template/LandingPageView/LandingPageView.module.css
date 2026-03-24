@@ -119,11 +119,18 @@
   padding-bottom: 6px;
   border-bottom: 3px solid transparent;
   transition: border-color 0.2s ease, color 0.2s ease;
+  text-decoration: none !important;
 }
+
+.catalogTab p {
+  text-decoration: none !important;
+}
+
 .catalogTabsRow .catalogTab {
   padding-bottom: 0;
   border-bottom: none;
 }
+
 .catalogTab:hover .catalogTabLabel {
   color: var(--primary-color);
   opacity: 0.85;
@@ -133,11 +140,13 @@
   border-bottom: 3px solid var(--primary-color) !important;
 } */
 
-.catalogTabActive .catalogTabIcon svg{
+.catalogTabActive .catalogTabIcon svg {
   fill: rgb(200, 1, 1);
 }
-.catalogTabActive .cardTitle{
+
+.catalogTabActive .cardTitle {
   font-weight: 600;
+  text-decoration: none !important;
 }
 
 .catalogTabActive .catalogTabLabel {
@@ -509,25 +518,32 @@
 }
 
 .catalogTabLabel {
-  font-family: var(--font-primary); /* or your app font */
+  font-family: var(--font-primary);
+  /* or your app font */
   font-size: 18px;
-  font-weight: 600;  /* instead of 700 (too bold usually) */
+  font-weight: 600;
+  /* instead of 700 (too bold usually) */
   line-height: 24px;
   color: var(--text-color-v1);
 }
-.gridIcon img{
+
+.gridIcon img {
   filter: grayscale(1) brightness(2.5);
 }
-.listIconActive div img{
-  filter:unset !important;
+
+.listIconActive div img {
+  filter: unset !important;
 }
-.listIconActive .cardTitle{
-font-weight: 600;
+
+.listIconActive .cardTitle {
+  font-weight: 600;
 }
-.listIconActive p{
+
+.listIconActive p {
   font-weight: 600;
   color: #363636 !important;
 }
+
 .listIconActive svg {
   filter: brightness(0) saturate(100%) invert(5%) sepia(100%) saturate(10000%) hue-rotate(0deg);
 }

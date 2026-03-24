@@ -38,10 +38,10 @@ export default function ProductsPageView({ cmsData }) {
   );
 
   // ── Refs for stable API values ────────────────────────────────────────────────
-  const pageRef     = useRef(1);
+  const pageRef = useRef(1);
   const dropDownRef = useRef(dropDown);
-  const catalogRef  = useRef(isLogin ? "orderGuide" : "fullCatalog");
-  const subCatRef   = useRef(null);
+  const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
+  const subCatRef = useRef(null);
   const locationRef = useRef(location);
 
   // Track which catalog tabs have been fetched (avoid double-fetch on first load)
@@ -99,12 +99,12 @@ export default function ProductsPageView({ cmsData }) {
     if (isLogin && !fetchedCatalogTypes.current.has(catalogRef.current)) return;
 
     fetchProducts({
-      page:        pageRef.current,
-      limit:       PRODUCT_RECORDS_LIMIT,
+      page: pageRef.current,
+      limit: PRODUCT_RECORDS_LIMIT,
       isLogin,
-      location:    locationRef.current,
-      sort:        dropDownRef.current,
-      type:        catalogRef.current,
+      location: locationRef.current,
+      sort: dropDownRef.current,
+      type: catalogRef.current,
       subCategory: subCatRef.current?.value || null,
     });
   }, [fetchTrigger]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -184,7 +184,6 @@ export default function ProductsPageView({ cmsData }) {
               productData={productData}
               loading={loading}
               setProductData={setProductData}
-              onCardClick={(item, index) => router.push(`/products/${index}`)}
             />
           )}
 

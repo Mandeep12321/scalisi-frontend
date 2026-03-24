@@ -182,13 +182,16 @@ export default function ProductListCard({
       {!isMobile ? (
         /* ── DESKTOP layout ── */
         <div className={classes.mainDiv}>
-          <div className={classes.imageDiv}>
+          <div 
+            className={mergeClass("cursor-pointer", classes.imageDiv)}
+            onClick={onClick}
+          >
             <Image fill alt={data?.itemid} src={data?.fullimagepath} />
           </div>
 
           <div className={classes.cardBody}>
             <h3
-              onClick={() => router.push("/products/product-detail")}
+              onClick={onClick}
               className={mergeClass(
                 classes.title,
                 "cursor-pointer fs-20 maxLine2 fw-500"
@@ -268,12 +271,15 @@ export default function ProductListCard({
         /* ── MOBILE layout ── */
         <div className={classes.mainDivMobCard}>
           <div className={classes.cardHead}>
-            <div className={classes.imageDiv}>
+            <div 
+              className={mergeClass("cursor-pointer", classes.imageDiv)}
+              onClick={onClick}
+            >
               <Image fill alt={data?.description} src={data?.fullimagepath} />
             </div>
             <div className={classes.headContent}>
               <h3
-                onClick={() => router.push("/products/product-detail")}
+                onClick={onClick}
                 className={mergeClass(
                   classes.title,
                   "cursor-pointer fs-20 maxLine2 fw-500"
