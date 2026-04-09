@@ -1,4 +1,4 @@
-export const formatProducts = (data = [], isLoggedIn = false) => {
+export const formatProducts = (data = [], isLoggedIn = false, type = "") => {
   return data.map((item) => ({
     itemid: item.ERP_ID ?? item.itemid,
     description: item.ERP_ItemDesc ?? item.description,
@@ -26,6 +26,9 @@ export const formatProducts = (data = [], isLoggedIn = false) => {
 
     // ✅ image (unchanged)
     image: item.imagename,
-    fullimagepath: isLoggedIn ? item.fullimagepath : `https://jackscalisi.webfss.com/img/itemimages/${item.imagename}`,
+    fullimagepath:
+      type === "orderGuide" || !isLoggedIn
+        ? `https://jackscalisi.webfss.com/img/itemimages/${item.imagename}`
+        : item.fullimagepath,
   }));
 };

@@ -42,4 +42,30 @@ export const jackApi = {
 
     return jackApiClient.post(url, payload);
   },
+
+  // ===============================
+  // 📋 GET ORDER GUIDE (AUTH - POST)
+  // ===============================
+  getOrderGuide: ({
+    pageNumber = 1,
+    pageSize = 25,
+    subCategory,
+    sort,
+    payload = {},
+  }) => {
+    let url = `${JACK_BASE}/orderguide?PageNumber=${pageNumber}&PageSize=${pageSize}`;
+
+    if (subCategory) {
+      const formattedSubCategory = subCategory
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+      url += `&subCategory=${encodeURIComponent(formattedSubCategory)}`;
+    }
+
+    if (sort) {
+      url += `&SortBy=${encodeURIComponent(sort)}`;
+    }
+
+    return jackApiClient.post(url, payload);
+  },
 };

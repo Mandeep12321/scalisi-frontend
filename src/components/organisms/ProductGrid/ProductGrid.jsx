@@ -2,19 +2,23 @@
 
 import ProductCard from "@/components/molecules/ProductCard";
 import { Skeleton } from "@mui/material";
-import classes from "../template/LandingPageView/LandingPageView.module.css";
+import classes from "./ProductGrid.module.css";
+import { useDispatch } from "react-redux";
+import { setTheProductData } from "@/store/common/commonSlice";
+import { useRouter } from "next/navigation";
 
 export default function ProductGrid({
   productData = [],
   loading,
-  onCardClick,
   setProductData,
-  skeletonCount = 12,
 }) {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   return (
     <div className={classes.productCard__wrapper}>
       {loading
-        ? Array.from({ length: skeletonCount }).map((_, index) => (
+        ? Array.from({ length: 12 }).map((_, index) => (
             <Skeleton
               key={index}
               variant="rectangular"
@@ -24,21 +28,18 @@ export default function ProductGrid({
           ))
         : productData?.map((item, index) => (
             <ProductCard
-              key={item?.itemid || index}
+              key={item?._id || item?.itemid || index}
               data={item}
-              onClick={() =>
-                onCardClick ? onCardClick(item, index) : null
-              }
+              onClick={() => {
+                dispatch(setTheProductData(item));
+                router.push(`/products/${item?._id || item?.itemid}`);
+              }}
               setVariantSelect={(selectedItems) => {
-                if (!setProductData) return;
-
                 const dataCopy = structuredClone(productData);
-
                 dataCopy.splice(index, 1, {
                   ...item,
                   ...selectedItems,
                 });
-
                 setProductData(dataCopy);
               }}
             />

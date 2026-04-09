@@ -80,7 +80,6 @@ export default function LandingFilters({
           lg={8}
           sm={12}
           className="d-flex justify-content-end align-items-center"
-          style={{ visibility: catalogType === "orderGuide" ? "hidden" : "visible" }}
         >
           <div className={classes.filtersDiv}>
             {/* DROPDOWNS */}

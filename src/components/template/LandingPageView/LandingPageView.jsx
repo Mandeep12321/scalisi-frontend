@@ -12,11 +12,10 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import classes from "./LandingPageView.module.css";
 import LandingFilters from "./components/LandingFilters";
-import useCategories from "./hooks/useCategories";
-import ProductGrid from "./components/ProductGrid";
-import ProductListView from "./components/ProductList";
-import useProducts from "./hooks/useProducts";
-import OrderGuideView from "./components/OrderGuideView";
+import useCategories from "@/resources/hooks/useCategories";
+import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
+import ProductListView from "@/components/organisms/ProductListView/ProductListView";
+import useProducts from "@/resources/hooks/useProducts";
 import useDebounce from "@/resources/hooks/useDebounce";
 import LocationsModal from "@/modals/LocationsModal/LocationsModal";
 
@@ -60,9 +59,7 @@ useEffect(() => {
 
   // Tracks which catalog tabs have been explicitly activated.
   // Logged-in users: fullCatalog starts absent so API is skipped until clicked.
-  const fetchedCatalogTypes = useRef(
-    new Set(!isLogin ? ["fullCatalog"] : [])
-  );
+  const fetchedCatalogTypes = useRef(new Set([catalogRef.current]));
 
   // The ONLY dependency of the fetch useEffect.
   // Incrementing it is the sole trigger for an API call.
@@ -75,7 +72,12 @@ useEffect(() => {
 
   // Keep locationRef in sync with Redux
   useEffect(() => {
+    const prevLocation = locationRef.current;
     locationRef.current = location;
+    // If location just arrived, trigger a fetch
+    if (!prevLocation && location) {
+      triggerFetch();
+    }
   }, [location]);
 
   // ── Fetch categories once on mount ─────────────────────────────────────────
@@ -88,10 +90,7 @@ useEffect(() => {
     if (categories.length && !subCatRef.current) {
       subCatRef.current = categories[0];
       setSubCategory(categories[0]);
-      // Trigger first fetch only if we should be showing products
-      if (!(isLogin && catalogRef.current === "orderGuide")) {
-        triggerFetch();
-      }
+      triggerFetch();
     }
   }, [categories]);
 
@@ -112,9 +111,8 @@ useEffect(() => {
   // Fires ONLY when fetchTrigger changes. All values come from refs so they
   // are always fresh regardless of React's render cycle.
   useEffect(() => {
-    if (!subCatRef.current) return;
+    if (catalogRef.current !== "orderGuide" && !subCatRef.current) return;
     if (isLogin && !locationRef.current) return;
-    if (isLogin && catalogRef.current === "orderGuide") return;
     if (isLogin && !fetchedCatalogTypes.current.has(catalogRef.current)) return;
 
     fetchProducts({
@@ -148,9 +146,7 @@ useEffect(() => {
     fetchedCatalogTypes.current.add(type);
     catalogRef.current = type;
     setCatalogType(type);
-    if (type !== "orderGuide") {
-      resetPageAndFetch();
-    }
+    resetPageAndFetch();
   };
 
   const handleSubCategoryChange = (val) => {
@@ -209,16 +205,14 @@ useEffect(() => {
 
         {/* CONTENT */}
         <Col md={12} style={{ marginTop: "40px" }}>
-          {catalogType !== "orderGuide" && cardViewType === "card" && (
+          {cardViewType === "card" ? (
             <ProductGrid
               productData={productData}
               loading={loading}
               router={router}
               setProductData={setProductData}
             />
-          )}
-
-          {catalogType !== "orderGuide" && cardViewType === "list" && (
+          ) : (
             <ProductListView
               productData={productData}
               loading={loading}
@@ -226,13 +220,10 @@ useEffect(() => {
               setProductData={setProductData}
             />
           )}
-
-          {catalogType === "orderGuide" && <OrderGuideView />}
         </Col>
 
         {/* PAGINATION */}
-        {catalogType !== "orderGuide" &&
-          totalRecords > PRODUCT_RECORDS_LIMIT && (
+        {totalRecords > PRODUCT_RECORDS_LIMIT && (
             <Col md={12}>
               <div style={{ marginTop: "40px" }}>
                 <PaginationComponent

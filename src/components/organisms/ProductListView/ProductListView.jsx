@@ -3,18 +3,19 @@
 import { Row, Col } from "react-bootstrap";
 import ProductListCard from "@/components/molecules/ProductListCard";
 import { Skeleton } from "@mui/material";
-import classes from "../LandingPageView.module.css";
+import classes from "./ProductListView.module.css";
 import { useDispatch } from "react-redux";
 import { setTheProductData } from "@/store/common/commonSlice";
 import { useRouter } from "next/navigation";
 
 export default function ProductListView({
-  productData,
+  productData = [],
   loading,
   setProductData,
 }) {
   const dispatch = useDispatch();
   const router = useRouter();
+
   return (
     <Row className="gy-2 gy-sm-4">
       {loading === "fetchProducts"
@@ -27,7 +28,7 @@ export default function ProductListView({
             />
           ))
         : productData?.map((item, index) => (
-            <Col md={12} lg={12} xl={6} key={item?._id || index}>
+            <Col md={12} lg={12} xl={6} key={item?._id || item?.itemid || index}>
               <ProductListCard
                 data={item}
                 onClick={() => {

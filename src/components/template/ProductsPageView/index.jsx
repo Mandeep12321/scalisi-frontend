@@ -14,11 +14,10 @@ import { setTheProductData } from "@/store/common/commonSlice";
 import classes from "./ProductsPageView.module.css";
 import landingClasses from "../LandingPageView/LandingPageView.module.css";
 import LandingFilters from "../LandingPageView/components/LandingFilters";
-import useCategories from "../LandingPageView/hooks/useCategories";
-import ProductGrid from "@/components/common/ProductGrid";
-import useProducts from "../LandingPageView/hooks/useProducts";
-import ProductListView from "../LandingPageView/components/ProductList";
-import OrderGuideView from "../LandingPageView/components/OrderGuideView";
+import useCategories from "@/resources/hooks/useCategories";
+import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
+import ProductListView from "@/components/organisms/ProductListView/ProductListView";
+import useProducts from "@/resources/hooks/useProducts";
 
 export default function ProductsPageView({ cmsData }) {
   const _cmsData = cmsData;
@@ -47,9 +46,7 @@ export default function ProductsPageView({ cmsData }) {
   const locationRef = useRef(location);
 
   // Track which catalog tabs have been fetched (avoid double-fetch on first load)
-  const fetchedCatalogTypes = useRef(
-    new Set(!isLogin ? ["fullCatalog"] : [])
-  );
+  const fetchedCatalogTypes = useRef(new Set([catalogRef.current]));
 
   // Single fetch trigger — the ONLY dep of the fetch effect
   const [fetchTrigger, setFetchTrigger] = useState(0);
@@ -62,7 +59,12 @@ export default function ProductsPageView({ cmsData }) {
 
   // Keep locationRef in sync
   useEffect(() => {
+    const prevLocation = locationRef.current;
     locationRef.current = location;
+    // If location just arrived, trigger a fetch
+    if (!prevLocation && location) {
+      triggerFetch();
+    }
   }, [location]);
 
   const { productData, setProductData, totalRecords, loading, fetchProducts } =
@@ -79,9 +81,7 @@ export default function ProductsPageView({ cmsData }) {
     if (categories.length && !subCatRef.current) {
       subCatRef.current = categories[0];
       setSubCategory(categories[0]);
-      if (!(isLogin && catalogRef.current === "orderGuide")) {
-        triggerFetch();
-      }
+      triggerFetch();
     }
   }, [categories]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -95,9 +95,8 @@ export default function ProductsPageView({ cmsData }) {
 
   // THE fetch effect — fires only when fetchTrigger increments
   useEffect(() => {
-    if (!subCatRef.current) return;
+    if (catalogRef.current !== "orderGuide" && !subCatRef.current) return;
     if (isLogin && !locationRef.current) return;
-    if (isLogin && catalogRef.current === "orderGuide") return;
     if (isLogin && !fetchedCatalogTypes.current.has(catalogRef.current)) return;
 
     fetchProducts({
@@ -116,11 +115,9 @@ export default function ProductsPageView({ cmsData }) {
     fetchedCatalogTypes.current.add(type);
     catalogRef.current = type;
     setCatalogType(type);
-    if (type !== "orderGuide") {
-      pageRef.current = 1;
-      setPage(1);
-      triggerFetch();
-    }
+    pageRef.current = 1;
+    setPage(1);
+    triggerFetch();
   };
 
   const handleSubCategoryChange = (val) => {
@@ -179,9 +176,7 @@ export default function ProductsPageView({ cmsData }) {
 
         {/* CONTENT */}
         <Col md={12} style={{ marginTop: "40px" }}>
-          {catalogType === "orderGuide" && <OrderGuideView />}
-
-          {catalogType !== "orderGuide" && cardViewType === "card" && (
+          {cardViewType === "card" ? (
             <ProductGrid
               productData={productData}
               loading={loading}
@@ -191,9 +186,7 @@ export default function ProductsPageView({ cmsData }) {
                 router.push(`/products/${item?._id || item?.itemid}`);
               }}
             />
-          )}
-
-          {catalogType !== "orderGuide" && cardViewType === "list" && (
+          ) : (
             <ProductListView
               productData={productData}
               loading={loading}
@@ -204,7 +197,7 @@ export default function ProductsPageView({ cmsData }) {
         </Col>
 
         {/* Pagination */}
-        {catalogType !== "orderGuide" && totalRecords > PRODUCT_RECORDS_LIMIT && (
+        {totalRecords > PRODUCT_RECORDS_LIMIT && (
           <Col md={12}>
             <div style={{ marginTop: "40px" }}>
               <PaginationComponent
