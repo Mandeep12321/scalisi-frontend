@@ -114,7 +114,7 @@ export default function ProductsPageView({ cmsData }) {
       limit: PRODUCT_RECORDS_LIMIT,
       isLogin,
       location: locationRef.current,
-      sort: dropDownRef.current,
+      sort: dropDownRef.current?.value || dropDownRef.current,
       search: debouncedSearch,
       type: catalogRef.current,
       subCategory: subCatRef.current?.value || null,

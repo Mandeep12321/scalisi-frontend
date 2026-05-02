@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import classes from "./LandingPageView.module.css";
 import { setGlobalSearch } from "@/store/common/commonSlice";
 import LandingFilters from "./components/LandingFilters";
+import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
 import useCategories from "@/resources/hooks/useCategories";
 import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
 import ProductListView from "@/components/organisms/ProductListView/ProductListView";
@@ -37,7 +38,7 @@ useEffect(() => {
 
   // ── UI state (drives rendering only) ──────────────────────────────────────
   const [page, setPage] = useState(1);
-  const [dropDown, setDropDown] = useState("price_as");
+  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN[0]);
   // Guests always start on fullCatalog; logged-in users start on orderGuide
   const [catalogType, setCatalogType] = useState(
     isLogin ? "orderGuide" : "fullCatalog"
@@ -54,7 +55,7 @@ useEffect(() => {
   // ── Refs: authoritative values for API calls ───────────────────────────────
   // These are always up-to-date synchronously; the fetch effect reads from them.
   const pageRef = useRef(1);
-  const dropDownRef = useRef("price_as");
+  const dropDownRef = useRef(SORT_BY_DROPDOWN[0]);
   const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
   const subCatRef = useRef(null);
   const locationRef = useRef(location);
@@ -129,7 +130,7 @@ useEffect(() => {
       limit: PRODUCT_RECORDS_LIMIT,
       isLogin,
       location: locationRef.current,
-      sort: dropDownRef.current,
+      sort: dropDownRef.current?.value || dropDownRef.current,
       search: debouncedSearch,
       type: catalogRef.current,
       subCategory: subCatRef.current?.value || null,
