@@ -2,6 +2,7 @@
 
 import { Row, Col } from "react-bootstrap";
 import ProductListCard from "@/components/molecules/ProductListCard";
+import NoProductsFound from "@/components/molecules/NoProductsFound/NoProductsFound";
 import { Skeleton } from "@mui/material";
 import classes from "./ProductListView.module.css";
 import { useDispatch } from "react-redux";
@@ -27,7 +28,8 @@ export default function ProductListView({
               className={classes.skeletonList}
             />
           ))
-        : productData?.map((item, index) => (
+        : productData?.length > 0
+        ? productData?.map((item, index) => (
             <Col md={12} lg={12} xl={6} key={item?._id || item?.itemid || index}>
               <ProductListCard
                 data={item}
@@ -47,7 +49,12 @@ export default function ProductListView({
                 }}
               />
             </Col>
-          ))}
+          ))
+        : (
+            <Col md={12}>
+              <NoProductsFound />
+            </Col>
+          )}
     </Row>
   );
 }

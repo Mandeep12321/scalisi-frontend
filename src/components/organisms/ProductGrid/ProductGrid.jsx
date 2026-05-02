@@ -1,6 +1,7 @@
 "use client";
 
 import ProductCard from "@/components/molecules/ProductCard";
+import NoProductsFound from "@/components/molecules/NoProductsFound/NoProductsFound";
 import { Skeleton } from "@mui/material";
 import classes from "./ProductGrid.module.css";
 import { useDispatch } from "react-redux";
@@ -26,7 +27,8 @@ export default function ProductGrid({
               className={classes.skeleton}
             />
           ))
-        : productData?.map((item, index) => (
+        : productData?.length > 0
+        ? productData?.map((item, index) => (
             <ProductCard
               key={item?._id || item?.itemid || index}
               data={item}
@@ -43,7 +45,8 @@ export default function ProductGrid({
                 setProductData(dataCopy);
               }}
             />
-          ))}
+          ))
+        : <NoProductsFound />}
     </div>
   );
 }

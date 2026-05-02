@@ -22,7 +22,8 @@ import { useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setGlobalSearch } from "@/store/common/commonSlice";
 import { Button } from "../../atoms/Button";
 import ImageDropDown from "../../atoms/ImageDropDown";
 import OrderListCard from "../../molecules/OrderListCard";
@@ -34,14 +35,16 @@ const DesktopHeader = ({
   containerClass = "",
   className = "",
 }) => {
+  const dispatch = useDispatch();
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
 
   const { cart } = useSelector((state) => state?.cartReducer);
   const { location, isLogin } = useSelector((state) => state?.authReducer);
+  const { search } = useSelector((state) => state?.commonReducer);
   const pathname = usePathname();
   const router = useRouter();
 
-  const [search, setSearch] = useState();
+  const setSearch = (val) => dispatch(setGlobalSearch(val));
   const [showLocationsModal, setShowLocationsModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showEmptyCartModal, setShowEmptyCartModal] = useState(false);

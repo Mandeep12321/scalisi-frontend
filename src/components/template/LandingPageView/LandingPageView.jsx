@@ -9,8 +9,9 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./LandingPageView.module.css";
+import { setGlobalSearch } from "@/store/common/commonSlice";
 import LandingFilters from "./components/LandingFilters";
 import useCategories from "@/resources/hooks/useCategories";
 import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
@@ -23,6 +24,7 @@ export default function LandingPageView({ cmsData }) {
   const router = useRouter();
   const { isLogin: reduxIsLogin, location } = useSelector((state) => state.authReducer);
   const authState = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
 
   // Fallback to false if the physical cookie token has expired/been cleared
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
@@ -35,13 +37,14 @@ useEffect(() => {
 
   // ── UI state (drives rendering only) ──────────────────────────────────────
   const [page, setPage] = useState(1);
-  const [dropDown, setDropDown] = useState("Newest");
+  const [dropDown, setDropDown] = useState("price_as");
   // Guests always start on fullCatalog; logged-in users start on orderGuide
   const [catalogType, setCatalogType] = useState(
     isLogin ? "orderGuide" : "fullCatalog"
   );
   const [subCategory, setSubCategory] = useState(null);
-  const [search, setSearch] = useState("");
+  const { search } = useSelector((state) => state?.commonReducer);
+  const setSearch = (val) => dispatch(setGlobalSearch(val));
   const [cardViewType, setCardViewType] = useState("card");
   const debouncedSearch = useDebounce(search, 500);
   const [isMob768, setIsMob768] = useState(false);
@@ -51,7 +54,7 @@ useEffect(() => {
   // ── Refs: authoritative values for API calls ───────────────────────────────
   // These are always up-to-date synchronously; the fetch effect reads from them.
   const pageRef = useRef(1);
-  const dropDownRef = useRef("Newest");
+  const dropDownRef = useRef("price_as");
   const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
   const subCatRef = useRef(null);
   const locationRef = useRef(location);
@@ -107,6 +110,12 @@ useEffect(() => {
     }
   }, [isLogin, location]);
 
+  // ── Trigger fetch when debounced search changes ────────────────────────────
+  useEffect(() => {
+    resetPageAndFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearch]);
+
   // ── THE fetch effect ───────────────────────────────────────────────────────
   // Fires ONLY when fetchTrigger changes. All values come from refs so they
   // are always fresh regardless of React's render cycle.
@@ -121,6 +130,7 @@ useEffect(() => {
       isLogin,
       location: locationRef.current,
       sort: dropDownRef.current,
+      search: debouncedSearch,
       type: catalogRef.current,
       subCategory: subCatRef.current?.value || null,
     });
@@ -187,8 +197,6 @@ useEffect(() => {
         </Col>
 
         <LandingFilters
-          search={search}
-          setSearch={setSearch}
           dropDown={dropDown}
           setCatalogType={handleCatalogTypeChange}
           setDropDown={handleSortChange}

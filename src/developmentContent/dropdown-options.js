@@ -1,9 +1,8 @@
 export const SORT_BY_DROPDOWN = [
-  { label: "Relevance", value: "relevance" },
-  { label: "Product ID a to z", value: "id-a-to-z" },
-  { label: "Product ID z to a", value: "id-z-to-a" },
-  { label: "Product Title a to z", value: "title-a-to-z" },
-  { label: "Product Title z to a", value: "title-z-to-a" },
+  { label: "Price: Low to High", value: "price_as" },
+  { label: "Price: High to Low", value: "price_desc" },
+  { label: "Description: A to Z", value: "desc_asc" },
+  { label: "Description: Z to A", value: "desc_desc" },
 ];
 
 export const LANGUAGE_DROPDOWN = [

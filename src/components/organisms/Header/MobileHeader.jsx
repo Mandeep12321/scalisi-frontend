@@ -7,7 +7,7 @@ import { LANGUAGE_DROPDOWN } from "@/developmentContent/dropdown-options";
 import { handleDecrypt, mergeClass } from "@/resources/utils/helper";
 import { signOutRequest } from "@/store/auth/authSlice";
 import { clearCart } from "@/store/cart/cartSlice";
-import { setDrawerOpen } from "@/store/common/commonSlice";
+import { setDrawerOpen, setGlobalSearch } from "@/store/common/commonSlice";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,11 +35,12 @@ const MobileHeader = ({
   const dispatch = useDispatch();
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
   const { cart } = useSelector((state) => state?.cartReducer);
+  const { search } = useSelector((state) => state?.commonReducer);
 
   const pathname = usePathname();
   const router = useRouter();
 
-  const [search, setSearch] = useState();
+  const setSearch = (val) => dispatch(setGlobalSearch(val));
   const [language, setLanguage] = useState(() => {
     const googleTrans = Cookies.get("googtrans");
     if (googleTrans === "/en/es") return "ES";

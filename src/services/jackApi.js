@@ -6,12 +6,20 @@ export const jackApi = {
   // ===============================
   // 📦 GET PRODUCTS (Public)
   // ===============================
-  getProducts: ({ pageNumber = 1, pageSize = 25, subCategory = null }) => {
+  getProducts: ({ pageNumber = 1, pageSize = 25, subCategory = null, search = "", sort = "" }) => {
     let url = `${JACK_BASE}/items?pageNumber=${pageNumber}&pageSize=${pageSize}`;
 
     if (subCategory) {
       const formattedSubCategory = subCategory.replace(/-/g, " ");
       url += `&Subcategory=${encodeURIComponent(formattedSubCategory)}`;
+    }
+
+    if (search) {
+      url += `&search=${encodeURIComponent(search)}`;
+    }
+
+    if (sort) {
+      url += `&sort=${encodeURIComponent(sort)}`;
     }
 
     return jackApiClient.get(url);
@@ -31,6 +39,8 @@ export const jackApi = {
     pageNumber = 1,
     pageSize = 100,
     subCategory = null,
+    search = "",
+    sort = "",
     payload = {},
   }) => {
     let url = `${JACK_BASE}/items?pageNumber=${pageNumber}&pageSize=${pageSize}`;
@@ -38,6 +48,14 @@ export const jackApi = {
     if (subCategory) {
       const formattedSubCategory = subCategory.replace(/-/g, " ");
       url += `&subCategory=${encodeURIComponent(formattedSubCategory)}`;
+    }
+
+    if (search) {
+      url += `&search=${encodeURIComponent(search)}`;
+    }
+
+    if (sort) {
+      url += `&sort=${encodeURIComponent(sort)}`;
     }
 
     return jackApiClient.post(url, payload);
@@ -50,7 +68,8 @@ export const jackApi = {
     pageNumber = 1,
     pageSize = 25,
     subCategory,
-    sort,
+    search = "",
+    sort = "",
     payload = {},
   }) => {
     let url = `${JACK_BASE}/orderguide?PageNumber=${pageNumber}&PageSize=${pageSize}`;
@@ -62,8 +81,12 @@ export const jackApi = {
       url += `&subCategory=${encodeURIComponent(formattedSubCategory)}`;
     }
 
+    if (search) {
+      url += `&search=${encodeURIComponent(search)}`;
+    }
+
     if (sort) {
-      url += `&SortBy=${encodeURIComponent(sort)}`;
+      url += `&sort=${encodeURIComponent(sort)}`;
     }
 
     return jackApiClient.post(url, payload);

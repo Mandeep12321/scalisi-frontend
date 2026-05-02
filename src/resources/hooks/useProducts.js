@@ -27,19 +27,12 @@ export default function useProducts() {
           pageNumber: page,
           pageSize: limit,
           subCategory,
+          search,
+          sort,
         });
 
         const formatted = formatProducts(res.data.Items, false, type);
-        let filtered = formatted;
-
-        // ⚠️ IMPORTANT: search is still client-side (optional improvement later)
-        if (search) {
-          filtered = formatted.filter((p) =>
-            p.description?.toLowerCase().includes(search.toLowerCase())
-          );
-        }
-
-        setProductData(filtered);
+        setProductData(formatted);
 
         // ✅ Use backend total count
         setTotalRecords(res.data.TotalCount);
@@ -51,6 +44,7 @@ export default function useProducts() {
             pageNumber: page,
             pageSize: limit,
             subCategory,
+            search,
             sort,
             payload: {
               custno: location?.ERP_CID,
@@ -71,6 +65,7 @@ export default function useProducts() {
             pageNumber: page,
             pageSize: limit,
             subCategory,
+            search,
             sort,
             payload: {
               custno: location?.ERP_CID,

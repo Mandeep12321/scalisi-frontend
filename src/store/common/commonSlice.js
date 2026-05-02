@@ -2,7 +2,12 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { isDrawerOpen: false, productData: null, cmsData: null };
+const initialState = {
+  isDrawerOpen: false,
+  productData: null,
+  cmsData: null,
+  search: "",
+};
 
 const commonSlice = createSlice({
   name: "commonReducer",
@@ -20,6 +25,9 @@ const commonSlice = createSlice({
     setCmsData: (state, action) => {
       state.cmsData = action.payload;
     },
+    setGlobalSearch: (state, action) => {
+      state.search = action.payload;
+    },
   },
 });
 
@@ -28,6 +36,7 @@ export const {
   setTheProductData,
   clearProductData,
   setCmsData,
+  setGlobalSearch,
 } = commonSlice.actions;
 
 export default commonSlice.reducer;

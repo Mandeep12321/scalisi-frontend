@@ -7,8 +7,7 @@ import { ReactSVG } from "react-svg";
 import Image from "next/image";
 import { mergeClass } from "@/resources/utils/helper";
 import classes from "../LandingPageView.module.css";
-import { MdChecklist, MdOutlineMenuBook } from "react-icons/md";
-import { MdOutlineGridView } from "react-icons/md";
+import { MdChecklist, MdOutlineMenuBook, MdOutlineGridView } from "react-icons/md";
 
 export default function LandingFilters({
   setCatalogType,
