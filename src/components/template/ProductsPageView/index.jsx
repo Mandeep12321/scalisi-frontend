@@ -18,6 +18,7 @@ import useCategories from "@/resources/hooks/useCategories";
 import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
 import ProductListView from "@/components/organisms/ProductListView/ProductListView";
 import useProducts from "@/resources/hooks/useProducts";
+import useDebounce from "@/resources/hooks/useDebounce";
 
 export default function ProductsPageView({ cmsData }) {
   const _cmsData = cmsData;
@@ -33,10 +34,11 @@ export default function ProductsPageView({ cmsData }) {
   const [is375, setIs375] = useState(false);
   const [subCategory, setSubCategory] = useState(null);
 
-  // Guests always fullCatalog; logged-in start on orderGuide (same as landing page)
   const [catalogType, setCatalogType] = useState(
     isLogin ? "orderGuide" : "fullCatalog"
   );
+  const { search } = useSelector((state) => state?.commonReducer);
+  const debouncedSearch = useDebounce(search, 500);
 
   // ── Refs for stable API values ────────────────────────────────────────────────
   const pageRef = useRef(1);
@@ -93,6 +95,14 @@ export default function ProductsPageView({ cmsData }) {
     }
   }, [isLogin, location]);
 
+  // ── Trigger fetch when debounced search changes ────────────────────────────
+  useEffect(() => {
+    pageRef.current = 1;
+    setPage(1);
+    triggerFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearch]);
+
   // THE fetch effect — fires only when fetchTrigger increments
   useEffect(() => {
     if (catalogRef.current !== "orderGuide" && !subCatRef.current) return;
@@ -105,6 +115,7 @@ export default function ProductsPageView({ cmsData }) {
       isLogin,
       location: locationRef.current,
       sort: dropDownRef.current,
+      search: debouncedSearch,
       type: catalogRef.current,
       subCategory: subCatRef.current?.value || null,
     });
