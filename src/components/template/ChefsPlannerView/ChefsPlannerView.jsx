@@ -55,7 +55,9 @@ export default function ChefsPlannerView() {
           {data?.map((item, index) => (
             <Col key={index} sm={6} md={4} lg={3}>
               <div className={classes.plannerCard}>
-                <h3 className={classes.monthName}>{item.name}</h3>
+                <h3 className={mergeClass("fs-24 fw-600", classes.monthName)}>
+                  {item.name}
+                </h3>
                 <div className={classes.imageContainer}>
                   {item.imageUrl && (
                     <Image

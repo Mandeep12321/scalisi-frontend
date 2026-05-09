@@ -42,8 +42,6 @@
 }
 
 .monthName {
-  font-size: 24px;
-  font-weight: 700;
   color: var(--red-color);
   margin-bottom: 1.5rem;
   text-transform: capitalize;
