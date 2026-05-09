@@ -7,6 +7,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "@/components/atoms/Button";
 import Image from "next/image";
 import classes from "./ChefsPlannerView.module.css";
+import { mergeClass } from "@/resources/utils/helper";
 
 export default function ChefsPlannerView() {
   const [data, setData] = useState([]);
@@ -44,9 +45,9 @@ export default function ChefsPlannerView() {
   return (
     <div className={classes.main}>
       <Container className="py-5">
-        <div className="text-center mb-5">
-          <h1 className={classes.mainHeading}>Chef 's Planners</h1>
-          <p className={classes.subHeading}>
+        <div className="mb-5">
+          <h1 className="fs-49 fw-700 black-color mb-3">Chef's Planners</h1>
+          <p className={mergeClass("fs-18 fw-500 text-color-v3", classes.subHeading)}>
             Monthly guides that are useful as a quick reference to products that are particular to the month, season, and time of year.
           </p>
         </div>
@@ -74,8 +75,8 @@ export default function ChefsPlannerView() {
                     width: "100%",
                     marginTop: "20px",
                     fontWeight: "bold",
-                    backgroundColor: "#00a63f", // Match green in screenshot
-                    borderColor: "#00a63f",
+                    backgroundColor: "var(--primary-color)",
+                    borderColor: "var(--primary-color)",
                   }}
                 />
               </div>
