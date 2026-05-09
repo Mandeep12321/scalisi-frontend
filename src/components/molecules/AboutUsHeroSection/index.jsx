@@ -28,11 +28,10 @@ export default function AboutUsHeroSection({
           {data?.title}
         </h3>
         <h1
-          className={`${mergeClass(classes?.subTitle, styles?.aboutSubTitle)} ${
-            hasImage ? "" : "fs-29 500"
-          } ${!hasImage && classes.lineHeight} `}
+          className={`${mergeClass(classes?.subTitle, styles?.aboutSubTitle)} ${hasImage ? "" : "fs-29 500"
+            } ${!hasImage && classes.lineHeight} `}
         >
-          {data?.htmlDescription &&
+          {(data?.htmlDescription || data?.heading) &&
             HTMLReactParser(data?.htmlDescription || data?.heading)}
         </h1>
 
@@ -57,12 +56,9 @@ export default function AboutUsHeroSection({
           </>
         ) : (
           <div className={classes.callToActionDiv}>
-            {data?.arr?.map((item, index) => (
+            {(data?.arr || data?.calToAction)?.map((item, index) => (
               <div className={classes.ctaInner} key={index}>
-                <span>
-                  {CONTACT_PAGE_DATA?.heroSection?.calToAction[index]?.TheImage}
-                </span>
-                {console.log(item.text, "item.text")}
+                <span>{item?.TheImage}</span>
                 <p className="fs-17 fw-600">{item.text}</p>
               </div>
             ))}

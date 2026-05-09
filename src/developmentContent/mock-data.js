@@ -894,59 +894,40 @@ export const CONTACT_PAGE_DATA = {
 
   tableData: [
     {
-      title: "Jack Scalisi",
-      designation: "President / CEO",
-      expNum: "Ext. 303",
-      email: "jack@scalisiproduce.com",
-    },
-    {
-      title: "Bill Hoover",
-      designation: "Director Of Operations",
-      expNum: "Ext. 309",
-      email: "bill@scalisiproduce.com",
-    },
-    {
       title: "Lauren Gavagni",
-      designation: "Controller",
-      expNum: "Ext.305",
+      designation: "HR/Controller",
+      expNum: "Ext. 305",
       email: "lauren@scalisiproduce.com",
     },
     {
+      title: "Jennifer",
+      designation: "Head Accounting",
+      expNum: "Ext. 307",
+      email: "jennifer@scalisiproduce.com",
+    },
+    {
+      title: "Rachel",
+      designation: "Customer Service Manager",
+      expNum: "Ext. 322",
+      email: "rachel@scalisiproduce.com",
+    },
+    {
       title: "Anthony Scalisi",
-      designation: "Sales Director",
-      expNum: "Ext.306",
+      designation: "Sales Manager",
+      expNum: "Ext. 306",
       email: "anthonyc@scalisiproduce.com",
     },
     {
-      title: "Shannon Tedesco",
-      designation: "Customer Service Manager",
-      expNum: "Ext.332",
-      email: "shannon@scalisiproduce.com",
+      title: "Teddy",
+      designation: "Daytime Warehouse Manager",
+      expNum: "Ext. 308",
+      email: "teddy@scalisiproduce.com",
     },
     {
-      title: "Michele Becker",
-      designation: "Purchasing",
-      expNum: "Ext.304",
-      email: "michele@scalisiproduce.com",
-    },
-
-    {
-      title: "Cheryl Miller",
-      designation: "Accounts Receivable",
-      expNum: "Ext.307",
-      email: "cheryl@scalisiproduce.com",
-    },
-    {
-      title: "Carol Altman",
-      designation: "Accounts Payable",
-      expNum: "Ext.316",
-      email: "bill@scalisiproduce.com",
-    },
-    {
-      title: "Christina Owens",
-      designation: "Marketing/Social Media",
-      expNum: "Ext.300",
-      email: "christina@scalisiproduce.com",
+      title: "Jose",
+      designation: "Purchasing Manager",
+      expNum: "Ext. 304",
+      email: "jose@scalisiproduce.com",
     },
   ],
 

@@ -93,7 +93,9 @@ export default function ContactPageView({ cmsData }) {
     },
   ];
 
-  const tableBody = _cmsData?.contactSectionImage?.arr?.map((e) => ({
+  const tableBody = (
+    CONTACT_PAGE_DATA.tableData || _cmsData?.contactSectionImage?.arr
+  )?.map((e) => ({
     title: e?.title,
     designation: e?.designation,
     expNum: e?.expNum,
@@ -102,25 +104,20 @@ export default function ContactPageView({ cmsData }) {
 
   return (
     <>
-      <style>
-        {`
-      .Table_tableHeader__VKfPJ{
-        padding: 0px !important;
-        border-bottom: 0px !important;
-      }
-      `}
-      </style>
       <div className={classes.mainDiv}>
         <div className={classes.heroSection}>
           <Container>
             <Row>
               <Col md={12}>
                 <AboutUsHeroSection
+                  data={_cmsData?.hero || CONTACT_PAGE_DATA?.heroSection}
                   styles={{
                     mainDivContact: classes.mainDivContact,
                     contactLeftCol: classes.contactLeftCol,
+                    contactRightCol: classes.contactRightCol,
+                    aboutTitle: classes.aboutTitleContact,
+                    aboutSubTitle: classes.aboutSubTitleContact,
                   }}
-                  data={_cmsData?.hero}
                   hasImage={false}
                 />
               </Col>
@@ -145,7 +142,8 @@ export default function ContactPageView({ cmsData }) {
                           {is375 ? (
                             <Image
                               src={mediaUrl(
-                                _cmsData?.contactSectionImage?.image375
+                                _cmsData?.contactSectionImage?.image375 ||
+                                CONTACT_PAGE_DATA?.image
                               )}
                               className={classes.cardImage}
                               fill
@@ -153,7 +151,8 @@ export default function ContactPageView({ cmsData }) {
                           ) : (
                             <Image
                               src={mediaUrl(
-                                _cmsData?.contactSectionImage?.image
+                                _cmsData?.contactSectionImage?.image ||
+                                CONTACT_PAGE_DATA?.image
                               )}
                               className={classes.cardImage}
                               fill
@@ -180,6 +179,7 @@ export default function ContactPageView({ cmsData }) {
                     headings={tableHeader}
                     tableData={tableBody}
                     loading={loading}
+                    tableHead={classes.hideTableHeader}
                     tableHeaderDiv={classes.tablePadding}
                   />
                 </div>

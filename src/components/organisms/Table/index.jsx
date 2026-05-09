@@ -45,36 +45,38 @@ export default function Table({
           tableHeaderDiv
         )}
       >
-        <div
-          className={mergeClass(
-            classes.tableHeader,
-            tableHead,
-            "table100-head"
-          )}
-        >
-          <table className={classes.table}>
-            <thead className={mergeClass(classes.tableHeaderStyle)}>
-              <tr className={mergeClass(classes.border_radius)}>
-                {headings?.map((item, index) => (
-                  <th
-                    key={`${item?.label}${index}`}
-                    className={mergeClass(
-                      "fs-20",
-                      classes.headings,
-                      item?.className
-                    )}
-                    style={{
-                      textAlign: "start",
-                      ...(item?.style ?? {}),
-                    }}
-                  >
-                    {item.label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-          </table>
-        </div>
+        {headings?.some((h) => h.label) && (
+          <div
+            className={mergeClass(
+              classes.tableHeader,
+              tableHead,
+              "table100-head"
+            )}
+          >
+            <table className={classes.table}>
+              <thead className={mergeClass(classes.tableHeaderStyle)}>
+                <tr className={mergeClass(classes.border_radius)}>
+                  {headings?.map((item, index) => (
+                    <th
+                      key={`${item?.label}${index}`}
+                      className={mergeClass(
+                        "fs-20",
+                        classes.headings,
+                        item?.className
+                      )}
+                      style={{
+                        textAlign: "start",
+                        ...(item?.style ?? {}),
+                      }}
+                    >
+                      {item.label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            </table>
+          </div>
+        )}
         {loading ? (
           <TableSkeleton rowsCount={RECORDS_LIMIT} colsCount={4} />
         ) : (
