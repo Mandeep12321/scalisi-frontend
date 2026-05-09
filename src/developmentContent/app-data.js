@@ -18,8 +18,8 @@ export const HEADER_LINK = [
     path: "/products",
   },
   {
-    label: "Catalogs",
-    path: "/catalogs",
+    label: "Chef's Planner",
+    path: "/chefs-planner",
   },
 ];
 
@@ -64,8 +64,8 @@ export const MOBILE_HEADER_LINK = [
     imageUrl: "/assets/images/svg/productsIcon.svg",
   },
   {
-    label: "Catalogs",
-    path: "/catalogs",
+    label: "Chef's Planner",
+    path: "/chefs-planner",
     imageUrl: "/assets/images/svg/catalogsIcon.svg",
   },
   {
@@ -111,7 +111,7 @@ export const FOOTER_DATA = [
       { label: "Home", path: "/" },
       { label: "Order Now", path: "/products" },
       { label: "Order Guide", path: "/order-guide" },
-      { label: "Produce Catalog", path: "/catalogs" },
+      { label: "Chef's Planner", path: "/chefs-planner" },
       { label: "Produce PDF List", path: "/pdf" },
     ],
   },

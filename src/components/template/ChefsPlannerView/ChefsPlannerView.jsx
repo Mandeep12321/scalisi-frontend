@@ -1,0 +1,88 @@
+"use client";
+
+import LoadingComponent from "@/components/atoms/LoadingComponent";
+import { Get } from "@/interceptor/axiosInterceptor";
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { Button } from "@/components/atoms/Button";
+import Image from "next/image";
+import classes from "./ChefsPlannerView.module.css";
+
+export default function ChefsPlannerView() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState("loading");
+
+  const getData = async () => {
+    setLoading("loading");
+    const { response } = await Get({
+      route: "chef-planners",
+    });
+    if (response) {
+      setData(response?.data);
+    }
+    setLoading("");
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const handleDownload = (url) => {
+    if (url) {
+      window.open(url, "_blank");
+    }
+  };
+
+  if (loading === "loading") {
+    return (
+      <div className={classes.mainHeight}>
+        <LoadingComponent />
+      </div>
+    );
+  }
+
+  return (
+    <div className={classes.main}>
+      <Container className="py-5">
+        <div className="text-center mb-5">
+          <h1 className={classes.mainHeading}>Chef 's Planners</h1>
+          <p className={classes.subHeading}>
+            Monthly guides that are useful as a quick reference to products that are particular to the month, season, and time of year.
+          </p>
+        </div>
+        <Row className="gy-4">
+          {data?.map((item, index) => (
+            <Col key={index} sm={6} md={4} lg={3}>
+              <div className={classes.plannerCard}>
+                <h3 className={classes.monthName}>{item.name}</h3>
+                <div className={classes.imageContainer}>
+                  {item.imageUrl && (
+                    <Image
+                      src={item.imageUrl}
+                      alt={item.name}
+                      width={200}
+                      height={200}
+                      className={classes.plannerImage}
+                    />
+                  )}
+                </div>
+                <Button
+                  variant="primary"
+                  label="DOWNLOAD"
+                  onClick={() => handleDownload(item.pdfUrl)}
+                  customStyle={{
+                    width: "100%",
+                    marginTop: "20px",
+                    fontWeight: "bold",
+                    backgroundColor: "#00a63f", // Match green in screenshot
+                    borderColor: "#00a63f",
+                  }}
+                />
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </div>
+  );
+}
