@@ -1,7 +1,6 @@
 .main {
   min-height: 80vh;
   background-color: var(--body-color);
-  padding-bottom: 150px;
 }
 
 .mainHeight {
@@ -23,11 +22,50 @@
   color: var(--text-color-v3);
 }
 
+.plannerRow {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2.8rem;
+  column-gap: 2.45rem;
+  margin-top: 40px;
+}
+
+.plannerCol {
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 1200px) {
+  .plannerRow {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1.8rem;
+    column-gap: 1.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .plannerRow {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .plannerRow {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 1.2rem;
+    column-gap: 1.2rem;
+  }
+}
+
+
 .plannerCard {
   background: var(--white-color);
   border: none;
-  border-radius: 12px;
-  padding: 30px 24px;
+  border-radius: 8px;
+  padding: 27px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,5 +109,69 @@
   .subHeading {
     font-size: 1rem;
     padding: 0 15px;
+  }
+}
+
+.announcementSection {
+  background-color: var(--body-color);
+  padding-bottom: 0;
+}
+
+.announcementLeft,
+.announcementRight {
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.announcementLeft {
+  padding-right: 27px;
+}
+
+.announcementRight {
+  padding-left: 27px;
+}
+
+@media (max-width: 1200px) {
+  .announcementRight,
+  .announcementLeft {
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .announcementLeft,
+  .announcementRight {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
+  }
+}
+
+@media screen and (max-device-width: 767px) {
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+  }
+  .announcementRight {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .announcementRight > div > div:first-child {
+    padding-top: 15px;
+  }
+  .announcementLeft > div > div:first-child {
+    scale: 1.07;
   }
 }

@@ -66,7 +66,7 @@ export const MOBILE_HEADER_LINK = [
   {
     label: "Chef's Planner",
     path: "/chefs-planner",
-    imageUrl: "/assets/images/svg/catalogsIcon.svg",
+    imageUrl: "/assets/images/svgchefs-plannerIcon.svg",
   },
   {
     label: "Order Guide",

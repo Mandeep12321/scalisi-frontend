@@ -8,6 +8,8 @@ import { Button } from "@/components/atoms/Button";
 import Image from "next/image";
 import classes from "./ChefsPlannerView.module.css";
 import { mergeClass } from "@/resources/utils/helper";
+import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
+import { ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
 
 export default function ChefsPlannerView() {
   const [data, setData] = useState([]);
@@ -44,16 +46,16 @@ export default function ChefsPlannerView() {
 
   return (
     <div className={classes.main}>
-      <Container className="py-5">
+      <Container className="pt-5">
         <div className="mb-5">
           <h1 className="fs-49 fw-700 black-color mb-3">Chef's Planners</h1>
           <p className={mergeClass("fs-18 fw-500 text-color-v3", classes.subHeading)}>
             Monthly guides that are useful as a quick reference to products that are particular to the month, season, and time of year.
           </p>
         </div>
-        <Row className="gy-4">
+        <Row className={mergeClass("gx-0", classes.plannerRow)}>
           {data?.map((item, index) => (
-            <Col key={index} sm={6} md={4} lg={3}>
+            <Col key={index} sm={6} md={4} lg={3} className={classes.plannerCol}>
               <div className={classes.plannerCard}>
                 <h3 className={mergeClass("fs-24 fw-600", classes.monthName)}>
                   {item.name}
@@ -86,6 +88,29 @@ export default function ChefsPlannerView() {
           ))}
         </Row>
       </Container>
+      
+      <div className={classes.announcementSection}>
+        <Container>
+          <Row className="g-0">
+            <Col md={6} lg={6}>
+              <div className={mergeClass(classes.announcementLeft)}>
+                <AnnouncementCard
+                  data={ABOUT_US_PAGE_DATA?.announcement1}
+                />
+              </div>
+            </Col>
+            <Col md={6} lg={6}>
+              <div className={mergeClass(classes.announcementRight)}>
+                <AnnouncementCard
+                  data={ABOUT_US_PAGE_DATA?.announcement2}
+                  placeholder="Email address"
+                  hasNewsletter={true}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }

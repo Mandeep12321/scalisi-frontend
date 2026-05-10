@@ -153,7 +153,7 @@ export default function LandingPageView({ cmsData }) {
                     cardHome={classes.FeatureCardHome}
                     data={item}
                     onclick={() => {
-                      if (index === 0) router?.push("/catalogs");
+                      if (index === 0) router?.push("chefs-planner");
                       else if (index === 1) router?.push("/order-guide");
                       else if (index === 2) router?.push("/news-and-updates");
                     }}

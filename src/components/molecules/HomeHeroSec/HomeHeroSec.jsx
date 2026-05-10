@@ -50,7 +50,7 @@ export default function HomeHeroSec({ item }) {
           style={{ padding: "14px 45px ", width: "fit-content" }}
           variant="white"
           onClick={() => {
-            router.push("/catalogs");
+            router.push("chefs-planner");
           }}
         />
       </div>
