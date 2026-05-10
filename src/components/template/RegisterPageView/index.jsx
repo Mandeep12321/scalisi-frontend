@@ -152,7 +152,7 @@ export default function RegisterPageView({ data: _data = null }) {
               <Col xs={6} md={4} className={classes.inputFieldWrapper}><Input label="Price Plan" placeholder="Pricing level" labelStyle={commonLabelStyle} value={registrationFormik.values.pricePlan} setValue={(val) => registrationFormik.setFieldValue("pricePlan", val)} /></Col>
               <Col xs={6} md={4} className={classes.inputFieldWrapper}><Input label="Labels" placeholder="Label type" labelStyle={commonLabelStyle} value={registrationFormik.values.labels} setValue={(val) => registrationFormik.setFieldValue("labels", val)} /></Col>
             </Row>
-            <hr className="my-3 my-md-4 border-light" />
+            <hr className="my-2 border-light" />
             <Row className="g-2">
               <Col xs={6} md={3} className={classes.inputFieldWrapper}><Input label="Credit Appr" placeholder="Approved by" labelStyle={commonLabelStyle} value={registrationFormik.values.creditApproved} setValue={(val) => registrationFormik.setFieldValue("creditApproved", val)} /></Col>
               <Col xs={6} md={3} className={classes.inputFieldWrapper}><Input label="Sales Mgr" placeholder="Manager name" labelStyle={commonLabelStyle} value={registrationFormik.values.salesManager} setValue={(val) => registrationFormik.setFieldValue("salesManager", val)} /></Col>
@@ -168,8 +168,8 @@ export default function RegisterPageView({ data: _data = null }) {
             <div className={classes.inputFieldWrapper}><Input label="Portal Login Email" type="email" placeholder="info@example.com" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.email} setValue={(val) => registrationFormik.setFieldValue("webLogin.email", val)} errorText={registrationFormik.touched.webLogin?.email && registrationFormik.errors.webLogin?.email} /></div>
             <div className={classes.inputFieldWrapper}><Input label="Portal Password" type="password" placeholder="********" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.password} setValue={(val) => registrationFormik.setFieldValue("webLogin.password", val)} errorText={registrationFormik.touched.webLogin?.password && registrationFormik.errors.webLogin?.password} /></div>
             <div className="d-flex flex-column gap-2 mt-2">
-              <Checkbox label="Attached Kitchen List w/ Pars" value={registrationFormik.values.attachedKitchenList} setValue={(val) => registrationFormik.setFieldValue("attachedKitchenList", val)} isBool={true} />
-              <Checkbox label="Attached Spec Guide Complete" value={registrationFormik.values.attachedSpecGuide} setValue={(val) => registrationFormik.setFieldValue("attachedSpecGuide", val)} isBool={true} />
+              <Checkbox label="Attached Kitchen List w/ Pars" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedKitchenList} setValue={(val) => registrationFormik.setFieldValue("attachedKitchenList", val)} isBool={true} />
+              <Checkbox label="Attached Spec Guide Complete" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedSpecGuide} setValue={(val) => registrationFormik.setFieldValue("attachedSpecGuide", val)} isBool={true} />
             </div>
           </div>
         </Col>
@@ -232,7 +232,7 @@ export default function RegisterPageView({ data: _data = null }) {
             <div className="bg-light p-2 p-md-3 border rounded mb-3 mb-md-4 fs-12 text-muted line-height-1-6" style={{ maxHeight: '100px', overflowY: 'auto' }}>
               The perishable agricultural commodities listed on invoices are sold subject to the statutory trust authorized by Section 5(c) of the PACA, 1930...
             </div>
-            <Checkbox label="I accept the Terms and Conditions of Sale" value={registrationFormik.values.termsAccepted} setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)} isBool={true} />
+            <Checkbox label="I accept the Terms and Conditions of Sale" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.termsAccepted} setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)} isBool={true} />
             {registrationFormik.touched.termsAccepted && registrationFormik.errors.termsAccepted && (
               <p className="text-danger fs-13 mt-2 fw-600">* {registrationFormik.errors.termsAccepted}</p>
             )}
