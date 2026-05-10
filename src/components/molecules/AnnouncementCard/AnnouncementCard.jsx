@@ -73,8 +73,8 @@ export const AnnouncementCard = ({
         }
       >
         <Image
-          src={mediaUrl(data?.image) || data?.image}
-          alt={data?.title}
+          src={mediaUrl(data?.image) || data?.image || "/assets/images/cms-images/No_Image_Available.jpg"}
+          alt={data?.title || "Announcement Image"}
           fill
         />
       </div>

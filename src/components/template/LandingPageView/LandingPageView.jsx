@@ -19,6 +19,7 @@ import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
 import ProductListView from "@/components/organisms/ProductListView/ProductListView";
 import useProducts from "@/resources/hooks/useProducts";
 import useDebounce from "@/resources/hooks/useDebounce";
+import { ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
 import LocationsModal from "@/modals/LocationsModal/LocationsModal";
 
 export default function LandingPageView({ cmsData }) {
@@ -249,13 +250,13 @@ useEffect(() => {
       <Row className="g-0">
         <Col md={6} lg={6}>
           <div className={mergeClass(classes.announcementLeft)}>
-            <AnnouncementCard data={cmsData?.support} />
+            <AnnouncementCard data={cmsData?.support || ABOUT_US_PAGE_DATA?.announcement1} />
           </div>
         </Col>
         <Col md={6} lg={6}>
           <div className={mergeClass(classes.announcementRight)}>
             <AnnouncementCard
-              data={cmsData?.updates}
+              data={cmsData?.updates || ABOUT_US_PAGE_DATA?.announcement2}
               placeholder="Email address"
               hasNewsletter={true}
             />

@@ -117,10 +117,10 @@
   padding-bottom: 0;
 }
 
-.announcementLeft,
-.announcementRight {
-  padding-top: 80px;
-  padding-bottom: 100px;
+.announcementRight,
+.announcementLeft {
+  padding-top: 106px;
+  padding-bottom: 150px;
 }
 
 .announcementLeft {

@@ -19,6 +19,7 @@ import ProductGrid from "@/components/organisms/ProductGrid/ProductGrid";
 import ProductListView from "@/components/organisms/ProductListView/ProductListView";
 import useProducts from "@/resources/hooks/useProducts";
 import useDebounce from "@/resources/hooks/useDebounce";
+import { ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
 
 export default function ProductsPageView({ cmsData }) {
   const _cmsData = cmsData;
@@ -224,13 +225,13 @@ export default function ProductsPageView({ cmsData }) {
       <Row className="g-0">
         <Col md={6} lg={6}>
           <div className={landingClasses.announcementLeft}>
-            <AnnouncementCard data={_cmsData?.support} />
+            <AnnouncementCard data={_cmsData?.support || ABOUT_US_PAGE_DATA?.announcement1} />
           </div>
         </Col>
         <Col md={6} lg={6}>
           <div className={landingClasses.announcementRight}>
             <AnnouncementCard
-              data={_cmsData?.updates}
+              data={_cmsData?.updates || ABOUT_US_PAGE_DATA?.announcement2}
               placeholder="Email address"
               hasNewsletter={true}
             />

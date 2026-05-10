@@ -144,24 +144,26 @@ export default function DistributionMapView({ cmsData }) {
           </Row>
         </Container>
       </div>
-      <Container>
-        <Row className="g-0">
-          <Col md={6} lg={6}>
-            <div className={mergeClass(classes.announcementLeft)}>
-              <AnnouncementCard data={_cmsData?.support} />
-            </div>
-          </Col>
-          <Col md={6} lg={6}>
-            <div className={mergeClass(classes.announcementRight)}>
-              <AnnouncementCard
-                data={_cmsData?.updates}
-                placeholder="Email address"
-                hasNewsletter={true}
-              />
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <div className={classes.announcementSection}>
+        <Container>
+          <Row className="g-0">
+            <Col md={6} lg={6}>
+              <div className={mergeClass(classes.announcementLeft)}>
+                <AnnouncementCard data={_cmsData?.support || DISTRIBUTION_PAGE_DATA?.announcement1} />
+              </div>
+            </Col>
+            <Col md={6} lg={6}>
+              <div className={mergeClass(classes.announcementRight)}>
+                <AnnouncementCard
+                  data={_cmsData?.updates || DISTRIBUTION_PAGE_DATA?.announcement2}
+                  placeholder="Email address"
+                  hasNewsletter={true}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

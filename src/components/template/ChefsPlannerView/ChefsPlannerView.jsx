@@ -7,7 +7,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "@/components/atoms/Button";
 import Image from "next/image";
 import classes from "./ChefsPlannerView.module.css";
-import { mergeClass } from "@/resources/utils/helper";
+import { mediaUrl, mergeClass } from "@/resources/utils/helper";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
 import { ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
 
@@ -32,7 +32,7 @@ export default function ChefsPlannerView() {
 
   const handleDownload = (url) => {
     if (url) {
-      window.open(url, "_blank");
+      window.open(mediaUrl(url), "_blank");
     }
   };
 
@@ -63,7 +63,7 @@ export default function ChefsPlannerView() {
                 <div className={classes.imageContainer}>
                   {item.imageUrl && (
                     <Image
-                      src={item.imageUrl}
+                      src={mediaUrl(item.imageUrl)}
                       alt={item.name}
                       width={200}
                       height={200}

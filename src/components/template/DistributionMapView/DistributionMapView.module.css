@@ -88,9 +88,13 @@
   position: relative;
 }
 
+.announcementSection {
+  background-color: var(--body-color);
+}
+
 .announcementRight,
 .announcementLeft {
-  padding-top: 85px;
+  padding-top: 106px;
   padding-bottom: 150px;
 }
 
@@ -126,6 +130,12 @@
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
+  }
+  .announcementLeft {
+    padding-right: 10px;
+  }
+  .announcementRight {
+    padding-left: 10px;
   }
 
   .FaMapMarkerAlt {
@@ -270,10 +280,10 @@
   .announcementLeft {
     padding-top: 40px;
     padding-bottom: 40px;
-    padding-right: 0px;
+    padding-right: 0px !important;
   }
   .announcementRight {
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 40px;
     padding-right: 0px !important;
     padding-left: 0px !important;
