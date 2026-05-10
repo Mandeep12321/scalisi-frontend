@@ -265,7 +265,7 @@
 }
 .headingText,
 .formBox h2 {
-  margin-bottom: 30px !important;
+  margin-bottom: 20px;
 }
 
 .announcementRight,
@@ -365,7 +365,7 @@
     margin-top: 40px;
   }
   .formBox h2 {
-    margin-bottom: -1px !important;
+    margin-bottom: 10px;
   }
   .mainDivClass {
     margin-bottom: 24px !important;

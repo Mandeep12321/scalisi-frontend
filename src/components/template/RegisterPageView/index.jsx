@@ -32,8 +32,8 @@ export default function RegisterPageView({ data: _data = null }) {
   const registrationFormik = useFormik({
     initialValues: {
       ...SIGNUP_VALUES,
-      bankInfo: { name: "", branch: "", accountNo: "", officer: "", phone: "" },
-      officers: [
+      // Ensure these exist even if not in SIGNUP_VALUES
+      officers: SIGNUP_VALUES.officers || [
         { name: "", title: "", ssn: "", address: "", phone: "" },
         { name: "", title: "", ssn: "", address: "", phone: "" }
       ]
@@ -223,7 +223,7 @@ export default function RegisterPageView({ data: _data = null }) {
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Principal Officers / Owners</h3>
             <p className="fs-13 text-muted mb-3 italic">List names, titles, and personal contact info of principals.</p>
-            {registrationFormik.values.officers.map((officer, index) => (
+            {registrationFormik.values.officers?.map((officer, index) => (
               <div key={index} className={mergeClass("mb-4 pb-4", index === 0 ? "border-bottom border-light" : "")}>
                 <Row className="g-2">
                   <Col xs={12} md={4}><Input label="Full Name" placeholder="Principal name" labelStyle={commonLabelStyle} value={officer.name} setValue={(val) => registrationFormik.setFieldValue(`officers.${index}.name`, val)} /></Col>
@@ -239,14 +239,16 @@ export default function RegisterPageView({ data: _data = null }) {
 
         <Col lg={12}>
           <div className={classes.sectionCard}>
-            <h3 className={classes.sectionTitle}>Bank Reference</h3>
-            <Row className="g-2">
-              <Col xs={12} md={6}><Input label="Bank Name" placeholder="Institution name" labelStyle={commonLabelStyle} value={registrationFormik.values.bankInfo.name} setValue={(val) => registrationFormik.setFieldValue("bankInfo.name", val)} /></Col>
-              <Col xs={12} md={6}><Input label="Branch" placeholder="Branch location" labelStyle={commonLabelStyle} value={registrationFormik.values.bankInfo.branch} setValue={(val) => registrationFormik.setFieldValue("bankInfo.branch", val)} /></Col>
-              <Col xs={12} md={4}><Input label="Account #" placeholder="Operating account #" labelStyle={commonLabelStyle} value={registrationFormik.values.bankInfo.accountNo} setValue={(val) => registrationFormik.setFieldValue("bankInfo.accountNo", val)} /></Col>
-              <Col xs={6} md={4}><Input label="Bank Officer" placeholder="Contact person" labelStyle={commonLabelStyle} value={registrationFormik.values.bankInfo.officer} setValue={(val) => registrationFormik.setFieldValue("bankInfo.officer", val)} /></Col>
-              <Col xs={6} md={4}><Input label="Bank Phone" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={registrationFormik.values.bankInfo.phone} setValue={(val) => registrationFormik.setFieldValue("bankInfo.phone", val)} /></Col>
-            </Row>
+            <h3 className={classes.sectionTitle}>Bank References</h3>
+            {registrationFormik.values.bankReferences?.map((bank, index) => (
+              <Row key={index} className="g-2 mb-3">
+                <Col xs={12} md={6}><Input label="Bank Name" placeholder="Institution name" labelStyle={commonLabelStyle} value={bank.bankName} setValue={(val) => registrationFormik.setFieldValue(`bankReferences.${index}.bankName`, val)} /></Col>
+                <Col xs={12} md={6}><Input label="Branch" placeholder="Branch location" labelStyle={commonLabelStyle} value={bank.mailingAddress} setValue={(val) => registrationFormik.setFieldValue(`bankReferences.${index}.mailingAddress`, val)} /></Col>
+                <Col xs={12} md={4}><Input label="Account #" placeholder="Operating account #" labelStyle={commonLabelStyle} value={bank.checkingAccount} setValue={(val) => registrationFormik.setFieldValue(`bankReferences.${index}.checkingAccount`, val)} /></Col>
+                <Col xs={6} md={4}><Input label="Bank Officer" placeholder="Contact person" labelStyle={commonLabelStyle} value={bank.contact} setValue={(val) => registrationFormik.setFieldValue(`bankReferences.${index}.contact`, val)} /></Col>
+                <Col xs={6} md={4}><Input label="Bank Phone" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={bank.phone} setValue={(val) => registrationFormik.setFieldValue(`bankReferences.${index}.phone`, val)} /></Col>
+              </Row>
+            ))}
           </div>
         </Col>
 
@@ -254,7 +256,7 @@ export default function RegisterPageView({ data: _data = null }) {
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Trade References</h3>
             <p className="fs-13 text-muted mb-3 italic">Please provide three reliable trade references (no alcohol/liquor).</p>
-            {registrationFormik.values.tradeReferences.map((ref, index) => (
+            {registrationFormik.values.tradeReferences?.map((ref, index) => (
               <Row key={index} className={mergeClass("g-2 pb-3 mb-3", index < 2 ? "border-bottom border-light" : "")}>
                 <Col xs={12} md={4}><Input label={`Ref ${index + 1} Name`} placeholder="Company name" labelStyle={commonLabelStyle} value={ref.name} setValue={(val) => registrationFormik.setFieldValue(`tradeReferences.${index}.name`, val)} /></Col>
                 <Col xs={12} md={5}><Input label="Full Mailing Address" placeholder="Street, City, State, Zip" labelStyle={commonLabelStyle} value={ref.address} setValue={(val) => registrationFormik.setFieldValue(`tradeReferences.${index}.address`, val)} /></Col>
