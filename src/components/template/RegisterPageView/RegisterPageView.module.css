@@ -104,6 +104,49 @@
   margin: 40px auto 20px;
 }
 
+@media (max-width: 991px) {
+  .sectionCard {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .sectionTitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .formBox,
+  .formBox2 {
+    padding: 15px 0;
+  }
+  
+  .progressContainer {
+    margin: 20px auto 10px;
+  }
+  
+  .progressStep {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sectionTitle {
+    gap: 8px;
+  }
+  
+  .sectionTitle::before {
+    height: 12px;
+    width: 3px;
+  }
+  
+  .inputFieldWrapper {
+    margin-bottom: 15px;
+  }
+}
+
+
 
 
 .compactGrid {
@@ -227,8 +270,8 @@
 
 .announcementRight,
 .announcementLeft {
-  padding-top: 106px;
-  padding-bottom: 150px;
+  padding-top: 50px;
+  padding-bottom: 60px;
 }
 
 .announcementLeft {
@@ -241,8 +284,8 @@
 @media (max-width: 1200px) {
   .announcementRight,
   .announcementLeft {
-    padding-top: 70px;
-    padding-bottom: 80px;
+    padding-top: 40px;
+    padding-bottom: 50px;
   }
 }
 
