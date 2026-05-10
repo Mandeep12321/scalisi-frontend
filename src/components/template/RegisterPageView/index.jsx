@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/atoms/Button";
 import { Input } from "@/components/atoms/Input/Input";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
@@ -13,11 +14,9 @@ import { signupSchema } from "@/formik/schema/SignupSchema";
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import { Post } from "@/interceptor/axiosInterceptor";
 import { mergeClass } from "@/resources/utils/helper";
-import { City, Country, State } from "country-state-city";
 import { useFormik } from "formik";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import classes from "./RegisterPageView.module.css";
 
@@ -27,62 +26,27 @@ export default function RegisterPageView({ data: _data = null }) {
   const isSpanish = googleTrans === "/en/es";
 
   const [data, setData] = useState(REGISTER_BANNER || _data?.data || []);
-  const [isEditable, setIsEditable] = useState(false);
-  const [states, setStates] = useState([]);
-  const [countries, setCountries] = useState([]);
-  const [cities, setCities] = useState([]);
+  const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState("");
 
   const registrationFormik = useFormik({
     initialValues: SIGNUP_VALUES,
-    validationSchema: signupSchema({
-      isCityReq: true,
-      isStateReq: true,
-    }),
-
+    validationSchema: signupSchema(),
     onSubmit: async (values) => {
-      console.log("Form submitted with values:", values);
-      await handleSignupSubmit(values);
+      if (currentStep === 1) {
+        setCurrentStep(2);
+        window.scrollTo(0, 0);
+      } else {
+        await handleSignupSubmit(values);
+      }
     },
   });
 
-  // Handle signup form submission
   const handleSignupSubmit = async (values) => {
-    const payload = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      phoneNumber: values.phoneNumber,
-      jobTitle: values.jobTitle,
-      newsletter: values.newsletter ? true : false,
-      companyInformation: {
-        companyName: values.companyInformation.companyName,
-        companyPhoneNumber: values.companyInformation.companyPhoneNumber,
-        streetAddress: values.companyInformation.streetAddress,
-        city:
-          typeof values.companyInformation.city === "object"
-            ? values.companyInformation.city?.label ||
-              values.companyInformation.city?.name
-            : values.companyInformation.city,
-        state:
-          typeof values.companyInformation.state === "object"
-            ? values.companyInformation.state?.label ||
-              values.companyInformation.state?.name
-            : values.companyInformation.state,
-        country:
-          typeof values.companyInformation.country === "object"
-            ? values.companyInformation.country?.label ||
-              values.companyInformation.country?.name
-            : values.companyInformation.country,
-        postalCode: values.companyInformation.postalCode,
-      },
-    };
-
     setLoading("signup");
-
     const { response } = await Post({
       route: "auth/request-signup",
-      data: payload,
+      data: values,
     });
 
     if (response) {
@@ -97,354 +61,169 @@ export default function RegisterPageView({ data: _data = null }) {
     setLoading("");
   };
 
-  //   handleCountryChange
-  useEffect(() => {
-    const allCountries = Country.getAllCountries();
-    setCountries(allCountries);
-  }, []);
+  const renderProgress = () => (
+    <div className={classes.progressContainer}>
+      <div className={classes.progressBar}>
+        <div className={mergeClass(classes.progressStep, currentStep >= 1 ? classes.progressStepActive : "", currentStep > 1 ? classes.progressStepCompleted : "")}>1</div>
+        <div className={mergeClass(classes.progressStep, currentStep >= 2 ? classes.progressStepActive : "", currentStep > 2 ? classes.progressStepCompleted : "")}>2</div>
+      </div>
+      <div className="d-flex justify-content-between px-1">
+        <span className={mergeClass("fs-12 fw-700 uppercase", currentStep === 1 ? "text-green" : "text-muted")}>Step 1: Info</span>
+        <span className={mergeClass("fs-12 fw-700 uppercase", currentStep === 2 ? "text-green" : "text-muted")}>Step 2: Account</span>
+      </div>
+    </div>
+  );
 
-  // render personal info
-
-  const renderPersonalInfo = () => (
+  const renderStep1 = () => (
     <div className={classes.formBox}>
-      <Row>
+      <Row className="g-3">
+        <Col md={12} className="mb-2">
+          <h2 className="fs-24 fw-bold text-green">New Customer Information</h2>
+          <p className="fs-14 text-muted">Please fill in the details below to register your business.</p>
+        </Col>
+        
+        {/* Row 1: General Info & Corporate HQ */}
+        <Col lg={7}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>General Information</h3>
+            <Row className="g-2">
+              <Col md={12}><Input label="Company Name" value={registrationFormik.values.companyName} setValue={(val) => registrationFormik.setFieldValue("companyName", val)} errorText={registrationFormik.touched.companyName && registrationFormik.errors.companyName} inputClass="py-2" /></Col>
+              <Col md={12}><Input label="Corporate Headquarters (If different)" value={registrationFormik.values.corporateHeadquarters} setValue={(val) => registrationFormik.setFieldValue("corporateHeadquarters", val)} inputClass="py-2" /></Col>
+              <Col md={12}><Input label="Street Address" value={registrationFormik.values.address} setValue={(val) => registrationFormik.setFieldValue("address", val)} errorText={registrationFormik.touched.address && registrationFormik.errors.address} inputClass="py-2" /></Col>
+              <Col md={4}><Input label="City" value={registrationFormik.values.city} setValue={(val) => registrationFormik.setFieldValue("city", val)} inputClass="py-2" /></Col>
+              <Col md={4}><Input label="State" value={registrationFormik.values.state} setValue={(val) => registrationFormik.setFieldValue("state", val)} inputClass="py-2" /></Col>
+              <Col md={4}><Input label="Zip" value={registrationFormik.values.zip} setValue={(val) => registrationFormik.setFieldValue("zip", val)} inputClass="py-2" /></Col>
+              <Col md={6}><Input label="Main Phone" value={registrationFormik.values.phone} setValue={(val) => registrationFormik.setFieldValue("phone", val)} inputClass="py-2" /></Col>
+              <Col md={6}><Input label="Main Fax" value={registrationFormik.values.fax} setValue={(val) => registrationFormik.setFieldValue("fax", val)} inputClass="py-2" /></Col>
+            </Row>
+          </div>
+        </Col>
+
+        {/* Row 1, Col 2: Web Login & Specs */}
+        <Col lg={5}>
+          <div className="d-flex flex-column gap-3 h-100">
+            <div className={classes.sectionCard}>
+              <h3 className={classes.sectionTitle}>Web Portal Access</h3>
+              <Row className="g-2">
+                <Col md={12}><Input label="Login Email" type="email" value={registrationFormik.values.webLogin.email} setValue={(val) => registrationFormik.setFieldValue("webLogin.email", val)} inputClass="py-2" /></Col>
+                <Col md={12}><Input label="Password" type="password" value={registrationFormik.values.webLogin.password} setValue={(val) => registrationFormik.setFieldValue("webLogin.password", val)} inputClass="py-2" /></Col>
+              </Row>
+            </div>
+            <div className={classes.sectionCard}>
+              <h3 className={classes.sectionTitle}>Additional Specifications</h3>
+              <Row className="g-2">
+                <Col md={6}><Input label="Price Plan" value={registrationFormik.values.pricePlan} setValue={(val) => registrationFormik.setFieldValue("pricePlan", val)} inputClass="py-2" /></Col>
+                <Col md={6}><Input label="Labels" value={registrationFormik.values.labels} setValue={(val) => registrationFormik.setFieldValue("labels", val)} inputClass="py-2" /></Col>
+                <Col md={12} className="mt-2">
+                  <div className="d-flex gap-3">
+                    <Checkbox label="Kitchen List" value={registrationFormik.values.attachedKitchenList} setValue={(val) => registrationFormik.setFieldValue("attachedKitchenList", val)} isBool={true} />
+                    <Checkbox label="Spec Guide" value={registrationFormik.values.attachedSpecGuide} setValue={(val) => registrationFormik.setFieldValue("attachedSpecGuide", val)} isBool={true} />
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </div>
+        </Col>
+
+        {/* Row 2: Contacts (3 Columns) */}
+        <Col md={4}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>Primary Contact</h3>
+            <Input label="Name" value={registrationFormik.values.primaryContact.name} setValue={(val) => registrationFormik.setFieldValue("primaryContact.name", val)} inputClass="mb-1 py-1" />
+            <Input label="Title" value={registrationFormik.values.primaryContact.title} setValue={(val) => registrationFormik.setFieldValue("primaryContact.title", val)} inputClass="mb-1 py-1" />
+            <Input label="Phone" value={registrationFormik.values.primaryContact.phone} setValue={(val) => registrationFormik.setFieldValue("primaryContact.phone", val)} inputClass="mb-1 py-1" />
+            <Input label="Email" type="email" value={registrationFormik.values.primaryContact.email} setValue={(val) => registrationFormik.setFieldValue("primaryContact.email", val)} inputClass="py-1" />
+          </div>
+        </Col>
+        <Col md={4}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>Secondary Contact</h3>
+            <Input label="Name" value={registrationFormik.values.secondaryContact.name} setValue={(val) => registrationFormik.setFieldValue("secondaryContact.name", val)} inputClass="mb-1 py-1" />
+            <Input label="Title" value={registrationFormik.values.secondaryContact.title} setValue={(val) => registrationFormik.setFieldValue("secondaryContact.title", val)} inputClass="mb-1 py-1" />
+            <Input label="Phone" value={registrationFormik.values.secondaryContact.phone} setValue={(val) => registrationFormik.setFieldValue("secondaryContact.phone", val)} inputClass="mb-1 py-1" />
+            <Input label="Email" type="email" value={registrationFormik.values.secondaryContact.email} setValue={(val) => registrationFormik.setFieldValue("secondaryContact.email", val)} inputClass="py-1" />
+          </div>
+        </Col>
+        <Col md={4}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>A/P Contact</h3>
+            <Input label="Name" value={registrationFormik.values.apContact.name} setValue={(val) => registrationFormik.setFieldValue("apContact.name", val)} inputClass="mb-1 py-1" />
+            <Input label="Phone" value={registrationFormik.values.apContact.phone} setValue={(val) => registrationFormik.setFieldValue("apContact.phone", val)} inputClass="mb-1 py-1" />
+            <Input label="Email" type="email" value={registrationFormik.values.apContact.email} setValue={(val) => registrationFormik.setFieldValue("apContact.email", val)} inputClass="py-1" />
+          </div>
+        </Col>
+
+        {/* Row 3: Delivery Details */}
         <Col md={12}>
-          <h2
-            className={mergeClass(
-              "fs-20 fw-bold text-green",
-              classes.headingText
-            )}
-          >
-            Personal Information
-          </h2>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>Delivery & Operational Details</h3>
+            <Row className="g-2">
+              <Col md={3}><Input label="Window" value={registrationFormik.values.deliveryWindow} setValue={(val) => registrationFormik.setFieldValue("deliveryWindow", val)} inputClass="py-2" /></Col>
+              <Col md={3}><Input label="Route" value={registrationFormik.values.route} setValue={(val) => registrationFormik.setFieldValue("route", val)} inputClass="py-2" /></Col>
+              <Col md={3}><Input label="Stop" value={registrationFormik.values.stop} setValue={(val) => registrationFormik.setFieldValue("stop", val)} inputClass="py-2" /></Col>
+              <Col md={3}><Input label="Ship To's" value={registrationFormik.values.shipTo[0]} setValue={(val) => registrationFormik.setFieldValue("shipTo.0", val)} inputClass="py-2" /></Col>
+              <Col md={6}><Input label="Instructions" value={registrationFormik.values.deliveryInstructions} setValue={(val) => registrationFormik.setFieldValue("deliveryInstructions", val)} inputClass="py-2" /></Col>
+              <Col md={6}><Input label="Comments" value={registrationFormik.values.invoiceComments} setValue={(val) => registrationFormik.setFieldValue("invoiceComments", val)} inputClass="py-2" /></Col>
+            </Row>
+          </div>
         </Col>
-        <Col md={12} className={`${classes.TopInputDiv} ${classes.inputDiv}`}>
-          <Input
-            label="First Name"
-            name="firstName"
-            value={registrationFormik.values.firstName}
-            setValue={(val) =>
-              registrationFormik.setFieldValue("firstName", val)
-            }
-            labelClass={classes.labelClass}
-            inputClass={classes.inputClass}
-            errorText={
-              registrationFormik.touched.firstName &&
-              registrationFormik.errors.firstName
-            }
-          />
-        </Col>
-        <Col md={12} className={classes.inputDiv}>
-          <Input
-            label="Last Name"
-            name="lastName"
-            labelClass={classes.labelClass}
-            value={registrationFormik.values.lastName}
-            setValue={(val) =>
-              registrationFormik.setFieldValue("lastName", val)
-            }
-            inputClass={classes.inputClass}
-            errorText={
-              registrationFormik.touched.lastName &&
-              registrationFormik.errors.lastName
-            }
-          />
-        </Col>
-        <Col md={12}>
-          <Input
-            label="Email Address"
-            name="email"
-            value={registrationFormik.values.email}
-            setValue={(val) => registrationFormik.setFieldValue("email", val)}
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            type="email"
-            errorText={
-              registrationFormik.touched.email &&
-              registrationFormik.errors.email
-            }
-          />
-        </Col>
-        <Col md={12} className="mt-3">
-          <Checkbox
-            checkboxMain={classes.checkboxMain}
-            value={registrationFormik.values.newsletter}
-            setValue={(val) => {
-              console.log("val", val);
-              registrationFormik.setFieldValue("newsletter", val);
-            }}
-            name="newsletter"
-            label={"Sign Up for our Newsletter"}
-          />
-        </Col>
-        <Col md={12} className={mergeClass("mt-3", classes.inputPhoneNumber)}>
-          <Input
-            label="Phone Number"
-            name="phoneNumber"
-            type="tel"
-            value={registrationFormik.values.phoneNumber}
-            setValue={(val) => {
-              // Only allow digits and limit to 11 characters
-              const numericValue = val.replace(/\D/g, "").slice(0, 11);
-              registrationFormik.setFieldValue("phoneNumber", numericValue);
-            }}
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            maxLength={11}
-            errorText={
-              registrationFormik.touched.phoneNumber &&
-              registrationFormik.errors.phoneNumber
-            }
-          />
-        </Col>
-        <Col md={12} className={classes.jobTitle}>
-          <Input
-            label="Job Title"
-            name="jobTitle"
-            value={registrationFormik.values.jobTitle}
-            setValue={(val) =>
-              registrationFormik.setFieldValue("jobTitle", val)
-            }
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            errorText={
-              registrationFormik.touched.jobTitle &&
-              registrationFormik.errors.jobTitle
-            }
-          />
+
+        <Col md={12} className="mt-3 text-center">
+          <Button label="Continue to Business Application" type="submit" variant="primary" className="px-5 py-2 fs-18 fw-bold" />
         </Col>
       </Row>
     </div>
   );
 
-  const renderCompanyInfo = () => (
+  const renderStep2 = () => (
     <div className={classes.formBox2}>
-      <Row>
-        <Col sm={12} md={12}>
-          <h2
-            className={mergeClass(
-              "fs-20 fw-bold text-green",
-              classes.headingText
-            )}
-          >
-            Company Information
-          </h2>
+      <Row className="g-3">
+        <Col md={12} className="mb-2">
+          <h2 className="fs-24 fw-bold text-green">Business Account Application</h2>
+          <p className="fs-14 text-muted">Legal and financial information for credit approval.</p>
         </Col>
 
-        <Col
-          md={12}
-          className={mergeClass(classes.TopInputDiv, classes.inputDiv)}
-        >
-          <Input
-            label="Company Name"
-            name="companyName"
-            value={registrationFormik.values.companyInformation.companyName}
-            setValue={(val) =>
-              registrationFormik.setFieldValue(
-                "companyInformation.companyName",
-                val
-              )
-            }
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            errorText={
-              registrationFormik.touched.companyInformation?.companyName &&
-              registrationFormik.errors.companyInformation?.companyName
-            }
-          />
-        </Col>
-        <Col md={12} className={classes.inputDiv}>
-          <Input
-            label="Phone Number"
-            // name="companyPhoneNumber"
-            name="phoneNumber"
-            type="tel"
-            value={
-              registrationFormik.values.companyInformation.companyPhoneNumber
-            }
-            setValue={(val) => {
-              // Only allow digits and limit to 11 characters
-              const numericValue = val.replace(/\D/g, "").slice(0, 11);
-              registrationFormik.setFieldValue(
-                "companyInformation.companyPhoneNumber",
-                numericValue
-              );
-            }}
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            maxLength={11}
-            errorText={
-              registrationFormik.touched.companyInformation
-                ?.companyPhoneNumber &&
-              registrationFormik.errors.companyInformation?.companyPhoneNumber
-            }
-          />
-        </Col>
-        <Col md={12} className={classes?.inputDiv}>
-          <Input
-            label="Street Address"
-            name="streetAddress"
-            value={registrationFormik.values.companyInformation.streetAddress}
-            setValue={(val) =>
-              registrationFormik.setFieldValue(
-                "companyInformation.streetAddress",
-                val
-              )
-            }
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            errorText={
-              registrationFormik.touched.companyInformation?.streetAddress &&
-              registrationFormik.errors.companyInformation?.streetAddress
-            }
-          />
-        </Col>
-        <Col sm={12} md={12}>
-          <DropDown
-            customStyle={{
-              border: "2px solid #3636364A",
-            }}
-            labelClassName={classes.labelClass}
-            dropDownContainer={classes.dropDownClass}
-            placeholder={""}
-            label="Country"
-            value={registrationFormik.values.companyInformation.country}
-            setValue={(selectedCountry) => {
-              const countryIsoCode = selectedCountry?.value;
-              const citiesOfCountry = City.getCitiesOfCountry(countryIsoCode);
-              const statesOfCountry = State.getStatesOfCountry(countryIsoCode);
-
-              const updatedCountry = {
-                ...selectedCountry,
-                hasCities: citiesOfCountry.length > 0,
-                hasStates: statesOfCountry.length > 0,
-              };
-
-              registrationFormik.setFieldValue(
-                "companyInformation.country",
-                updatedCountry
-              );
-              setCities(citiesOfCountry);
-              setStates(statesOfCountry);
-
-              registrationFormik.setFieldValue("companyInformation.city", null);
-              registrationFormik.setFieldValue(
-                "companyInformation.state",
-                null
-              );
-              registrationFormik.setErrors({});
-            }}
-            errorText={
-              registrationFormik.touched.companyInformation?.country &&
-              registrationFormik.errors.companyInformation?.country
-            }
-            options={countries?.map((item) => ({
-              label: item?.name,
-              value: item?.isoCode,
-            }))}
-          />
-        </Col>
-        <Col md={12}>
-          <DropDown
-            customStyle={{
-              border: "2px solid #3636364A",
-            }}
-            labelClassName={classes.labelClass}
-            dropDownContainer={classes.dropDownClass}
-            placeholder={""}
-            label={"City"}
-            value={registrationFormik?.values?.companyInformation?.city}
-            setValue={(val) => {
-              registrationFormik?.setFieldValue("companyInformation.city", val);
-            }}
-            errorText={
-              registrationFormik.touched.companyInformation?.city &&
-              registrationFormik.errors.companyInformation?.city
-            }
-            options={cities?.map((city) => ({
-              label: city.name,
-              value: city.name,
-            }))}
-            disabled={!cities?.length}
-          />
-        </Col>
-        <Col md={6}>
-          <DropDown
-            customStyle={{
-              border: "2px solid #3636364A",
-            }}
-            labelClassName={classes.labelClass}
-            dropDownContainer={classes.dropDownClass}
-            placeholder={"Select"}
-            label={"State"}
-            value={registrationFormik?.values?.companyInformation?.state}
-            setValue={(val) =>
-              registrationFormik?.setFieldValue("companyInformation.state", val)
-            }
-            errorText={
-              registrationFormik.touched.companyInformation?.state &&
-              registrationFormik.errors.companyInformation?.state
-            }
-            options={states?.map((state) => ({
-              label: state.name,
-              value: state.isoCode,
-            }))}
-            disabled={!states?.length}
-            extraPlaceholderStyles={{
-              fontSize: "15px",
-              color: "#000000",
-            }}
-          />
-        </Col>
-        <Col md={6}>
-          <Input
-            label="Zip/Postal Code"
-            name="postalCode"
-            value={registrationFormik.values.companyInformation.postalCode}
-            setValue={(val) => {
-              // Only allow alphanumeric characters and limit to 10 characters
-              const alphanumericValue = val
-                .replace(/[^a-zA-Z0-9]/g, "")
-                .slice(0, 10);
-              registrationFormik.setFieldValue(
-                "companyInformation.postalCode",
-                alphanumericValue
-              );
-            }}
-            inputClass={classes.inputClass}
-            labelClass={classes.labelClass}
-            maxLength={10}
-            errorText={
-              registrationFormik.touched.companyInformation?.postalCode &&
-              registrationFormik.errors.companyInformation?.postalCode
-            }
-          />
-        </Col>
-
-        <Col md={12} className={mergeClass("my-2", classes.btnParent)}>
-          <div className={classes.registerBtn}>
-            <Button
-              label={loading === "signup" ? "Submitting..." : "Submit"}
-              type="submit"
-              variant="primary"
-              disabled={loading === "signup"}
-              className={mergeClass("fs-16 fw-600", classes.submitBtn)}
-              onClick={() => {
-                // Manually trigger form submission
-                registrationFormik.handleSubmit();
-              }}
-              loading={loading === "signup"}
-            />
-            <p className={classes.PrivacyDiv}>
-              By submitting this form I agree to Scalisi Produce's
-              <span
-                className="red-color fw-600 cursor-pointer"
-                onClick={() => router.push("/privacy")}
-              >
-                Privacy Policy.
-              </span>
-            </p>
+        <Col lg={12}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>Tax & Legal Identification</h3>
+            <Row className="g-2">
+              <Col md={4}><Input label="Federal Tax I.D. / SS#" value={registrationFormik.values.federalTaxId} setValue={(val) => registrationFormik.setFieldValue("federalTaxId", val)} inputClass="py-2" /></Col>
+              <Col md={4}><Input label="PACA License #" value={registrationFormik.values.pacaLicense} setValue={(val) => registrationFormik.setFieldValue("pacaLicense", val)} inputClass="py-2" /></Col>
+              <Col md={4}><DropDown label="Company Type" value={registrationFormik.values.companyType} setValue={(val) => registrationFormik.setFieldValue("companyType", val)} options={[{ label: "Proprietorship", value: "Prop" }, { label: "Partnership", value: "Partnership" }, { label: "Franchisee", value: "Franchisee" }, { label: "Corporation", value: "Corp" }]} /></Col>
+            </Row>
           </div>
+        </Col>
+
+        <Col md={12}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>Trade References</h3>
+            <p className="fs-12 text-muted mb-3 italic">Do not include alcohol or liquor vendors.</p>
+            {registrationFormik.values.tradeReferences.map((ref, index) => (
+              <Row key={index} className={mergeClass("g-2 pb-3 mb-3", index < 2 ? "border-bottom border-light" : "")}>
+                <Col md={4}><Input label={`Ref ${index + 1} Name`} value={ref.name} setValue={(val) => registrationFormik.setFieldValue(`tradeReferences.${index}.name`, val)} inputClass="py-1" /></Col>
+                <Col md={5}><Input label="Full Address" value={ref.address} setValue={(val) => registrationFormik.setFieldValue(`tradeReferences.${index}.address`, val)} inputClass="py-1" /></Col>
+                <Col md={3}><Input label="Phone" value={ref.phone} setValue={(val) => registrationFormik.setFieldValue(`tradeReferences.${index}.phone`, val)} inputClass="py-1" /></Col>
+              </Row>
+            ))}
+          </div>
+        </Col>
+
+        <Col md={12}>
+          <div className={classes.sectionCard}>
+            <h3 className={classes.sectionTitle}>Terms of Agreement</h3>
+            <div className="bg-light p-2 border rounded mb-3 fs-12 text-muted line-height-1-4" style={{ maxHeight: '100px', overflowY: 'auto' }}>
+              The perishable agricultural commodities listed on invoices are sold subject to the statutory trust authorized by Section 5(c) of the PACA, 1930...
+            </div>
+            <Checkbox label="I accept the Terms and Conditions of Sale" value={registrationFormik.values.termsAccepted} setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)} isBool={true} />
+            {registrationFormik.touched.termsAccepted && registrationFormik.errors.termsAccepted && (
+              <p className="text-danger fs-12 mt-1 fw-600">* {registrationFormik.errors.termsAccepted}</p>
+            )}
+          </div>
+        </Col>
+
+        <Col md={12} className="mt-3 d-flex justify-content-center gap-3">
+          <Button label="Go Back" variant="secondary" onClick={() => setCurrentStep(1)} className="px-4 py-2 fs-16 fw-bold" />
+          <Button label={loading === "signup" ? "Submitting..." : "Submit Application"} type="submit" variant="primary" disabled={loading === "signup"} loading={loading === "signup"} className="px-5 py-2 fs-18 fw-bold" />
         </Col>
       </Row>
     </div>
@@ -459,29 +238,30 @@ export default function RegisterPageView({ data: _data = null }) {
               <HeroSection
                 mainDivClass={classes.mainDivClass}
                 isColor={true}
-                data={data?.heroSection}
-                styles={{
-                  colorText: classes.colorTextClass,
-                  colorHeading: classes.colorHeadingClass,
-                  header: classes.header,
+                data={{
+                  ...data?.heroSection,
+                  header: "Business Registration",
                 }}
               />
             </Col>
           </Row>
         </Container>
       </div>
-      <Container>
-        <Row>
-          <Col md={12}>
+
+      {renderProgress()}
+
+      <Container className="pb-5">
+        <Row className="justify-content-center">
+          <Col lg={12}>
             <div className={classes.main}>
               <form onSubmit={registrationFormik.handleSubmit}>
-                {renderPersonalInfo()}
-                {renderCompanyInfo()}
+                {currentStep === 1 ? renderStep1() : renderStep2()}
               </form>
             </div>
           </Col>
         </Row>
       </Container>
+
       <Container>
         <Row className="g-0">
           <Col md={6} lg={6}>

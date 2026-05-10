@@ -1,12 +1,108 @@
 .formBox,
 .formBox2 {
-  max-width: 753px;
-  padding: 33.5px 24.3px;
-  border-radius: 8px;
+  width: 100%;
+  max-width: 1300px;
+  padding: 30px;
+  border-radius: 12px;
   margin: auto;
-  margin-top: 61px;
-  background-color: var(--white-color);
-  box-shadow: 0px 5px 25px #0000000d;
+  margin-top: 30px;
+  background-color: #fcfcfc;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.progressContainer {
+  max-width: 1300px;
+  margin: 30px auto 0;
+  padding: 0 30px;
+}
+
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.progressBar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.progressStep {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  color: #999;
+}
+
+.progressStepActive {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.progressStepCompleted {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+
+.sectionCard {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #f0f0f0;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.sectionCard:hover {
+  border-color: var(--primary-color);
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitle::before {
+  content: "";
+  width: 3px;
+  height: 15px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.inputDiv {
+  margin-bottom: 15px;
+}
+
+.compactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
 }
 
 .mainDivClass {

@@ -11,6 +11,7 @@ import {
   mediaUrl,
 } from "@/resources/utils/helper";
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
+import store from "@/store";
 
 // Language detection function
 const getLanguage = () => {
@@ -63,6 +64,10 @@ let handleRequest = async ({
   try {
     const url = BaseURL(route);
     const token = Cookies.get("_xpdx");
+    // ✅ Check Redux store as backup if cookie is missing
+    const reduxToken = store.getState()?.authReducer?.accessToken;
+
+    const rawToken = token || reduxToken;
 
     const _headers = {
       Accept: "application/json",
@@ -73,8 +78,8 @@ let handleRequest = async ({
         "Content-Type": "multipart/form-data",
       }),
 
-      ...(token && {
-        Authorization: `Bearer ${handleDecrypt(token)}`,
+      ...(rawToken && {
+        Authorization: `Bearer ${handleDecrypt(rawToken)}`,
       }),
 
       ...headers,
