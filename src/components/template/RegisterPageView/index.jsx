@@ -33,13 +33,11 @@ export default function RegisterPageView({ data: _data = null }) {
     initialValues: SIGNUP_VALUES,
     validationSchema: signupSchema(),
     onSubmit: async (values) => {
-      // This is only reached for the final submission on Step 2
       await handleSignupSubmit(values);
     },
   });
 
   const handleNextStep = async () => {
-    // Manually trigger validation for Step 1 required fields
     const fieldsToValidate = [
       "companyName",
       "address",
@@ -48,13 +46,9 @@ export default function RegisterPageView({ data: _data = null }) {
       "webLogin.password"
     ];
 
-    // Mark these as touched to show errors
     fieldsToValidate.forEach(field => registrationFormik.setFieldTouched(field, true));
-
-    // Validate only these fields
     const errors = await registrationFormik.validateForm();
     
-    // Check if any of the Step 1 fields have errors
     const hasStep1Errors = fieldsToValidate.some(field => {
       const fieldParts = field.split('.');
       if (fieldParts.length > 1) {
@@ -82,13 +76,8 @@ export default function RegisterPageView({ data: _data = null }) {
     });
 
     if (response) {
-      RenderToast({
-        type: "success",
-        message: isSpanish
-          ? "Registro exitoso. Te contactaremos a la brevedad."
-          : "Registration successful",
-      });
-      router.push("/");
+      setCurrentStep(3); // Success Step
+      window.scrollTo(0, 0);
     }
     setLoading("");
   };
@@ -384,6 +373,36 @@ export default function RegisterPageView({ data: _data = null }) {
     </div>
   );
 
+  const renderSuccess = () => (
+    <div className={mergeClass(classes.formBox, "text-center py-5")}>
+      <div className="mb-4">
+        <div className="d-inline-flex align-items-center justify-content-center bg-green-light rounded-circle p-4 mb-4" style={{ width: '100px', height: '100px' }}>
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#2a4d31" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2 className="fs-32 fw-700 text-green mb-3">Application Submitted!</h2>
+        <p className="fs-18 text-muted mb-5 max-width-600 mx-auto">
+          Thank you for applying to register with Scalisi. Your business account application has been received and is currently being reviewed by our team.
+        </p>
+      </div>
+
+      <div className="bg-light p-4 rounded mb-5 max-width-600 mx-auto border shadow-sm">
+        <h4 className="fs-16 fw-700 text-dark mb-2 uppercase tracking-wider">Next Steps</h4>
+        <ul className="list-unstyled fs-15 text-muted mb-0 text-start d-inline-block">
+          <li className="mb-2">✅ We will verify your business and credit references.</li>
+          <li className="mb-2">✅ An account manager will reach out within 1-2 business days.</li>
+          <li>✅ You will receive an email confirmation once your portal is active.</li>
+        </ul>
+      </div>
+
+      <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
+        <Button label="Return to Home" variant="secondaryButton" onClick={() => router.push("/")} className="px-5" />
+        <Button label="Contact Support" variant="primary" onClick={() => router.push("/contact")} className="px-5" />
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className={classes.heroSecColor}>
@@ -404,7 +423,7 @@ export default function RegisterPageView({ data: _data = null }) {
       </div>
 
       <Container>
-        {renderProgress()}
+        {currentStep < 3 && renderProgress()}
       </Container>
 
       <Container className="pb-3">
@@ -412,7 +431,9 @@ export default function RegisterPageView({ data: _data = null }) {
           <Col lg={12}>
             <div className={classes.main}>
               <form onSubmit={registrationFormik.handleSubmit}>
-                {currentStep === 1 ? renderStep1() : renderStep2()}
+                {currentStep === 1 && renderStep1()}
+                {currentStep === 2 && renderStep2()}
+                {currentStep === 3 && renderSuccess()}
               </form>
             </div>
           </Col>
