@@ -25,21 +25,21 @@ export default function CompanyHistorySection({ data }) {
               <>
                 <div className={classes.bottomImage}>
                   <Image
-                    src={mediaUrl(data?.imageBottom?.image375)}
+                    src={mediaUrl(data?.imageBottom?.image375 || data?.imageBottom)}
                     fill
                     alt="bottom-images"
                   />
                 </div>
                 <div className={classes.centerImage}>
                   <Image
-                    src={mediaUrl(data?.imageCenter?.image375)}
+                    src={mediaUrl(data?.imageCenter?.image375 || data?.imageCenter)}
                     fill
                     alt="middle-image"
                   />
                 </div>
                 <div className={classes.topImage}>
                   <Image
-                    src={mediaUrl(data?.imageTop?.image375)}
+                    src={mediaUrl(data?.imageTop?.image375 || data?.imageTop)}
                     fill
                     alt="top-image"
                   />
@@ -49,21 +49,21 @@ export default function CompanyHistorySection({ data }) {
               <>
                 <div className={classes.bottomImage}>
                   <Image
-                    src={mediaUrl(data?.imageBottom?.image)}
+                    src={mediaUrl(data?.imageBottom?.image || data?.imageBottom)}
                     fill
                     alt="bottom-image"
                   />
                 </div>
                 <div className={classes.centerImage}>
                   <Image
-                    src={mediaUrl(data?.imageCenter?.image)}
+                    src={mediaUrl(data?.imageCenter?.image || data?.imageCenter)}
                     fill
                     alt="middle-image"
                   />
                 </div>
                 <div className={classes.topImage}>
                   <Image
-                    src={mediaUrl(data?.imageTop?.image)}
+                    src={mediaUrl(data?.imageTop?.image || data?.imageTop)}
                     fill
                     alt="top-image"
                   />
@@ -75,17 +75,15 @@ export default function CompanyHistorySection({ data }) {
         <div className={classes.rightCol}>
           <h1 className={classes.title}>{data?.title}</h1>
           <div className={classes.descriptionDiv}>
-            <p className={mergeClass(classes.description)}>
-              {data?.descriptionOne?.htmlDescription &&
-                HTMLReactParser(data?.descriptionOne?.htmlDescription)}
-            </p>
+            <div className={mergeClass(classes.description)}>
+              {data?.descriptionOne?.htmlDescription ? HTMLReactParser(data.descriptionOne.htmlDescription) : (data?.descriptionOne ? HTMLReactParser(data.descriptionOne) : null)}
+            </div>
           </div>
         </div>
       </div>
-      <p className={classes.descriptionTwo}>
-        {data?.descriptionTwo?.htmlDescription &&
-          HTMLReactParser(data?.descriptionTwo?.htmlDescription)}
-      </p>
+      <div className={classes.descriptionTwo}>
+        {data?.descriptionTwo?.htmlDescription ? HTMLReactParser(data.descriptionTwo.htmlDescription) : (data?.descriptionTwo ? HTMLReactParser(data.descriptionTwo) : null)}
+      </div>
     </div>
   );
 }

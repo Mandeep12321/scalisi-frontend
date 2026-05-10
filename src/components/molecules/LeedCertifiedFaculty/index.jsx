@@ -22,7 +22,7 @@ export default function LeedCertifiedFaculty({ data }) {
         >
           <div className={classes.bgImage}>
             {is375 ? (
-              <Image src={mediaUrl(data?.image375)} fill alt="image375" />
+              <Image src={mediaUrl(data?.image375 || data?.image)} fill alt="image375" />
             ) : (
               <Image src={mediaUrl(data?.image)} fill alt="image" />
             )}
@@ -35,26 +35,24 @@ export default function LeedCertifiedFaculty({ data }) {
             <u>{data?.tagline}</u>
           </h5>
           <h6 className={classes.description}>
-            {data?.descriptionOne?.htmlDescription &&
-              HTMLReactParser(data?.descriptionOne?.htmlDescription)}
+            {data?.descriptionOne?.htmlDescription ? HTMLReactParser(data.descriptionOne.htmlDescription) : (data?.descriptionOne ? HTMLReactParser(data.descriptionOne) : null)}
           </h6>
         </div>
       </div>
-      <p className={mergeClass(classes.descriptionTwo, classes.text)}>
-        {data?.descriptionTwo?.htmlDescription &&
-          HTMLReactParser(data?.descriptionTwo?.htmlDescription)}
-      </p>
+      <div className={mergeClass(classes.descriptionTwo, classes.text)}>
+        {data?.descriptionTwo?.htmlDescription ? HTMLReactParser(data.descriptionTwo.htmlDescription) : (data?.descriptionTwo ? HTMLReactParser(data.descriptionTwo) : null)}
+      </div>
       <div className={classes.operatingPlanDiv}>
         <div className={classes.scalisiProduceImage}>
           {is375 ? (
             <Image
-              src={mediaUrl(data?.scalisiProduceImage?.image375)}
+              src={mediaUrl(data?.scalisiProduceImage?.image375 || data?.scalisiProduceImage)}
               fill
               alt="image375"
             />
           ) : (
             <Image
-              src={mediaUrl(data?.scalisiProduceImage?.image)}
+              src={mediaUrl(data?.scalisiProduceImage?.image || data?.scalisiProduceImage)}
               fill
               alt="image"
             />

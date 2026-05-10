@@ -22,7 +22,7 @@
 .imagesDiv {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 40px;
+  grid-gap: 20px;
   margin-top: 45px;
 }
 .footer {
@@ -65,6 +65,12 @@
 .heading {
   text-align: center;
   padding-block: 100px 75px;
+}
+.mainDiv {
+  padding-block: 20px 80px;
+}
+.carouselWrapper {
+  margin-bottom: 40px;
 }
 @media (max-width: 1440px) {
   .heading {

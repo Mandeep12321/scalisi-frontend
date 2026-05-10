@@ -27,13 +27,11 @@ export default function AboutUsHeroSection({
         >
           {data?.title}
         </h3>
-        <h1
-          className={`${mergeClass(classes?.subTitle, styles?.aboutSubTitle)} ${hasImage ? "" : "fs-29 500"
-            } ${!hasImage && classes.lineHeight} `}
+        <div
+          className={`${mergeClass(classes?.subTitle, styles?.aboutSubTitle)} ${hasImage ? "" : "fs-29 500"} ${!hasImage ? classes.lineHeight : ""}`}
         >
-          {(data?.htmlDescription || data?.heading) &&
-            HTMLReactParser(data?.htmlDescription || data?.heading)}
-        </h1>
+          {data?.heading ? HTMLReactParser(data?.heading) : (data?.htmlDescription ? HTMLReactParser(data.htmlDescription) : null)}
+        </div>
 
         <p
           className={mergeClass(classes.description, styles?.aboutDescription)}
@@ -46,11 +44,15 @@ export default function AboutUsHeroSection({
           <>
             {is375 ? (
               <div className={classes.imageDiv}>
-                <Image fill alt="earth-icon" src={mediaUrl(data?.image375)} />
+                {mediaUrl(data?.image375) && (
+                  <Image fill alt="earth-icon" src={mediaUrl(data?.image375)} />
+                )}
               </div>
             ) : (
               <div className={classes.imageDiv}>
-                <Image fill alt="earth-icon" src={mediaUrl(data?.image)} />
+                {mediaUrl(data?.image) && (
+                  <Image fill alt="earth-icon" src={mediaUrl(data?.image)} />
+                )}
               </div>
             )}
           </>

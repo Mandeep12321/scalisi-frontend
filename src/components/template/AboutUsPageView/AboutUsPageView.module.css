@@ -1,22 +1,32 @@
+.mainDiv {
+  width: 100%;
+}
+
 .heroSection {
-  background-color: var(--border-green);
+  background-color: var(--light-green-bg);
+  padding-block: 0px;
 }
 
-.announcement {
-  padding-bottom: 106px;
+.historySection {
+  background-color: var(--white-color);
+  padding-block: 120px;
 }
 
-.announcementRight,
-.announcementLeft {
-  padding-top: 106px;
+.leedSection {
+  background-color: var(--light-green-bg);
+  padding-block: 120px;
+}
+
+.announcementSection {
+  background-color: var(--white-color);
+  padding-top: 120px;
   padding-bottom: 150px;
 }
 
-.announcementLeft {
-  padding-right: 27px;
-}
+.announcementLeft,
 .announcementRight {
-  padding-left: 27px;
+  padding-top: 70px;
+  padding-bottom: 80px;
 }
 
 @media (max-width: 1200px) {

@@ -1,64 +1,86 @@
 .mainDiv {
   display: flex;
   width: 100%;
-  padding-block: 52px 59px;
+  padding-block: 120px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: var(--light-green-bg);
 }
 
 .leftCol {
-  width: 65%;
+  width: 55%;
+  max-width: 780px;
   display: flex;
   flex-direction: column;
 }
 
 .title {
-  color: var(--black-color-v2);
-  margin-bottom: 30px;
-  font-size: 31px;
-  font-weight: 700;
-}
-.subTitle,
-.subTitle p {
-  font-weight: 400;
-  font-family: var(--inter);
-  line-height: 52px;
-  max-width: 95%;
-  font-size: 43px;
+  color: var(--dark-green-text);
+  margin-bottom: 24px;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
 }
 
-.lineHeight p {
-  font-size: 29px !important;
-  font-weight: 500;
-  line-height: 40px !important;
-  margin-top: 5px;
+.subTitle,
+.subTitle p {
+  font-weight: 700;
+  font-family: var(--inter);
+  line-height: 1.05 !important;
+  max-width: 100%;
+  font-size: 52px !important;
+  color: #333333;
+  letter-spacing: -0.02em;
+}
+
+.subTitle strong {
+  color: var(--red-color);
 }
 
 .description {
-  margin-top: 40px;
-  width: 90%;
-  color: var(--black-color-v2);
-  line-height: 29px;
-  font-size: 21px;
-  font-weight: 500;
+  margin-top: 24px;
+  max-width: 640px;
+  width: 100%;
+  color: #2E2E2E;
+  line-height: 28px !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
 }
 
 .rightCol {
-  width: 35%;
+  width: 45%;
   position: relative;
-}
-
-.rightColText {
-  width: 40%;
-  position: relative;
-  padding-left: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
 }
 
 .imageDiv {
-  margin-block-start: 65px;
-  position: absolute;
+  position: relative;
   width: 380px;
-  height: 360px;
-  top: -10px;
-  left: -37px;
+  height: 380px;
+  z-index: 1;
+}
+
+.imageDiv img {
+  object-fit: contain;
+}
+
+.rightCol::before {
+  content: " ";
+  background: url("/assets/images/app-images/about-us-vector.png") no-repeat center center;
+  background-size: contain;
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 .imageDiv img {
@@ -68,12 +90,14 @@
 .rightCol::before {
   content: " ";
   background: url("/assets/images/app-images/about-us-vector.png") no-repeat;
+  background-size: contain;
   position: absolute;
-  width: 100%;
-  bottom: 0px;
-  top: 33px;
-  left: 44px;
-  height: 347px;
+  width: 120%;
+  height: 120%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 .callToActionDiv {
