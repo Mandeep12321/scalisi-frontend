@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./VendorCard.module.css";
 import Image from "next/image";
-import { mergeClass } from "@/resources/utils/helper";
+import { mediaUrl, mergeClass } from "@/resources/utils/helper";
 
 export default function VendorCard({ data, vendor, mainClass }) {
   return (
@@ -17,10 +17,9 @@ export default function VendorCard({ data, vendor, mainClass }) {
       </h3>
       <div className={classes.vendorCardImage}>
         <Image
-          src={data?.image}
+          src={mediaUrl(data?.image)}
           fill
           alt="img"
-          layout="resposive"
           quality={100}
         />
       </div>

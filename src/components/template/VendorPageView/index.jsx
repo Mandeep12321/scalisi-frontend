@@ -8,6 +8,7 @@ import VendorCard from "@/components/molecules/VendorCard/VendorCard";
 import { VENDORS_DATA } from "@/developmentContent/mock-data";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import { mediaUrl, mergeClass } from "@/resources/utils/helper";
+import { ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -185,23 +186,27 @@ export default function VendorPageView({ cmsData }) {
             </div>
           </Col>
         </Row>
-        <Row className="g-0">
-          <Col md={6} lg={6}>
-            <div className={mergeClass(classes.announcementLeft)}>
-              <AnnouncementCard data={_cmsData?.support} />
-            </div>
-          </Col>
-          <Col md={6} lg={6}>
-            <div className={mergeClass(classes.announcementRight)}>
-              <AnnouncementCard
-                data={_cmsData?.updates}
-                placeholder="Email address"
-                hasNewsletter={true}
-              />
-            </div>
-          </Col>
-        </Row>
       </Container>
+      <div className={classes.announcementSection}>
+        <Container>
+          <Row className="g-0">
+            <Col md={6} lg={6}>
+              <div className={mergeClass(classes.announcementLeft)}>
+                <AnnouncementCard data={_cmsData?.support || ABOUT_US_PAGE_DATA?.announcement1} />
+              </div>
+            </Col>
+            <Col md={6} lg={6}>
+              <div className={mergeClass(classes.announcementRight)}>
+                <AnnouncementCard
+                  data={_cmsData?.updates || ABOUT_US_PAGE_DATA?.announcement2}
+                  placeholder="Email address"
+                  hasNewsletter={true}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 }

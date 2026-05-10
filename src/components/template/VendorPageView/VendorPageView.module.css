@@ -110,6 +110,10 @@
   margin-block: 45px 70px;
 }
 
+.announcementSection {
+  background-color: var(--body-color);
+}
+
 .announcementRight,
 .announcementLeft {
   padding-top: 106px;
