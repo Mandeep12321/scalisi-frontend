@@ -7,4 +7,4 @@ export const WEBSITE_ROUTES = [
 
 export const PROTECTED_ROUTES = WEBSITE_ROUTES;
 
-export const AUTH_ROUTES = ["/login", "/register", "/forgot-password"];
+export const AUTH_ROUTES = ["/login", "/sign-up", "/forgot-password"];

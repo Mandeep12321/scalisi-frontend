@@ -244,7 +244,7 @@ const DesktopHeader = ({
         <Button
           variant="white-v2"
           label={"Sign Up"}
-          onClick={() => router.push("/register")}
+          onClick={() => router.push("/sign-up")}
           customStyle={{
             marginRight: "35px",
           }}

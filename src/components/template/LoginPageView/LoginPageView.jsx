@@ -161,7 +161,7 @@ export default function LoginPageView() {
                       <span
                         className="fw-700 cursor-pointer"
                         onClick={() => {
-                          router?.push("/register");
+                          router?.push("/sign-up");
                         }}
                       >
                         Sign Up Here

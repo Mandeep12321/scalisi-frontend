@@ -137,7 +137,7 @@ const MobileHeader = ({
           label={"Sign Up"}
           className={Style.drawerSignup}
           onClick={() => {
-            router.push("/register");
+            router.push("/sign-up");
             setIsDrawerOpen(false);
           }}
         />

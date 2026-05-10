@@ -102,7 +102,7 @@ const LoginModal = ({
                       className="fw-700 cursor-pointer"
                       onClick={() => {
                         setShow(!show);
-                        router?.push("/register");
+                        router?.push("/sign-up");
                       }}
                     >
                       Sign Up Here

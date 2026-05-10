@@ -1,19 +1,14 @@
 .formBox,
 .formBox2 {
   width: 100%;
-  max-width: 1300px;
-  padding: 30px;
-  border-radius: 12px;
+  padding: 30px 0;
   margin: auto;
-  margin-top: 30px;
-  background-color: #fcfcfc;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.05);
+  background-color: transparent;
 }
 
 .progressContainer {
-  max-width: 1300px;
-  margin: 30px auto 0;
-  padding: 0 30px;
+  width: 100%;
+  margin: 40px auto 20px;
 }
 
 .progressBar {
@@ -54,6 +49,7 @@
 .progressStepActive {
   border-color: var(--primary-color);
   color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.1);
 }
 
 .progressStepCompleted {
@@ -62,42 +58,53 @@
   color: #fff;
 }
 
-
 .sectionCard {
   background: #fff;
-  padding: 20px;
+  padding: 24px;
   border-radius: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   border: 1px solid #f0f0f0;
   height: 100%;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .sectionCard:hover {
   border-color: var(--primary-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .sectionTitle {
   font-size: 16px;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 15px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .sectionTitle::before {
   content: "";
-  width: 3px;
-  height: 15px;
+  width: 4px;
+  height: 16px;
   background: var(--primary-color);
   border-radius: 2px;
 }
 
-.inputDiv {
-  margin-bottom: 15px;
+.inputFieldWrapper {
+  margin-bottom: 20px;
 }
+
+.progressContainer {
+  width: 100%;
+  margin: 40px auto 20px;
+}
+
+
 
 .compactGrid {
   display: grid;
