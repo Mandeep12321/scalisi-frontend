@@ -24,6 +24,10 @@ export const Checkbox = ({
   }
 
   const HandleClick = () => {
+    if (isBool) {
+      setValue(!value);
+      return;
+    }
     let newArray = [];
     if (checkValueTypeArray) {
       newArray = value?.slice();
@@ -57,6 +61,8 @@ export const Checkbox = ({
 
       <div
         className={mergeClass(`my-2`, classes.checkboxWithLabel, checkboxMain)}
+        onClick={() => disabled !== true && HandleClick()}
+        style={{ cursor: disabled ? "not-allowed" : "pointer" }}
       >
         <div className={`${classes.container}`}>
           <input
@@ -71,7 +77,6 @@ export const Checkbox = ({
           />
           <span
             className={classes.checkmark}
-            onClick={() => disabled !== true && HandleClick()}
           ></span>
         </div>
         {label && (
