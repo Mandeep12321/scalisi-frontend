@@ -6,6 +6,8 @@ import FeatureCard from "@/components/molecules/FeatureCards";
 import { useRouter } from "next/navigation";
 import classes from "../LandingPageView.module.css";
 
+import { HOME_PAGE_DATA } from "@/developmentContent/mock-data";
+
 export default function LandingHero({ cmsData }) {
   const router = useRouter();
 
@@ -15,7 +17,7 @@ export default function LandingHero({ cmsData }) {
       <Row>
         <Col md={12}>
           <div className={classes.mainHero}>
-            <SwiperWrapper data={cmsData?.hero?.arr || []} />
+            <SwiperWrapper data={cmsData?.hero?.arr || HOME_PAGE_DATA?.heroSection || []} />
           </div>
         </Col>
       </Row>
@@ -25,7 +27,7 @@ export default function LandingHero({ cmsData }) {
         <Col md={12}>
           <div className={`my-3 ${classes.afterHeroCard}`}>
             <Row>
-              {cmsData?.homeCards?.arr?.map((item, index) => (
+              {(cmsData?.homeCards?.arr || HOME_PAGE_DATA?.featureSection)?.map((item, index) => (
                 <Col
                   md={4}
                   sm={12}

@@ -33,12 +33,14 @@ export default function DistributionMapView({ cmsData }) {
             <Col md={12}>
               <div className={classes.distributionHead}>
                 <h2 className="fs-31 fw-700 black-color mt-3">
-                  {_cmsData?.title}
+                  {_cmsData?.title || DISTRIBUTION_PAGE_DATA?.title}
                 </h2>
                 <h3 className="fs-24 fw-700 text-green">
-                  {_cmsData?.subTitle}
+                  {_cmsData?.subTitle || DISTRIBUTION_PAGE_DATA?.subtitle}
                 </h3>
-                <p className=" fs-24 text-color-v2">{_cmsData?.description}</p>
+                <p className=" fs-24 text-color-v2">
+                  {_cmsData?.description || DISTRIBUTION_PAGE_DATA?.description}
+                </p>
               </div>
             </Col>
             <Col md={12}>

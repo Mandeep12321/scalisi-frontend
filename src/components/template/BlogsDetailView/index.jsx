@@ -4,7 +4,7 @@ import LoadingComponent from "@/components/atoms/LoadingComponent";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
 import BlogCard from "@/components/molecules/BlogCard";
 import HeroSection from "@/components/molecules/HeroSection";
-import { BLOGS_DETAIL_DATA } from "@/developmentContent/mock-data";
+import { BLOGS_DETAIL_DATA, ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
 import { Get } from "@/interceptor/axiosInterceptor";
 import { mergeClass } from "@/resources/utils/helper";
 import HTMLReactParser from "html-react-parser";
@@ -171,13 +171,13 @@ export default function BlogsDetailView({ cmsUpdateData, cmsSupportData }) {
         <Row className="g-0">
           <Col md={6} lg={6}>
             <div className={mergeClass(classes.announcementLeft)}>
-              <AnnouncementCard data={support?.value?.data} />
+              <AnnouncementCard data={support?.value?.data || ABOUT_US_PAGE_DATA?.announcement1} />
             </div>
           </Col>
           <Col md={6} lg={6}>
             <div className={mergeClass(classes.announcementRight)}>
               <AnnouncementCard
-                data={updates?.value?.data}
+                data={updates?.value?.data || ABOUT_US_PAGE_DATA?.announcement2}
                 placeholder="Email address"
                 hasNewsletter={true}
               />

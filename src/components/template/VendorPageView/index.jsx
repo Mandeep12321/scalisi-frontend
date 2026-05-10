@@ -49,7 +49,7 @@ export default function VendorPageView({ cmsData }) {
             <Col md={12} className="p-0">
               <HeroSection
                 isColor={true}
-                data={_cmsData?.hero}
+                data={_cmsData?.hero || VENDORS_DATA?.heroSection}
                 mainDivClass={classes.mainDivClass}
                 colorDiv={classes.mainDiv}
                 styles={{

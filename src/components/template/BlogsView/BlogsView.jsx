@@ -127,13 +127,13 @@ export default function BlogsView({ cmsData }) {
         <Row className="g-0">
           <Col md={6} lg={6}>
             <div className={mergeClass(classes.announcementLeft)}>
-              <AnnouncementCard data={_cmsData?.support} />
+              <AnnouncementCard data={_cmsData?.support || ABOUT_US_PAGE_DATA?.announcement1} />
             </div>
           </Col>
           <Col md={6} lg={6}>
             <div className={mergeClass(classes.announcementRight)}>
               <AnnouncementCard
-                data={_cmsData?.updates}
+                data={_cmsData?.updates || ABOUT_US_PAGE_DATA?.announcement2}
                 placeholder="Email address"
                 hasNewsletter={true}
               />
