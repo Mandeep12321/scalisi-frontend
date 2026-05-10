@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const signupSchema = () => {
   return Yup.object({
-    // Step 1 validation - Everything optional
+    // Step 1 validation - Required fields for account creation
     companyName: Yup.string(),
     address: Yup.string(),
     city: Yup.string(),
@@ -11,14 +11,14 @@ export const signupSchema = () => {
     phone: Yup.string(),
     primaryContact: Yup.object({
       name: Yup.string(),
-      email: Yup.string().email("Invalid email"),
+      email: Yup.string().email("Invalid email").required("Primary contact email is required"),
     }),
     webLogin: Yup.object({
-      email: Yup.string().email("Invalid email"),
-      password: Yup.string().min(8, "Password must be at least 8 characters"),
+      email: Yup.string().email("Invalid email").required("Login Email is required"),
+      password: Yup.string().min(8, "Password must be at least 8 characters").required("Password is required"),
     }),
 
-    // Step 2 validation - Everything optional
+    // Step 2 validation - All optional
     federalTaxId: Yup.string(),
     companyType: Yup.string(),
     termsAccepted: Yup.boolean(),
