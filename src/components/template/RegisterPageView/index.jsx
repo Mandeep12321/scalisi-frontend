@@ -122,7 +122,7 @@ export default function RegisterPageView({ data: _data = null }) {
                 <h3 className={classes.sectionTitle}>Primary Contact</h3>
                 <div className={classes.inputFieldWrapper}><Input label="Full Name" placeholder="Contact person name" labelStyle={commonLabelStyle} value={registrationFormik.values.primaryContact.name} setValue={(val) => registrationFormik.setFieldValue("primaryContact.name", val)} /></div>
                 <div className={classes.inputFieldWrapper}><Input label="Phone" placeholder="Direct phone" labelStyle={commonLabelStyle} value={registrationFormik.values.primaryContact.phone} setValue={(val) => registrationFormik.setFieldValue("primaryContact.phone", val)} /></div>
-                <div className={classes.inputFieldWrapper}><Input label="Email" type="email" placeholder="email@example.com" labelStyle={commonLabelStyle} value={registrationFormik.values.primaryContact.email} setValue={(val) => registrationFormik.setFieldValue("primaryContact.email", val)} errorText={registrationFormik.touched.primaryContact?.email && registrationFormik.errors.primaryContact?.email} /></div>
+                <div className={classes.inputFieldWrapper}><Input label="Email" type="email" placeholder="email@example.com" labelStyle={commonLabelStyle} value={registrationFormik.values.primaryContact.email} setValue={(val) => registrationFormik.setFieldValue("primaryContact.email", val)} errorText={registrationFormik.errors.primaryContact?.email} /></div>
               </div>
             </Col>
             <Col lg={4}>
@@ -147,17 +147,17 @@ export default function RegisterPageView({ data: _data = null }) {
         <Col lg={8}>
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Sales & Internal Specs</h3>
-            <Row className="g-2">
-              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Salesman" placeholder="Assigned salesman" labelStyle={commonLabelStyle} value={registrationFormik.values.salesman} setValue={(val) => registrationFormik.setFieldValue("salesman", val)} /></Col>
-              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Price Plan" placeholder="Pricing level" labelStyle={commonLabelStyle} value={registrationFormik.values.pricePlan} setValue={(val) => registrationFormik.setFieldValue("pricePlan", val)} /></Col>
-              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Labels" placeholder="Label type" labelStyle={commonLabelStyle} value={registrationFormik.values.labels} setValue={(val) => registrationFormik.setFieldValue("labels", val)} /></Col>
+            <Row className="g-3">
+              <Col xs={12} md={4}><Input label="Salesman" placeholder="Assigned salesman" labelStyle={commonLabelStyle} value={registrationFormik.values.salesman} setValue={(val) => registrationFormik.setFieldValue("salesman", val)} /></Col>
+              <Col xs={12} md={4}><Input label="Price Plan" placeholder="Pricing level" labelStyle={commonLabelStyle} value={registrationFormik.values.pricePlan} setValue={(val) => registrationFormik.setFieldValue("pricePlan", val)} /></Col>
+              <Col xs={12} md={4}><Input label="Labels" placeholder="Label type" labelStyle={commonLabelStyle} value={registrationFormik.values.labels} setValue={(val) => registrationFormik.setFieldValue("labels", val)} /></Col>
             </Row>
-            <hr className="my-3 my-md-4 border-light" />
-            <Row className="g-2">
-              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Credit Appr" placeholder="Approved by" labelStyle={commonLabelStyle} value={registrationFormik.values.creditApproved} setValue={(val) => registrationFormik.setFieldValue("creditApproved", val)} /></Col>
-              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Sales Mgr" placeholder="Manager name" labelStyle={commonLabelStyle} value={registrationFormik.values.salesManager} setValue={(val) => registrationFormik.setFieldValue("salesManager", val)} /></Col>
-              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Purchasing Mgr" placeholder="Purchasing contact" labelStyle={commonLabelStyle} value={registrationFormik.values.purchasingManager} setValue={(val) => registrationFormik.setFieldValue("purchasingManager", val)} /></Col>
-              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Dir of Ops" placeholder="Director name" labelStyle={commonLabelStyle} value={registrationFormik.values.directorOfOps} setValue={(val) => registrationFormik.setFieldValue("directorOfOps", val)} /></Col>
+            <hr className="my-3 border-light" />
+            <Row className="g-3">
+              <Col xs={12} md={3}><Input label="Credit Appr" placeholder="Approved by" labelStyle={commonLabelStyle} value={registrationFormik.values.creditApproved} setValue={(val) => registrationFormik.setFieldValue("creditApproved", val)} /></Col>
+              <Col xs={12} md={3}><Input label="Sales Mgr" placeholder="Manager name" labelStyle={commonLabelStyle} value={registrationFormik.values.salesManager} setValue={(val) => registrationFormik.setFieldValue("salesManager", val)} /></Col>
+              <Col xs={12} md={3}><Input label="Purchasing Mgr" placeholder="Purchasing contact" labelStyle={commonLabelStyle} value={registrationFormik.values.purchasingManager} setValue={(val) => registrationFormik.setFieldValue("purchasingManager", val)} /></Col>
+              <Col xs={12} md={3}><Input label="Dir of Ops" placeholder="Director name" labelStyle={commonLabelStyle} value={registrationFormik.values.directorOfOps} setValue={(val) => registrationFormik.setFieldValue("directorOfOps", val)} /></Col>
             </Row>
           </div>
         </Col>
@@ -165,8 +165,8 @@ export default function RegisterPageView({ data: _data = null }) {
         <Col lg={4}>
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Web Portal & Verification</h3>
-            <div className={classes.inputFieldWrapper}><Input label="Portal Login Email" type="email" placeholder="info@example.com" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.email} setValue={(val) => registrationFormik.setFieldValue("webLogin.email", val)} errorText={registrationFormik.touched.webLogin?.email && registrationFormik.errors.webLogin?.email} /></div>
-            <div className={classes.inputFieldWrapper}><Input label="Portal Password" type="password" placeholder="********" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.password} setValue={(val) => registrationFormik.setFieldValue("webLogin.password", val)} errorText={registrationFormik.touched.webLogin?.password && registrationFormik.errors.webLogin?.password} /></div>
+            <div className={classes.inputFieldWrapper}><Input label="Portal Login Email" type="email" placeholder="info@example.com" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.email} setValue={(val) => registrationFormik.setFieldValue("webLogin.email", val)} errorText={registrationFormik.errors.webLogin?.email} /></div>
+            <div className={classes.inputFieldWrapper}><Input label="Portal Password" type="password" placeholder="********" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.password} setValue={(val) => registrationFormik.setFieldValue("webLogin.password", val)} errorText={registrationFormik.errors.webLogin?.password} /></div>
             <div className="d-flex flex-column gap-2 mt-2">
               <Checkbox label="Attached Kitchen List w/ Pars" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedKitchenList} setValue={(val) => registrationFormik.setFieldValue("attachedKitchenList", val)} isBool={true} />
               <Checkbox label="Attached Spec Guide Complete" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedSpecGuide} setValue={(val) => registrationFormik.setFieldValue("attachedSpecGuide", val)} isBool={true} />
