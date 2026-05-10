@@ -30,24 +30,49 @@ export default function RegisterPageView({ data: _data = null }) {
   const [loading, setLoading] = useState("");
 
   const registrationFormik = useFormik({
-    initialValues: {
-      ...SIGNUP_VALUES,
-      // Ensure these exist even if not in SIGNUP_VALUES
-      officers: SIGNUP_VALUES.officers || [
-        { name: "", title: "", ssn: "", address: "", phone: "" },
-        { name: "", title: "", ssn: "", address: "", phone: "" }
-      ]
-    },
+    initialValues: SIGNUP_VALUES,
     validationSchema: signupSchema(),
     onSubmit: async (values) => {
-      if (currentStep === 1) {
-        setCurrentStep(2);
-        window.scrollTo(0, 0);
-      } else {
-        await handleSignupSubmit(values);
-      }
+      // This is only reached for the final submission on Step 2
+      await handleSignupSubmit(values);
     },
   });
+
+  const handleNextStep = async () => {
+    // Manually trigger validation for Step 1 required fields
+    const fieldsToValidate = [
+      "companyName",
+      "address",
+      "primaryContact.email",
+      "webLogin.email",
+      "webLogin.password"
+    ];
+
+    // Mark these as touched to show errors
+    fieldsToValidate.forEach(field => registrationFormik.setFieldTouched(field, true));
+
+    // Validate only these fields
+    const errors = await registrationFormik.validateForm();
+    
+    // Check if any of the Step 1 fields have errors
+    const hasStep1Errors = fieldsToValidate.some(field => {
+      const fieldParts = field.split('.');
+      if (fieldParts.length > 1) {
+        return errors[fieldParts[0]]?.[fieldParts[1]];
+      }
+      return errors[field];
+    });
+
+    if (!hasStep1Errors) {
+      setCurrentStep(2);
+      window.scrollTo(0, 0);
+    } else {
+      RenderToast({
+        type: "error",
+        message: "Please fill in all required fields to continue."
+      });
+    }
+  };
 
   const handleSignupSubmit = async (values) => {
     setLoading("signup");
@@ -194,7 +219,7 @@ export default function RegisterPageView({ data: _data = null }) {
         </Col>
 
         <Col md={12} className="mt-4 d-flex justify-content-end">
-          <Button label="Proceed to Step 2" type="submit" variant="primary" loading={loading === "signup"} className="px-4 px-md-5 w-xs-100" />
+          <Button label="Proceed to Step 2" type="button" onClick={handleNextStep} variant="primary" loading={loading === "signup"} className="px-4 px-md-5 w-xs-100" />
         </Col>
       </Row>
     </div>
@@ -210,30 +235,82 @@ export default function RegisterPageView({ data: _data = null }) {
 
         <Col lg={12}>
           <div className={classes.sectionCard}>
-            <h3 className={classes.sectionTitle}>Legal & Regulatory</h3>
+            <h3 className={classes.sectionTitle}>General Business Information</h3>
             <Row className="g-3">
-              <Col xs={12} md={4}><Input label="Federal Tax I.D. / SS#" placeholder="XX-XXXXXXX" labelStyle={commonLabelStyle} value={registrationFormik.values.federalTaxId} setValue={(val) => registrationFormik.setFieldValue("federalTaxId", val)} /></Col>
+              <Col xs={12} md={4}><Input label="Federal Tax I.D. # / SS#" placeholder="XX-XXXXXXX" labelStyle={commonLabelStyle} value={registrationFormik.values.federalTaxId} setValue={(val) => registrationFormik.setFieldValue("federalTaxId", val)} /></Col>
               <Col xs={12} md={4}><Input label="PACA License #" placeholder="License number" labelStyle={commonLabelStyle} value={registrationFormik.values.pacaLicense} setValue={(val) => registrationFormik.setFieldValue("pacaLicense", val)} /></Col>
-              <Col xs={12} md={4}><DropDown label="Company Type" labelStyle={commonLabelStyle} value={registrationFormik.values.companyType} setValue={(val) => registrationFormik.setFieldValue("companyType", val)} options={[{ label: "Proprietorship", value: "Prop" }, { label: "Partnership", value: "Partnership" }, { label: "Franchisee", value: "Franchisee" }, { label: "Corporation", value: "Corp" }]} /></Col>
+              <Col xs={12} md={4}><Input label="D&B #" placeholder="D-U-N-S Number" labelStyle={commonLabelStyle} value={registrationFormik.values.dAndBNumber} setValue={(val) => registrationFormik.setFieldValue("dAndBNumber", val)} /></Col>
+              <Col xs={12} md={4}><Input label="Year Business Established" placeholder="YYYY" labelStyle={commonLabelStyle} value={registrationFormik.values.yearEstablished} setValue={(val) => registrationFormik.setFieldValue("yearEstablished", val)} /></Col>
+              <Col xs={12} md={8}><Input label="Requested Delivery Days/Times" placeholder="e.g. Mon-Fri, 6am-8am" labelStyle={commonLabelStyle} value={registrationFormik.values.requestedDeliveryDays} setValue={(val) => registrationFormik.setFieldValue("requestedDeliveryDays", val)} /></Col>
+              <Col xs={12} md={12}><Input label="Special Delivery Instructions" placeholder="Any specific requirements" labelStyle={commonLabelStyle} value={registrationFormik.values.specialDeliveryInstructions} setValue={(val) => registrationFormik.setFieldValue("specialDeliveryInstructions", val)} /></Col>
             </Row>
           </div>
         </Col>
 
         <Col lg={12}>
           <div className={classes.sectionCard}>
-            <h3 className={classes.sectionTitle}>Principal Officers / Owners</h3>
-            <p className="fs-13 text-muted mb-3 italic">List names, titles, and personal contact info of principals.</p>
-            {registrationFormik.values.officers?.map((officer, index) => (
-              <div key={index} className={mergeClass("mb-4 pb-4", index === 0 ? "border-bottom border-light" : "")}>
-                <Row className="g-2">
-                  <Col xs={12} md={4}><Input label="Full Name" placeholder="Principal name" labelStyle={commonLabelStyle} value={officer.name} setValue={(val) => registrationFormik.setFieldValue(`officers.${index}.name`, val)} /></Col>
-                  <Col xs={6} md={4}><Input label="Title" placeholder="Position" labelStyle={commonLabelStyle} value={officer.title} setValue={(val) => registrationFormik.setFieldValue(`officers.${index}.title`, val)} /></Col>
-                  <Col xs={6} md={4}><Input label="SS#" placeholder="Social Security #" labelStyle={commonLabelStyle} value={officer.ssn} setValue={(val) => registrationFormik.setFieldValue(`officers.${index}.ssn`, val)} /></Col>
-                  <Col xs={12} md={8}><Input label="Home Address" placeholder="Street, City, State, Zip" labelStyle={commonLabelStyle} value={officer.address} setValue={(val) => registrationFormik.setFieldValue(`officers.${index}.address`, val)} /></Col>
-                  <Col xs={12} md={4}><Input label="Home Phone" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={officer.phone} setValue={(val) => registrationFormik.setFieldValue(`officers.${index}.phone`, val)} /></Col>
-                </Row>
+            <h3 className={classes.sectionTitle}>Ownership Structure</h3>
+            <p className="fs-13 text-muted mb-4 italic">(A) and if applicable (B) or (C) must be filled out for non-cash payment forms.</p>
+            
+            <div className="mb-4">
+              <h4 className="fs-15 fw-700 text-green mb-3 uppercase tracking-wider">Company Type</h4>
+              <div className="d-flex flex-wrap gap-4">
+                {["Prop", "Partnership", "Franchisee", "Corp"].map((type) => (
+                  <Checkbox 
+                    key={type}
+                    label={type} 
+                    labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} 
+                    value={registrationFormik.values.companyType === type} 
+                    setValue={() => registrationFormik.setFieldValue("companyType", type)} 
+                    isBool={true} 
+                  />
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="bg-light p-3 rounded mb-4">
+              <h4 className="fs-15 fw-700 text-dark mb-3 uppercase">(A) - Individual Responsible</h4>
+              <Row className="g-2">
+                <Col xs={12} md={6}><Input label="Name" placeholder="Full name" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeA?.name} setValue={(val) => registrationFormik.setFieldValue("ownership.typeA.name", val)} /></Col>
+                <Col xs={12} md={6}><Input label="Home Address" placeholder="Street, City, State, Zip" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeA?.homeAddress} setValue={(val) => registrationFormik.setFieldValue("ownership.typeA.homeAddress", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Home Phone" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeA?.homePhone} setValue={(val) => registrationFormik.setFieldValue("ownership.typeA.homePhone", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Social Security Number" placeholder="XXX-XX-XXXX" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeA?.ssn} setValue={(val) => registrationFormik.setFieldValue("ownership.typeA.ssn", val)} /></Col>
+                <Col xs={6} md={2}><Input label="DL #" placeholder="Driver License" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeA?.dlNumber} setValue={(val) => registrationFormik.setFieldValue("ownership.typeA.dlNumber", val)} /></Col>
+                <Col xs={6} md={2}><Input label="State" placeholder="State" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeA?.state} setValue={(val) => registrationFormik.setFieldValue("ownership.typeA.state", val)} /></Col>
+              </Row>
+            </div>
+
+            <div className="bg-light p-3 rounded mb-4">
+              <h4 className="fs-15 fw-700 text-dark mb-3 uppercase">(B) - Partnership</h4>
+              {registrationFormik.values.ownership.typeB?.map((partner, index) => (
+                <div key={index} className={mergeClass("pb-3 mb-3", index === 0 ? "border-bottom border-secondary-subtle" : "")}>
+                  <Row className="g-2">
+                    <Col xs={12} md={6}><Input label="Partner Name" placeholder="Full name" labelStyle={commonLabelStyle} value={partner.partnerName} setValue={(val) => registrationFormik.setFieldValue(`ownership.typeB.${index}.partnerName`, val)} /></Col>
+                    <Col xs={12} md={6}><Input label="Home Address" placeholder="Street, City, State, Zip" labelStyle={commonLabelStyle} value={partner.homeAddress} setValue={(val) => registrationFormik.setFieldValue(`ownership.typeB.${index}.homeAddress`, val)} /></Col>
+                    <Col xs={12} md={4}><Input label="Home Phone" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={partner.homePhone} setValue={(val) => registrationFormik.setFieldValue(`ownership.typeB.${index}.homePhone`, val)} /></Col>
+                    <Col xs={12} md={4}><Input label="Social Security Number" placeholder="XXX-XX-XXXX" labelStyle={commonLabelStyle} value={partner.ssn} setValue={(val) => registrationFormik.setFieldValue(`ownership.typeB.${index}.ssn`, val)} /></Col>
+                    <Col xs={6} md={2}><Input label="DL #" placeholder="Driver License" labelStyle={commonLabelStyle} value={partner.dlNumber} setValue={(val) => registrationFormik.setFieldValue(`ownership.typeB.${index}.dlNumber`, val)} /></Col>
+                    <Col xs={6} md={2}><Input label="State" placeholder="State" labelStyle={commonLabelStyle} value={partner.state} setValue={(val) => registrationFormik.setFieldValue(`ownership.typeB.${index}.state`, val)} /></Col>
+                  </Row>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-light p-3 rounded">
+              <h4 className="fs-15 fw-700 text-dark mb-3 uppercase">(C) - Corporation</h4>
+              <Row className="g-2">
+                <Col xs={12} md={4}><Input label="Name of President" placeholder="President name" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.president} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.president", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Name of Vice President" placeholder="VP name" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.vicePresident} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.vicePresident", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Name of Treasurer" placeholder="Treasurer name" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.treasurer} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.treasurer", val)} /></Col>
+                <Col xs={12} md={8}><Input label="Name of Accounts Payable Contact" placeholder="A/P name" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.apContact} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.apContact", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Phone Number(s)" placeholder="A/P direct phone" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.apPhone} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.apPhone", val)} /></Col>
+                <Col xs={12} md={8}><Input label="Address of Principal Office" placeholder="Street, City, State, Zip" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.principalOfficeAddress} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.principalOfficeAddress", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Phone Number(s)" placeholder="Office phone" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.principalOfficePhone} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.principalOfficePhone", val)} /></Col>
+                <Col xs={12} md={4}><Input label="State of Incorporation" placeholder="State" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.stateOfIncorporation} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.stateOfIncorporation", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Date of Incorporation" placeholder="MM/DD/YYYY" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.dateOfIncorporation} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.dateOfIncorporation", val)} /></Col>
+                <Col xs={12} md={4}><Input label="Federal I.D. Number" placeholder="XX-XXXXXXX" labelStyle={commonLabelStyle} value={registrationFormik.values.ownership.typeC?.federalIdNumber} setValue={(val) => registrationFormik.setFieldValue("ownership.typeC.federalIdNumber", val)} /></Col>
+              </Row>
+            </div>
           </div>
         </Col>
 
@@ -255,7 +332,7 @@ export default function RegisterPageView({ data: _data = null }) {
         <Col md={12}>
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Trade References</h3>
-            <p className="fs-13 text-muted mb-3 italic">Please provide three reliable trade references (no alcohol/liquor).</p>
+            <p className="fs-13 text-muted mb-3 italic">Please provide three reliable trade references (no alcohol/liquors).</p>
             {registrationFormik.values.tradeReferences?.map((ref, index) => (
               <Row key={index} className={mergeClass("g-2 pb-3 mb-3", index < 2 ? "border-bottom border-light" : "")}>
                 <Col xs={12} md={4}><Input label={`Ref ${index + 1} Name`} placeholder="Company name" labelStyle={commonLabelStyle} value={ref.name} setValue={(val) => registrationFormik.setFieldValue(`tradeReferences.${index}.name`, val)} /></Col>
@@ -268,11 +345,34 @@ export default function RegisterPageView({ data: _data = null }) {
 
         <Col md={12}>
           <div className={classes.sectionCard}>
-            <h3 className={classes.sectionTitle}>Terms of Agreement</h3>
-            <div className="bg-light p-2 p-md-3 border rounded mb-3 mb-md-4 fs-12 text-muted line-height-1-6" style={{ maxHeight: '100px', overflowY: 'auto' }}>
-              The perishable agricultural commodities listed on invoices are sold subject to the statutory trust authorized by Section 5(c) of the PACA, 1930...
+            <h3 className={classes.sectionTitle}>Terms and Conditions of Sale - This is not a personal guarantee</h3>
+            <div className="bg-light p-3 p-md-4 border rounded mb-3 mb-md-4 fs-13 text-muted line-height-1-8 shadow-sm" style={{ maxHeight: '350px', overflowY: 'auto', textAlign: 'justify' }}>
+              <p className="mb-3">
+                <strong>By signature hereof, the undersigned agrees to the following terms:</strong> The perishable agricultural commodities listed on invoices are sold subject to the statutory trust authorized by Section 5(c) of the Perishable Agricultural Commodities Act, 1930 (7 USC 499(e)(c)). The seller of these commodities retains a trust claim over these commodities, all inventories of food or other products derived from these commodities, any any receivables or proceeds from the sale of these commodities until full payment is received. 
+              </p>
+              <p className="mb-3">
+                <strong>NOTICE:</strong> Past due invoices as well as any judgments arising from the collection of such invoices shall accrue annual interest at the rate of 18% or at the maximum legal rate, whichever is lower. Seller shall be entitled to collect reasonable attorney's fees and expenses as part of an action to collect on unpaid invoices. Actual attorney's fees incurred in bringing any action to collect on unpaid invoices and/or enforcing any judgment granted and interest shall be considered as additional sums owed in connection with the terms and conditions of sale. 
+              </p>
+              <p className="mb-3">
+                If the customer fails or refuses to comply with its obligations under this agreement, Jack Scalisi Wholesale shall be entitled to recover all costs (including pre-suit costs) associated with the enforcement of this increment, including reasonable attorney's fees and all costs (including but not limited to statutory costs) which may be awarded at the trial court or appellate levels as well as bankruptcy proceedings entitlement and amount of attorney's fees and costs. If suit is necessary, venue shall be only in Palm Beach County.
+              </p>
+              <hr className="my-4 border-secondary-subtle" />
+              <p className="mb-0 italic">
+                I hereby represent that I am authorized to submit this application of behalf of the company named above ("Customer") and it is understood that Apple Core, Inc., d/b/a Jack Scalisi Wholesale Fruit & Produce ("Scalisi Produce") is authorized to obtain information pertaining to Customer's credit capacity and general credit reputation. The information will be obtained through personal interviews with, and/or inquired directed to third parties, such as business associates, financial sources such as banks, Dun & Bradstreet Reporting, and Credit Bureaus. In consideration of the credit extended to Customer by Jack Scalisi Wholesale and its successors and affiliated companies, Customer agrees that such credit shall be extended on the terms and conditions set forth herein.
+              </p>
             </div>
-            <Checkbox label="I accept the Terms and Conditions of Sale" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.termsAccepted} setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)} isBool={true} />
+            <div className="d-flex flex-column gap-2 mt-2">
+              <Checkbox 
+                label="I hereby represent that I am authorized to submit this application and accept the full Terms and Conditions stated above." 
+                labelStyle={{ ...commonLabelStyle, paddingBottom: 0, fontSize: '14px', lineHeight: '1.4' }} 
+                value={registrationFormik.values.termsAccepted} 
+                setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)} 
+                isBool={true} 
+              />
+              {registrationFormik.touched.termsAccepted && registrationFormik.errors.termsAccepted && (
+                <div className="text-danger fs-13 mt-1 fw-600">{registrationFormik.errors.termsAccepted}</div>
+              )}
+            </div>
           </div>
         </Col>
 

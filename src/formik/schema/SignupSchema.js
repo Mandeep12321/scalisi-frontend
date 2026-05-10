@@ -2,9 +2,9 @@ import * as Yup from "yup";
 
 export const signupSchema = () => {
   return Yup.object({
-    // Step 1 validation - Required fields for account creation
-    companyName: Yup.string(),
-    address: Yup.string(),
+    // Step 1 validation - Minimum required fields for account creation
+    companyName: Yup.string(), // Made optional
+    address: Yup.string(),    // Made optional
     city: Yup.string(),
     state: Yup.string(),
     zip: Yup.string(),
@@ -18,9 +18,9 @@ export const signupSchema = () => {
       password: Yup.string().min(8, "Password must be at least 8 characters").required("Password is required"),
     }),
 
-    // Step 2 validation - All optional
+    // Step 2 validation
     federalTaxId: Yup.string(),
     companyType: Yup.string(),
-    termsAccepted: Yup.boolean(),
+    termsAccepted: Yup.boolean().oneOf([true], "You must accept the terms and conditions to submit your application"),
   });
 };
