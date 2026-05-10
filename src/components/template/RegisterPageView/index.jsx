@@ -85,8 +85,8 @@ export default function RegisterPageView({ data: _data = null }) {
     <div className={classes.formBox}>
       <Row className="g-3 g-md-4">
         <Col md={12}>
-          <h2 className="fs-24 fs-md-31 fw-700 text-green mb-1">New Customer Information</h2>
-          <p className="fs-14 fs-md-15 text-muted">Complete the profile below to register your business with Scalisi.</p>
+          <h2 className="fs-24 fs-md-31 fw-700 text-green mb-2 mb-md-3">New Customer Information</h2>
+          <p className="fs-14 fs-md-15 text-muted mb-4">Complete the profile below to register your business with Scalisi.</p>
         </Col>
         
         <Col lg={7}>
@@ -96,8 +96,8 @@ export default function RegisterPageView({ data: _data = null }) {
               <Col xs={12} md={12} className={classes.inputFieldWrapper}><Input label="Company Name" placeholder="Enter your company name" labelStyle={commonLabelStyle} value={registrationFormik.values.companyName} setValue={(val) => registrationFormik.setFieldValue("companyName", val)} errorText={registrationFormik.touched.companyName && registrationFormik.errors.companyName} /></Col>
               <Col xs={12} md={12} className={classes.inputFieldWrapper}><Input label="Street Address" placeholder="123 Business Way" labelStyle={commonLabelStyle} value={registrationFormik.values.address} setValue={(val) => registrationFormik.setFieldValue("address", val)} errorText={registrationFormik.touched.address && registrationFormik.errors.address} /></Col>
               <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="City" placeholder="City" labelStyle={commonLabelStyle} value={registrationFormik.values.city} setValue={(val) => registrationFormik.setFieldValue("city", val)} /></Col>
-              <Col xs={6} md={4} className={classes.inputFieldWrapper}><Input label="State" placeholder="State" labelStyle={commonLabelStyle} value={registrationFormik.values.state} setValue={(val) => registrationFormik.setFieldValue("state", val)} /></Col>
-              <Col xs={6} md={4} className={classes.inputFieldWrapper}><Input label="Zip" placeholder="Zip" labelStyle={commonLabelStyle} value={registrationFormik.values.zip} setValue={(val) => registrationFormik.setFieldValue("zip", val)} /></Col>
+              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="State" placeholder="State" labelStyle={commonLabelStyle} value={registrationFormik.values.state} setValue={(val) => registrationFormik.setFieldValue("state", val)} /></Col>
+              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Zip" placeholder="Zip" labelStyle={commonLabelStyle} value={registrationFormik.values.zip} setValue={(val) => registrationFormik.setFieldValue("zip", val)} /></Col>
               <Col xs={12} md={6} className={classes.inputFieldWrapper}><Input label="Main Phone" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={registrationFormik.values.phone} setValue={(val) => registrationFormik.setFieldValue("phone", val)} /></Col>
               <Col xs={12} md={6} className={classes.inputFieldWrapper}><Input label="Main Fax" placeholder="(555) 000-0000" labelStyle={commonLabelStyle} value={registrationFormik.values.fax} setValue={(val) => registrationFormik.setFieldValue("fax", val)} /></Col>
             </Row>
@@ -149,15 +149,15 @@ export default function RegisterPageView({ data: _data = null }) {
             <h3 className={classes.sectionTitle}>Sales & Internal Specs</h3>
             <Row className="g-2">
               <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Salesman" placeholder="Assigned salesman" labelStyle={commonLabelStyle} value={registrationFormik.values.salesman} setValue={(val) => registrationFormik.setFieldValue("salesman", val)} /></Col>
-              <Col xs={6} md={4} className={classes.inputFieldWrapper}><Input label="Price Plan" placeholder="Pricing level" labelStyle={commonLabelStyle} value={registrationFormik.values.pricePlan} setValue={(val) => registrationFormik.setFieldValue("pricePlan", val)} /></Col>
-              <Col xs={6} md={4} className={classes.inputFieldWrapper}><Input label="Labels" placeholder="Label type" labelStyle={commonLabelStyle} value={registrationFormik.values.labels} setValue={(val) => registrationFormik.setFieldValue("labels", val)} /></Col>
+              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Price Plan" placeholder="Pricing level" labelStyle={commonLabelStyle} value={registrationFormik.values.pricePlan} setValue={(val) => registrationFormik.setFieldValue("pricePlan", val)} /></Col>
+              <Col xs={12} md={4} className={classes.inputFieldWrapper}><Input label="Labels" placeholder="Label type" labelStyle={commonLabelStyle} value={registrationFormik.values.labels} setValue={(val) => registrationFormik.setFieldValue("labels", val)} /></Col>
             </Row>
-            <hr className="my-2 border-light" />
+            <hr className="my-3 my-md-4 border-light" />
             <Row className="g-2">
-              <Col xs={6} md={3} className={classes.inputFieldWrapper}><Input label="Credit Appr" placeholder="Approved by" labelStyle={commonLabelStyle} value={registrationFormik.values.creditApproved} setValue={(val) => registrationFormik.setFieldValue("creditApproved", val)} /></Col>
-              <Col xs={6} md={3} className={classes.inputFieldWrapper}><Input label="Sales Mgr" placeholder="Manager name" labelStyle={commonLabelStyle} value={registrationFormik.values.salesManager} setValue={(val) => registrationFormik.setFieldValue("salesManager", val)} /></Col>
-              <Col xs={6} md={3} className={classes.inputFieldWrapper}><Input label="Purchasing Mgr" placeholder="Purchasing contact" labelStyle={commonLabelStyle} value={registrationFormik.values.purchasingManager} setValue={(val) => registrationFormik.setFieldValue("purchasingManager", val)} /></Col>
-              <Col xs={6} md={3} className={classes.inputFieldWrapper}><Input label="Dir of Ops" placeholder="Director name" labelStyle={commonLabelStyle} value={registrationFormik.values.directorOfOps} setValue={(val) => registrationFormik.setFieldValue("directorOfOps", val)} /></Col>
+              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Credit Appr" placeholder="Approved by" labelStyle={commonLabelStyle} value={registrationFormik.values.creditApproved} setValue={(val) => registrationFormik.setFieldValue("creditApproved", val)} /></Col>
+              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Sales Mgr" placeholder="Manager name" labelStyle={commonLabelStyle} value={registrationFormik.values.salesManager} setValue={(val) => registrationFormik.setFieldValue("salesManager", val)} /></Col>
+              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Purchasing Mgr" placeholder="Purchasing contact" labelStyle={commonLabelStyle} value={registrationFormik.values.purchasingManager} setValue={(val) => registrationFormik.setFieldValue("purchasingManager", val)} /></Col>
+              <Col xs={12} md={3} className={classes.inputFieldWrapper}><Input label="Dir of Ops" placeholder="Director name" labelStyle={commonLabelStyle} value={registrationFormik.values.directorOfOps} setValue={(val) => registrationFormik.setFieldValue("directorOfOps", val)} /></Col>
             </Row>
           </div>
         </Col>
@@ -178,9 +178,9 @@ export default function RegisterPageView({ data: _data = null }) {
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Delivery Operational Details</h3>
             <Row className="g-2">
-              <Col xs={6} md={2} className={classes.inputFieldWrapper}><Input label="Window" placeholder="8am-10am" labelStyle={commonLabelStyle} value={registrationFormik.values.deliveryWindow} setValue={(val) => registrationFormik.setFieldValue("deliveryWindow", val)} /></Col>
-              <Col xs={3} md={2} className={classes.inputFieldWrapper}><Input label="Route" placeholder="Route #" labelStyle={commonLabelStyle} value={registrationFormik.values.route} setValue={(val) => registrationFormik.setFieldValue("route", val)} /></Col>
-              <Col xs={3} md={2} className={classes.inputFieldWrapper}><Input label="Stop" placeholder="Stop #" labelStyle={commonLabelStyle} value={registrationFormik.values.stop} setValue={(val) => registrationFormik.setFieldValue("stop", val)} /></Col>
+              <Col xs={12} md={2} className={classes.inputFieldWrapper}><Input label="Delivery Window" placeholder="e.g. 8am-10am" labelStyle={commonLabelStyle} value={registrationFormik.values.deliveryWindow} setValue={(val) => registrationFormik.setFieldValue("deliveryWindow", val)} /></Col>
+              <Col xs={12} md={2} className={classes.inputFieldWrapper}><Input label="Route" placeholder="Route #" labelStyle={commonLabelStyle} value={registrationFormik.values.route} setValue={(val) => registrationFormik.setFieldValue("route", val)} /></Col>
+              <Col xs={12} md={2} className={classes.inputFieldWrapper}><Input label="Stop" placeholder="Stop #" labelStyle={commonLabelStyle} value={registrationFormik.values.stop} setValue={(val) => registrationFormik.setFieldValue("stop", val)} /></Col>
               <Col xs={12} md={6} className={classes.inputFieldWrapper}><Input label="Special Delivery Instructions" placeholder="Gate codes, door preference, etc." labelStyle={commonLabelStyle} value={registrationFormik.values.deliveryInstructions} setValue={(val) => registrationFormik.setFieldValue("deliveryInstructions", val)} /></Col>
             </Row>
           </div>
@@ -197,8 +197,8 @@ export default function RegisterPageView({ data: _data = null }) {
     <div className={classes.formBox2}>
       <Row className="g-3 g-md-4">
         <Col md={12}>
-          <h2 className="fs-24 fs-md-31 fw-700 text-green mb-1">Business Account Application</h2>
-          <p className="fs-14 fs-md-15 text-muted">Legal and financial information required for credit approval.</p>
+          <h2 className="fs-24 fs-md-31 fw-700 text-green mb-2 mb-md-3">Business Account Application</h2>
+          <p className="fs-14 fs-md-15 text-muted mb-4">Legal and financial information required for credit approval.</p>
         </Col>
 
         <Col lg={12}>
