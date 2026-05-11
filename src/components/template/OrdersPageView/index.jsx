@@ -33,11 +33,9 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { BiSolidFilePlus } from "react-icons/bi";
 import { FaCircleCheck } from "react-icons/fa6";
-import { IoIosRemoveCircle } from "react-icons/io";
-import { MdCancel } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import ItemNote from "@/components/common/ItemNote/ItemNote";
 import classes from "./OrdersPageView.module.css";
 
 export default function OrdersPageView() {
@@ -66,11 +64,8 @@ export default function OrdersPageView() {
   const [isInitializing, setIsInitializing] = useState(true);
   const [deliveryDates, setDeliveryDates] = useState([]);
   const [orderSummary, setOrderSummary] = useState({
-    orderNote: "",
     purchaseOrder: "",
   });
-  const [noteIndex, setNoteIndex] = useState(-1);
-  const [addNote, setAddNote] = useState("");
 
   // Language detection
   const googleTrans = Cookies.get("googtrans");
@@ -255,24 +250,6 @@ export default function OrdersPageView() {
     shippingDetailFormik.setErrors({});
   };
 
-  const handleAddNote = (index) => {
-    if (noteIndex === index) {
-      // need to add note field in current index of cart data and update the cart data in redux
-      dispatch(
-        updateNoteInCart({
-          note: addNote,
-          productId: data[index]?.itemid || data[index]?._id,
-          productVariant: data[index]?.selectedVariant?.value,
-        })
-      );
-      setAddNote("");
-      setNoteIndex(-1);
-    } else {
-      setAddNote(data[index]?.note || "");
-      setNoteIndex(index);
-    }
-  };
-
   const handleChange = (name, value) => {
     setOrderSummary((prev) => ({ ...prev, [name]: value }));
   };
@@ -338,7 +315,6 @@ export default function OrdersPageView() {
               )}
             >
               {item?.type}
-              {/* case not cases */}
             </p>
             <p
               className={mergeClass(
@@ -374,61 +350,6 @@ export default function OrdersPageView() {
         return (
           <div className={classes.priceDiv}>
             <p className="fs-22 fw-700">{item?.price}</p>
-            <div
-              className={mergeClass("cursor-pointer", classes.addNote)}
-              onClick={() => handleAddNote(index)}
-            >
-              <BiSolidFilePlus className={classes.noteIcon} />
-              <p className="fs-15 fw-700">
-                {noteIndex === index
-                  ? isSpanish
-                    ? "Enviar nota"
-                    : "Submit Note"
-                  : item?.note
-                  ? isSpanish
-                    ? "Editar nota"
-                    : "Edit Note"
-                  : isSpanish
-                  ? "Añadir nota"
-                  : "Add note"}
-              </p>
-            </div>
-            {item?.note && noteIndex !== index && (
-              <div
-                className={mergeClass("cursor-pointer", classes.removeNote)}
-                onClick={() => {
-                  dispatch(
-                    updateNoteInCart({
-                      note: "",
-                      productId: item?._id,
-                      productVariant: data[index]?.selectedVariant?.value,
-                    })
-                  );
-                  RenderToast({
-                    type: "success",
-                    message: isSpanish
-                      ? "Nota eliminada exitosamente."
-                      : "Note Removed Successfully.",
-                  });
-                }}
-              >
-                <IoIosRemoveCircle className={classes.noteIcon} />
-                <p className="fs-15 fw-700">
-                  {isSpanish ? "Eliminar nota" : "Remove Note"}
-                </p>
-              </div>
-            )}
-            {noteIndex === index && !item?.note && (
-              <div
-                className={mergeClass("cursor-pointer", classes.cancelNote)}
-                onClick={() => setNoteIndex(-1)}
-              >
-                <MdCancel className={classes.noteIcon} />
-                <p className="fs-15 fw-700">
-                  {isSpanish ? "Cancelar" : "Cancel"}
-                </p>
-              </div>
-            )}
           </div>
         );
       },
@@ -514,6 +435,8 @@ export default function OrdersPageView() {
         isEditable={isEditable}
         isTopHeader={true}
         shippingDetailFormik={shippingDetailFormik}
+        shippingDetailsMain={classes.shippingDetailsCard}
+        nopadding={true}
         onSave={() => {
           shippingDetailFormik?.handleSubmit();
           // router.push("/shipping");
@@ -578,9 +501,6 @@ export default function OrdersPageView() {
                         tableData={tableBody}
                         tableHead={classes.tableHeadClass}
                         tableBodyClass={classes.tableBodyClass}
-                        noteIndex={noteIndex}
-                        addNote={addNote}
-                        setAddNote={setAddNote}
                         custTableClass={classes.custTableClass}
                       />
                     ) : (
@@ -590,6 +510,10 @@ export default function OrdersPageView() {
                         />
                       </div>
                     )}
+                    
+                    <div className={classes.shippingDetailsWrapper}>
+                       {renderShipping()}
+                    </div>
                   </Col>
                   <Col
                     md={12}
@@ -599,15 +523,6 @@ export default function OrdersPageView() {
                   >
                     {renderOrderSummery()}
                   </Col>
-
-                  {/* <Col
-                    xl={8}
-                    lg={12}
-                    md={12}
-                    className={isMobile768 ? "mt-0" : "mt-4"}
-                  >
-                    {isMobile768 ? renderOrderSummery() : renderShipping()}
-                  </Col> */}
                 </>
               </Row>
             </Container>
@@ -616,13 +531,13 @@ export default function OrdersPageView() {
       )}
 
       <Container>
-        <Row className="g-0">
-          <Col md={6} lg={6}>
+        <Row className={mergeClass("g-0", classes.announcementRow)}>
+          <Col md={6} lg={6} className={classes.announcementCol}>
             <div className={mergeClass(classes.announcementLeft)}>
               <AnnouncementCard data={cmsData?.announcement1} />
             </div>
           </Col>
-          <Col md={6} lg={6}>
+          <Col md={6} lg={6} className={classes.announcementCol}>
             <div className={mergeClass(classes.announcementRight)}>
               <AnnouncementCard
                 data={cmsData?.announcement2}

@@ -34,7 +34,7 @@ export default function ShippingDetails({
         shippingDetailsMain
       )}
     >
-      <Container className={mergeClass(nopadding && classes.noPadding)}>
+      <Container fluid={nopadding} className={mergeClass(nopadding && classes.noPadding)}>
         <Row className="gy-4 gy-sm-4">
           {isTopHeader && (
             <Col md={12}>

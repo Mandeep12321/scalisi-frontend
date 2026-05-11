@@ -2,9 +2,19 @@
   padding: 60px 0px 20px 0px;
 }
 
+.shippingDetailsWrapper {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.shippingDetailsCard {
+  padding: 40px 45px !important;
+  min-height: unset !important;
+}
+
 .tableBodyClass {
-  /* height: 610px !important; */
-  height: 568px !important;
+  max-height: 568px !important;
+  height: auto !important;
 }
 
 .noteIcon {
@@ -25,6 +35,7 @@
 .mainDivClass {
   margin-block: 23px !important;
 }
+
 
 .colorDivClass {
   padding: 11px !important;
@@ -219,11 +230,21 @@
 }
 
 .announcementLeft {
-  padding-right: 27px;
+  padding-right: 0px;
 }
 
 .announcementRight {
-  padding-left: 27px;
+  padding-left: 0px;
+}
+
+.announcementRow {
+  display: flex;
+  gap: 1.4%;
+}
+
+.announcementCol {
+  width: 49.3% !important;
+  flex: 0 0 auto !important;
 }
 
 .cardDiv {
@@ -293,11 +314,11 @@
   }
 
   .announcementLeft {
-    padding-right: 10px;
+    padding-right: 0px;
   }
 
   .announcementRight {
-    padding-left: 10px;
+    padding-left: 0px;
   }
 
   .custTableClass tr {
@@ -357,6 +378,23 @@
 
   .addNote {
     gap: 4px;
+  }
+
+  .shippingDetailsWrapper {
+    margin-top: 20px;
+  }
+
+  .shippingDetailsCard {
+    padding: 20px !important;
+  }
+
+  .announcementRow {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .announcementCol {
+    width: 100% !important;
   }
 }
 

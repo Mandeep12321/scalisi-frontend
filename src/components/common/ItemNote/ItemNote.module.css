@@ -1,0 +1,124 @@
+.noteSection {
+  width: 100%;
+}
+
+.noteTriggerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.noteTriggerBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+}
+
+.noteTriggerBtnHasNote {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+.noteTriggerBtnSave {
+  border-color: #16a34a;
+  color: #16a34a;
+  background: #f0fdf4;
+}
+
+.noteTriggerBtnSave:hover {
+  background: #dcfce7;
+  border-color: #15803d;
+  color: #15803d;
+}
+
+.noteWrapper {
+  margin-top: 10px;
+}
+
+.noteTextarea {
+  width: 100%;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.noteTextarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 12%, transparent);
+}
+
+.noteActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.noteCancelBtn {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.noteCancelBtn:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.noteRemoveBtn {
+  background: transparent;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.noteRemoveBtn:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.notePreview {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #f9fafb;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0 6px 6px 0;
+  padding: 6px 12px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  white-space: normal;
+  word-break: break-word;
+}

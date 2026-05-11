@@ -14,79 +14,12 @@ import Counter from "../Counter";
 import classes from "./CheckoutCard.module.css";
 import Cookies from "js-cookie";
 import { useItemNote } from "@/components/common/hooks/useItemNote";
+import ItemNote from "@/components/common/ItemNote/ItemNote";
 
 /**
  * Per-item note UI — single button, textarea opens on click & saves on 2nd click.
  * Stays in sync with localStorage (shared with ProductCard / ProductListCard).
  */
-function CartItemNote({ item }) {
-  const dispatch = useDispatch();
-  const googleTrans = Cookies.get("googtrans");
-  const isSpanish = googleTrans === "/en/es";
-
-  const {
-    noteValue,
-    setNoteValue,
-    isEditing,
-    hasNote,
-    handleNoteClick,
-  } = useItemNote({ data: item });
-
-  // Wrap handleNoteClick so that when the user saves, we also sync Redux cart
-  const handleClick = () => {
-    const isCurrentlySaving = isEditing;
-    handleNoteClick(); // toggles isEditing / saves to localStorage
-
-    if (isCurrentlySaving) {
-      const trimmed = noteValue.trim();
-      dispatch(
-        updateNoteInCart({
-          note: trimmed,
-          productId: item?.itemid,
-          productVariant: item?.selectedVariant?.value,
-        })
-      );
-    }
-  };
-
-  const noteBtnLabel = isEditing
-    ? isSpanish ? "Guardar nota" : "Save Note"
-    : hasNote
-    ? isSpanish ? "Editar nota" : "Edit Note"
-    : isSpanish ? "Añadir nota" : "Add Note";
-
-  return (
-    <div className={classes.noteSection}>
-      <button
-        className={mergeClass(
-          classes.noteTriggerBtn,
-          hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-          isEditing && classes.noteTriggerBtnSave,
-        )}
-        onClick={handleClick}
-      >
-        {isEditing ? <MdOutlineEdit size={13} /> : <MdOutlineNoteAdd size={13} />}
-        <span>{noteBtnLabel}</span>
-      </button>
-
-      {/* Textarea — opens on first click, closes/saves on second click */}
-      {isEditing && (
-        <div className={classes.noteWrapper}>
-          <textarea
-            rows={2}
-            placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
-            value={noteValue}
-            onChange={(e) => setNoteValue(e.target.value)}
-            className={classes.noteTextarea}
-            autoComplete="off"
-            spellCheck={false}
-          />
-        </div>
-      )}
-
-    </div>
-  );
-}
 
 const CheckoutCard = ({ tableData }) => {
   const dispatch = useDispatch();
@@ -163,8 +96,6 @@ const CheckoutCard = ({ tableData }) => {
 
           <div className={classes.cardEnd}>
             <div className={classes.cardBottom}>
-              {/* Note section */}
-              <CartItemNote item={item} />
 
               <div className={classes.counterDiv}>
                 <Counter
