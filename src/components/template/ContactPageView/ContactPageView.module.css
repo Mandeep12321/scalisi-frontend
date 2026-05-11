@@ -8,15 +8,16 @@
 
 .aboutTitleContact {
   margin-bottom: 10px !important;
-  font-size: 32px !important;
+  font-size: 18px !important;
   font-weight: 700 !important;
+  text-transform: none !important;
 }
 
 .aboutSubTitleContact,
 .aboutSubTitleContact p {
   line-height: 1.4 !important;
   font-size: 17px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   max-width: 100% !important;
 }
 
@@ -39,7 +40,11 @@
 }
 
 .heroSection {
-  background-color: var(--border-green);
+  background-color: var(--light-green-bg);
+}
+
+.ContactFormSection {
+  background-color: var(--body-color);
 }
 
 .mainDiv table tbody {

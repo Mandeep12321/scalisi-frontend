@@ -1,5 +1,5 @@
 .distributionMapMain {
-  background-color: var(--border-green);
+  background-color: var(--light-green-bg);
 }
 
 .mapLocationList ul li {
@@ -8,6 +8,7 @@
   gap: 15px;
   cursor: pointer;
 }
+
 .locationName {
   font-weight: 700;
 }
@@ -17,9 +18,11 @@
   flex-direction: column;
   gap: 45px;
 }
+
 .FaMapMarkerAlt {
   font-size: 25px;
 }
+
 .mapLocationList p {
   line-height: 25px;
 }
@@ -31,10 +34,12 @@
 .distributionMapDiv {
   padding-block: 65px 23px;
 }
+
 .mapICon .mapIconMarker {
   width: 20px !important;
   height: 27px !important;
 }
+
 .distributionHead {
   display: flex;
   flex-direction: column;
@@ -43,13 +48,16 @@
   max-width: 975px;
   padding-block: 30px;
 }
+
 .distributionHead h2 {
   line-height: 37px;
 }
+
 .distributionHead h3 {
   line-height: 29px;
   max-width: 90%;
 }
+
 .distributionHead p {
   line-height: 29px;
 }
@@ -101,6 +109,7 @@
 .announcementLeft {
   padding-right: 27px;
 }
+
 .announcementRight {
   padding-left: 27px;
 }
@@ -126,14 +135,17 @@
 }
 
 @media (max-width: 1024px) {
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
+
   .announcementRight {
     padding-left: 10px;
   }
@@ -147,6 +159,7 @@
     max-width: 1020px;
     height: 300px;
   }
+
   .mapImage {
     width: 90%;
     height: 92%;
@@ -158,17 +171,21 @@
   .distributionMapMain {
     overflow-x: hidden;
   }
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
-  .distributionMapDiv > div {
+
+  .distributionMapDiv>div {
     flex-direction: column-reverse !important;
   }
+
   .mapSec {
     display: block;
     max-width: 470px;
@@ -176,6 +193,7 @@
     margin: auto;
     margin-bottom: 30px;
   }
+
   .FaMapMarkerAlt {
     font-size: 21px;
   }
@@ -201,6 +219,7 @@
     padding-block: 14px 10px;
     margin-top: 2px !important;
   }
+
   .mapSec {
     margin-top: 18px;
     margin-bottom: 0 !important;
@@ -226,6 +245,7 @@
     gap: 0px;
     padding-block: 20px 0px;
   }
+
   .distributionHead h3 {
     max-width: 100%;
     line-height: 19.7px;
@@ -233,27 +253,33 @@
     font-weight: 800 !important;
     margin-top: 12px;
   }
+
   .FaMapMarkerAlt {
     scale: 1.09;
     width: 14.29px;
     height: 18px;
     padding-top: 1px;
   }
+
   .mapIConMark {
     margin-top: 2px !important;
   }
+
   .distributionHead p {
     line-height: 20px;
     font-size: 16px;
     margin-top: 16px;
   }
+
   .mapLocationList {
     margin-top: 2px;
   }
+
   .mapLocationList p {
     font-size: 18px;
     line-height: 22px;
   }
+
   .distributionMapDiv {
     gap: 0px !important;
     padding-block: 18px 0px !important;
@@ -262,13 +288,15 @@
   .announcementSec {
     padding-block: 20px !important;
   }
+
   .mapLocationList ul li {
     display: flex;
     align-items: end;
     gap: 9px;
     cursor: pointer;
   }
-  .announcementLeft > div > div:first-child {
+
+  .announcementLeft>div>div:first-child {
     scale: 1.1;
   }
 
@@ -282,6 +310,7 @@
     padding-bottom: 40px;
     padding-right: 0px !important;
   }
+
   .announcementRight {
     padding-top: 0px;
     padding-bottom: 40px;

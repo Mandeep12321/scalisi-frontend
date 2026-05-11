@@ -8,7 +8,7 @@
 }
 
 .historySection {
-  background-color: var(--white-color);
+  background-color: var(--body-color);
   padding-block: 120px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .announcementSection {
-  background-color: var(--white-color);
+  background-color: var(--body-color);
 }
 
 .announcementLeft,
@@ -36,6 +36,7 @@
 }
 
 @media (max-width: 1200px) {
+
   .announcementRight,
   .announcementLeft {
     padding-top: 70px;
@@ -44,14 +45,17 @@
 }
 
 @media (max-width: 992px) {
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
+
   .announcementRight {
     padding-left: 10px;
   }
@@ -63,6 +67,7 @@
     padding-bottom: 40px;
     padding-right: 0px !important;
   }
+
   .announcementRight {
     padding-top: 0px;
     padding-bottom: 40px;
@@ -75,16 +80,20 @@
   .aboutTitle {
     margin-bottom: 20px !important;
   }
+
   .aboutSubTitle {
     padding-top: 2px !important;
     line-height: 26px !important;
   }
+
   .aboutSubTitle p {
     font-size: 23px !important;
   }
-  .announcementLeft > div > div:first-child {
+
+  .announcementLeft>div>div:first-child {
     scale: 1.07;
   }
+
   .announcementRight {
     padding: 0px !important;
     padding-bottom: 40px !important;

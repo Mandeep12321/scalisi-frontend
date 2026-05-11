@@ -15,10 +15,10 @@
 }
 
 .title {
-  color: var(--dark-green-text);
+  color: var(--black-color-v2);
   margin-bottom: 24px;
-  font-size: 18px !important;
-  font-weight: 600 !important;
+  font-size: 35px !important;
+  font-weight: 900 !important;
   text-transform: uppercase;
   letter-spacing: 1.2px;
   line-height: 1.2;
@@ -26,12 +26,12 @@
 
 .subTitle,
 .subTitle p {
-  font-weight: 700;
+  font-weight: 400;
   font-family: var(--inter);
   line-height: 1.05 !important;
   max-width: 100%;
   font-size: 52px !important;
-  color: #333333;
+  color: var(--black-color);
   letter-spacing: -0.02em;
 }
 
@@ -45,7 +45,7 @@
   width: 100%;
   color: #2E2E2E;
   line-height: 28px !important;
-  font-size: 16px !important;
+  font-size: 19px !important;
   font-weight: 400 !important;
 }
 
@@ -112,7 +112,7 @@
   gap: 20px;
 }
 
-.ctaInner > span {
+.ctaInner>span {
   background-color: var(--primary-color);
   border-radius: 50%;
   padding: 0px;
@@ -129,20 +129,25 @@
   line-height: 22px;
   max-width: 80%;
 }
+
 @media (max-width: 1440px) {
+
   .subTitle,
   .subTitle p {
     line-height: 48px;
     font-size: 38px;
   }
 }
+
 @media (max-width: 1399px) {
+
   .subTitle,
   .subTitle p {
     line-height: 43px;
     font-size: 35px;
   }
 }
+
 @media (max-width: 1250px) {
   .rightCol::before {
     top: 70px;
@@ -150,11 +155,13 @@
     height: 320px;
     background-repeat: round;
   }
+
   .imageDiv {
     margin-block-start: 100px;
     width: 340px;
     height: 320px;
   }
+
   .subTitle p {
     font-size: 33px;
   }
@@ -167,6 +174,7 @@
     height: 300px;
     background-repeat: round;
   }
+
   .imageDiv {
     margin-block-start: 100px;
     width: 310px;
@@ -180,6 +188,7 @@
     gap: 31px;
     margin-top: 40px;
   }
+
   .subTitle p {
     font-size: 30px;
   }
@@ -190,16 +199,20 @@
     width: 380px;
   }
 }
+
 @media (max-width: 1122px) {
   .rightCol::before {
     width: 350px;
   }
+
   .subTitle p {
     font-size: 28px;
   }
+
   .imageDiv {
     top: 0;
   }
+
   .rightCol::before {
     top: 75px;
   }
@@ -209,12 +222,15 @@
   .lineHeight p {
     font-size: 25px !important;
   }
+
   .subTitle p {
     font-size: 26px;
   }
+
   .leftCol {
     width: 63%;
   }
+
   .ctaInner p {
     text-decoration: none !important;
   }
@@ -231,29 +247,36 @@
   .leftCol {
     width: 55%;
   }
+
   .imageDiv {
     position: relative !important;
     top: 60px;
   }
+
   .title {
     margin-top: 20px;
   }
+
   .mainDiv {
     flex-direction: column !important;
   }
+
   .leftCol,
   .rightCol {
     width: 100% !important;
   }
+
   .rightCol {
     width: 100% !important;
     justify-content: center;
     display: flex;
     margin: auto;
   }
+
   .rightCol::before {
     display: none;
   }
+
   .imageDiv::before {
     content: " ";
     background: url("/assets/images/app-images/about-us-vector.png") no-repeat;
@@ -272,6 +295,7 @@
     line-height: 40px;
     font-size: 30px;
   }
+
   .description {
     width: 95%;
     margin-top: 20px;
@@ -283,6 +307,7 @@
     width: 95%;
     padding-left: 0px;
   }
+
   .callToActionDiv {
     align-items: flex-start;
   }
@@ -291,6 +316,7 @@
     flex-direction: row;
     padding-block: 10px 40px;
   }
+
   .ctaInner p {
     font-size: 16px;
   }
@@ -301,6 +327,7 @@
     left: 329px !important;
   }
 }
+
 @media (max-width: 930px) {
   .rightCol::before {
     left: 320px !important;
@@ -325,11 +352,13 @@
   .ctaInner p {
     font-size: 17px !important;
   }
+
   .subTitle,
   .subTitle p {
     line-height: 34px;
     font-size: 25px;
   }
+
   .subTitle strong,
   .subTitle p strong {
     font-weight: 700;
@@ -342,9 +371,11 @@
   .ctaInner p {
     max-width: 84%;
   }
+
   .rightCol {
     margin-top: 70px;
   }
+
   .title {
     font-size: 24px !important;
     margin-bottom: 10px !important;
@@ -354,11 +385,13 @@
   .subTitle p {
     line-height: 25px !important;
   }
+
   .lineHeight {
     line-height: 0px !important;
   }
-  .subTitle {
-  }
+
+  .subTitle {}
+
   .description {
     width: 95%;
     margin-top: 14px;
@@ -366,6 +399,7 @@
     font-size: 14px;
     font-weight: 500;
   }
+
   .imageDiv {
     width: 350px;
     height: 330px;
@@ -403,10 +437,12 @@
     letter-spacing: 0.08px;
     margin-top: 4.5px !important;
   }
+
   .ctaInner:nth-child(2) p {
     letter-spacing: -0.1px;
     margin-top: 3px !important;
   }
+
   .ctaInner:nth-child(3) p {
     letter-spacing: 0.1px;
     margin-top: 3px !important;
@@ -441,6 +477,7 @@
     left: 20px;
     top: -53px;
   }
+
   .imageDiv::before {
     content: " ";
     background: url("/assets/images/app-images/abtHero.png") no-repeat;
@@ -467,6 +504,7 @@
   .rightCol {
     margin-top: 30px;
   }
+
   .imageDiv {
     width: 240px;
     height: 230px;
@@ -475,6 +513,7 @@
     top: 25px;
     left: -37px;
   }
+
   .imageDiv::before {
     width: 260px;
     height: 230px;
@@ -490,6 +529,7 @@
     width: 100% !important;
     margin: auto;
   }
+
   .rightCol::before {
     left: 0 !important;
     top: 8px !important;
@@ -499,30 +539,38 @@
     -webkit-margin-before: 25px;
     margin-block-start: 25px;
   }
+
   .imageDiv img {
     object-fit: contain;
   }
+
   .ctaInner {
     align-items: center;
   }
+
   .ctaInner p {
     font-size: 14px !important;
   }
+
   .ctaInner span {
     height: 31px;
     width: 31px;
   }
+
   .title {
     margin-top: 40px;
   }
+
   .lineHeight p {
     font-size: 16px !important;
     line-height: 25px !important;
   }
+
   .callToActionDiv {
     gap: 25px;
     margin-top: 15px;
   }
+
   .rightColText {
     width: 100%;
     padding-left: 0px;
@@ -533,6 +581,7 @@
   .rightCol {
     margin-top: 20px;
   }
+
   .imageDiv {
     width: 100%;
     height: 223px;
