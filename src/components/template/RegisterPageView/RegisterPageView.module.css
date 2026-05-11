@@ -8,7 +8,7 @@
 
 .progressContainer {
   width: 100%;
-  margin: 40px auto 20px;
+  margin: 40px auto 36px;
 }
 
 .progressBar {
@@ -99,31 +99,27 @@
   margin-bottom: 20px;
 }
 
-.progressContainer {
-  width: 100%;
-  margin: 40px auto 20px;
-}
-
 @media (max-width: 991px) {
   .sectionCard {
     padding: 16px;
     margin-bottom: 16px;
   }
-  
+
   .sectionTitle {
     font-size: 14px;
     margin-bottom: 16px;
   }
-  
+
   .formBox,
   .formBox2 {
     padding: 15px 0;
+
   }
-  
+
   .progressContainer {
-    margin: 20px auto 10px;
+    margin: 20px auto 28px;
   }
-  
+
   .progressStep {
     width: 30px;
     height: 30px;
@@ -135,12 +131,12 @@
   .sectionTitle {
     gap: 8px;
   }
-  
+
   .sectionTitle::before {
     height: 12px;
     width: 3px;
   }
-  
+
   .inputFieldWrapper {
     margin-bottom: 15px;
   }
@@ -192,6 +188,7 @@
 .inputPhoneNumber {
   margin: 2px 0px 30px 0px;
 }
+
 .jobTitle {
   margin: 2px 0px 10px 0px !important;
 }
@@ -205,6 +202,7 @@
   font-size: 15px;
   margin-top: 29px;
 }
+
 .submitBtn {
   width: 100%;
   padding-block: 16px;
@@ -213,6 +211,7 @@
 .dropDownClass {
   padding-bottom: 20px;
 }
+
 .dropDownClass input {
   height: 29px;
 }
@@ -254,15 +253,16 @@
   padding-top: 0px !important;
 }
 
-.checkboxMain input:checked ~ span {
+.checkboxMain input:checked~span {
   background-color: var(--primary-color) !important;
   border: 2px solid #ffffff4a !important;
 }
 
-.checkboxMain input:checked ~ span::after {
+.checkboxMain input:checked~span::after {
   left: 5px !important;
   top: 1px !important;
 }
+
 .headingText,
 .formBox h2 {
   margin-bottom: 20px;
@@ -277,11 +277,13 @@
 .announcementLeft {
   padding-right: 27px;
 }
+
 .announcementRight {
   padding-left: 27px;
 }
 
 @media (max-width: 1200px) {
+
   .announcementRight,
   .announcementLeft {
     padding-top: 70px;
@@ -290,115 +292,37 @@
 }
 
 @media (max-width: 992px) {
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
+
   .announcementRight {
     padding-left: 10px;
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .mainDivClass {
     margin-top: 20px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 24px !important;
   }
+
   .mainDivClass h1 {
-    line-height: 32px !important;
-  }
-  .labelClass {
-    margin-bottom: 5.5px !important;
-    font-size: 15.8px;
-  }
-  .inputClass {
-    margin: 2px 0px 14px 0px;
-  }
-  .submitBtn {
-    margin-block: 0px;
-    padding-block: 15px;
-  }
-  .PrivacyDiv {
-    font-size: 12px;
-    margin-top: 18px;
-    font-weight: 400;
-  }
-  .btnParent {
-    margin-top: 3px !important;
-    margin-bottom: 0px !important;
-  }
-  .formBox2 {
-    padding: 27.5px 21px 22px 21px !important;
-    margin-bottom: 3px;
-    margin-top: 39px;
-  }
-  .announcementLeft {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-right: 0px !important;
-  }
-  .announcementRight {
-    padding-top: 0px;
-    padding-bottom: 40px;
-    padding-right: 0px !important;
-    padding-left: 0px;
-  }
-  .registerBtn p {
-    line-height: 20px;
+    line-height: 29px !important;
   }
 
   .mainDivClass div {
-    gap: 14px !important;
-    padding: 24px 11px 20px !important;
-  }
-  .formBox {
-    margin-top: 40px;
-  }
-  .formBox h2 {
-    margin-bottom: 10px;
-  }
-  .mainDivClass {
-    margin-bottom: 24px !important;
-    margin-top: 20px !important;
-  }
-  .inputClass {
-    margin: 2px 0px 14px 0px;
-  }
-  .mainDivClass h1 {
-    line-height: 29px !important;
-  }
-
-  .colorHeadingClass {
-    font-size: 24px !important;
-    line-height: 29px !important;
-  }
-  .colorTextClass {
-    font-size: 25px !important;
-    line-height: 20px !important;
-  }
-  .submitBtn {
-    margin-block: 0px;
-  }
-  .registerBtn p {
-    line-height: 15px;
-    padding-top: 6px;
-  }
-
-  .announcementRight {
-    padding-top: 0px;
-    padding-bottom: 40px;
-    padding-right: 0px !important;
-    padding-left: 0px;
-  }
-  .headingText {
-    font-size: 20px !important;
-  }
-  .checkboxMain {
-    margin-top: 0px !important;
+    height: auto !important;
+    min-height: 100px !important;
+    gap: 12px !important;
+    padding: 18px 11px !important;
   }
 
   .labelClass {
@@ -406,11 +330,13 @@
     font-size: 15.8px;
   }
 
-  .registerBtn button {
-    font-size: 16px;
+  .inputClass {
+    margin: 2px 0px 14px 0px;
   }
-  .checkboxMain {
-    padding-block: 4px !important;
+
+  .submitBtn {
+    margin-block: 0px;
+    padding-block: 15px;
   }
 
   .PrivacyDiv {
@@ -422,31 +348,77 @@
   .PrivacyDiv span {
     display: block;
   }
-  .inputPhoneNumber {
-    margin-bottom: 11px !important;
-  }
 
-  .formBox {
-    padding: 27.5px 21px 29px 21px !important;
-    margin-bottom: 3px;
-  }
-  .formBox2 {
-    padding: 27.5px 21px 22px 21px !important;
-    margin-bottom: 3px;
-    margin-top: 39px;
-  }
-  .TopInputDiv {
-    margin-top: 25px;
-  }
   .btnParent {
     margin-top: 3px !important;
     margin-bottom: 0px !important;
   }
+
+  .formBox {
+    padding: 20px 0 !important;
+    margin-bottom: 3px;
+  }
+
+  .formBox h2 {
+    margin-bottom: 10px;
+  }
+
+  .formBox2 {
+    padding: 20px 0 !important;
+    margin-bottom: 3px;
+    margin-top: 20px;
+  }
+
+  .announcementLeft {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+  }
+
+  .announcementRight {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+    padding-left: 0px;
+  }
+
+  .registerBtn p {
+    line-height: 15px;
+    padding-top: 6px;
+  }
+
+  .registerBtn button {
+    font-size: 16px;
+  }
+
+  .headingText {
+    font-size: 20px !important;
+  }
+
+  .checkboxMain {
+    margin-top: 0px !important;
+    padding-block: 4px !important;
+  }
+
+  .colorHeadingClass {
+    font-size: 24px !important;
+    line-height: 29px !important;
+  }
+
+  .colorTextClass {
+    font-size: 25px !important;
+    line-height: 20px !important;
+  }
+
   .inputDiv {
     margin-bottom: 3px !important;
   }
 
-  .mainDivClass div {
-    height: 190px !important;
+  .inputPhoneNumber {
+    margin-bottom: 11px !important;
+  }
+
+  .TopInputDiv {
+    margin-top: 25px;
   }
 }

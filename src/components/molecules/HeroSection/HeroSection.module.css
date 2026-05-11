@@ -118,7 +118,7 @@
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .mainDiv {
     gap: 5px;
   }
@@ -139,6 +139,7 @@
   .mainDiv p {
     font-size: 14px !important;
   }
+
   .imageDiv {
     padding-inline: 20px;
   }
