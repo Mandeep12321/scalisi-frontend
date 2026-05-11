@@ -15,19 +15,21 @@
 }
 
 .aboutSubTitleContact,
-.aboutSubTitleContact p {
+.aboutSubTitleContact p,
+.contactLeftCol .aboutSubTitleContact,
+.contactLeftCol .aboutSubTitleContact p {
   line-height: 1.5 !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-weight: 400 !important;
   max-width: 100% !important;
 }
 
 .contactLeftCol {
-  width: 68% !important;
+  width: 50% !important;
 }
 
 .contactRightCol {
-  width: 32% !important;
+  width: 50% !important;
   padding-left: 20px !important;
 }
 
