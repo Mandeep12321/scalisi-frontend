@@ -102,7 +102,7 @@ export default function LoginComponent({
                 className="fs-15 fw-700 cursor-pointer"
                 onClick={() => {
                   setShow(!show);
-                  router?.push("/forgot-password");
+                  router?.push("/contact-us");
                 }}
               >
                 <u>Forgot your password?</u>
