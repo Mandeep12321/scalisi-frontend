@@ -51,7 +51,7 @@ export const MOBILE_HEADER_LINK = [
   },
   {
     label: "Help & Support",
-    path: "/help-and-support",
+    path: "/contact-us",
     imageUrl: "/assets/images/svg/helpAndSupport.svg",
   },
   // line with pedding block
@@ -132,7 +132,7 @@ export const FOOTER_DATA = [
       { label: "My Orders", path: "/my-orders" },
       { label: "My Invoices", path: "/my-invoices" },
       { label: "Settings", path: "/settings" },
-      { label: "Help & Support", path: "/help-and-support" },
+      { label: "Help & Support", path: "/contact-us" },
     ],
   },
   {
