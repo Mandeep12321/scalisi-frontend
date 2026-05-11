@@ -73,11 +73,6 @@ export const MOBILE_HEADER_LINK = [
     path: "/order-guide",
     imageUrl: "/assets/images/svg/orderGuide.svg",
   },
-  {
-    label: "News & Updates",
-    path: "/news-and-updates",
-    imageUrl: "/assets/images/svg/newAndUpdates.svg",
-  },
   // line with pedding block
   {
     separator: true, // Another separator here
