@@ -121,7 +121,6 @@ export const FOOTER_DATA = [
       { label: "About Us", path: "/about-us" },
       { label: "Distribution Map", path: "/distribution-map" },
       { label: "Vendors", path: "/vendors" },
-      { label: "News & Updates", path: "/news-and-updates" },
       { label: "Contact", path: "/contact-us" },
     ],
   },
