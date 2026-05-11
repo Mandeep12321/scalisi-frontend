@@ -102,7 +102,7 @@ export default function VendorPageView({ cmsData }) {
                 leftIcon={<BsFileEarmarkPdfFill size={22} />}
                 label="PDF Map of Local Vendors"
                 onClick={() => {
-                  window.open(mediaUrl(_cmsData?.hero?.pdf), "_blank");
+                  window.open("/assets/pdf/emergency-plan.pdf", "_blank");
                 }}
               />
             </div>
