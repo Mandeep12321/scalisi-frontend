@@ -10,6 +10,8 @@ import HeroSection from "@/components/molecules/HeroSection";
 import { REGISTER_BANNER } from "@/developmentContent/mock-data";
 import { SIGNUP_VALUES } from "@/formik/initial-values/initial-values";
 import { signupSchema } from "@/formik/schema/SignupSchema";
+import { FaCheckCircle } from "react-icons/fa";
+
 
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import { Post } from "@/interceptor/axiosInterceptor";
@@ -375,12 +377,10 @@ export default function RegisterPageView({ data: _data = null }) {
 
   const renderSuccess = () => (
     <div className="d-flex justify-content-center py-4 py-md-5">
-      <div className={mergeClass(classes.formBox, "text-center p-4 p-md-5 shadow-lg border-0")} style={{ maxWidth: '520px' }}>
+      <div className={mergeClass(classes.sectionCard, "text-center p-4 p-md-5 border-light-subtle")} style={{ maxWidth: '580px', height: 'auto' }}>
         <div className="mb-4">
-          <div className="d-inline-flex align-items-center justify-content-center bg-green-light rounded-circle p-3 mb-4" style={{ width: '80px', height: '80px' }}>
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2a4d31" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+          <div className="d-inline-flex align-items-center justify-content-center bg-green-light rounded-circle p-3 mb-4" style={{ width: '84px', height: '84px', backgroundColor: 'var(--primary-color-light)' }}>
+            <FaCheckCircle size={48} color="var(--primary-color)" />
           </div>
           <h2 className="fs-28 fs-md-32 fw-700 text-green mb-3">Application Submitted!</h2>
           <p className="fs-15 fs-md-16 text-muted mb-4 px-md-3">
@@ -388,19 +388,19 @@ export default function RegisterPageView({ data: _data = null }) {
           </p>
         </div>
 
-        <div className="bg-light p-3 p-md-4 rounded-4 mb-4 border border-light-subtle text-start">
-          <h4 className="fs-13 fw-700 text-green-dark mb-3 uppercase tracking-widest text-center">Next Steps</h4>
+        <div className="p-3 p-md-4 mb-4 border border-light-subtle text-start" style={{ backgroundColor: '#f9fbf9', borderRadius: '12px' }}>
+          <h4 className="fs-13 fw-700 text-green mb-3 uppercase text-center" style={{ letterSpacing: '1px' }}>Next Steps</h4>
           <div className="d-flex flex-column gap-3">
             <div className="d-flex align-items-start gap-3">
-              <span className="fs-18">✅</span>
+              <FaCheckCircle className="text-green mt-1 flex-shrink-0" size={18} />
               <p className="fs-14 text-muted mb-0">We will verify your business and credit references immediately.</p>
             </div>
             <div className="d-flex align-items-start gap-3">
-              <span className="fs-18">✅</span>
+              <FaCheckCircle className="text-green mt-1 flex-shrink-0" size={18} />
               <p className="fs-14 text-muted mb-0">An account manager will contact you within <strong>1-2 business days</strong>.</p>
             </div>
             <div className="d-flex align-items-start gap-3">
-              <span className="fs-18">✅</span>
+              <FaCheckCircle className="text-green mt-1 flex-shrink-0" size={18} />
               <p className="fs-14 text-muted mb-0">Check your email for status updates and portal activation details.</p>
             </div>
           </div>
