@@ -26,10 +26,10 @@
 }
 
 .heading {
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #333333;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 49px;
+  color: var(--black-color);
   margin-block: 0px 35px;
 }
 

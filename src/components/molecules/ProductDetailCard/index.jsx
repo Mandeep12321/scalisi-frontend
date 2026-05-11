@@ -62,10 +62,10 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
   // Get quantity from cart
   const currentQuantity = isInCart
     ? cart.find(
-        (item) =>
-          item.itemid === data.itemid &&
-          item.selectedVariant?.value === data.selectedVariant?.value
-      )?.selectedCount || 1
+      (item) =>
+        item.itemid === data.itemid &&
+        item.selectedVariant?.value === data.selectedVariant?.value
+    )?.selectedCount || 1
     : data?.selectedCount || 1;
 
   const dropDownOptions = data?.productVariant?.map((e) => ({
@@ -128,8 +128,8 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
   const noteBtnLabel = isEditing
     ? isSpanish ? "Guardar nota" : "Save Note"
     : hasNote
-    ? isSpanish ? "Editar nota" : "Edit Note"
-    : isSpanish ? "Añadir nota" : "Add Note";
+      ? isSpanish ? "Editar nota" : "Edit Note"
+      : isSpanish ? "Añadir nota" : "Add Note";
 
   return (
     <div className={classes.mainDiv}>
@@ -142,83 +142,81 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
           {data?.description}
         </h3>
 
-        {/* ID + Note button row */}
-        <div className={classes.noteRow}>
-          <p className={mergeClass("fs-12 fw-500", classes.productId)}>
-            {data?.itemid}
-          </p>
-          {isAuthenticated && (
-            <button
-              className={mergeClass(
-                classes.noteTriggerBtn,
-                hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-                isEditing && classes.noteTriggerBtnSave,
-              )}
-              onClick={handleClick}
-            >
-              {isEditing
-                ? <MdOutlineEdit size={13} />
-                : <MdOutlineNoteAdd size={13} />}
-              <span>{noteBtnLabel}</span>
-            </button>
-          )}
-        </div>
-
-        {/* 2-row textarea — opens on button click, saves on second click */}
-        {isAuthenticated && isEditing && (
-          <textarea
-            rows={2}
-            placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
-            value={noteValue}
-            onChange={(e) => setNoteValue(e.target.value)}
-            className={classes.noteTextarea}
-            autoComplete="off"
-            spellCheck={false}
-          />
-        )}
+        {/* ID row */}
+        <p className={mergeClass("fs-12 fw-500", classes.productId)}>
+          {data?.itemid}
+        </p>
 
         {isAuthenticated ? (
-          <div className={classes.counterDiv}>
-            <DropDown
-              customStyle={{
-                height: "37px",
-                padding: "0px",
-                fontWeight: "600",
-                fontSize: "13px",
-              }}
-              options={dropDownOptions}
-              setValue={(e) => {
-                setVariantSelect({
-                  selectedVariant: e,
-                  selectedCount: data.selectedCount || 1,
-                });
-              }}
-              value={data?.selectedVariant}
-            />
-            <Counter
-              data={currentQuantity}
-              setData={(e) => {
-                setVariantSelect({
-                  selectedVariant: data.selectedVariant,
-                  selectedCount: e,
-                });
-              }}
-              isInCart={isInCart}
-              productId={data?.itemid}
-              productVariant={data?.selectedVariant?.value}
-            />
-            <Button
-              key={`${isInCart}-${isSpanish}-${forceUpdate}`}
-              variant={isInCart ? "secondary" : "primary"}
-              onClick={() => cartHandler(isInCart ? "remove" : "add")}
-              label={
-                isInCart
-                  ? isSpanish ? "Eliminar del carrito" : "Remove from Cart"
-                  : isSpanish ? "Añadir a la cesta" : "Add To Cart"
-              }
-              className={mergeClass(classes.removeFromCartButton, classes.button)}
-            />
-          </div>
+          <>
+            <div className={classes.counterDiv}>
+              <DropDown
+                customStyle={{
+                  height: "37px",
+                  padding: "0px",
+                  fontWeight: "600",
+                  fontSize: "13px",
+                }}
+                options={dropDownOptions}
+                setValue={(e) => {
+                  setVariantSelect({
+                    selectedVariant: e,
+                    selectedCount: data.selectedCount || 1,
+                  });
+                }}
+                value={data?.selectedVariant}
+              />
+              <Counter
+                data={currentQuantity}
+                setData={(e) => {
+                  setVariantSelect({
+                    selectedVariant: data.selectedVariant,
+                    selectedCount: e,
+                  });
+                }}
+                isInCart={isInCart}
+                productId={data?.itemid}
+                productVariant={data?.selectedVariant?.value}
+              />
+              <Button
+                key={`${isInCart}-${isSpanish}-${forceUpdate}`}
+                variant={isInCart ? "secondary" : "primary"}
+                onClick={() => cartHandler(isInCart ? "remove" : "add")}
+                label={
+                  isInCart
+                    ? isSpanish ? "Eliminar del carrito" : "Remove from Cart"
+                    : isSpanish ? "Añadir a la cesta" : "Add To Cart"
+                }
+                className={mergeClass(classes.removeFromCartButton, classes.button)}
+              />
+              <button
+                className={mergeClass(
+                  classes.noteTriggerBtn,
+                  hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+                  isEditing && classes.noteTriggerBtnSave,
+                )}
+                onClick={handleClick}
+              >
+                {isEditing
+                  ? <MdOutlineEdit size={16} />
+                  : <MdOutlineNoteAdd size={16} />}
+                <span>{noteBtnLabel}</span>
+              </button>
+            </div>
+
+            {/* Textarea — opens on button click */}
+            {isEditing && (
+              <textarea
+                rows={2}
+                placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
+                value={noteValue}
+                onChange={(e) => setNoteValue(e.target.value)}
+                className={classes.noteTextarea}
+                autoComplete="off"
+                spellCheck={false}
+              />
+            )}
+          </>
         ) : (
           <p className={mergeClass("fs-14 fw-500", classes.link)}>
             {isSpanish

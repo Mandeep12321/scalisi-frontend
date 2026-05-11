@@ -8,6 +8,7 @@
   /* padding: 10px; */
   display: flex;
 }
+
 .imageDiv {
   position: relative;
   flex: none;
@@ -19,6 +20,7 @@
   height: 100%;
   box-shadow: 0px 5px 25px #0000000d;
 }
+
 .imageDiv img {
   object-fit: contain;
 }
@@ -62,6 +64,7 @@
   height: 100%;
   box-shadow: 0px 5px 25px #0000000d;
 }
+
 .imageDivInCart img {
   object-fit: contain;
 }
@@ -71,21 +74,28 @@
 .link {
   color: var(--text-color-v1);
 }
+
 .productId,
 .link {
   opacity: 0.78;
 }
+
 .title {
   min-height: 45px;
 }
+
 .button {
   height: 39px;
   width: 100%;
 }
+
 .counterDiv {
   display: flex;
   gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
 /* ── Note feature ── */
 .noteRow {
   display: flex;
@@ -100,38 +110,31 @@
   align-items: center;
   gap: 5px;
   background: transparent;
-  border: 1.5px solid #d1d5db;
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 12px;
+  border: none;
+  padding: 0;
+  font-size: 13px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--text-color-v1);
   cursor: pointer;
-  transition: all 0.18s ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   white-space: nowrap;
+  transition: color 0.15s ease;
 }
 
 .noteTriggerBtn:hover {
-  border-color: var(--primary-color);
   color: var(--primary-color);
-  background: color-mix(in srgb, var(--primary-color) 6%, transparent);
 }
 
 .noteTriggerBtnHasNote {
-  border-color: var(--primary-color);
   color: var(--primary-color);
-  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
 }
 
 .noteTriggerBtnSave {
-  border-color: #16a34a;
   color: #16a34a;
-  background: #f0fdf4;
 }
 
 .noteTriggerBtnSave:hover {
-  background: #dcfce7;
-  border-color: #15803d;
   color: #15803d;
 }
 
@@ -172,6 +175,7 @@
   .cardBody {
     padding: 10px 20px;
   }
+
   .addNote {
     min-width: 100px;
   }
@@ -181,6 +185,7 @@
   .mainDiv {
     gap: 30px;
   }
+
   .cardBodyInCart {
     max-height: max-content !important;
   }
@@ -197,13 +202,16 @@
     flex-direction: row;
     gap: 10px;
   }
+
   .mainDiv {
     height: 100%;
     gap: 20px;
   }
+
   .imageDiv {
     min-height: 225px;
   }
+
   .cardBody {
     width: 100%;
     min-height: 225px;
@@ -221,6 +229,7 @@
     height: 100%;
     gap: 0px;
   }
+
   .imageDiv {
     min-height: 250px;
     width: 100%;

@@ -24,10 +24,10 @@
 .title {
   color: var(--black-color-v2);
   margin-bottom: 24px;
-  font-size: 35px !important;
-  font-weight: 900 !important;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
+  font-size: 45px !important;
+  font-weight: 700 !important;
+  text-transform: none;
+  letter-spacing: 0;
   line-height: 1.2;
 }
 
