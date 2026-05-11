@@ -81,10 +81,14 @@
     margin-bottom: 40px !important;
   }
   .announcementLeft {
-    padding-right: 0px;
-    padding-bottom: 0px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
   }
   .announcementRight {
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
     padding-left: 0px;
   }
 }
@@ -99,17 +103,20 @@
   .announcementLeft {
     padding-top: 40px;
     padding-bottom: 40px;
-    padding-right: 0px;
+    padding-right: 0px !important;
   }
   .announcementRight {
-    padding-top: 20px;
-    padding-bottom: 50px;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+    padding-left: 0px;
   }
 }
 @media (max-width: 375px) {
   .announcementRight {
-    padding-top: 2px;
+    padding-top: 0px;
     padding-bottom: 40px;
     padding-right: 0px !important;
+    padding-left: 0px;
   }
 }

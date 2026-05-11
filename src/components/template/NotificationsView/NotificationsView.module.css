@@ -102,7 +102,7 @@
 
 .announcementRight,
 .announcementLeft {
-  padding-top: 67px;
+  padding-top: 106px;
   padding-bottom: 150px;
 }
 
@@ -146,7 +146,7 @@
   }
   .announcementRight,
   .announcementLeft {
-    padding-top: 60px;
+    padding-top: 70px;
     padding-bottom: 80px;
   }
 }
@@ -222,14 +222,14 @@
     min-height: auto;
   }
   .announcementLeft {
-    padding-top: 0px;
+    padding-top: 40px;
     padding-bottom: 40px;
-    padding-right: 0px;
+    padding-right: 0px !important;
   }
   .announcementRight {
     padding-top: 0px;
     padding-bottom: 40px;
-    padding-left: 0px;
+    padding-left: 0px !important;
     padding-right: 0px !important;
   }
 

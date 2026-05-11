@@ -346,8 +346,8 @@
 
 @media (max-width: 992px) {
   .announcementLeft {
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding-top: 60px;
+    padding-bottom: 70px;
   }
 
   .sortCards {
@@ -395,10 +395,10 @@
     padding-bottom: 70px;
   }
   .announcementLeft {
-    padding-right: 13px;
+    padding-right: 10px;
   }
   .announcementRight {
-    padding-right: 13px;
+    padding-left: 10px;
   }
 }
 
@@ -537,15 +537,15 @@
   }
 
   .announcementRight {
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 20px;
+    padding-top: 0px;
     padding-bottom: 40px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
   .announcementLeft {
     padding-top: 40px;
-    padding-bottom: 20px;
-    padding-right: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
     padding-left: 0px;
   }
 

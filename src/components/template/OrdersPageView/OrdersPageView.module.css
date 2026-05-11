@@ -214,16 +214,16 @@
 
 .announcementRight,
 .announcementLeft {
-  padding-top: 75px;
+  padding-top: 106px;
   padding-bottom: 150px;
 }
 
 .announcementLeft {
-  padding-right: 18px;
+  padding-right: 27px;
 }
 
 .announcementRight {
-  padding-left: 18px;
+  padding-left: 27px;
 }
 
 .cardDiv {
@@ -265,7 +265,6 @@
 }
 
 @media (max-width: 1199px) {
-
   .announcementRight,
   .announcementLeft {
     padding-top: 70px;
@@ -378,14 +377,16 @@
   }
 
   .announcementLeft {
-    padding-right: 0px;
     padding-top: 40px;
     padding-bottom: 40px;
+    padding-right: 0px !important;
   }
 
   .announcementRight {
-    padding-top: 20px;
-    padding-bottom: 50px;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-right: 0px !important;
+    padding-left: 0px;
   }
 
   .orderPlacedContainer {
@@ -438,9 +439,10 @@
 
 @media (max-width: 375px) {
   .announcementRight {
-    padding-top: 2px;
+    padding-top: 0px;
     padding-bottom: 40px;
     padding-right: 0px !important;
+    padding-left: 0px;
   }
 
   .heroSecColor {
