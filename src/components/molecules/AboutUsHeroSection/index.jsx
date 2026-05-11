@@ -44,8 +44,8 @@ export default function AboutUsHeroSection({
           <>
             {is375 ? (
               <div className={classes.imageDiv}>
-                {mediaUrl(data?.image375) && (
-                  <Image fill alt="earth-icon" src={mediaUrl(data?.image375)} />
+                {mediaUrl(data?.image375 || data?.image) && (
+                  <Image fill alt="earth-icon" src={mediaUrl(data?.image375 || data?.image)} />
                 )}
               </div>
             ) : (

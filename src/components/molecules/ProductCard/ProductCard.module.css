@@ -84,11 +84,12 @@
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .mainDiv {
     padding: 13px 16px;
-    gap: 15px;
-    height: 345px;
+    gap: 10px;
+    height: auto;
+    min-height: unset;
   }
 
   .link {
@@ -171,8 +172,9 @@
 @media (max-width: 375px) {
   .mainDiv {
     padding: 13px 16px;
-    gap: 15px;
-    height: 294px;
+    gap: 10px;
+    height: auto;
+    min-height: unset;
   }
 
   .imageDiv {
@@ -329,6 +331,11 @@
 /* Note editing container */
 .noteWrapper {
   margin-top: 8px;
+  width: 100%;
+}
+
+.dropdownTight {
+  margin-top: 8px !important;
 }
 
 /* 2-row resizable textarea */
@@ -415,10 +422,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .dropdownDiv {
   margin-top: 26px;
 }
 
 .dropdownTight {
-  margin-top: 10px; /* or 8px */
+  margin-top: 10px;
+  /* or 8px */
 }

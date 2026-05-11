@@ -157,6 +157,7 @@
 @media (max-width: 991px) {
   .mainDivContact {
     gap: 0px;
+    flex-direction: column !important;
   }
 
   .mainDiv table tbody tr td div {
@@ -169,7 +170,13 @@
   }
 
   .contactLeftCol {
-    width: 95%;
+    width: 100% !important;
+  }
+
+  .contactRightCol {
+    width: 100% !important;
+    padding-left: 0px !important;
+    margin-top: 20px;
   }
 
   .contactMapCol {
@@ -217,13 +224,13 @@
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .articleImg {
     height: 245px;
   }
 
   .heroSection {
-    height: 400px;
+    height: auto;
   }
 
   .contactDiv {
@@ -242,6 +249,10 @@
     margin-top: 17px !important;
     margin-bottom: 19px !important;
   }
+
+  .mainDivContact {
+    padding: 24px 0px !important;
+  }
 }
 
 @media (max-width: 575px) {
@@ -253,13 +264,13 @@
 
 @media (max-width: 400px) {
   .heroSection {
-    height: 458px;
+    height: auto;
   }
 }
 
 @media (max-width: 375px) {
   .heroSection {
-    height: 458px;
+    height: auto;
   }
 }
 

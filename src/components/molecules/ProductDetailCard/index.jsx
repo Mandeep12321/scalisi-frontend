@@ -178,30 +178,32 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
                 productId={data?.itemid}
                 productVariant={data?.selectedVariant?.value}
               />
-              <Button
-                key={`${isInCart}-${isSpanish}-${forceUpdate}`}
-                variant={isInCart ? "secondary" : "primary"}
-                onClick={() => cartHandler(isInCart ? "remove" : "add")}
-                label={
-                  isInCart
-                    ? isSpanish ? "Eliminar del carrito" : "Remove from Cart"
-                    : isSpanish ? "Añadir a la cesta" : "Add To Cart"
-                }
-                className={mergeClass(classes.removeFromCartButton, classes.button)}
-              />
-              <button
-                className={mergeClass(
-                  classes.noteTriggerBtn,
-                  hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-                  isEditing && classes.noteTriggerBtnSave,
-                )}
-                onClick={handleClick}
-              >
-                {isEditing
-                  ? <MdOutlineEdit size={16} />
-                  : <MdOutlineNoteAdd size={16} />}
-                <span>{noteBtnLabel}</span>
-              </button>
+              <div className={classes.cartAndNoteRow}>
+                <Button
+                  key={`${isInCart}-${isSpanish}-${forceUpdate}`}
+                  variant={isInCart ? "secondary" : "primary"}
+                  onClick={() => cartHandler(isInCart ? "remove" : "add")}
+                  label={
+                    isInCart
+                      ? isSpanish ? "Eliminar del carrito" : "Remove from Cart"
+                      : isSpanish ? "Añadir a la cesta" : "Add To Cart"
+                  }
+                  className={mergeClass(classes.removeFromCartButton, classes.button)}
+                />
+                <button
+                  className={mergeClass(
+                    classes.noteTriggerBtn,
+                    hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+                    isEditing && classes.noteTriggerBtnSave,
+                  )}
+                  onClick={handleClick}
+                >
+                  {isEditing
+                    ? <MdOutlineEdit size={16} />
+                    : <MdOutlineNoteAdd size={16} />}
+                  <span>{noteBtnLabel}</span>
+                </button>
+              </div>
             </div>
 
             {/* Textarea — opens on button click */}
