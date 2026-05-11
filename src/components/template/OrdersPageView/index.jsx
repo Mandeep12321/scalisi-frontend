@@ -69,6 +69,8 @@ export default function OrdersPageView() {
     orderNote: "",
     purchaseOrder: "",
   });
+  const [noteIndex, setNoteIndex] = useState(-1);
+  const [addNote, setAddNote] = useState("");
 
   // Language detection
   const googleTrans = Cookies.get("googtrans");
