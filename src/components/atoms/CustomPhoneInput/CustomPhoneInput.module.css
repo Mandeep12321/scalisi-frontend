@@ -32,8 +32,6 @@
 } */
 .phoneNumberInput.error {
   border: 2px solid #dc3545;
-  margin-bottom: 0 !important;
-  margin-top: 20px !important;
 }
 
 .phoneNumberInput input {
@@ -55,16 +53,18 @@
 }
 
 .errorContainer {
-  min-height: 20px;
-  /* margin-top: 20px; */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 2px;
+  z-index: 5;
 }
 
 .errorText {
-  font-size: 14px;
+  font-size: 13px;
   color: #dc3545;
-  margin-top: 8px;
-  margin-bottom: 0;
-  padding-top: 3px;
+  margin: 0;
 }
 
 .phoneNumberInput > div {

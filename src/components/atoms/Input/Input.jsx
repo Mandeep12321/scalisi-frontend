@@ -128,7 +128,7 @@ export const Input = ({
         </div>
         <div className={errorText ? classes.errorContainer : ""}>
           {errorText && (
-            <p className={`mt-2 text-danger ${[classes.errorText].join(" ")}`}>
+            <p className={`text-danger ${[classes.errorText].join(" ")}`}>
               * {errorText}
             </p>
           )}

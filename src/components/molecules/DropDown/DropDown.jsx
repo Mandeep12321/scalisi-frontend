@@ -242,9 +242,11 @@ const DropDown = ({
         {leftIcon && <div className={classes.leftIconBox}>{leftIcon}</div>}
       </div>
       {errorText && (
-        <p className={`mt-2 text-danger ${[classes.errorText].join(" ")}`}>
-          {errorText}
-        </p>
+        <div className={classes.errorContainer}>
+          <p className={`text-danger ${[classes.errorText].join(" ")}`}>
+            {errorText}
+          </p>
+        </div>
       )}
     </div>
   );

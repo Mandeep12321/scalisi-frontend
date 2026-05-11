@@ -80,11 +80,16 @@
 }
 
 .errorContainer {
-  min-height: 20px;
-  margin-top: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 2px;
+  z-index: 5;
 }
 .errorText {
-  font-size: 14px;
+  font-size: 13px;
+  margin: 0;
 }
 
 @media (max-width: 375px) {
