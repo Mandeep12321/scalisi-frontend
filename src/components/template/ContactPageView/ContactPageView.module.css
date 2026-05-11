@@ -3,30 +3,31 @@
   align-items: center;
   width: 100%;
   gap: 50px;
-  padding: 30px 0px 20px 0px !important;
+  padding: 50px 0px 50px 0px !important;
 }
 
 .aboutTitleContact {
   margin-bottom: 10px !important;
-  font-size: 18px !important;
+  font-size: 28px !important;
   font-weight: 700 !important;
   text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 
 .aboutSubTitleContact,
 .aboutSubTitleContact p {
-  line-height: 1.4 !important;
-  font-size: 17px !important;
+  line-height: 1.5 !important;
+  font-size: 18px !important;
   font-weight: 400 !important;
   max-width: 100% !important;
 }
 
 .contactLeftCol {
-  width: 75% !important;
+  width: 68% !important;
 }
 
 .contactRightCol {
-  width: 25% !important;
+  width: 32% !important;
   padding-left: 20px !important;
 }
 
@@ -63,7 +64,7 @@
 
 .tableDiv {
   padding: 20px;
-  margin-bottom: 114px;
+  margin-bottom: 40px;
   padding: 0 !important;
   box-shadow: 0px 5px 25px #0000000d !important;
 }
@@ -262,8 +263,8 @@
 
 .announcementRight,
 .announcementLeft {
-  padding-top: 106px;
-  padding-bottom: 150px;
+  padding-top: 50px;
+  padding-bottom: 60px;
 }
 
 .announcementLeft {
@@ -275,18 +276,20 @@
 }
 
 @media (max-width: 1200px) {
+
   .announcementRight,
   .announcementLeft {
-    padding-top: 70px;
-    padding-bottom: 80px;
+    padding-top: 40px;
+    padding-bottom: 50px;
   }
 }
 
 @media (max-width: 992px) {
+
   .announcementLeft,
   .announcementRight {
-    padding-top: 60px;
-    padding-bottom: 70px;
+    padding-top: 30px;
+    padding-bottom: 40px;
   }
 
   .announcementLeft {

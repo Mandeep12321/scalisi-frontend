@@ -39,7 +39,7 @@ export default function AboutUsHeroSection({
           {data?.description}
         </p>
       </div>
-      <div className={hasImage ? classes.rightCol : classes.rightColText}>
+      <div className={mergeClass(hasImage ? classes.rightCol : classes.rightColText, !hasImage ? styles?.contactRightCol : "")}>
         {hasImage ? (
           <>
             {is375 ? (

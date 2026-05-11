@@ -14,6 +14,13 @@
   flex-direction: column;
 }
 
+.rightColText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .title {
   color: var(--black-color-v2);
   margin-bottom: 24px;
@@ -103,7 +110,7 @@
   display: flex;
   flex-direction: column;
   gap: 42px;
-  margin-top: 60px;
+  margin-top: 0;
 }
 
 .ctaInner {
