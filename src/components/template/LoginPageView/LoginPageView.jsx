@@ -170,7 +170,7 @@ export default function LoginPageView() {
                     <p
                       className="fs-15 fw-700 cursor-pointer"
                       onClick={() => {
-                        router?.push("/forgot-password");
+                        router?.push("/contact-us");
                       }}
                     >
                       <u>Forgot your password?</u>
