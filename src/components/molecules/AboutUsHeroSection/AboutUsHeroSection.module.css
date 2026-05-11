@@ -24,7 +24,7 @@
 .title {
   color: var(--black-color-v2);
   margin-bottom: 24px;
-  font-size: 45px !important;
+  font-size: 38px !important;
   font-weight: 700 !important;
   text-transform: none;
   letter-spacing: 0;
@@ -142,7 +142,7 @@
   .subTitle,
   .subTitle p {
     line-height: 48px;
-    font-size: 38px;
+    font-size: 38px !important;
   }
 }
 
@@ -151,7 +151,7 @@
   .subTitle,
   .subTitle p {
     line-height: 43px;
-    font-size: 35px;
+    font-size: 35px !important;
   }
 }
 
@@ -300,7 +300,7 @@
   .subTitle p {
     max-width: 100%;
     line-height: 40px;
-    font-size: 30px;
+    font-size: 30px !important;
   }
 
   .description {
@@ -320,7 +320,6 @@
   }
 
   .mainDiv {
-    flex-direction: row;
     padding-block: 10px 40px;
   }
 
@@ -341,14 +340,22 @@
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .mainDiv {
-    padding-block: 0px 0px !important;
+    padding-block: 30px !important;
   }
 
   .rightCol {
-    width: 75% !important;
+    width: 100% !important;
     margin: auto;
+  }
+
+  .imageDiv {
+    width: 100% !important;
+    max-width: 320px;
+    height: 320px;
+    top: 0;
+    left: 0;
   }
 
   .lineHeight p {
@@ -362,8 +369,8 @@
 
   .subTitle,
   .subTitle p {
-    line-height: 34px;
-    font-size: 25px;
+    line-height: 34px !important;
+    font-size: 25px !important;
   }
 
   .subTitle strong,

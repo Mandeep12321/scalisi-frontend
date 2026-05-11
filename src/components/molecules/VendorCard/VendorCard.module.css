@@ -32,7 +32,9 @@
   object-fit: contain;
   position: relative !important;
 }
+
 @media screen and (max-width: 1500px) {
+
   .vendorTop h3,
   .vendorCardMain h3 {
     line-height: 1.4;
@@ -44,6 +46,7 @@
     max-width: 200px;
   }
 }
+
 @media (max-width: 992px) {
   .vendorTop {
     max-width: 100%;
@@ -56,7 +59,8 @@
     height: 100px;
   }
 }
-@media screen and (max-device-width: 767px) {
+
+@media screen and (max-width: 767px) {
   .vendorCardMain {
     min-height: 70px;
   }
@@ -68,19 +72,37 @@
   .vendorCardMain h3,
   .vendorTop h3 {
     font-weight: 400;
-    width: 184px;
+    width: auto;
+    flex: 1;
+    min-width: 0;
   }
+
   .vendorTop h3 {
-    max-width: auto;
     font-size: 16px !important;
   }
+
   .vendorCardMain,
   .vendorTop {
-    padding-inline-end: 21px;
-    padding-inline-start: 20px;
+    padding-inline-end: 16px;
+    padding-inline-start: 16px;
   }
+
   .vendorCardImage {
-    width: 75.55px !important;
-    height: 50px !important;
+    flex: none;
+    width: 90px !important;
+    height: 60px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+  .vendorCardMain h3,
+  .vendorTop h3 {
+    font-size: 14px !important;
+  }
+
+  .vendorCardImage {
+    width: 70px !important;
+    height: 48px !important;
   }
 }
