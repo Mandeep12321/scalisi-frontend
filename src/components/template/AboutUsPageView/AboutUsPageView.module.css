@@ -76,6 +76,16 @@
   }
 }
 
+@media (max-width: 767px) {
+  .historySection {
+    padding-block: 40px;
+  }
+
+  .leedSection {
+    padding-block: 40px;
+  }
+}
+
 @media (max-width: 375px) {
   .aboutTitle {
     margin-bottom: 20px !important;

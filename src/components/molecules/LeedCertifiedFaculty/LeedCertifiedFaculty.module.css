@@ -316,7 +316,7 @@
   }
 
   .descriptionTwo {
-    margin-top: 100px;
+    margin-top: 20px;
   }
 
   .title {
@@ -334,10 +334,13 @@
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .leftCol::before {
-    right: 60px;
-    bottom: -54px;
+    display: none;
+  }
+
+  .leftCol::after {
+    display: none;
   }
 
   .scalisiProduceImage {
@@ -369,9 +372,9 @@
   }
 
   .bgImage {
-    width: 80%;
+    width: 100%;
     top: 0;
-    height: 315px;
+    height: 240px;
   }
 }
 
@@ -383,18 +386,21 @@
 
 @media (max-width: 575px) {
   .bgImage {
-    width: 88%;
-    height: 300px;
+    width: 100%;
+    height: 220px;
     top: 0;
   }
 
   .leftCol::before {
-    right: 10px;
-    bottom: -50px;
+    display: none;
+  }
+
+  .leftCol::after {
+    display: none;
   }
 
   .descriptionTwo {
-    margin-top: 70px;
+    margin-top: 20px;
   }
 }
 

@@ -4,14 +4,13 @@
 }
 
 .labelText {
-  margin-bottom: 8px;
   color: var(--black-color);
   text-transform: capitalize;
   font-size: 18px;
   line-height: 21px;
   font-weight: 700;
   margin-bottom: 10px;
-  margin-top: 11px;
+  margin-top: 0;
 }
 
 .phoneNumberInput {
@@ -32,8 +31,6 @@
 } */
 .phoneNumberInput.error {
   border: 2px solid #dc3545;
-  margin-bottom: 0 !important;
-  margin-top: 20px !important;
 }
 
 .phoneNumberInput input {
@@ -67,7 +64,7 @@
   padding-top: 3px;
 }
 
-.phoneNumberInput > div {
+.phoneNumberInput>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,19 +87,23 @@
   max-height: 100%;
   max-width: 100%;
 }
+
 .phoneNumberInput.disabled {
   cursor: not-allowed;
   background-color: #ebebeb;
 }
+
 .phoneNumberInput:disabled {
   cursor: not-allowed;
   background-color: #ebebeb;
 }
+
 .PhoneInputCountrySelect[disabled],
 .PhoneInputCountrySelect[readonly] {
   cursor: default;
   background: #ebebeb !important;
 }
+
 /* .errorContainer {
   min-height: 20px;
   margin-top: 8px;
@@ -113,6 +114,7 @@
     font-size: 15px;
     opacity: 78%;
   }
+
   .phoneNumberInput {
     font-size: 12px;
   }

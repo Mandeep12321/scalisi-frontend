@@ -257,7 +257,10 @@
 
   .imageDiv {
     position: relative !important;
-    top: 60px;
+    top: 0;
+    width: 100% !important;
+    max-width: 380px;
+    height: 380px;
   }
 
   .title {
@@ -278,6 +281,7 @@
     justify-content: center;
     display: flex;
     margin: auto;
+    min-height: unset;
   }
 
   .rightCol::before {
@@ -286,14 +290,15 @@
 
   .imageDiv::before {
     content: " ";
-    background: url("/assets/images/app-images/about-us-vector.png") no-repeat;
-
+    background: url("/assets/images/app-images/about-us-vector.png") no-repeat center center;
+    background-size: contain;
     position: absolute;
-    width: 400px;
-    bottom: 0px;
-    top: -70px;
-    left: 40px;
-    height: 347px;
+    width: 130%;
+    height: 130%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
   }
 
   .subTitle,
@@ -387,7 +392,7 @@
   }
 
   .rightCol {
-    margin-top: 70px;
+    margin-top: 20px;
   }
 
   .title {
@@ -415,21 +420,25 @@
   }
 
   .imageDiv {
-    width: 350px;
-    height: 330px;
+    width: 100% !important;
+    max-width: 320px;
+    height: 320px;
     margin-block-start: 0px;
-    top: 25px;
-    left: -37px;
+    top: 0;
+    left: 0;
   }
 
   .imageDiv::before {
-    width: 399px;
-    height: 355px;
-    scale: 1;
-    top: 39%;
-    left: 67%;
-
+    content: " ";
+    background: url("/assets/images/app-images/about-us-vector.png") no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
   }
 
   .rightColText {

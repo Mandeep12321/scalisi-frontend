@@ -50,7 +50,7 @@ export default function RegisterPageView({ data: _data = null }) {
 
     fieldsToValidate.forEach(field => registrationFormik.setFieldTouched(field, true));
     const errors = await registrationFormik.validateForm();
-    
+
     const hasStep1Errors = fieldsToValidate.some(field => {
       const fieldParts = field.split('.');
       if (fieldParts.length > 1) {
@@ -111,7 +111,7 @@ export default function RegisterPageView({ data: _data = null }) {
           <h2 className="fs-24 fs-md-31 fw-700 text-green mb-2 mb-md-3">New Customer Information</h2>
           <p className="fs-14 fs-md-15 text-muted mb-4">Complete the profile below to register your business with Scalisi.</p>
         </Col>
-        
+
         <Col lg={7}>
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Business Details</h3>
@@ -242,18 +242,18 @@ export default function RegisterPageView({ data: _data = null }) {
           <div className={classes.sectionCard}>
             <h3 className={classes.sectionTitle}>Ownership Structure</h3>
             <p className="fs-13 text-muted mb-4 italic">(A) and if applicable (B) or (C) must be filled out for non-cash payment forms.</p>
-            
+
             <div className="mb-4">
               <h4 className="fs-15 fw-700 text-green mb-3 uppercase tracking-wider">Company Type</h4>
               <div className="d-flex flex-wrap gap-4">
                 {["Prop", "Partnership", "Franchisee", "Corp"].map((type) => (
-                  <Checkbox 
+                  <Checkbox
                     key={type}
-                    label={type} 
-                    labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} 
-                    value={registrationFormik.values.companyType === type} 
-                    setValue={() => registrationFormik.setFieldValue("companyType", type)} 
-                    isBool={true} 
+                    label={type}
+                    labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }}
+                    value={registrationFormik.values.companyType === type}
+                    setValue={() => registrationFormik.setFieldValue("companyType", type)}
+                    isBool={true}
                   />
                 ))}
               </div>
@@ -339,10 +339,10 @@ export default function RegisterPageView({ data: _data = null }) {
             <h3 className={classes.sectionTitle}>Terms and Conditions of Sale - This is not a personal guarantee</h3>
             <div className="bg-light p-3 p-md-4 border rounded mb-3 mb-md-4 fs-13 text-muted line-height-1-8 shadow-sm" style={{ maxHeight: '350px', overflowY: 'auto', textAlign: 'justify' }}>
               <p className="mb-3">
-                <strong>By signature hereof, the undersigned agrees to the following terms:</strong> The perishable agricultural commodities listed on invoices are sold subject to the statutory trust authorized by Section 5(c) of the Perishable Agricultural Commodities Act, 1930 (7 USC 499(e)(c)). The seller of these commodities retains a trust claim over these commodities, all inventories of food or other products derived from these commodities, any any receivables or proceeds from the sale of these commodities until full payment is received. 
+                <strong>By signature hereof, the undersigned agrees to the following terms:</strong> The perishable agricultural commodities listed on invoices are sold subject to the statutory trust authorized by Section 5(c) of the Perishable Agricultural Commodities Act, 1930 (7 USC 499(e)(c)). The seller of these commodities retains a trust claim over these commodities, all inventories of food or other products derived from these commodities, any any receivables or proceeds from the sale of these commodities until full payment is received.
               </p>
               <p className="mb-3">
-                <strong>NOTICE:</strong> Past due invoices as well as any judgments arising from the collection of such invoices shall accrue annual interest at the rate of 18% or at the maximum legal rate, whichever is lower. Seller shall be entitled to collect reasonable attorney's fees and expenses as part of an action to collect on unpaid invoices. Actual attorney's fees incurred in bringing any action to collect on unpaid invoices and/or enforcing any judgment granted and interest shall be considered as additional sums owed in connection with the terms and conditions of sale. 
+                <strong>NOTICE:</strong> Past due invoices as well as any judgments arising from the collection of such invoices shall accrue annual interest at the rate of 18% or at the maximum legal rate, whichever is lower. Seller shall be entitled to collect reasonable attorney's fees and expenses as part of an action to collect on unpaid invoices. Actual attorney's fees incurred in bringing any action to collect on unpaid invoices and/or enforcing any judgment granted and interest shall be considered as additional sums owed in connection with the terms and conditions of sale.
               </p>
               <p className="mb-3">
                 If the customer fails or refuses to comply with its obligations under this agreement, Jack Scalisi Wholesale shall be entitled to recover all costs (including pre-suit costs) associated with the enforcement of this increment, including reasonable attorney's fees and all costs (including but not limited to statutory costs) which may be awarded at the trial court or appellate levels as well as bankruptcy proceedings entitlement and amount of attorney's fees and costs. If suit is necessary, venue shall be only in Palm Beach County.
@@ -353,12 +353,12 @@ export default function RegisterPageView({ data: _data = null }) {
               </p>
             </div>
             <div className="d-flex flex-column gap-2 mt-2">
-              <Checkbox 
-                label="I hereby represent that I am authorized to submit this application and accept the full Terms and Conditions stated above." 
-                labelStyle={{ ...commonLabelStyle, paddingBottom: 0, fontSize: '14px', lineHeight: '1.4' }} 
-                value={registrationFormik.values.termsAccepted} 
-                setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)} 
-                isBool={true} 
+              <Checkbox
+                label="I hereby represent that I am authorized to submit this application and accept the full Terms and Conditions stated above."
+                labelStyle={{ ...commonLabelStyle, paddingBottom: 0, fontSize: '14px', lineHeight: '1.4' }}
+                value={registrationFormik.values.termsAccepted}
+                setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)}
+                isBool={true}
               />
               {registrationFormik.touched.termsAccepted && registrationFormik.errors.termsAccepted && (
                 <div className="text-danger fs-13 mt-1 fw-600">{registrationFormik.errors.termsAccepted}</div>
