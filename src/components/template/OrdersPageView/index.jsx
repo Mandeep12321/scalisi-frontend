@@ -5,6 +5,9 @@ import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
 import CheckoutCard from "@/components/molecules/CheckoutCard/CheckoutCard";
 import Counter from "@/components/molecules/Counter";
+import {
+  parsePhoneNumberFromString,
+} from "libphonenumber-js";
 import HeroSection from "@/components/molecules/HeroSection";
 import OrderSummary from "@/components/molecules/OrderSummary";
 import ShippingDetails from "@/components/organisms/ShippingDetails/ShippingDetails";
@@ -200,6 +203,51 @@ export default function OrdersPageView() {
       getDeliveryDate(location);
     }
   }, [location, accessToken]);
+
+  // Sync location data to Formik and populate city/state options
+  useEffect(() => {
+    if (location && Object.keys(location).length > 0) {
+      const allCountries = Country.getAllCountries();
+      const countryObj = allCountries.find(
+        (c) => c.name === location.country || c.isoCode === location.country
+      );
+
+      let callingCode = "";
+      let phoneNumber = location.phone || "";
+
+      if (phoneNumber.startsWith("+")) {
+        const parsed = parsePhoneNumberFromString(phoneNumber);
+        if (parsed) {
+          callingCode = parsed.countryCallingCode;
+          phoneNumber = parsed.nationalNumber;
+        }
+      } else if (countryObj) {
+        callingCode = countryObj.phonecode.replace("+", "");
+      }
+
+      const values = {
+        company: location.name || "",
+        streetAddress: location.street || "",
+        country: countryObj || null,
+        state: location.state ? { label: location.state, value: location.state } : null,
+        city: location.city ? { label: location.city, value: location.city } : null,
+        postalCode: location.zipcode || "",
+        callingCode: callingCode,
+        phoneNumber: phoneNumber,
+      };
+
+      shippingDetailFormik.setValues(values);
+
+      if (countryObj) {
+        const countryIsoCode = countryObj.isoCode;
+        const statesOfCountry = State.getStatesOfCountry(countryIsoCode);
+        const citiesOfCountry = City.getCitiesOfCountry(countryIsoCode);
+        
+        setStates(statesOfCountry);
+        setCities(citiesOfCountry);
+      }
+    }
+  }, [location]);
 
   // Check localStorage on component mount
   useEffect(() => {

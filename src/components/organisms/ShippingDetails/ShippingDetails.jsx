@@ -142,6 +142,7 @@ export default function ShippingDetails({
                 shippingDetailFormik.errors.phoneNumber
               }
               disabled={!isEditable}
+              defaultCountry={shippingDetailFormik.values.country?.isoCode || "US"}
             />
           </Col>
           <Col

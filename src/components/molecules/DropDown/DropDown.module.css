@@ -33,3 +33,22 @@
   background-color: var(--red-color) !important;
   color: white !important;
 }
+
+.Container {
+  position: relative;
+  width: 100%;
+}
+
+.errorContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 2px;
+  z-index: 5;
+}
+
+.errorText {
+  font-size: 13px;
+  margin: 0;
+}

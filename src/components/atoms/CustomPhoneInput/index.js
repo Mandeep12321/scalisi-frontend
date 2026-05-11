@@ -142,7 +142,7 @@ const CustomPhoneInput = ({
         />
         <div className={error || errorText ? classes.errorContainer : ""}>
           {(error || errorText) && (
-            <p className={`mt-2 text-danger ${[classes.errorText].join(" ")}`}>
+            <p className={`text-danger ${[classes.errorText].join(" ")}`}>
               * {error || errorText}
             </p>
           )}
