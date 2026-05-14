@@ -1,5 +1,6 @@
 .carouselWrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .rec-pagination {

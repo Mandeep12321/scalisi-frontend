@@ -289,43 +289,43 @@
 .noteTriggerBtn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   background: transparent;
-  border: 1.5px solid #d1d5db;
-  border-radius: 7px;
-  padding: 3px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
+  border: 1.5px dashed #9ca3af;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   white-space: nowrap;
 }
 
 .noteTriggerBtn:hover {
-  border-color: var(--primary-color);
   color: var(--primary-color);
+  border-color: var(--primary-color);
   background: color-mix(in srgb, var(--primary-color) 6%, transparent);
 }
 
 /* State: note already exists */
 .noteTriggerBtnHasNote {
-  border-color: var(--primary-color);
   color: var(--primary-color);
-  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+  border-color: var(--primary-color);
+  border-style: solid;
 }
 
 /* State: currently editing / save */
 .noteTriggerBtnSave {
-  border-color: #16a34a;
   color: #16a34a;
-  background: #f0fdf4;
+  border-color: #16a34a;
+  border-style: solid;
 }
 
 .noteTriggerBtnSave:hover {
-  background: #dcfce7;
-  border-color: #15803d;
   color: #15803d;
+  border-color: #15803d;
+  background: color-mix(in srgb, #16a34a 6%, transparent);
 }
 
 /* Note editing container */

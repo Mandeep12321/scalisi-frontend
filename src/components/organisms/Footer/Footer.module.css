@@ -17,11 +17,12 @@
   padding-bottom: 40px;
 }
 
-.financeDiv > p {
+.financeDiv>p {
   color: var(--black-color-v4);
   /* line-height: 1; */
   line-height: 20px;
 }
+
 /* d */
 .cardsIcon {
   display: flex;
@@ -54,6 +55,7 @@
   gap: 23px;
   color: var(--black-color-v4);
 }
+
 .blogDiv span p {
   color: var(--black-color-v4);
   /* line-height: 1; */
@@ -94,9 +96,11 @@
   padding-block: 23px 24px;
   margin-top: 66px;
 }
+
 .mobileFooterBreadcrum {
   margin-top: 25px !important;
 }
+
 .footerBreadcrum span {
   display: flex;
   align-items: center;
@@ -105,6 +109,7 @@
   font-size: 16px;
   font-weight: 600;
 }
+
 .footerBreadcrum span p {
   color: var(--black-color-v4);
   font-weight: 600;
@@ -131,9 +136,11 @@
   .blogDiv span {
     gap: 17px;
   }
+
   .blogDiv {
     gap: 8px;
   }
+
   .subDiv {
     gap: 20px;
   }
@@ -144,87 +151,107 @@
     width: 20px;
     height: 20px;
   }
+
   .rm {
     font-size: 14px;
   }
+
   .cardsIcon {
     width: 35px;
     height: 22px;
   }
 }
+
 @media (min-width: 768px) {
   .linksColContainer {
     width: 24.1%;
   }
+
   .linksColLastContainer {
     width: 27.7%;
   }
 }
+
 @media (max-device-width: 767px) {
   .footerMain {
     padding-block: 16px 24px;
   }
+
   .footerMobile .financeDiv {
     flex-direction: row;
     padding-bottom: 31px;
     align-items: center;
     padding-top: 25px;
   }
-  .financeDiv > p {
+
+  .financeDiv>p {
     color: var(--black-color-v4);
     line-height: 1;
     font-size: 14px;
   }
+
   .footerMobile .footerBreadcrum {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-block: 29px 41px;
   }
+
   .footerBreadcrum span p {
     font-size: 16px !important;
     color: #363636;
   }
+
   .footerMobile .footerBottom {
     align-items: center;
   }
+
   .footerMobile .cardsIcon {
     width: 27.38px;
     height: 17.5px;
     gap: 14px;
   }
+
   .listItems {
     margin-bottom: 0px;
     gap: 0px;
   }
+
   .cardsIcon img {
     height: 20px;
     width: 27px;
   }
+
   .footerMobile .rm {
     display: block;
   }
+
   .listItems li {
     height: 35px !important;
   }
+
   .footerMobile .listItems a {
     font-size: 19px;
     font-weight: 500;
     line-height: 21px;
   }
+
   .footerBottom p {
     text-align: center;
     line-height: 15px;
     font-size: 15px;
   }
+
   .socialIcon {
     display: flex;
     gap: 17px;
   }
+
   .socialIcon img {
     width: 25px;
     height: 23px;
   }
+
   .blogDiv span {
     display: flex;
     flex-direction: column;
@@ -236,6 +263,7 @@
   .blogDiv {
     max-width: 290px;
   }
+
   .spanishText {
     max-width: 50% !important;
   }

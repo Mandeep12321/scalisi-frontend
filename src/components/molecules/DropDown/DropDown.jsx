@@ -221,9 +221,8 @@ const DropDown = ({
           styles={{ ...dropDownStyle, ...style }}
           isClearable={false}
           isSearchable={isSearchable}
-          classNamePrefix={`DropdownOptionContainer ${
-            classNamePrefix && classNamePrefix
-          }`}
+          classNamePrefix={`DropdownOptionContainer ${classNamePrefix && classNamePrefix
+            }`}
           components={{
             IndicatorSeparator: () => null,
             DropdownIndicator: (e) => DropdownIndicator(e),

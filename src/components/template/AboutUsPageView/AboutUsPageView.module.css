@@ -5,6 +5,7 @@
 .heroSection {
   background-color: var(--light-green-bg);
   padding-block: 0px;
+  /* overflow: hidden; */
 }
 
 .historySection {
@@ -19,20 +20,20 @@
 
 .announcementSection {
   background-color: var(--body-color);
+  padding-block: 80px;
 }
 
 .announcementLeft,
 .announcementRight {
-  padding-top: 80px;
-  padding-bottom: 100px;
+  height: 100%;
 }
 
 .announcementLeft {
-  padding-right: 27px;
+  padding-right: 15px;
 }
 
 .announcementRight {
-  padding-left: 27px;
+  padding-left: 15px;
 }
 
 @media (max-width: 1200px) {
@@ -78,12 +79,12 @@
 
 @media (max-width: 767px) {
   .historySection {
-    padding-block: 40px;
+    padding-block: 24px;
   }
 
   .leedSection {
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 24px;
+    padding-bottom: 16px;
   }
 }
 

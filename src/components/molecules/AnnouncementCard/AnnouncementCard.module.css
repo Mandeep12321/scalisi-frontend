@@ -129,15 +129,19 @@
   .cardContainer {
     gap: 0px;
   }
+
   .imageContainer {
     margin-left: 0px;
   }
+
   .title h3 {
     font-size: 22px;
   }
+
   .support button {
     padding: 12px 35px;
   }
+
   .subscribeContainer .input {
     max-width: 153px;
     min-height: 30px;
@@ -149,6 +153,7 @@
     width: calc(60% - 20px);
     gap: 45px;
   }
+
   .imageContainer {
     width: calc(40% - 48px);
     height: 138px;
@@ -164,6 +169,7 @@
     padding: 12px 35px;
     height: 42px;
   }
+
   .subscribeContainer input {
     width: 100%;
   }
@@ -177,6 +183,7 @@
   .cardContainer {
     height: 212px;
   }
+
   .contentContainer span h3 {
     font-size: 18px;
   }
@@ -199,6 +206,7 @@
     padding: 12px 50px;
     height: 42px;
   }
+
   .subscribeContainer .input {
     width: 100%;
     max-width: 150px;
@@ -224,6 +232,7 @@
     width: calc(43% - 50px);
     height: 138px;
   }
+
   .subscribeContainer Button {
     padding: 10px;
   }
@@ -235,6 +244,7 @@
     margin-top: 4px;
     margin-inline-start: 1px;
   }
+
   .subscribeContainer input {
     width: 100%;
     max-width: 215px !important;
@@ -245,9 +255,11 @@
     border-radius: 6px;
     font-size: 14px;
   }
+
   .announcementRight {
     padding-left: 0px;
   }
+
   .newLetterSection span h3 {
     margin-inline-start: 2px;
   }
@@ -262,9 +274,11 @@
     letter-spacing: -0.1px;
     margin-inline-start: 1px;
   }
+
   .support {
     margin-inline-start: 4px;
   }
+
   .imageContainer {
     display: block;
     width: 255px;
@@ -274,9 +288,11 @@
     margin-top: 18px;
     margin-left: 2.5px;
   }
+
   .imageContainer img {
     position: relative !important;
   }
+
   .newLetterSection {
     margin-block: 18px 34px;
     gap: 18px;
@@ -285,6 +301,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .updatesImage {
     display: block;
     z-index: 1;
@@ -303,6 +320,7 @@
   .subscribeBtn {
     padding-inline: 15px !important;
   }
+
   .cardContainer {
     flex-direction: column-reverse;
     height: 320px;
@@ -329,6 +347,7 @@
     left: 0px;
     height: 60% !important;
   }
+
   .support button {
     font-size: 14px !important;
     padding-top: 14px;
@@ -336,6 +355,7 @@
     width: 240px !important;
     height: 40px;
   }
+
   .title h3 {
     font-size: 24px !important;
   }

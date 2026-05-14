@@ -1,37 +1,42 @@
 .mainDivContact {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   gap: 50px;
   padding: 50px 0px 50px 0px !important;
 }
 
 .aboutTitleContact {
-  margin-bottom: 10px !important;
-  font-size: 44px !important;
+  display: inline-block;
+  margin-bottom: 24px !important;
+  font-size: 30px !important;
   font-weight: 700 !important;
   text-transform: none !important;
   letter-spacing: 0 !important;
   line-height: 1.1 !important;
+  padding: 6px 16px !important;
+  margin-left: -18px !important;
 }
 
 .aboutSubTitleContact,
 .aboutSubTitleContact p,
 .contactLeftCol .aboutSubTitleContact,
 .contactLeftCol .aboutSubTitleContact p {
-  line-height: 1.4 !important;
-  font-size: 18px !important;
-  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  font-size: 26px !important;
+  font-weight: 500 !important;
   max-width: 100% !important;
 }
 
 .contactLeftCol {
   width: 50% !important;
+  margin-top: -15px;
 }
 
 .contactRightCol {
+  margin-top: 55px !important;
   width: 50% !important;
-  padding-left: 20px !important;
+  padding-left: 40px !important;
 }
 
 .contactDiv {
@@ -74,6 +79,24 @@
 
 .representative {
   display: none;
+}
+
+.announcementSection {
+  background-color: var(--body-color);
+  padding-block: 60px;
+}
+
+.announcementLeft,
+.announcementRight {
+  height: 100%;
+}
+
+.announcementLeft {
+  padding-right: 15px;
+}
+
+.announcementRight {
+  padding-left: 15px;
 }
 
 .tableHeading {
@@ -278,7 +301,7 @@
 .announcementRight,
 .announcementLeft {
   padding-top: 50px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 }
 
 .announcementLeft {

@@ -79,7 +79,7 @@ export default function AboutUsPageView({ cmsData }) {
                 />
               </div>
             </Col>
-            <Col md={6} lg={6}>
+            <Col md={6} lg={6} >
               <div className={mergeClass(classes.announcementRight)}>
                 <AnnouncementCard
                   data={_cmsData?.updates || ABOUT_US_PAGE_DATA?.announcement2}

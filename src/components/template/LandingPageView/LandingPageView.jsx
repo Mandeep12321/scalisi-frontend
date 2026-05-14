@@ -185,7 +185,9 @@ useEffect(() => {
     <Container>
       <Row>
         {/* HERO */}
-        <LandingHero cmsData={cmsData} />
+        <Col md={12}>
+          <LandingHero cmsData={cmsData} />
+        </Col>
 
         {/* TITLE */}
         <Col

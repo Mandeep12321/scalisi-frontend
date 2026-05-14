@@ -84,35 +84,35 @@
 
 .button {
   height: 39px;
-  width: 100%;
+  width: auto;
+  white-space: nowrap;
 }
 
 .cartAndNoteRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
-  min-width: 0;
 }
 
 .cartAndNoteRow .button {
-  width: auto;
-  flex: 1;
   white-space: nowrap;
+  width: auto;
 }
 
 .counterDiv {
   display: flex;
-  gap: 10px;
   align-items: center;
-  flex-wrap: nowrap;
+  gap: 10px;
 }
 
-/* DropDown inside counterDiv stretches to fill available space */
-.counterDiv> :first-child {
-  flex: 1 1 0;
-  min-width: 0;
+.dropdownWrapper {
+  width: 200px;
+  flex-shrink: 0;
 }
+
+
+
 
 /* ── Note feature ── */
 .noteRow {
@@ -126,42 +126,42 @@
 .noteTriggerBtn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: transparent;
-  border: 1.5px solid #d1d5db;
-  border-radius: 20px;
-  padding: 3px 11px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
+  border: 1.5px dashed #9ca3af;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.18s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   text-decoration: none;
 }
 
 .noteTriggerBtn:hover {
-  border-color: var(--primary-color);
   color: var(--primary-color);
+  border-color: var(--primary-color);
   background: color-mix(in srgb, var(--primary-color) 6%, transparent);
 }
 
 .noteTriggerBtnHasNote {
-  border-color: var(--primary-color);
   color: var(--primary-color);
-  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+  border-color: var(--primary-color);
+  border-style: solid;
 }
 
 .noteTriggerBtnSave {
-  border-color: #16a34a;
   color: #16a34a;
-  background: color-mix(in srgb, #16a34a 6%, transparent);
+  border-color: #16a34a;
+  border-style: solid;
 }
 
 .noteTriggerBtnSave:hover {
-  border-color: #15803d;
   color: #15803d;
-  background: color-mix(in srgb, #15803d 8%, transparent);
+  border-color: #15803d;
+  background: color-mix(in srgb, #16a34a 6%, transparent);
 }
 
 .noteTextarea {
@@ -224,9 +224,8 @@
 }
 
 @media (max-width: 991px) {
-  .counterDiv {
-    flex-direction: row;
-    gap: 10px;
+  .dropdownWrapper {
+    width: 170px;
   }
 
   .mainDiv {
@@ -269,18 +268,17 @@
     padding: 16px 20px;
   }
 
+  /* Stack: dropdown full width, then counter + buttons in a row below */
   .counterDiv {
     flex-wrap: wrap;
-    gap: 10px;
   }
 
-  /* On mobile let the dropdown take full width */
-  .counterDiv> :first-child {
-    flex: 1 1 100%;
+  .dropdownWrapper {
+    width: 100%;
   }
 
   .cartAndNoteRow {
-    width: 100%;
+    flex: 1;
   }
 }
 

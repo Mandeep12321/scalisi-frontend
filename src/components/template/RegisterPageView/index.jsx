@@ -246,7 +246,7 @@ export default function RegisterPageView({ data: _data = null }) {
 
             <div className="mb-4">
               <h4 className="fs-15 fw-700 text-green mb-3 uppercase tracking-wider">Company Type</h4>
-              <div className="d-flex flex-wrap gap-4">
+              <div className={classes.companyTypeRow}>
                 {["Prop", "Partnership", "Franchisee", "Corp"].map((type) => (
                   <Checkbox
                     key={type}
@@ -379,14 +379,14 @@ export default function RegisterPageView({ data: _data = null }) {
   );
 
   const renderSuccess = () => (
-    <div className="d-flex justify-content-center py-4 py-md-5">
-      <div className={mergeClass(classes.sectionCard, "text-center p-4 p-md-5 border-light-subtle")} style={{ maxWidth: '580px', height: 'auto' }}>
-        <div className="mb-4">
-          <div className="d-inline-flex align-items-center justify-content-center bg-green-light rounded-circle p-3 mb-4" style={{ width: '84px', height: '84px', backgroundColor: 'var(--primary-color-light)' }}>
-            <FaCheckCircle size={48} color="var(--primary-color)" />
+    <div className="d-flex justify-content-center py-3 py-md-5">
+      <div className={mergeClass(classes.sectionCard, classes.successCard, "text-center")} style={{ maxWidth: '580px' }}>
+        <div className="mb-3">
+          <div className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style={{ width: '72px', height: '72px', backgroundColor: '#e8f5e9' }}>
+            <FaCheckCircle size={40} color="var(--primary-color)" />
           </div>
-          <h2 className="fs-28 fs-md-32 fw-700 text-green mb-3">Application Submitted!</h2>
-          <p className="fs-15 fs-md-16 text-muted mb-4 px-md-3">
+          <h2 className="fw-700 text-green mb-3" style={{ fontSize: 'clamp(22px, 5vw, 32px)', lineHeight: '1.2' }}>Application Submitted!</h2>
+          <p className="fs-15 text-muted mb-3 px-md-3" style={{ lineHeight: '1.5' }}>
             Thank you for applying with Scalisi. Your business account application has been received and is currently being reviewed by our team.
           </p>
         </div>

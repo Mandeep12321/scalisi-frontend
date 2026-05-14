@@ -1,8 +1,13 @@
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--body-color);
   font-family: var(--inter);
   line-height: 1;
   top: 0 !important;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -90,9 +95,11 @@ svg {
   padding: 24px;
   height: auto;
 }
+
 .text-danger {
   font-size: 14px;
 }
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -122,6 +129,7 @@ svg {
   line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
 .maxLine4 {
   overflow: hidden;
   display: -webkit-box;
@@ -149,11 +157,13 @@ svg {
 input {
   outline: none;
   border: none;
-  font-size: 16px !important; /* Prevent iOS zoom */
+  font-size: 16px !important;
+  /* Prevent iOS zoom */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  touch-action: manipulation; /* Prevent double-tap zoom */
+  touch-action: manipulation;
+  /* Prevent double-tap zoom */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -228,9 +238,11 @@ input::-webkit-inner-spin-button {
 .container {
   max-width: 1536px !important;
   padding-inline: 55px !important;
+
   @media screen and (max-width: 992px) {
     padding-inline: 20px !important;
   }
+
   @media screen and (max-width: 767px) {
     padding-inline: 20px !important;
   }

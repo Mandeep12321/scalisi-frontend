@@ -41,12 +41,12 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
           productVariant: productVariant || item?.selectedVariant?.value,
         })
       );
-      
+
       if (onSave) onSave(trimmed);
-      
+
       RenderToast({
         type: "success",
-        message: isSpanish 
+        message: isSpanish
           ? (trimmed ? "Nota guardada exitosamente." : "Nota eliminada exitosamente.")
           : (trimmed ? "Note saved successfully." : "Note removed successfully."),
       });
@@ -56,8 +56,8 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
   const noteBtnLabel = isEditing
     ? isSpanish ? "Guardar nota" : "Save Note"
     : hasNote
-    ? isSpanish ? "Editar nota" : "Edit Note"
-    : isSpanish ? "Añadir nota" : "Add Note";
+      ? isSpanish ? "Editar nota" : "Edit Note"
+      : isSpanish ? "Añadir nota" : "Add Note";
 
   return (
     <div className={classes.noteSection}>
@@ -69,8 +69,10 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
         )}
         onClick={handleClick}
       >
-        {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
-        <span>{noteBtnLabel}</span>
+        <span className={classes.noteIcon}>
+          {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
+        </span>
+        <span className={classes.noteBtnText}>{noteBtnLabel}</span>
       </button>
 
       {isEditing && (
@@ -85,21 +87,21 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
             spellCheck={false}
           />
           <div className={classes.noteActions}>
-             <button className={classes.noteCancelBtn} onClick={handleCancelNote}>
-                {isSpanish ? "Cancelar" : "Cancel"}
-             </button>
-             {hasNote && (
-                 <button className={classes.noteRemoveBtn} onClick={() => {
-                     handleRemoveNote();
-                     dispatch(updateNoteInCart({
-                         note: "",
-                         productId: productId || item?.itemid || item?._id,
-                         productVariant: productVariant || item?.selectedVariant?.value,
-                     }));
-                 }}>
-                    {isSpanish ? "Eliminar" : "Remove"}
-                 </button>
-             )}
+            <button className={classes.noteCancelBtn} onClick={handleCancelNote}>
+              {isSpanish ? "Cancelar" : "Cancel"}
+            </button>
+            {hasNote && (
+              <button className={classes.noteRemoveBtn} onClick={() => {
+                handleRemoveNote();
+                dispatch(updateNoteInCart({
+                  note: "",
+                  productId: productId || item?.itemid || item?._id,
+                  productVariant: productVariant || item?.selectedVariant?.value,
+                }));
+              }}>
+                {isSpanish ? "Eliminar" : "Remove"}
+              </button>
+            )}
           </div>
         </div>
       )}

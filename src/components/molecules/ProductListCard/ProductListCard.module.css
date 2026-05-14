@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .cardHead {
   display: flex;
   align-items: center;
@@ -34,6 +35,7 @@
   flex-direction: column;
   gap: 10px;
 }
+
 /* end Mob */
 .imageDiv {
   position: relative;
@@ -43,9 +45,11 @@
   overflow: hidden;
   height: 100%;
 }
+
 .imageDiv img {
   object-fit: contain;
 }
+
 .cardBody {
   width: 100%;
   display: flex;
@@ -53,28 +57,33 @@
   gap: 8px;
   padding: 10px 10px 0px 0px;
 }
+
 .title,
 .productId,
 .link {
   color: var(--text-color-v1);
 }
+
 .link {
   opacity: 0.78;
 }
+
 .title {
   min-height: 45px;
 }
+
 .button {
   height: 39px;
   width: 100%;
 }
+
 .counterDiv {
   display: flex;
   gap: 10px;
 }
 
 @media (max-width: 768px) {
-  .counterDiv > div > div[class*="dropdownContainer"] {
+  .counterDiv>div>div[class*="dropdownContainer"] {
     width: 250px !important;
   }
 }
@@ -93,6 +102,7 @@
     width: 100%;
     height: 170px;
   }
+
   .imageDiv {
     width: 150px;
   }
@@ -101,13 +111,14 @@
     height: 39px;
     width: 100%;
   }
+
   .title {
     min-height: 0px;
   }
 }
 
 @media (max-width: 480px) {
-  .counterDiv > div > div[class*="dropdownContainer"] {
+  .counterDiv>div>div[class*="dropdownContainer"] {
     width: 200px !important;
     min-height: 40px !important;
   }
@@ -117,6 +128,7 @@
   .mainDiv {
     height: auto;
   }
+
   .imageDiv {
     margin: 0 auto;
     /* height: 100px; */
@@ -130,9 +142,11 @@
   .counterDiv {
     gap: 10px;
   }
-  .counterDiv > div > div[class*="dropdownContainer"] {
+
+  .counterDiv>div>div[class*="dropdownContainer"] {
     width: 185px !important;
   }
+
   .button {
     width: fit-content;
     font-size: 12px;
@@ -149,10 +163,12 @@
     margin-left: 7px;
     margin-top: 7px;
   }
-  .counterDiv > div > div[class*="dropdownContainer"] {
+
+  .counterDiv>div>div[class*="dropdownContainer"] {
     width: 150px !important;
   }
-  .counterDiv > div:first-child {
+
+  .counterDiv>div:first-child {
     width: 183px !important;
     margin-left: 6px;
   }
@@ -212,41 +228,41 @@
 .noteTriggerBtn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   background: transparent;
-  border: 1.5px solid #d1d5db;
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #6b7280;
+  border: 1.5px dashed #9ca3af;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   white-space: nowrap;
 }
 
 .noteTriggerBtn:hover {
-  border-color: var(--primary-color);
   color: var(--primary-color);
+  border-color: var(--primary-color);
   background: color-mix(in srgb, var(--primary-color) 6%, transparent);
 }
 
 .noteTriggerBtnHasNote {
-  border-color: var(--primary-color);
   color: var(--primary-color);
-  background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+  border-color: var(--primary-color);
+  border-style: solid;
 }
 
 .noteTriggerBtnSave {
-  border-color: #16a34a;
   color: #16a34a;
-  background: #f0fdf4;
+  border-color: #16a34a;
+  border-style: solid;
 }
 
 .noteTriggerBtnSave:hover {
-  background: #dcfce7;
-  border-color: #15803d;
   color: #15803d;
+  border-color: #15803d;
+  background: color-mix(in srgb, #16a34a 6%, transparent);
 }
 
 .noteWrapper {
@@ -333,4 +349,3 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
