@@ -218,7 +218,9 @@
   margin-top: 9.5px;
 }
 
-.formBox h2 {
+.formBox h2,
+.formBox2 h2 {
+  line-height: 1.3 !important;
   margin-block-end: 20px;
 }
 
@@ -400,8 +402,10 @@
     margin-bottom: 3px;
   }
 
-  .formBox h2 {
+  .formBox h2,
+  .formBox2 h2 {
     margin-bottom: 10px;
+    line-height: 1.3 !important;
   }
 
   .formBox2 {

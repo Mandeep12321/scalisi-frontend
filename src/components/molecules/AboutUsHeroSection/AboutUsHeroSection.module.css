@@ -151,6 +151,28 @@
     line-height: 48px;
     font-size: 38px !important;
   }
+
+  .rightCol::before {
+    content: " ";
+    background: url("/assets/images/app-images/about-us-vector.png") no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    width: 80%;
+    /* height: 110%; */
+    top: 70%;
+    /* left: 50%; */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  .imageDiv {
+    position: relative;
+    width: 420px;
+    top: 90px;
+    right: 80px;
+    height: 400px;
+    z-index: 1;
+  }
 }
 
 @media (max-width: 1399px) {
@@ -247,6 +269,28 @@
 
   .ctaInner p {
     text-decoration: none !important;
+  }
+
+  .rightCol::before {
+    content: " ";
+    background: url("/assets/images/app-images/about-us-vector.png") no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 80%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  .imageDiv {
+    position: relative;
+    width: 335px;
+    top: 90px;
+    right: 90px;
+    height: 320px;
+    z-index: 1;
   }
 }
 
