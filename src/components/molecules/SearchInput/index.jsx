@@ -12,6 +12,7 @@ export default function SearchInput({
   rightIconGreenVariant,
   rightIconColor,
   rightIconClass,
+  onSubmit,
 }) {
   return (
     <Input
@@ -21,11 +22,13 @@ export default function SearchInput({
       placeholder={placeholder}
       rightIconClass={rightIconClass}
       labelStyle={classes.labelClass}
+      onEnterClick={onSubmit}
       rightIcon={
         <FaSearch
           className="cursor-pointer"
           color={rightIconColor}
           size={19.01}
+          onClick={onSubmit}
         />
       }
       noBorder={noBorder}

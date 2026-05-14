@@ -121,7 +121,7 @@ const DesktopHeader = ({
 
           <div
             className={Style.userCardDiv}
-            // style={{ marginRight: "35px" }}
+          // style={{ marginRight: "35px" }}
           >
             <span
               className="cursor-pointer"
@@ -312,6 +312,11 @@ const DesktopHeader = ({
               rightIconGreenVariant
               rightIconColor={"var(--white-color)"}
               rightIconClass={Style.customRightICon}
+              onSubmit={() => {
+                if (search?.trim()) {
+                  router.push(`/search?q=${encodeURIComponent(search.trim())}`);
+                }
+              }}
             />
 
             <Nav
@@ -345,7 +350,7 @@ const DesktopHeader = ({
         <LocationsModal
           show={showLocationsModal}
           setShow={setShowLocationsModal}
-          // cb={(location) => getProducts({ pg: 1, location })}
+        // cb={(location) => getProducts({ pg: 1, location })}
         />
       )}
       {showEmptyCartModal && (

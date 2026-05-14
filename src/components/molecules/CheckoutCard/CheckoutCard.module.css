@@ -97,10 +97,9 @@
 .removeLink {
   color: #bc0a0e;
   text-decoration: none;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
   margin-bottom: 1px;
   margin-right: 3px;
+  cursor: pointer;
 }
 
 .removeLink:hover {
@@ -161,7 +160,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .counterDiv>div>div[class*="controlButtons"] {

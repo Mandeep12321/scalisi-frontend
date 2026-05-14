@@ -8,12 +8,10 @@ import {
   updateNoteInCart,
 } from "@/store/cart/cartSlice";
 import Image from "next/image";
-import { MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import Counter from "../Counter";
 import classes from "./CheckoutCard.module.css";
 import Cookies from "js-cookie";
-import { useItemNote } from "@/components/common/hooks/useItemNote";
 import ItemNote from "@/components/common/ItemNote/ItemNote";
 
 /**
@@ -96,7 +94,20 @@ const CheckoutCard = ({ tableData }) => {
 
           <div className={classes.cardEnd}>
             <div className={classes.cardBottom}>
-
+              <ItemNote
+                item={item}
+                productId={item?.itemid}
+                productVariant={item?.selectedVariant?.value}
+                onSave={(note) => {
+                  dispatch(
+                    updateNoteInCart({
+                      note,
+                      productId: item?.itemid,
+                      productVariant: item?.selectedVariant?.value,
+                    })
+                  );
+                }}
+              />
               <div className={classes.counterDiv}>
                 <Counter
                   data={item?.selectedCount}

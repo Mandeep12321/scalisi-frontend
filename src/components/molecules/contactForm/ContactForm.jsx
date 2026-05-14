@@ -67,7 +67,7 @@ export default function ContactForm() {
   return (
     <div className={classes.mainForm}>
       <div className={classes.main}>
-        <h1 className="fs-24" classNam={classes.contactHeading}>
+        <h1 className={`fs-24 ${classes.contactHeading}`}>
           Contact Form
         </h1>
 

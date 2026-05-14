@@ -9,12 +9,12 @@
 
 .historySection {
   background-color: var(--body-color);
-  padding-block: 120px;
+  padding-block: 80px;
 }
 
 .leedSection {
   background-color: var(--light-green-bg);
-  padding-block: 120px;
+  padding-block: 80px;
 }
 
 .announcementSection {
@@ -23,8 +23,8 @@
 
 .announcementLeft,
 .announcementRight {
-  padding-top: 106px;
-  padding-bottom: 150px;
+  padding-top: 80px;
+  padding-bottom: 100px;
 }
 
 .announcementLeft {

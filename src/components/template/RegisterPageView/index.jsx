@@ -87,7 +87,8 @@ export default function RegisterPageView({ data: _data = null }) {
   const commonLabelStyle = {
     fontSize: "15px",
     fontWeight: 600,
-    paddingBottom: "10px",
+    paddingBottom: "4px",
+    marginBottom: "6px",
     textTransform: "capitalize",
   };
 
@@ -190,9 +191,9 @@ export default function RegisterPageView({ data: _data = null }) {
             <h3 className={classes.sectionTitle}>Web Portal & Verification</h3>
             <div className={classes.inputFieldWrapper}><Input label="Portal Login Email" type="email" placeholder="info@example.com" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.email} setValue={(val) => registrationFormik.setFieldValue("webLogin.email", val)} errorText={registrationFormik.touched.webLogin?.email && registrationFormik.errors.webLogin?.email} /></div>
             <div className={classes.inputFieldWrapper}><Input label="Portal Password" type="password" placeholder="********" labelStyle={commonLabelStyle} value={registrationFormik.values.webLogin.password} setValue={(val) => registrationFormik.setFieldValue("webLogin.password", val)} errorText={registrationFormik.touched.webLogin?.password && registrationFormik.errors.webLogin?.password} /></div>
-            <div className="d-flex flex-column gap-2 mt-2">
-              <Checkbox label="Attached Kitchen List w/ Pars" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedKitchenList} setValue={(val) => registrationFormik.setFieldValue("attachedKitchenList", val)} isBool={true} />
-              <Checkbox label="Attached Spec Guide Complete" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedSpecGuide} setValue={(val) => registrationFormik.setFieldValue("attachedSpecGuide", val)} isBool={true} />
+            <div className="d-flex flex-column mt-1">
+              <Checkbox label="Attached Kitchen List w/ Pars" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedKitchenList} setValue={(val) => registrationFormik.setFieldValue("attachedKitchenList", val)} isBool={true} checkboxMain={classes.checkboxCompact} />
+              <Checkbox label="Attached Spec Guide Complete" labelStyle={{ ...commonLabelStyle, paddingBottom: 0 }} value={registrationFormik.values.attachedSpecGuide} setValue={(val) => registrationFormik.setFieldValue("attachedSpecGuide", val)} isBool={true} checkboxMain={classes.checkboxCompact} />
             </div>
           </div>
         </Col>
@@ -254,6 +255,7 @@ export default function RegisterPageView({ data: _data = null }) {
                     value={registrationFormik.values.companyType === type}
                     setValue={() => registrationFormik.setFieldValue("companyType", type)}
                     isBool={true}
+                    checkboxMain={classes.checkboxCompact}
                   />
                 ))}
               </div>
@@ -352,13 +354,14 @@ export default function RegisterPageView({ data: _data = null }) {
                 I hereby represent that I am authorized to submit this application of behalf of the company named above ("Customer") and it is understood that Apple Core, Inc., d/b/a Jack Scalisi Wholesale Fruit & Produce ("Scalisi Produce") is authorized to obtain information pertaining to Customer's credit capacity and general credit reputation. The information will be obtained through personal interviews with, and/or inquired directed to third parties, such as business associates, financial sources such as banks, Dun & Bradstreet Reporting, and Credit Bureaus. In consideration of the credit extended to Customer by Jack Scalisi Wholesale and its successors and affiliated companies, Customer agrees that such credit shall be extended on the terms and conditions set forth herein.
               </p>
             </div>
-            <div className="d-flex flex-column gap-2 mt-2">
+            <div className="d-flex flex-column gap-1 mt-2">
               <Checkbox
                 label="I hereby represent that I am authorized to submit this application and accept the full Terms and Conditions stated above."
                 labelStyle={{ ...commonLabelStyle, paddingBottom: 0, fontSize: '14px', lineHeight: '1.4' }}
                 value={registrationFormik.values.termsAccepted}
                 setValue={(val) => registrationFormik.setFieldValue("termsAccepted", val)}
                 isBool={true}
+                checkboxMain={classes.checkboxCompact}
               />
               {registrationFormik.touched.termsAccepted && registrationFormik.errors.termsAccepted && (
                 <div className="text-danger fs-13 mt-1 fw-600">{registrationFormik.errors.termsAccepted}</div>

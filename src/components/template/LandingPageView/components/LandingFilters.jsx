@@ -22,8 +22,86 @@ export default function LandingFilters({
   setSubCategory,
   catalogType,
   isLogin,
-  hideCatalogTabs = false,   // ← new: hides Order Guide / Full Catalog tabs
+  hideCatalogTabs = false,
+  totalRecords = null,
 }) {
+  // ── Search-results mode: compact bar ──────────────────────────────────────
+  if (hideCatalogTabs) {
+    return (
+      <Row className={mergeClass("align-items-center", classes.searchFiltersRow)}>
+        {/* LEFT — result count */}
+        <Col xs={12} sm={4} md={3} className={classes.resultsCountCol}>
+          {totalRecords !== null && (
+            <p className={classes.resultsCount}>{totalRecords} results found</p>
+          )}
+        </Col>
+
+        {/* RIGHT — Sort + View */}
+        <Col xs={12} sm={8} md={9} className="d-flex justify-content-end align-items-center">
+          <div className={classes.filtersDiv}>
+            <div className={classes.sortByDiv}>
+              <p className={mergeClass("fs-18", classes.sortByLabel)}>Sort by</p>
+              <DropDown
+                placeholder="Sort"
+                isHoverColor
+                dropDownContainer={classes.dropDownContainer}
+                value={dropDown}
+                setValue={setDropDown}
+                options={SORT_BY_DROPDOWN}
+              />
+            </div>
+
+            <div className={classes.cardViewDivMain}>
+              <div className={classes.viewCardTypeDiv}>
+                <p className="fs-18">View</p>
+              </div>
+              <div className={classes.cardsView}>
+                <div
+                  className={mergeClass(
+                    classes.viewTypeDiv,
+                    cardViewType === "card" && classes.listIconActive,
+                  )}
+                  onClick={() => setCardViewType("card")}
+                >
+                  <div className={classes.gridIcon}>
+                    <Image
+                      src={!isMob768
+                        ? "/assets/images/svg/card-grid-icon.svg"
+                        : "/assets/images/app-images/cardGrid.png"}
+                      fill
+                      alt="card-view"
+                    />
+                  </div>
+                  <p className={mergeClass(classes.cardTitle)}>Cards</p>
+                </div>
+
+                <div
+                  className={mergeClass(
+                    classes.listViewTypeDiv,
+                    cardViewType === "list" && classes.listIconActive,
+                  )}
+                  onClick={() => setCardViewType("list")}
+                >
+                  <ReactSVG
+                    src={"/assets/images/svg/productListIcon.svg"}
+                    className={mergeClass(
+                      classes.listIcon,
+                      cardViewType === "list" && classes.listIconActive,
+                    )}
+                  />
+                  <p className={mergeClass("fs-18", classes.listTitle, cardViewType === "list" && classes.listIconActive)}>
+                    List
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+    );
+  }
+
+  // ── Default mode: full catalog filter bar ─────────────────────────────────
   return (
     <>
       <Row className="align-items-center">

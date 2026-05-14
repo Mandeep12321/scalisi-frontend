@@ -276,6 +276,12 @@ const MobileHeader = ({
             setSearch={setSearch}
             rightIconGreenVariant
             rightIconColor={"var(--white-color)"}
+            onSubmit={() => {
+              if (search?.trim()) {
+                router.push(`/search?q=${encodeURIComponent(search.trim())}`);
+                setIsDrawerOpen(false);
+              }
+            }}
           />
         </Navbar>
       </Container>
@@ -291,7 +297,7 @@ const MobileHeader = ({
           <Nav className={`ms-auto ${Style.navbarCustom__style}`} gap={5}>
             {MOBILE_HEADER_LINK?.map(({ Icon, separator, ...item }, index) => {
               if (!accessToken && item?.label === "Order Guide") return null;
-              
+
               return (
                 <div key={index}>
                   {separator ? (
@@ -327,7 +333,7 @@ const MobileHeader = ({
         <LocationsModal
           show={showLocationsModal}
           setShow={setShowLocationsModal}
-          // cb={(location) => getProducts({ pg: 1, location })}
+        // cb={(location) => getProducts({ pg: 1, location })}
         />
       )}
       {showEmptyCartModal && (

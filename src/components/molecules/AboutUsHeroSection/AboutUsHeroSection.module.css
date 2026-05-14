@@ -1,7 +1,8 @@
 .mainDiv {
   display: flex;
   width: 100%;
-  padding-block: 120px;
+  padding-block: 50px;
+  padding-inline: 0;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
@@ -23,7 +24,7 @@
 
 .title {
   color: var(--black-color-v2);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   font-size: 38px !important;
   font-weight: 700 !important;
   text-transform: none;
@@ -35,11 +36,12 @@
 .subTitle p {
   font-weight: 400;
   font-family: var(--inter);
-  line-height: 1.05 !important;
+  line-height: 1.15 !important;
   max-width: 100%;
   font-size: 52px !important;
   color: var(--black-color);
   letter-spacing: -0.02em;
+  text-align: left;
 }
 
 .subTitle strong {
@@ -54,6 +56,7 @@
   line-height: 28px !important;
   font-size: 19px !important;
   font-weight: 400 !important;
+  text-align: left;
 }
 
 .rightCol {
@@ -67,8 +70,10 @@
 
 .imageDiv {
   position: relative;
-  width: 380px;
-  height: 380px;
+  width: 420px;
+  top: 80px;
+  right: 80px;
+  height: 400px;
   z-index: 1;
 }
 
@@ -81,8 +86,8 @@
   background: url("/assets/images/app-images/about-us-vector.png") no-repeat center center;
   background-size: contain;
   position: absolute;
-  width: 110%;
-  height: 110%;
+  width: 50%;
+  /* height: 110%; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -98,9 +103,9 @@
   background: url("/assets/images/app-images/about-us-vector.png") no-repeat;
   background-size: contain;
   position: absolute;
-  width: 120%;
+  width: 80%;
   height: 120%;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
@@ -135,6 +140,8 @@
   font-size: 17px;
   line-height: 22px;
   max-width: 80%;
+  white-space: pre-line;
+  word-break: break-word;
 }
 
 @media (max-width: 1440px) {

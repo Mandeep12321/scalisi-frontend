@@ -242,7 +242,7 @@ export default function OrdersPageView() {
         const countryIsoCode = countryObj.isoCode;
         const statesOfCountry = State.getStatesOfCountry(countryIsoCode);
         const citiesOfCountry = City.getCitiesOfCountry(countryIsoCode);
-        
+
         setStates(statesOfCountry);
         setCities(citiesOfCountry);
       }
@@ -398,6 +398,20 @@ export default function OrdersPageView() {
         return (
           <div className={classes.priceDiv}>
             <p className="fs-22 fw-700">{item?.price}</p>
+            <ItemNote
+              item={data[index]}
+              productId={item?._id}
+              productVariant={data[index]?.selectedVariant?.value}
+              onSave={(note) => {
+                dispatch(
+                  updateNoteInCart({
+                    note,
+                    productId: item?._id,
+                    productVariant: data[index]?.selectedVariant?.value,
+                  })
+                );
+              }}
+            />
           </div>
         );
       },
@@ -558,8 +572,8 @@ export default function OrdersPageView() {
                         />
                       </div>
                     )}
-                    
-{/* <div className={classes.shippingDetailsWrapper}>
+
+                    {/* <div className={classes.shippingDetailsWrapper}>
                        {renderShipping()}
                     </div> */}
                   </Col>

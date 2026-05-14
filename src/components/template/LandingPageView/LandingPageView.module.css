@@ -249,6 +249,28 @@
   justify-content: center;
 }
 
+/* ── Search results filter bar ───────────────────────────── */
+.searchFiltersRow {
+  padding-block: 14px 10px;
+}
+
+.resultsCountCol {
+  padding-block: 4px;
+}
+
+.resultsCount {
+  font-size: 18px;
+  font-weight: 550;
+  color: #a59f9f;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.sortByLabel {
+  color: #363636;
+  white-space: nowrap;
+}
+
 
 
 

@@ -1,5 +1,6 @@
 .mainDiv {
   margin-block: 0px;
+  margin-top: 20px;
 }
 
 .leftCol {
@@ -68,13 +69,13 @@
 .centerImage {
   width: 317px;
   height: 180px;
-  top: 40px;
-  left: -92px;
+  top: 20px;
+  left: -70px;
 }
 
 .bottomImage {
-  left: 30px;
-  bottom: 0px;
+  left: 50px;
+  bottom: 10px;
   width: 238px;
   height: 183px;
 }
@@ -82,8 +83,8 @@
 .topImage {
   width: 289px;
   height: 155px;
-  bottom: 115px;
-  right: -70px;
+  bottom: 130px;
+  right: -50px;
 }
 
 .bottomImage img,
