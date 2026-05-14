@@ -150,24 +150,22 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
         {isAuthenticated ? (
           <>
             <div className={classes.counterDiv}>
-              <div className={classes.dropdownWrapper}>
-                <DropDown
-                  customStyle={{
-                    height: "37px",
-                    padding: "0px",
-                    fontWeight: "600",
-                    fontSize: "13px",
-                  }}
-                  options={dropDownOptions}
-                  setValue={(e) => {
-                    setVariantSelect({
-                      selectedVariant: e,
-                      selectedCount: data.selectedCount || 1,
-                    });
-                  }}
-                  value={data?.selectedVariant}
-                />
-              </div>
+              <DropDown
+                customStyle={{
+                  height: "37px",
+                  padding: "0px",
+                  fontWeight: "600",
+                  fontSize: "13px",
+                }}
+                options={dropDownOptions}
+                setValue={(e) => {
+                  setVariantSelect({
+                    selectedVariant: e,
+                    selectedCount: data.selectedCount || 1,
+                  });
+                }}
+                value={data?.selectedVariant}
+              />
               <Counter
                 data={currentQuantity}
                 setData={(e) => {

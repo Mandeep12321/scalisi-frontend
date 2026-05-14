@@ -26,9 +26,10 @@
 .imagesDiv {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-gap: 35px;
   row-gap: 40px;
   margin-top: 45px;
+  margin-bottom: 60px;
 }
 
 .footer {
@@ -75,11 +76,11 @@
 
 .heading {
   text-align: center;
-  padding-block: 100px 75px;
+  padding-block: 40px 75px;
 }
 
 .mainDiv {
-  padding-block: 20px 40px;
+  padding-block: 0 40px;
 }
 
 .carouselWrapper {
@@ -88,13 +89,13 @@
 
 @media (max-width: 1440px) {
   .heading {
-    padding-block: 50px;
+    padding-block: 30px 50px;
   }
 }
 
 @media (max-width: 1024px) {
   .heading {
-    padding-block: 50px;
+    padding-block: 25px 50px;
   }
 
   .footer {
@@ -113,7 +114,7 @@
 
 @media (max-width: 800px) {
   .heading {
-    padding-block: 35px;
+    padding-block: 20px 35px;
   }
 
   .footer {

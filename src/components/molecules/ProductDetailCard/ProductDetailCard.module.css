@@ -97,7 +97,6 @@
 
 .cartAndNoteRow .button {
   white-space: nowrap;
-  width: auto;
 }
 
 .counterDiv {
@@ -106,9 +105,9 @@
   gap: 10px;
 }
 
-.dropdownWrapper {
-  width: 200px;
-  flex-shrink: 0;
+/* Pin the DropDown width at the inner dropdownContainer — same pattern as ProductListCard */
+.counterDiv > div > div[class*="dropdownContainer"] {
+  width: 200px !important;
 }
 
 
@@ -224,8 +223,8 @@
 }
 
 @media (max-width: 991px) {
-  .dropdownWrapper {
-    width: 170px;
+  .counterDiv > div > div[class*="dropdownContainer"] {
+    width: 170px !important;
   }
 
   .mainDiv {
@@ -268,16 +267,21 @@
     padding: 16px 20px;
   }
 
-  /* Stack: dropdown full width, then counter + buttons in a row below */
   .counterDiv {
     flex-wrap: wrap;
+    gap: 10px;
   }
 
-  .dropdownWrapper {
-    width: 100%;
+  .counterDiv > div > div[class*="dropdownContainer"] {
+    width: 100% !important;
   }
 
   .cartAndNoteRow {
+    flex: 1;
+    width: 100%;
+  }
+
+  .cartAndNoteRow .button {
     flex: 1;
   }
 }

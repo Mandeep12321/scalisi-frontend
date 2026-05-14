@@ -20,7 +20,8 @@
 
 .announcementSection {
   background-color: var(--body-color);
-  padding-block: 80px;
+  padding-top: 0;
+  padding-bottom: 120px;
 }
 
 .announcementLeft,

@@ -1,6 +1,6 @@
 .footerMain {
   background-color: var(--white-color);
-  padding-block: 60px 39px;
+  padding-block: 80px 55px;
   border-top: 3px solid var(--white-color);
   box-shadow: 0px 5px 25px #0000000d;
 }
@@ -174,7 +174,7 @@
 
 @media (max-device-width: 767px) {
   .footerMain {
-    padding-block: 16px 24px;
+    padding-block: 30px 40px;
   }
 
   .footerMobile .financeDiv {
