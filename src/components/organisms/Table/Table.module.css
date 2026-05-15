@@ -53,7 +53,8 @@
 }
 .tableBody {
   overflow: auto;
-  height: calc(100vh - 370px);
+  height: auto;
+  max-height: calc(100vh - 370px);
 }
 
 .tableBody::-webkit-scrollbar {

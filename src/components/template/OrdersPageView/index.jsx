@@ -573,8 +573,9 @@ export default function OrdersPageView() {
                       </div>
                     )}
 
+                    {/* Shipping Details hidden */}
                     {/* <div className={classes.shippingDetailsWrapper}>
-                       {renderShipping()}
+                      {renderShipping()}
                     </div> */}
                   </Col>
                   <Col

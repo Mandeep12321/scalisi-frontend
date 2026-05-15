@@ -237,7 +237,7 @@ export const MY_ORDERS_CMS_DATA = {
     image: "/assets/images/cms-images/update.png",
   },
   heroSection: {
-    title: "My Order",
+    title: "Your Order",
     description: "Review your current order.",
   },
 };

@@ -70,7 +70,7 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
         onClick={handleClick}
       >
         <span className={classes.noteIcon}>
-          {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
+          {isEditing ? <MdOutlineEdit size={18} /> : <MdOutlineNoteAdd size={18} />}
         </span>
         <span className={classes.noteBtnText}>{noteBtnLabel}</span>
       </button>
