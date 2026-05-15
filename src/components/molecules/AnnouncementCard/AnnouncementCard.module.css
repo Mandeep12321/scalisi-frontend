@@ -11,6 +11,7 @@
   border-radius: 12px;
   position: relative;
   box-shadow: 0px 5px 25px #0000000d;
+  padding-bottom: 0;
 }
 
 .cardContainer::after {
@@ -28,15 +29,19 @@
 .imageContainer {
   position: relative;
   width: calc(40% - 30px);
-  height: 174px;
+  height: 210px;
   z-index: 1;
   margin-left: 30px;
+  align-self: flex-end;
+  display: flex;
+  align-items: flex-end;
 }
 
 .imageContainer img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: bottom;
 }
 
 .contentContainer {
@@ -284,9 +289,11 @@
     width: 255px;
     height: 177px;
     scale: 1.06;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     margin-top: 18px;
+    margin-bottom: 0px;
     margin-left: 2.5px;
+    align-self: center;
   }
 
   .imageContainer img {
@@ -309,6 +316,7 @@
     width: 241px;
     height: 150px;
     margin-left: 2.5px;
+    margin-bottom: 0px;
   }
 
   .inputContainer input::placeholder {
@@ -325,7 +333,9 @@
     flex-direction: column-reverse;
     height: 320px;
     padding: 10px;
+    padding-bottom: 0px !important;
     gap: 0px;
+    align-items: center;
   }
 
   .contentContainer {

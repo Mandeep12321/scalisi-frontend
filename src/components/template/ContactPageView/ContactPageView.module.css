@@ -40,7 +40,7 @@
 }
 
 .contactDiv {
-  margin-block: 40px !important;
+  margin-block: 60px !important;
 }
 
 .mainDiv .container {
@@ -54,6 +54,7 @@
 
 .ContactFormSection {
   background-color: var(--body-color);
+  padding-bottom: 80px;
 }
 
 .mainDiv table tbody {
@@ -280,7 +281,19 @@
   }
 
   .announcementSection {
-    padding-block: 3px !important;
+    padding: 10px 0px 80px 0px !important;
+  }
+
+  .announcementLeft {
+    padding-top: 0px !important;
+    padding-bottom: 40px !important;
+    padding-inline: 0px !important;
+  }
+
+  .announcementRight {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-inline: 0px !important;
   }
 }
 
@@ -340,20 +353,5 @@
 
   .announcementRight {
     padding-left: 10px;
-  }
-}
-
-@media screen and (max-device-width: 767px) {
-  .announcementLeft {
-    padding-top: 0px !important;
-    padding-bottom: 20px;
-    padding-right: 0px !important;
-  }
-
-  .announcementRight {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-    padding-right: 0px !important;
-    padding-left: 0px;
   }
 }
