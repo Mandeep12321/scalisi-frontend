@@ -138,18 +138,24 @@
 .noteTriggerBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   background: transparent;
-  border: none;
-  padding: 5px 0px;
-  font-size: 14px;
+  border: 1.5px dashed #9ca3af;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
   font-weight: 500;
   color: #4b5563;
   cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   white-space: nowrap;
-  transition: color 0.18s ease;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+}
+
+.noteTriggerBtn span {
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 .noteTriggerBtn:hover {

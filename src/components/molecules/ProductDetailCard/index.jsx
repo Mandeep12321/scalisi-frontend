@@ -190,10 +190,14 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
                 className={mergeClass(classes.removeFromCartButton, classes.button)}
               />
               <button
-                className={classes.noteTriggerBtn}
+                className={mergeClass(
+                  classes.noteTriggerBtn,
+                  hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+                  isEditing && classes.noteTriggerBtnSave,
+                )}
                 onClick={handleClick}
               >
-                <MdOutlineNoteAdd size={22} color="#4b5563" />
+                {isEditing ? <MdOutlineEdit size={16} /> : <MdOutlineNoteAdd size={16} />}
                 <span>{noteBtnLabel}</span>
               </button>
             </div>

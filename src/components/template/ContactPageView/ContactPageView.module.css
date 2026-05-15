@@ -83,7 +83,7 @@
 
 .announcementSection {
   background-color: var(--body-color);
-  padding-block: 10px !important;
+  padding: 10px 0px 40px 0px !important;
 }
 
 .announcementLeft,
