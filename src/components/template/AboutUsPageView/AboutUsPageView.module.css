@@ -4,7 +4,7 @@
 
 .heroSection {
   background-color: var(--light-green-bg);
-  padding-block: 0px;
+  padding-block: 12px;
   /* overflow: hidden; */
 }
 
