@@ -61,7 +61,7 @@
   align-items: center;
   gap: 40px;
   flex-wrap: wrap;
-  padding-top: 5px;
+  padding-top: 25px;
   min-height: 48px;
 }
 
@@ -110,6 +110,7 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  padding-top: 25px;
 }
 
 .catalogTab {
