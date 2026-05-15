@@ -555,7 +555,7 @@ export default function OrdersPageView() {
                     md={12}
                     lg={12}
                     xl={8}
-                    className={isMobile ? "mb-0" : "mb-5"}
+                    className={isMobile ? "mb-0" : "mb-0"}
                   >
                     {!isMobile768 ? (
                       <Table
@@ -581,7 +581,7 @@ export default function OrdersPageView() {
                     md={12}
                     lg={12}
                     xl={4}
-                    className={isMobile768 ? "mb-0" : "mb-5"}
+                    className={isMobile768 ? "mb-0" : "mb-0"}
                   >
                     {renderOrderSummery()}
                   </Col>
