@@ -29,7 +29,7 @@
   grid-gap: 20px;
   row-gap: 25px;
   margin-top: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 .footer {
@@ -80,7 +80,7 @@
 }
 
 .mainDiv {
-  padding-block: 0 40px;
+  padding-block: 0 0px;
 }
 
 .carouselWrapper {
