@@ -26,10 +26,10 @@
 .imagesDiv {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 35px;
-  row-gap: 40px;
-  margin-top: 45px;
-  margin-bottom: 60px;
+  grid-gap: 20px;
+  row-gap: 25px;
+  margin-top: 25px;
+  margin-bottom: 40px;
 }
 
 .footer {
@@ -84,7 +84,7 @@
 }
 
 .carouselWrapper {
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 @media (max-width: 1440px) {
