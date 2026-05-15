@@ -226,7 +226,7 @@
 .announcementRight,
 .announcementLeft {
   padding-top: 30px;
-  padding-bottom: 100px;
+  padding-bottom: 160px;
 }
 
 .announcementLeft {
@@ -239,11 +239,11 @@
 
 .announcementRow {
   display: flex;
-  gap: 1.4%;
+  gap: 4%;
 }
 
 .announcementCol {
-  width: 49.3% !important;
+  width: 48% !important;
   flex: 0 0 auto !important;
 }
 
