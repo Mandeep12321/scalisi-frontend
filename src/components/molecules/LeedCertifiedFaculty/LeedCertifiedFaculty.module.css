@@ -76,7 +76,7 @@
 }
 
 .descriptionTwo {
-  margin-block-start: 64px;
+  margin-block-start: 32px;
 }
 
 .descriptionTwo,
@@ -125,7 +125,7 @@
   max-width: 965px;
   height: auto !important;
   min-height: 120px;
-  margin: 70px auto auto auto;
+  margin: 30px auto auto auto;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -220,7 +220,7 @@
   }
 
   .descriptionTwo {
-    margin-block-start: 50px;
+    margin-block-start: 25px;
   }
 
   .leftCol {
@@ -569,7 +569,7 @@
   }
 
   .descriptionTwo {
-    margin-block-start: 55px;
+    margin-block-start: 25px;
   }
 
   .descriptionTwo h4 {
@@ -604,7 +604,7 @@
   }
 
   .operatingPlanDiv {
-    margin: 44px auto auto auto;
+    margin: 25px auto auto auto;
   }
 
   .scalisiProduceImage {
