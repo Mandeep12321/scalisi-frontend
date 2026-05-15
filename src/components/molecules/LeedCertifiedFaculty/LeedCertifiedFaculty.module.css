@@ -24,7 +24,7 @@
   font-size: 53px;
   font-weight: 700;
   color: var(--black-color);
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .heading {
@@ -162,7 +162,7 @@
 
   .heading {
     font-size: 30px;
-    margin-block: 20px;
+    margin-block: 0px 20px;
   }
 
   .leftCol::before {
@@ -194,7 +194,7 @@
 
   .heading {
     font-size: 22px;
-    margin-block: 35px;
+    margin-block: 0px 35px;
   }
 
   .tagline {
@@ -315,7 +315,7 @@
 
   .heading {
     font-size: 21px;
-    margin-block: 35px;
+    margin-block: 0px 35px;
   }
 
   .descriptionTwo {
@@ -491,7 +491,7 @@
   }
 
   .heading {
-    margin-block: 28px;
+    margin-block: 0px 28px;
   }
 
   .buttonClass {
@@ -582,7 +582,7 @@
   }
 
   .heading {
-    margin-block: 18px;
+    margin-block: 0px 18px;
     font-size: 20px;
     line-height: 24px;
   }
