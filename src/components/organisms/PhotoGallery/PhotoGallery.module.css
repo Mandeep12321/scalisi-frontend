@@ -1,7 +1,7 @@
 .imageDiv {
   opacity: 0.6;
   width: 100%;
-  height: 152px;
+  height: 130px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -26,8 +26,8 @@
 .imagesDiv {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  row-gap: 25px;
+  grid-gap: 30px;
+  row-gap: 35px;
   margin-top: 25px;
   margin-bottom: 0px;
 }
@@ -76,7 +76,7 @@
 
 .heading {
   text-align: center;
-  padding-block: 80px 80px;
+  padding-block: 0px 80px;
 }
 
 .mainDiv {
@@ -89,13 +89,13 @@
 
 @media (max-width: 1440px) {
   .heading {
-    padding-block: 60px 60px;
+    padding-block: 0px 60px;
   }
 }
 
 @media (max-width: 1024px) {
   .heading {
-    padding-block: 50px 50px;
+    padding-block: 0px 50px;
   }
 
   .footer {
@@ -114,7 +114,7 @@
 
 @media (max-width: 800px) {
   .heading {
-    padding-block: 30px 30px;
+    padding-block: 0px 30px;
   }
 
   .footer {
@@ -155,11 +155,11 @@
 @media (max-width: 768px) {
   .imageDiv {
     min-width: 320px !important;
-    height: 140px;
+    height: 120px;
   }
 
   .imagesDiv {
-    gap: 30px;
+    gap: 40px;
     display: flex;
     justify-content: center;
     min-width: 200px !important;
@@ -171,21 +171,21 @@
 @media (max-width: 700px) {
   .imageDiv {
     min-width: 290px !important;
-    height: 140px;
+    height: 120px;
   }
 }
 
 @media (max-width: 650px) {
   .imageDiv {
     min-width: 260px !important;
-    height: 130px;
+    height: 110px;
   }
 }
 
 @media (max-width: 575px) {
   .imageDiv {
     min-width: 225px !important;
-    height: 120px;
+    height: 100px;
     margin-top: 0px !important;
   }
 }
@@ -193,7 +193,7 @@
 @media (max-width: 520px) {
   .imageDiv {
     min-width: 190px !important;
-    height: 100px;
+    height: 90px;
   }
 }
 
@@ -216,7 +216,7 @@
   .imageDiv {
     gap: 20px;
     min-width: 150px !important;
-    height: 100px !important;
+    height: 90px !important;
   }
 
   .footer {
@@ -230,7 +230,7 @@
 
 @media (max-width: 425px) {
   .heading {
-    padding-block: 34px 34px;
+    padding-block: 0px 34px;
   }
 
   .footer h1 {
@@ -243,12 +243,12 @@
   }
 
   .imagesDiv {
-    gap: 18px;
+    gap: 24px;
   }
 
   .imageDiv {
     min-width: 156px !important;
-    height: 77px !important;
+    height: 70px !important;
   }
 }
 
@@ -269,24 +269,24 @@
   }
 
   .heading {
-    padding-block: 30px 30px;
+    padding-block: 0px 30px;
     font-size: 24px;
   }
 
   .imagesDiv {
-    gap: 12px;
+    gap: 16px;
   }
 
   .imageDiv {
     min-width: 162px !important;
-    height: 77px;
+    height: 70px;
   }
 }
 
 @media (max-width: 350px) {
   .imageDiv {
     min-width: 140px !important;
-    height: 77px;
+    height: 70px;
   }
 }
 
