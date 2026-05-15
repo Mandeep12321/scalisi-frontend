@@ -32,7 +32,7 @@
   font-weight: 500;
   line-height: 49px;
   color: var(--black-color);
-  margin-block: 8px 35px;
+  margin-block: 40px 35px;
 }
 
 .tagline {
@@ -58,6 +58,17 @@
 .subDiv {
   position: relative;
   display: flex;
+}
+
+.subDiv::before {
+  content: "";
+  background: url(/assets/images/app-images/dots-vector.png);
+  position: absolute;
+  z-index: 1;
+  top: 80px;
+  left: 280px;
+  width: 100px;
+  height: 108px;
 }
 
 .bgImage {
@@ -115,7 +126,7 @@
   content: "";
   position: absolute;
   z-index: 1;
-  top: 10px;
+  top: 80px;
   width: 100px;
   left: 280px;
   height: 108px;
@@ -125,7 +136,7 @@
   max-width: 965px;
   height: auto !important;
   min-height: 120px;
-  margin: 60px auto auto auto;
+  margin: 90px auto 75px auto;
   align-items: center;
   justify-content: center;
   gap: 50px;
