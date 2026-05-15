@@ -175,6 +175,7 @@
 @media (max-device-width: 767px) {
   .footerMain {
     padding-block: 30px 40px;
+    margin-top: 24px;
   }
 
   .footerMobile .financeDiv {

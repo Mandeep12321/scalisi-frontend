@@ -2,6 +2,7 @@
 import AboutUsHeroSection from "@/components/molecules/AboutUsHeroSection";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
 import { CONTACT_PAGE_DATA } from "@/developmentContent/mock-data";
+import { DISTRIBUTION_PAGE_DATA } from "@/developmentContent/mock-data";
 import CompanyHistorySection from "@/components/molecules/CompanyHistorySection";
 import LeedCertifiedFaculty from "@/components/molecules/LeedCertifiedFaculty";
 import PhotoGallery from "@/components/organisms/PhotoGallery";
@@ -59,7 +60,7 @@ export default function AboutUsPageView({ cmsData }) {
         </Container>
       </div>
 
-      <div className={classes.announcementSection}>
+      <div className={classes.photoGallerySection}>
         <Container>
           <Row className="g-0">
             <Col md={12}>
@@ -68,6 +69,27 @@ export default function AboutUsPageView({ cmsData }) {
                   _cmsData?.photoGallery?.arr || _cmsData?.photoGallery || ABOUT_US_PAGE_DATA?.photoGallery
                 }
               />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      <div className={classes.announcementSection}>
+        <Container>
+          <Row className="g-0">
+            <Col md={6} lg={6}>
+              <div className={classes.announcementLeft}>
+                <AnnouncementCard data={_cmsData?.support || DISTRIBUTION_PAGE_DATA?.announcement1} />
+              </div>
+            </Col>
+            <Col md={6} lg={6}>
+              <div className={classes.announcementRight}>
+                <AnnouncementCard
+                  data={_cmsData?.updates || DISTRIBUTION_PAGE_DATA?.announcement2}
+                  placeholder="Email address"
+                  hasNewsletter={true}
+                />
+              </div>
             </Col>
           </Row>
         </Container>

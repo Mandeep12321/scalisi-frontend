@@ -20,20 +20,26 @@
 }
 
 .leedSection {
-  background-color: var(--body-color);
+  background-color: var(--light-green-bg);
   padding-top: 100px;
   padding-bottom: 50px;
 }
 
-.announcementSection {
+.photoGallerySection {
   padding-top: 25px;
   padding-bottom: 100px;
+}
+
+.announcementSection {
+  background-color: var(--body-color);
 }
 
 .announcementLeft,
 .announcementRight {
   height: 100%;
-  margin-top: 100px;
+  margin-top: 0;
+  padding-top: 106px;
+  padding-bottom: 150px;
 }
 
 .announcementLeft {
@@ -100,6 +106,11 @@
   }
 
   .announcementSection {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .photoGallerySection {
     padding-top: 30px !important;
     padding-bottom: 40px !important;
   }
