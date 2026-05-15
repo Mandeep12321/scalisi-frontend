@@ -74,16 +74,29 @@
   padding: 5px 25px;
   font-weight: 500;
 }
+
+.btn.secondary {
+  background-color: var(--white-color);
+  color: var(--text-color-v1);
+  border: 2px solid rgba(142, 142, 142, 0.45);
+}
+
+.btn.secondary:hover {
+  border-color: #8e8e8e;
+}
+
 .btn.borderRed {
   color: var(--red-color);
   border: 2px solid var(--red-color);
   padding: 10px 7px;
   background-color: transparent;
 }
+
 .btn.borderRed:hover {
   color: var(--red-hover-color);
   border: 2px solid var(--red-hover-color);
 }
+
 .disabled {
   background-color: var(--heading-text-color) !important;
   cursor: no-drop;

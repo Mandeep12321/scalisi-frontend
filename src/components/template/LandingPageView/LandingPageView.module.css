@@ -252,11 +252,11 @@
 
 /* ── Search results filter bar ───────────────────────────── */
 .searchFiltersRow {
-  padding-block: 14px 10px;
+  padding-block: 18px 14px;
 }
 
 .resultsCountCol {
-  padding-block: 4px;
+  padding-block: 6px;
 }
 
 .resultsCount {

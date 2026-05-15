@@ -22,21 +22,14 @@
 @media screen and (max-width: 576px) {
   .productCard__wrapper {
     grid-template-columns: repeat(1, 1fr);
-    gap: 1.2rem;
+    gap: 2rem;
   }
 }
 
 @media screen and (max-width: 375px) {
   .productCard__wrapper {
     grid-template-columns: repeat(1, 1fr);
-    gap: 16px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .productCard__wrapper {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 7px;
+    gap: 1.5rem;
   }
 }
 

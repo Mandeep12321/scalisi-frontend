@@ -81,10 +81,10 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
   // Get quantity from cart if item is in cart, otherwise use local state
   const currentQuantity = isInCart
     ? cart.find(
-        (item) =>
-          item.itemid === data.itemid &&
-          item.selectedVariant?.value === data.selectedVariant?.value,
-      )?.selectedCount || 1
+      (item) =>
+        item.itemid === data.itemid &&
+        item.selectedVariant?.value === data.selectedVariant?.value,
+    )?.selectedCount || 1
     : data?.selectedCount || 1;
 
   // Set default variant if not selected
@@ -190,69 +190,71 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
 
         {isAuthenticated ? (
           <>
-            <DropDown
-              dropDownContainer={mergeClass(
-                classes.dropdownDiv,
-                isEditing && classes.dropdownTight
-              )}
-              dropdownWidth={classes.dropdownWidthClass}
-              customStyle={{
-                minHeight: "36px",
-                fontWeight: "600",
-                fontSize: "13px",
-                paddingBlock: "0px",
-                color: isMobile375 ? "#36363696 !important" : undefined,
-                paddingLeft: "0px !important",
-              }}
-              placeholderColor={isMobile375 ? "#36363696 !important" : undefined}
-              container
-              options={dropDownOptions}
-              setValue={(e) => {
-                setVariantSelect({
-                  selectedVariant: e,
-                  selectedCount: data.selectedCount || 1,
-                });
-              }}
-              value={data?.selectedVariant}
-            />
-
-            <div className={mergeClass(classes.counterDivTwo, classes.counterDiv)}>
-              <Counter
-                iconStyle={"fs-18"}
-                data={currentQuantity}
-                setData={(e) => {
+            <div className={classes.mobileActionRow}>
+              <DropDown
+                dropDownContainer={mergeClass(
+                  classes.dropdownDiv,
+                  isEditing && classes.dropdownTight
+                )}
+                dropdownWidth={classes.dropdownWidthClass}
+                customStyle={{
+                  minHeight: "36px",
+                  fontWeight: "600",
+                  fontSize: "13px",
+                  paddingBlock: "0px",
+                  color: isMobile375 ? "#36363696 !important" : undefined,
+                  paddingLeft: "0px !important",
+                }}
+                placeholderColor={isMobile375 ? "#36363696 !important" : undefined}
+                container
+                options={dropDownOptions}
+                setValue={(e) => {
                   setVariantSelect({
-                    selectedVariant: data.selectedVariant,
-                    selectedCount: e,
+                    selectedVariant: e,
+                    selectedCount: data.selectedCount || 1,
                   });
                 }}
-                isInCart={isInCart}
-                productId={data?.itemid}
-                productVariant={data?.selectedVariant?.value}
+                value={data?.selectedVariant}
               />
-              <Button
-                key={`${isInCart}-${isSpanish}-${forceUpdate}`}
-                variant={isInCart ? "secondary" : "primary"}
-                onClick={() => {
-                  cartHandler(isInCart ? "remove" : "add");
-                }}
-                label={
-                  isMobile ? (
-                    isInCart ? <MdRemoveShoppingCart /> : <FaShoppingCart />
-                  ) : isInCart ? (
-                    isSpanish ? "Eliminar artículo" : "Remove Item"
-                  ) : isSpanish ? (
-                    "Añadir a la cesta"
-                  ) : (
-                    "Add To Cart"
-                  )
-                }
-                className={mergeClass(
-                  "fs-15 fw-600",
-                  classes.removeFromCartButton,
-                  classes.button,
-                )}
-              />
+
+              <div className={mergeClass(classes.counterDivTwo, classes.counterDiv)}>
+                <Counter
+                  iconStyle={"fs-18"}
+                  data={currentQuantity}
+                  setData={(e) => {
+                    setVariantSelect({
+                      selectedVariant: data.selectedVariant,
+                      selectedCount: e,
+                    });
+                  }}
+                  isInCart={isInCart}
+                  productId={data?.itemid}
+                  productVariant={data?.selectedVariant?.value}
+                />
+                <Button
+                  key={`${isInCart}-${isSpanish}-${forceUpdate}`}
+                  variant={isInCart ? "secondary" : "primary"}
+                  onClick={() => {
+                    cartHandler(isInCart ? "remove" : "add");
+                  }}
+                  label={
+                    isMobile ? (
+                      isInCart ? <MdRemoveShoppingCart /> : <FaShoppingCart />
+                    ) : isInCart ? (
+                      isSpanish ? "Eliminar artículo" : "Remove Item"
+                    ) : isSpanish ? (
+                      "Añadir a la cesta"
+                    ) : (
+                      "Add To Cart"
+                    )
+                  }
+                  className={mergeClass(
+                    "fs-15 fw-600",
+                    classes.removeFromCartButton,
+                    classes.button,
+                  )}
+                />
+              </div>
             </div>
           </>
         ) : (

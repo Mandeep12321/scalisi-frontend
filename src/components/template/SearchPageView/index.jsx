@@ -16,10 +16,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
+import { mergeClass } from "@/resources/utils/helper";
 import LandingFilters from "../LandingPageView/components/LandingFilters";
 import classes from "./SearchPageView.module.css";
 
-export default function SearchPageView() {
+export default function SearchPageView({ cmsSupportData, cmsUpdateData }) {
     const router = useRouter();
     const dispatch = useDispatch();
     const searchParams = useSearchParams();
@@ -234,6 +236,26 @@ export default function SearchPageView() {
                         </Col>
                     </Row>
                 )}
+            </Container>
+
+            {/* Announcements */}
+            <Container>
+                <Row className={`g-0 ${classes.announcementRow}`}>
+                    <Col sm={6} md={6} lg={6}>
+                        <div className={mergeClass(classes.announcementLeft)}>
+                            <AnnouncementCard data={cmsSupportData} />
+                        </div>
+                    </Col>
+                    <Col sm={6} md={6} lg={6}>
+                        <div className={mergeClass(classes.announcementRight)}>
+                            <AnnouncementCard
+                                data={cmsUpdateData}
+                                placeholder="Email address"
+                                hasNewsletter={true}
+                            />
+                        </div>
+                    </Col>
+                </Row>
             </Container>
         </>
     );
