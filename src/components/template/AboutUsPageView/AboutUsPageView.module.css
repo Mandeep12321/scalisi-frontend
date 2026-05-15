@@ -20,13 +20,13 @@
 
 .announcementSection {
   background-color: var(--body-color);
-  padding-top: 0;
-  padding-bottom: 70px;
+  padding-block: 80px !important;
 }
 
 .announcementLeft,
 .announcementRight {
   height: 100%;
+  margin-top: 60px;
 }
 
 .announcementLeft {
