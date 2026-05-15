@@ -1,7 +1,7 @@
 .mainDiv {
   display: flex;
   width: 100%;
-  padding-block: 50px;
+  padding-block: 50px 0px;
   padding-inline: 0;
   align-items: center;
   justify-content: space-between;
@@ -103,10 +103,10 @@
   background: url("/assets/images/app-images/about-us-vector.png") no-repeat;
   background-size: contain;
   position: absolute;
-  width: 80%;
-  height: 120%;
-  top: 70%;
-  left: 50%;
+  width: 90%;
+  height: 130%;
+  top: 75%;
+  left: 55%;
   transform: translate(-50%, -50%);
   z-index: 0;
 }
@@ -376,7 +376,7 @@
   }
 
   .mainDiv {
-    padding-block: 10px 40px;
+    padding-block: 10px 0px;
   }
 
   .ctaInner p {
@@ -398,7 +398,7 @@
 
 @media (max-width: 767px) {
   .mainDiv {
-    padding-block: 30px !important;
+    padding-block: 20px 0px !important;
   }
 
   .rightCol {
@@ -449,7 +449,7 @@
   .title {
     font-size: 24px !important;
     margin-bottom: 10px !important;
-    margin-top: 43px;
+    margin-top: 0px;
   }
 
   .subTitle p {

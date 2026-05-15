@@ -69,22 +69,6 @@ export default function AboutUsPageView({ cmsData }) {
                 }
               />
             </Col>
-
-            <Col md={12}>
-              <div className={classes.contactHeroWrapper}>
-                <AboutUsHeroSection
-                  data={CONTACT_PAGE_DATA.heroSection}
-                  hasImage={false}
-                  styles={{
-                    mainDivContact: classes.mainDivContact,
-                    contactLeftCol: classes.contactLeftCol,
-                    contactRightCol: classes.contactRightCol,
-                    aboutTitle: classes.aboutTitleContact,
-                    aboutSubTitle: classes.aboutSubTitleContact,
-                  }}
-                />
-              </div>
-            </Col>
           </Row>
         </Container>
       </div>
