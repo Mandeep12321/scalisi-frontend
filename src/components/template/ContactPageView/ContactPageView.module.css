@@ -263,7 +263,7 @@
 
   .representative {
     padding: 10px 10px 0px 10px;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
     border-radius: 6px;
   }
 
@@ -276,6 +276,10 @@
 
   .mainDivContact {
     padding: 24px 0px !important;
+  }
+
+  .announcementSection {
+    padding-block: 3px !important;
   }
 }
 
@@ -340,14 +344,14 @@
 
 @media screen and (max-device-width: 767px) {
   .announcementLeft {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 0px !important;
+    padding-bottom: 20px;
     padding-right: 0px !important;
   }
 
   .announcementRight {
-    padding-top: 0px;
-    padding-bottom: 40px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
     padding-right: 0px !important;
     padding-left: 0px;
   }
