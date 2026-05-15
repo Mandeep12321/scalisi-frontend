@@ -61,7 +61,7 @@ export default function AboutUsHeroSection({
             {(data?.arr || data?.calToAction)?.map((item, index) => (
               <div className={classes.ctaInner} key={index}>
                 <span>{item?.TheImage}</span>
-                <p className="fs-17 fw-600">{item.text}</p>
+                <p className="fs-17 fw-600">{HTMLReactParser(item.text)}</p>
               </div>
             ))}
           </div>

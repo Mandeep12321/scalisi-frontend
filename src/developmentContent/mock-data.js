@@ -878,7 +878,7 @@ export const CONTACT_PAGE_DATA = {
       {
         // icon: <FaMapMarkerAlt size={13} />,
         TheImage: <ReactSVG src={"/assets/images/svg/locationIcon.svg"} />,
-        text: "Jack Scalisi Wholesale Fruit & Produce 963 Stinson Way • West Palm Beach, FL 33411",
+        text: "Jack Scalisi Wholesale Fruit & Produce <br/> 963 Stinson Way • West Palm Beach, FL 33411",
       },
       {
         // icon: <MdLocalPhone size={16} />,

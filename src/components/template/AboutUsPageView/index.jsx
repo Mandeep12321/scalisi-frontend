@@ -1,6 +1,7 @@
 "use client";
 import AboutUsHeroSection from "@/components/molecules/AboutUsHeroSection";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
+import { CONTACT_PAGE_DATA } from "@/developmentContent/mock-data";
 import CompanyHistorySection from "@/components/molecules/CompanyHistorySection";
 import LeedCertifiedFaculty from "@/components/molecules/LeedCertifiedFaculty";
 import PhotoGallery from "@/components/organisms/PhotoGallery";
@@ -69,22 +70,18 @@ export default function AboutUsPageView({ cmsData }) {
               />
             </Col>
 
-            <Col md={6} lg={6}>
-              <div className={mergeClass(classes.announcementLeft)}>
-                <AnnouncementCard
+            <Col md={12}>
+              <div className={classes.contactHeroWrapper}>
+                <AboutUsHeroSection
+                  data={CONTACT_PAGE_DATA.heroSection}
+                  hasImage={false}
                   styles={{
-                    announcement: classes.announcementHead,
+                    mainDivContact: classes.mainDivContact,
+                    contactLeftCol: classes.contactLeftCol,
+                    contactRightCol: classes.contactRightCol,
+                    aboutTitle: classes.aboutTitleContact,
+                    aboutSubTitle: classes.aboutSubTitleContact,
                   }}
-                  data={_cmsData?.support || ABOUT_US_PAGE_DATA?.announcement1}
-                />
-              </div>
-            </Col>
-            <Col md={6} lg={6} >
-              <div className={mergeClass(classes.announcementRight)}>
-                <AnnouncementCard
-                  data={_cmsData?.updates || ABOUT_US_PAGE_DATA?.announcement2}
-                  placeholder="Email address"
-                  hasNewsletter={true}
                 />
               </div>
             </Col>
