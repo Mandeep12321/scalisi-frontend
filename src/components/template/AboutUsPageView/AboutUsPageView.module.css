@@ -38,7 +38,7 @@
 .announcementRight {
   height: 100%;
   margin-top: 0;
-  padding-top: 106px;
+  padding-top: 60px;
   padding-bottom: 150px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .announcementRight {
-  padding-left: 35px;
+  padding-left: 20px;
 }
 
 @media (max-width: 1200px) {

@@ -24,18 +24,14 @@ export default function Table({
       <style>
         {`
           .table100-body {
-            overflow: scroll !important;
+            overflow: visible !important;
           }
 
-         
-         
-          @media screen and (max-width: 1440px) {
-           
-            .table100.ver1 {
-              overflow-x: scroll !important;
-            }
-          }
-        `}
+          .table100.ver1 {
+            overflow: visible !important;
+            height: 584px !important;
+            margin-bottom: 40px;
+          }        `}
       </style>
 
       <div

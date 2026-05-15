@@ -57,7 +57,7 @@ export default function ContactPageView({ cmsData }) {
   const tableHeader = [
     {
       id: "title",
-      style: { width: "25%" },
+      style: { width: "22%" },
       bodyStyle: {
         fontWeight: 700,
         fontSize: "21px",
@@ -67,7 +67,7 @@ export default function ContactPageView({ cmsData }) {
 
     {
       id: "designation",
-      style: { width: "25%" },
+      style: { width: "28%" },
       bodyStyle: {
         fontWeight: 700,
         fontSize: "21px",
@@ -77,7 +77,7 @@ export default function ContactPageView({ cmsData }) {
 
     {
       id: "expNum",
-      style: { width: "20%" },
+      style: { width: "15%" },
       bodyStyle: {
         fontWeight: 700,
         fontSize: "21px",
@@ -86,11 +86,12 @@ export default function ContactPageView({ cmsData }) {
     },
     {
       id: "email",
-      style: { width: "24%" },
+      style: { width: "35%" },
       bodyStyle: {
         fontWeight: 700,
         fontSize: "21px",
         color: "var(--primary-color)",
+        wordBreak: "break-all",
       },
     },
   ];

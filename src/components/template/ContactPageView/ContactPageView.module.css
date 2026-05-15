@@ -58,13 +58,33 @@
 }
 
 .mainDiv table tbody {
-  max-width: 800px;
-  overflow-x: scroll;
+  display: table-row-group;
+}
+
+.mainDiv table {
+  width: 100% !important;
+}
+
+.mainDiv table tr {
+  display: flex !important;
+  justify-content: space-between;
+  width: 100% !important;
+}
+
+.mainDiv table td {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
 }
 
 .mainDiv table tbody tr td div {
   font-size: 21px !important;
   padding-block: 2px;
+  word-break: break-all !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
 }
 
 .rightColText {
@@ -76,6 +96,8 @@
   margin-bottom: 10px;
   padding: 0 !important;
   box-shadow: 0px 5px 25px #0000000d !important;
+  /* overflow-x: auto; */
+  width: 100%;
 }
 
 .representative {
@@ -211,6 +233,16 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .tableDiv {
+    display: none;
+  }
+
+  .representative {
+    display: block;
+  }
+}
+
 @media (max-width: 768px) {
   .mainDiv table tbody tr td div {
     font-size: 18px !important;
@@ -223,10 +255,6 @@
   .tableDiv {
     padding: 0px;
     margin-bottom: 40px !important;
-  }
-
-  .representative {
-    display: block;
   }
 
   .tableHeading {
@@ -243,10 +271,6 @@
     margin-top: 20px;
     height: 100%;
     max-height: 100%;
-  }
-
-  .tableDiv {
-    display: none;
   }
 }
 
