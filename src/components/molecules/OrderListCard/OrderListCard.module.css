@@ -10,6 +10,18 @@
   border-bottom: 2px solid #e9e9e9;
 }
 
+.noteBtn {
+  flex-shrink: 0;
+  width: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.noteBtn>div {
+  width: auto !important;
+  line-height: 1;
+}
+
 /* .mainDiv:last-child {
   border-bottom: none;
 } */
@@ -62,10 +74,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
-  justify-content: flex-start;
-  padding-top: 4px;
+  justify-content: space-between;
   min-width: 80px;
+  align-self: stretch;
 }
 
 .removeLink {

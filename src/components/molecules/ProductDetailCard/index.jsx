@@ -11,17 +11,15 @@ import {
 import {
   addProductToCart,
   removeProductFromCart,
-  updateNoteInCart,
 } from "@/store/cart/cartSlice";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import Counter from "../Counter";
 import DropDown from "../DropDown/DropDown";
 import classes from "./ProductDetailCard.module.css";
-import { useItemNote } from "@/components/common/hooks/useItemNote";
+import ItemNote from "@/components/common/ItemNote/ItemNote";
 
 export default function ProductDetailCard({ data, setVariantSelect }) {
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
@@ -34,15 +32,6 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
 
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
-
-  // Shared note hook — reads/writes localStorage (same key as all other cards)
-  const {
-    noteValue,
-    setNoteValue,
-    isEditing,
-    hasNote,
-    handleNoteClick,
-  } = useItemNote({ data });
 
   // Force re-render when cart changes
   useEffect(() => {
@@ -110,27 +99,6 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
     }
   };
 
-  // Wrap note click to also sync Redux cart on save
-  const handleClick = () => {
-    const isSaving = isEditing;
-    handleNoteClick();
-    if (isSaving) {
-      dispatch(
-        updateNoteInCart({
-          note: noteValue.trim(),
-          productId: data?.itemid,
-          productVariant: data?.selectedVariant?.value,
-        })
-      );
-    }
-  };
-
-  const noteBtnLabel = isEditing
-    ? isSpanish ? "Guardar nota" : "Save Note"
-    : hasNote
-      ? isSpanish ? "Editar nota" : "Edit Note"
-      : isSpanish ? "Añadir nota" : "Add Note";
-
   return (
     <div className={classes.mainDiv}>
       <div className={!isInCart ? classes.imageDiv : classes.imageDivInCart}>
@@ -189,31 +157,14 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
                 }
                 className={mergeClass(classes.removeFromCartButton, classes.button)}
               />
-              <button
-                className={mergeClass(
-                  classes.noteTriggerBtn,
-                  hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-                  isEditing && classes.noteTriggerBtnSave,
-                )}
-                onClick={handleClick}
-              >
-                {isEditing ? <MdOutlineEdit size={16} /> : <MdOutlineNoteAdd size={16} />}
-                <span>{noteBtnLabel}</span>
-              </button>
+              <div className={classes.noteBtn}>
+                <ItemNote
+                  item={data}
+                  productId={data?.itemid}
+                  productVariant={data?.selectedVariant?.value}
+                />
+              </div>
             </div>
-
-            {/* Textarea — opens on button click */}
-            {isEditing && (
-              <textarea
-                rows={2}
-                placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}
-                value={noteValue}
-                onChange={(e) => setNoteValue(e.target.value)}
-                className={classes.noteTextarea}
-                autoComplete="off"
-                spellCheck={false}
-              />
-            )}
           </>
         ) : (
           <p className={mergeClass("fs-14 fw-500", classes.link)}>

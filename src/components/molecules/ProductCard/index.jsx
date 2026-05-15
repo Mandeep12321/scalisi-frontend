@@ -21,8 +21,8 @@ import classes from "./ProductCard.module.css";
 import { useEffect, useState } from "react";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import { FaShoppingCart } from "react-icons/fa";
-import { MdRemoveShoppingCart, MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
-import { useItemNote } from "@/components/common/hooks/useItemNote";
+import { MdRemoveShoppingCart } from "react-icons/md";
+import ItemNote from "@/components/common/ItemNote/ItemNote";
 
 export default function ProductCard({ data, setVariantSelect, onClick }) {
   const accessToken = handleDecrypt(Cookies?.get("_xpdx"));
@@ -40,15 +40,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
 
-  const {
-    noteValue,
-    setNoteValue,
-    isEditing,
-    hasNote,
-    handleNoteClick,
-    handleCancelNote,
-    handleRemoveNote,
-  } = useItemNote({ data });
+
 
   // Force re-render when cart changes
   useEffect(() => {
@@ -125,9 +117,6 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
     }
   };
 
-  // Smart button label
-  const noteBtnLabel = isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note";
-
   return (
     <div className={mergeClass(classes.mainDiv)}>
       <div
@@ -151,51 +140,27 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
           {data?.description}
         </h3>
 
-        {/* ID row + Note trigger */}
-        <div className="d-flex justify-content-between align-items-center flexWrap">
+        <div className="d-flex justify-content-between align-items-center">
           <p className={mergeClass("fs-12 fw-500 pt-0", classes.productId)}>
             {data?.itemid}
           </p>
 
-          {/* Single smart note button */}
           {isAuthenticated && (
-            <button
-              className={mergeClass(
-                classes.noteTriggerBtn,
-                hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-                isEditing && classes.noteTriggerBtnSave,
-              )}
-              onClick={handleNoteClick}
-            >
-              {isEditing ? <MdOutlineEdit size={14} /> : <MdOutlineNoteAdd size={14} />}
-              <span>{noteBtnLabel}</span>
-            </button>
+            <div className={classes.noteBtn}>
+              <ItemNote
+                item={data}
+                productId={data?.itemid}
+                productVariant={data?.selectedVariant?.value}
+              />
+            </div>
           )}
         </div>
-
-        {/* Note editing area — opens on button click, closes on Save */}
-        {isAuthenticated && isEditing && (
-          <div className={classes.noteWrapper}>
-            <textarea
-              rows={2}
-              placeholder="Add a note for this item…"
-              value={noteValue}
-              onChange={(e) => setNoteValue(e.target.value)}
-              className={classes.noteTextarea}
-              autoComplete="off"
-              spellCheck={false}
-            />
-          </div>
-        )}
 
         {isAuthenticated ? (
           <>
             <div className={classes.mobileActionRow}>
               <DropDown
-                dropDownContainer={mergeClass(
-                  classes.dropdownDiv,
-                  isEditing && classes.dropdownTight
-                )}
+                dropDownContainer={classes.dropdownDiv}
                 dropdownWidth={classes.dropdownWidthClass}
                 customStyle={{
                   minHeight: "36px",

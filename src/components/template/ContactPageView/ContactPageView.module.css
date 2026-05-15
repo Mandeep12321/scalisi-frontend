@@ -338,6 +338,11 @@
   .heroSection {
     height: auto;
   }
+
+  .ContactFormSection {
+    background-color: var(--body-color);
+    padding-bottom: 49px;
+  }
 }
 
 .announcementRight,

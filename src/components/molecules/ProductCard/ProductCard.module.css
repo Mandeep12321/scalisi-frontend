@@ -10,6 +10,15 @@
   flex-direction: column;
 }
 
+.noteBtn {
+  flex-shrink: 0;
+  width: auto;
+}
+
+.noteBtn>div {
+  width: auto !important;
+}
+
 .imageDiv {
   position: relative;
   max-width: 250px;

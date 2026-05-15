@@ -16,13 +16,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { MdRemoveShoppingCart, MdOutlineNoteAdd, MdOutlineEdit } from "react-icons/md";
+import { MdRemoveShoppingCart } from "react-icons/md";
+import ItemNote from "@/components/common/ItemNote/ItemNote";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../atoms/Button";
 import Counter from "../Counter";
 import DropDown from "../DropDown/DropDown";
 import classes from "./ProductListCard.module.css";
-import { useItemNote } from "@/components/common/hooks/useItemNote";
 
 export default function ProductListCard({
   data,
@@ -47,15 +47,7 @@ export default function ProductListCard({
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
 
-  const {
-    noteValue,
-    setNoteValue,
-    isEditing,
-    hasNote,
-    handleNoteClick,
-    handleCancelNote,
-    handleRemoveNote,
-  } = useItemNote({ data });
+
 
   // Force re-render when cart changes
   useEffect(() => {
@@ -69,15 +61,15 @@ export default function ProductListCard({
 
   const dropDownOptions = !isApi
     ? data?.productVariant?.map((e) => ({
-        label: `${e?.type} / ${getFormattedPrice(e?.price)}`,
-        value: e?.value,
-        price: e?.price,
-      }))
+      label: `${e?.type} / ${getFormattedPrice(e?.price)}`,
+      value: e?.value,
+      price: e?.price,
+    }))
     : data?.uoms?.map((e) => ({
-        label: `${e?.erp_uom} / ${getFormattedPrice(e?.price)}`,
-        value: e?.erp_uom,
-        price: e?.price,
-      }));
+      label: `${e?.erp_uom} / ${getFormattedPrice(e?.price)}`,
+      value: e?.erp_uom,
+      price: e?.price,
+    }));
 
   // Check if this product is in cart
   const isInCart = cart.some(
@@ -89,10 +81,10 @@ export default function ProductListCard({
   // Get quantity from cart if item is in cart, otherwise use local state
   const currentQuantity = isInCart
     ? cart.find(
-        (item) =>
-          item.itemid === data.itemid &&
-          item.selectedVariant?.value === data.selectedVariant?.value
-      )?.selectedCount || 1
+      (item) =>
+        item.itemid === data.itemid &&
+        item.selectedVariant?.value === data.selectedVariant?.value
+    )?.selectedCount || 1
     : data?.selectedCount || 1;
 
   // Set default variant if not selected
@@ -133,47 +125,19 @@ export default function ProductListCard({
     }
   };
 
-  // Smart note button label
-  const noteBtnLabel = isEditing ? "Save Note" : hasNote ? "Edit Note" : "Add Note";
-
-  // Shared note UI block
+  // Smart note UI
   const NoteBlock = () => (
     <div className={classes.noteSection}>
-      {/* ID row + note button */}
-      <div className={classes.noteRow}>
-        <p className={mergeClass("fs-12 fw-500", classes.productId)}>
-          {data?.itemid}
-        </p>
-        {isAuthenticated && (
-          <button
-            className={mergeClass(
-              classes.noteTriggerBtn,
-              hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-              isEditing && classes.noteTriggerBtnSave,
-            )}
-            onClick={handleNoteClick}
-          >
-            {isEditing ? <MdOutlineEdit size={13} /> : <MdOutlineNoteAdd size={13} />}
-            <span>{noteBtnLabel}</span>
-          </button>
-        )}
-      </div>
-
-      {/* Textarea — opens on button click, closes on Save */}
-      {isAuthenticated && isEditing && (
-        <div className={classes.noteWrapper}>
-          <textarea
-            rows={2}
-            placeholder="Add a note for this item…"
-            value={noteValue}
-            onChange={(e) => setNoteValue(e.target.value)}
-            className={classes.noteTextarea}
-            autoComplete="off"
-            spellCheck={false}
-          />
-        </div>
+      <p className={mergeClass("fs-12 fw-500", classes.productId)}>
+        {data?.itemid}
+      </p>
+      {isAuthenticated && (
+        <ItemNote
+          item={data}
+          productId={data?.itemid}
+          productVariant={data?.selectedVariant?.value}
+        />
       )}
-
     </div>
   );
 
@@ -182,7 +146,7 @@ export default function ProductListCard({
       {!isMobile ? (
         /* ── DESKTOP layout ── */
         <div className={classes.mainDiv}>
-          <div 
+          <div
             className={mergeClass("cursor-pointer", classes.imageDiv)}
             onClick={onClick}
           >
@@ -247,8 +211,8 @@ export default function ProductListCard({
                           ? "Eliminar artículo"
                           : "Remove Item"
                         : isSpanish
-                        ? "Añadir a la cesta"
-                        : "Add To Cart"
+                          ? "Añadir a la cesta"
+                          : "Add To Cart"
                     }
                     className={mergeClass(
                       classes.removeFromCartButton,
@@ -271,7 +235,7 @@ export default function ProductListCard({
         /* ── MOBILE layout ── */
         <div className={classes.mainDivMobCard}>
           <div className={classes.cardHead}>
-            <div 
+            <div
               className={mergeClass("cursor-pointer", classes.imageDiv)}
               onClick={onClick}
             >
