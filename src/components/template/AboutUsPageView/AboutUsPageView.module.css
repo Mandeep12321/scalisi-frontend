@@ -43,11 +43,11 @@
 }
 
 .announcementLeft {
-  padding-right: 15px;
+  padding-right: 35px;
 }
 
 .announcementRight {
-  padding-left: 15px;
+  padding-left: 35px;
 }
 
 @media (max-width: 1200px) {
