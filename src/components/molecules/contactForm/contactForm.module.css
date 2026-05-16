@@ -65,9 +65,26 @@
   margin-block: 10px 0px !important;
 }
 
-@media (max-width: 1199px) {
   .main {
     margin-right: 0px;
+  }
+}
+
+@media(min-width: 768px) {
+  .main h1 {
+    font-size: 24px !important;
+  }
+
+  .labelClass,
+  .textArealabelClass {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 991.2px) {
+  .main {
+    min-height: auto !important;
   }
 }
 
@@ -98,7 +115,7 @@
   }
 }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .main h1 {
     font-size: 24px !important;
   }
@@ -108,22 +125,18 @@
     margin-top: 17px !important;
   }
 
-  .labelClass {
+  .labelClass,
+  .textArealabelClass {
     font-size: 15px !important;
     opacity: 100% !important;
-
     margin-bottom: 5px !important;
-    padding-top: 3px;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .labelClass_padLess {
     padding-top: 0px !important;
     margin-bottom: 3px !important;
-  }
-
-  .textArealabelClass {
-    font-size: 15px !important;
-    margin-bottom: 10px !important;
   }
 
   .textAreaClass {
@@ -132,7 +145,7 @@
 
   .main {
     padding: 28px 20px !important;
-    min-height: 738px !important;
+    min-height: auto !important;
   }
 
   .main h1 {
@@ -145,10 +158,8 @@
     margin-bottom: 6px !important;
   }
 
-  .textArealabelClass {
-    margin-top: 9px !important;
-    letter-spacing: -0.5px;
-    margin-bottom: 7px !important;
+  .formGroup {
+    align-items: unset;
   }
 }
 

@@ -111,6 +111,22 @@
   margin-top: 8px;
 } */
 
+@media(min-width: 768px) {
+  .labelText {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+}
+
+@media(max-width: 767px) {
+  .labelText {
+    font-size: 15px !important;
+    margin-bottom: 5px !important;
+    font-weight: 600 !important;
+    line-height: 19px !important;
+  }
+}
+
 @media (max-width: 375px) {
   .labelText {
     font-size: 15px;

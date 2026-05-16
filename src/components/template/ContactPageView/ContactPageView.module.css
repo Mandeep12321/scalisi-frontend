@@ -202,6 +202,32 @@
   }
 }
 
+@media(min-width: 1200px) {
+  .aboutTitleContact {
+    margin-bottom: 34px !important;
+  }
+
+  .tableHeading {
+    margin-bottom: 55px !important;
+  }
+
+  .ContactFormSection {
+    padding-bottom: 114px;
+  }
+
+  .contactRightCol {
+    margin-top: 55px !important;
+  }
+
+  .contactDiv {
+    margin-block: 60px !important;
+  }
+
+  .mainDiv table tbody tr td>div {
+    font-size: 21px !important;
+  }
+}
+
 @media (max-width: 991px) {
   .mainDivContact {
     gap: 0px;
@@ -230,6 +256,59 @@
   .contactMapCol {
     flex-direction: row;
     margin-top: 20px;
+  }
+
+  .aboutTitleContact {
+    font-size: 31px !important;
+    margin-bottom: 14px !important;
+    margin-top: 0 !important;
+  }
+
+  .aboutSubTitleContact,
+  .aboutSubTitleContact p {
+    font-size: 29px !important;
+  }
+
+  .tableDiv {
+    margin: 0 !important;
+  }
+
+  .tableDiv :global(.table100.ver1) {
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  .tableDiv :global(.table100.ver1 .Table_tableBody__fqd8g) {
+    height: auto !important;
+    max-height: none;
+  }
+
+  .tableHeading {
+    margin-top: 14px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .representative {
+    margin: 0 !important;
+  }
+
+  .tableDiv :global(.table100.ver1 .Table_tableBody__fqd8g table) {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100% !important;
+  }
+
+  .mainDiv table tbody tr {
+    min-width: 100% !important;
+    gap: 20px;
+  }
+
+  .contactRightCol {
+    margin-top: 40px !important;
+  }
+
+  .contactDiv {
+    margin-block: 50px !important;
   }
 }
 
@@ -271,6 +350,32 @@
     margin-top: 20px;
     height: 100%;
     max-height: 100%;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 991.2px) {
+  .contactMapCol {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  .ContactFormSection {
+    padding-bottom: 70px;
+  }
+}
+
+@media(min-width: 992px) {
+  .contactLeftCol {
+    width: 54% !important;
+    max-width: none;
+  }
+
+  .contactRightCol {
+    width: 46% !important;
+  }
+
+  .mainDiv table tbody tr td>div {
+    font-size: 16px !important;
   }
 }
 
@@ -318,6 +423,39 @@
     padding-top: 0px !important;
     padding-bottom: 0px !important;
     padding-inline: 0px !important;
+  }
+
+  .representative {
+    margin-bottom: 0 !important;
+  }
+
+  .ContactFormSection {
+    padding-bottom: 20px !important;
+  }
+
+  .contactMapCol {
+    height: auto !important;
+  }
+
+  .contactDiv {
+    margin-bottom: 10px !important;
+    margin-top: 40px !important;
+  }
+
+  .mainDivContact {
+    padding: 40px 0 !important;
+  }
+
+  .contactRightCol {
+    margin-top: 25px !important;
+  }
+
+  .aboutTitleContact {
+    margin-bottom: 12px !important;
+  }
+
+  .contactLeftCol {
+    margin-top: -10px !important;
   }
 }
 
