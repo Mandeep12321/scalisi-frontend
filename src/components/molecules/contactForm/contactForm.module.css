@@ -80,6 +80,22 @@
   .textArealabelClass {
     font-size: 18px !important;
     font-weight: 600 !important;
+    margin: 0 0 10px !important;
+  }
+
+  .formGroup {
+    align-items: unset;
+  }
+
+  .inputClass {
+    margin: 0 0 15px !important;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1200px) {
+  .formGroup {
+    flex-direction: column !important;
+    gap: 0px;
   }
 }
 
@@ -160,7 +176,12 @@
   }
 
   .formGroup {
-    align-items: unset;
+    flex-direction: column !important;
+    gap: 0px;
+  }
+
+  .inputClass {
+    margin: 0 0 15px !important;
   }
 }
 

@@ -814,7 +814,7 @@
 
   .callToActionDiv {
     max-width: max-content;
-    margin-left: auto;
+    margin-left: 0;
     min-width: 85%;
   }
 }
