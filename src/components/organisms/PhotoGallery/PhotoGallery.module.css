@@ -305,3 +305,18 @@
     height: 150px;
   }
 }
+
+@media (min-width: 768px) {
+  .heading {
+    padding-bottom: 70px;
+  }
+
+  .imagesDiv {
+    gap: 46px;
+    margin-top: 40px;
+  }
+
+  .imageDiv {
+    height: 152px;
+  }
+}

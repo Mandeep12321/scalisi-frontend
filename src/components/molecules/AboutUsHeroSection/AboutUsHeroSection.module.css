@@ -684,3 +684,43 @@
     transform: translate(-50%, -50%);
   }
 }
+
+@media (min-width: 768px) {
+  .rightCol::before {
+    top: 80%;
+    width: 70%;
+    height: 120%;
+    left: 50%;
+  }
+
+  .rightCol {
+    min-height: 380px;
+    width: 40%;
+    margin-top: -60px;
+  }
+
+  .subTitle,
+  .subTitle p {
+    font-size: 43px !important;
+    line-height: 1.2 !important;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: 31px !important;
+  }
+
+  .description {
+    margin-top: 44px;
+  }
+
+  .imageDiv {
+    height: 380px;
+    width: 400px;
+    margin-bottom: 0px;
+  }
+
+  .leftCol {
+    width: 60%;
+  }
+}
