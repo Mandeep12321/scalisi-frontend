@@ -76,8 +76,9 @@
     font-size: 24px !important;
   }
 
-  .labelClass,
-  .textArealabelClass {
+  .main .labelClass,
+  .main .textArealabelClass,
+  .main :global([class*="labelText"]) {
     font-size: 18px !important;
     font-weight: 600 !important;
     margin: 0 0 10px !important;
@@ -87,8 +88,13 @@
     align-items: unset;
   }
 
-  .inputClass {
+  .main .inputClass {
     margin: 0 0 15px !important;
+  }
+
+  .main :global([class*="phoneNumberInput"]) {
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
   }
 }
 
@@ -142,12 +148,12 @@
     margin-top: 17px !important;
   }
 
-  .labelClass,
-  .textArealabelClass {
+  .main .labelClass,
+  .main .textArealabelClass,
+  .main :global([class*="labelText"]) {
     font-size: 15px !important;
     opacity: 100% !important;
-    margin-bottom: 5px !important;
-    margin-top: 0 !important;
+    margin: 0 0 10px !important;
     padding-top: 0 !important;
   }
 
@@ -180,8 +186,13 @@
     gap: 0px;
   }
 
-  .inputClass {
+  .main .inputClass {
     margin: 0 0 15px !important;
+  }
+
+  .main :global([class*="phoneNumberInput"]) {
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
   }
 }
 
