@@ -724,3 +724,21 @@
     width: 60%;
   }
 }
+
+@media (max-width: 424px) {
+  .title {
+    margin-top: 0 !important;
+  }
+
+  .mainDiv {
+    gap: 30px !important;
+  }
+
+  .rightCol {
+    margin-top: 0 !important;
+  }
+
+  .imageDiv::before {
+    width: 91%;
+  }
+}

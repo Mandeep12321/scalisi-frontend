@@ -234,3 +234,18 @@
     padding-bottom: 100px;
   }
 }
+
+@media (max-width: 424px) {
+  .heroSection {
+    padding-bottom: 60px !important;
+  }
+
+  .announcementRight {
+    padding-bottom: 10px !important;
+  }
+
+  .announcementLeft {
+    padding-top: 0 !important;
+    padding-bottom: 20px !important;
+  }
+}
