@@ -350,7 +350,7 @@
     height: 100px !important;
   }
 
-  :global(.rec.rec-pagination) {
+  .imagesDiv :global(.rec.rec-pagination) {
     margin-top: 20px !important;
   }
 }
