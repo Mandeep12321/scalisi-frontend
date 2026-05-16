@@ -47,3 +47,9 @@
     padding-block: 7px 20px !important;
   } */
 }
+
+@media (max-width: 424px) {
+  .accordionBody {
+    padding: 0 !important;
+  }
+}

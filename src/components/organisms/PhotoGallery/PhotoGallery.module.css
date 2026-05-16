@@ -320,3 +320,26 @@
     height: 152px;
   }
 }
+
+@media (max-width: 424px) {
+  .heading {
+    padding-bottom: 20px !important;
+  }
+
+  .carouselWrapper {
+    margin-bottom: 5px !important;
+  }
+
+  .imagesDiv {
+    justify-content: flex-start;
+  }
+
+  .imagesDiv .imageDiv {
+    min-width: 200px !important;
+    height: 100px !important;
+  }
+
+  :global(.rec.rec-pagination) {
+    margin-top: 20px !important;
+  }
+}

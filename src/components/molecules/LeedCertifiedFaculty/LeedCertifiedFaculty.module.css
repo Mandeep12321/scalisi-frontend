@@ -706,3 +706,44 @@
     margin-bottom: 10px;
   }
 }
+
+@media (max-width: 424px) {
+  .mainDiv {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .rightCol {
+    margin-top: 0 !important;
+  }
+
+  .title {
+    margin-bottom: 10px !important;
+  }
+
+  h3.heading {
+    margin-top: 5px !important;
+  }
+
+  .subDiv {
+    gap: 30px !important;
+  }
+
+  .operatingPlanDiv {
+    margin-top: 30px !important;
+    margin-bottom: 0 !important;
+    gap: 20px !important;
+  }
+
+  .scalisiProduceImage {
+    height: auto;
+    position: relative;
+  }
+
+  .scalisiProduceImage::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: 40%;
+  }
+}
