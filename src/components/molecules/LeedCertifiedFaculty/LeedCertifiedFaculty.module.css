@@ -707,6 +707,61 @@
   }
 }
 
+@media(min-width: 768px) {
+  .leftCol.false {
+    padding-bottom: 30px;
+    height: 483px;
+    justify-content: end !important;
+  }
+
+  .leftCol:before {
+    bottom: 10px;
+  }
+
+  .subDiv:before {
+    top: 20px;
+  }
+
+  .bgImage {
+    width: 88%;
+  }
+
+  .mainDiv {
+    margin-block: 0;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1199px) {
+  .mainDiv {
+    margin: 0;
+  }
+
+  .rightCol {
+    margin: 0;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1130px) {
+  .bgImage {
+    height: 360px;
+  }
+
+  .operatingPlanDiv {
+    margin-top: 50px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 991px) {
+  .scalisiProduceImage {
+    width: 250px;
+    height: 100px;
+  }
+
+  .operatingPlanDiv {
+    gap: 30px;
+  }
+}
+
 @media (max-width: 424px) {
   .mainDiv {
     margin-top: 0 !important;

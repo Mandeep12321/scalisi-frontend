@@ -454,6 +454,65 @@
   }
 }
 
+@media(min-width: 768px) {
+  .topImage {
+    bottom: 110px;
+    right: -60px;
+  }
+
+  .bottomImage {
+    bottom: -5px;
+  }
+
+  .centerImage {
+    top: 40px;
+    left: -90px;
+  }
+
+  .mainDiv {
+    margin-top: 0;
+    margin-block: 0;
+  }
+
+  .leftCol {
+    padding-top: 8px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1199px) {
+  .bgImage {
+    width: 350px;
+    height: 350px;
+  }
+
+  .centerImage {
+    width: 230px;
+    height: 132px;
+    top: 110px;
+    left: -50px;
+  }
+
+  .topImage {
+    width: 230px;
+    height: 130px;
+    right: -10px;
+    bottom: 70px;
+  }
+
+  .bottomImage {
+    left: 50px;
+    bottom: -5px;
+    width: 220px;
+    height: 120px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 991px) {
+  .mainDiv {
+    margin: 0 !important;
+  }
+}
+
 @media (max-width: 424px) {
   .bgImage {
     margin-top: 10px;
