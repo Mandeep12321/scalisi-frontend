@@ -249,3 +249,204 @@
     padding-bottom: 20px !important;
   }
 }
+
+@media(min-width: 768px) {
+    .AboutUsHeroSection_mainDiv__P96xQ {
+        align-items: inherit;
+    }
+    .AboutUsHeroSection_rightCol___OPwN {
+        align-items: flex-end;
+    }
+    .AboutUsHeroSection_rightCol___OPwN:before {
+        top: unset;
+        bottom: -120px;
+        width: 420px;
+        height: 420px;
+        left: 50px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: top;
+        transform: none;
+    }
+
+    
+    .CompanyHistorySection_topImage__oVkXN {
+        bottom: 110px;
+        right: -60px;
+    }
+
+    .CompanyHistorySection_bottomImage__aI88I {
+        bottom: -5px
+    }
+    .CompanyHistorySection_centerImage__La8Fv {
+        top: 40px;
+        left: -90px;
+    }
+    .CompanyHistorySection_mainDiv__4YQLY {
+        margin-top: 0;
+    }
+    .CompanyHistorySection_leftCol__1Ttt5 {
+        padding-top: 8px;
+    }
+    .LeedCertifiedFaculty_leftCol__6yDtM.false {
+        padding-bottom: 30px;
+    }
+    .LeedCertifiedFaculty_leftCol__6yDtM:before {
+        bottom: 10px;
+    }
+    .LeedCertifiedFaculty_subDiv__gid6P:before {
+        top: 20px;
+    }
+    .CompanyHistorySection_mainDiv__4YQLY {
+        margin-top: 0;
+    }
+
+    .CompanyHistorySection_leftCol__1Ttt5 {
+        padding-top: 8px;
+    }
+
+    .LeedCertifiedFaculty_bgImage__PRtLo {width: 88%;}
+
+    .LeedCertifiedFaculty_leftCol__6yDtM.false {
+        padding-bottom: 30px;
+        height: 483px;
+        justify-content: end !important;
+    }
+
+    .LeedCertifiedFaculty_leftCol__6yDtM:before {
+        bottom: 10px;
+    }
+
+    .LeedCertifiedFaculty_subDiv__gid6P:before {
+        top: 20px;
+    }
+    .CompanyHistorySection_mainDiv__4YQLY {
+        margin-block: 0;
+    }
+
+    .LeedCertifiedFaculty_mainDiv__KuX_U {
+        margin-block: 0;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+    .AboutUsHeroSection_imageDiv__LhVEh {
+        top: 110px;
+        right: 80px;
+        margin: 0;
+    }
+    .AboutUsHeroSection_rightCol___OPwN:before {
+        top: 75%;
+        width: 77%;
+        height: 132%;
+    }
+    .AboutUsHeroSection_leftCol__riTgH {
+        padding-right: 5%;
+    }
+    .AboutUsHeroSection_rightCol___OPwN {
+        align-items: flex-end;
+    }
+    .AboutUsHeroSection_rightCol___OPwN:before {
+        top: unset;
+        bottom: -120px;
+        width: 400px;
+        height: 400px;
+        left: 40px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: top;
+        transform: none;
+    }
+    .AboutUsHeroSection_imageDiv__LhVEh img {
+        object-fit: contain;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 1199px) {
+    .CompanyHistorySection_bgImage__CVIJO {
+        width: 350px;
+        height: 350px;
+    }
+    .CompanyHistorySection_centerImage__La8Fv {
+        width: 230px;
+        height: 132px;
+        top: 110px;
+        left: -50px;
+    }
+    .CompanyHistorySection_topImage__oVkXN {
+        width: 230px;
+        height: 130px;
+        right: -10px;
+        bottom: 70px;
+    }
+    .CompanyHistorySection_bottomImage__aI88I {
+        left: 50px;
+        bottom: -5px;
+        width: 220px;
+        height: 120px;
+    }
+    .LeedCertifiedFaculty_mainDiv__KuX_U {
+        margin: 0;
+    }
+    .LeedCertifiedFaculty_rightCol__dQbcP {
+        margin: 0;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 1130px) {
+    .LeedCertifiedFaculty_bgImage__PRtLo {
+        height: 360px;
+    }
+    .AboutUsPageView_historySection__87wRm {
+        padding-top: 90px;
+        padding-bottom: 70px;
+    }
+    .AboutUsPageView_leedSection__MTUoA {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .LeedCertifiedFaculty_operatingPlanDiv__gUxyL {
+        margin-top: 50px;
+    }
+    .AboutUsPageView_photoGallerySection___Qiwd {
+        padding-bottom: 70px;
+        padding-top: 70px;
+    }
+    .PhotoGallery_heading__AxU9y {
+        padding-bottom: 40px;
+    }
+    .PhotoGallery_imagesDiv__nKc5j {
+        gap: 26px;
+        margin-top: 20px;
+    }
+
+}
+
+@media(min-width: 768px)  and (max-width: 991px) {
+    .LeedCertifiedFaculty_scalisiProduceImage__KUMPX {
+        width: 250px;
+        height: 100px;
+    }
+    .LeedCertifiedFaculty_operatingPlanDiv__gUxyL {
+        gap: 30px;
+    }
+    .CompanyHistorySection_mainDiv__4YQLY {
+        margin: 0 !important;
+    }
+    .AboutUsHeroSection_imageDiv__LhVEh:before {
+        height: 100%;
+        width: 100%;
+        margin-left: 50px;
+        margin-top: -20px;
+    }
+    .AboutUsHeroSection_rightCol___OPwN {
+        height: auto;
+        margin-top: 0;
+        min-height: auto !important;
+    }
+    .AboutUsHeroSection_imageDiv__LhVEh {
+        margin-top: -110px;
+        right: 50px;
+    }
+}
