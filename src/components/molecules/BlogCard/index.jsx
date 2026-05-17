@@ -50,7 +50,7 @@ const BlogCard = ({
         <Button
           label={"Read More"}
           variant="primaryBorder"
-          className={`fs-14 fw-700 ${classes.button}`}
+          className={`fs-14 fw-700 mt-auto ${classes.button}`}
           style={customStyles.button}
           onClick={onclick}
         />

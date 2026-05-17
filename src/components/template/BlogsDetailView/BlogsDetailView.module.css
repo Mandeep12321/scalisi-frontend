@@ -3,7 +3,7 @@
   padding: 47px 60px 30px 50px;
   border-radius: 0px 0px 7px 7px;
   box-shadow: 0px 5px 25px #0000000d;
-  min-height: 776px;
+  /* min-height: 776px; */
 }
 .blogsDetailsDiv p {
   line-height: 22px;
@@ -41,8 +41,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 64px !important;
-  padding-top: 55px;
+  margin-top: 30px !important;
+  padding-top: 30px;
   border-top: 1px solid rgba(0, 0, 0, 0.18);
   flex-wrap: wrap-reverse;
   gap: 20px;
