@@ -140,18 +140,24 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
           {data?.description}
         </h3>
 
-        <div className="d-flex justify-content-between align-items-center">
-          <p className={mergeClass("fs-12 fw-500 pt-0", classes.productId)}>
-            {data?.itemid}
-          </p>
-
-          {isAuthenticated && (
-            <div className={classes.noteBtn}>
-              <ItemNote
-                item={data}
-                productId={data?.itemid}
-                productVariant={data?.selectedVariant?.value}
-              />
+        <div className="w-100">
+          {isAuthenticated ? (
+            <ItemNote
+              item={data}
+              productId={data?.itemid}
+              productVariant={data?.selectedVariant?.value}
+              hidePreview={true}
+              customHeader={
+                <p className={mergeClass("fs-12 fw-500 pt-0 m-0", classes.productId)}>
+                  {data?.itemid}
+                </p>
+              }
+            />
+          ) : (
+            <div className="d-flex justify-content-between align-items-center">
+              <p className={mergeClass("fs-12 fw-500 pt-0", classes.productId)}>
+                {data?.itemid}
+              </p>
             </div>
           )}
         </div>

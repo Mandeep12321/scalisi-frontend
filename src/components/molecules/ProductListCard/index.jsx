@@ -127,16 +127,23 @@ export default function ProductListCard({
 
   // Smart note UI
   const NoteBlock = () => (
-    <div className={classes.noteSection}>
-      <p className={mergeClass("fs-12 fw-500", classes.productId)}>
-        {data?.itemid}
-      </p>
-      {isAuthenticated && (
+    <div className="w-100">
+      {isAuthenticated ? (
         <ItemNote
           item={data}
           productId={data?.itemid}
           productVariant={data?.selectedVariant?.value}
+          hidePreview={true}
+          customHeader={
+            <p className={mergeClass("fs-12 fw-500 pt-0 m-0", classes.productId)}>
+              {data?.itemid}
+            </p>
+          }
         />
+      ) : (
+        <p className={mergeClass("fs-12 fw-500 pt-0", classes.productId)}>
+          {data?.itemid}
+        </p>
       )}
     </div>
   );
