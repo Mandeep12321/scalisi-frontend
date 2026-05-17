@@ -37,6 +37,12 @@ const ItemNote = ({
 
   const handleClick = () => {
     const isCurrentlySaving = isEditing;
+
+    if (isCurrentlySaving && !noteValue.trim()) {
+      handleCancelNote();
+      return;
+    }
+
     handleNoteClick(); // toggles isEditing / saves to localStorage
 
     if (isCurrentlySaving) {

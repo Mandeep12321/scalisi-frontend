@@ -25,7 +25,7 @@
   color: var(--black-color);
   letter-spacing: -0.02em;
   text-align: left;
-  font-size: 43px !important;
+  font-size: 31px !important;
   margin-bottom: 24px;
 }
 
@@ -55,7 +55,7 @@
   max-width: 100% !important;
 }
 
-.chefsPlanner_month{
+.chefsPlanner_month {
   font-size: 36px;
   color: #BC0A0E;
   font-weight: bold;
@@ -131,7 +131,7 @@
 @media (max-width: 1440px) {
   .mainHeading {
     line-height: 48px !important;
-    font-size: 38px !important;
+    font-size: 31px !important;
   }
 }
 
@@ -171,6 +171,7 @@
     font-size: 30px !important;
     line-height: 40px !important;
   }
+
   .subHeading {
     font-size: 18px !important;
     line-height: 24px !important;
@@ -184,6 +185,7 @@
     font-size: 25px !important;
     margin-bottom: 14px;
   }
+
   .subHeading {
     font-size: 14px !important;
     line-height: 22px !important;
@@ -212,6 +214,7 @@
 }
 
 @media (max-width: 1200px) {
+
   .announcementRight,
   .announcementLeft {
     padding-top: 70px;
@@ -220,14 +223,17 @@
 }
 
 @media (max-width: 992px) {
+
   .announcementLeft,
   .announcementRight {
     padding-top: 60px;
     padding-bottom: 70px;
   }
+
   .announcementLeft {
     padding-right: 10px;
   }
+
   .announcementRight {
     padding-left: 10px;
   }
@@ -239,6 +245,7 @@
     padding-bottom: 40px;
     padding-right: 0px !important;
   }
+
   .announcementRight {
     padding-top: 0px;
     padding-bottom: 40px;
@@ -248,10 +255,11 @@
 }
 
 @media (max-width: 375px) {
-  .announcementRight > div > div:first-child {
+  .announcementRight>div>div:first-child {
     padding-top: 15px;
   }
-  .announcementLeft > div > div:first-child {
+
+  .announcementLeft>div>div:first-child {
     scale: 1.07;
   }
 }
