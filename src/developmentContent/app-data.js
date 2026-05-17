@@ -44,11 +44,11 @@ export const MOBILE_HEADER_LINK = [
     path: "/my-invoices",
     imageUrl: "/assets/images/svg/myInvoices.svg",
   },
-  {
-    label: "Settings",
-    path: "/settings",
-    imageUrl: "/assets/images/svg/settingsIcon.svg",
-  },
+  // {
+  //   label: "Settings",
+  //   path: "/settings",
+  //   imageUrl: "/assets/images/svg/settingsIcon.svg",
+  // },
   {
     label: "Help & Support",
     path: "/contact-us",
