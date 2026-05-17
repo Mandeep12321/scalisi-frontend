@@ -802,3 +802,14 @@
     padding-top: 40%;
   }
 }
+
+@media (min-width: 992px) {
+  .subDiv {
+      align-items: flex-start;
+  }
+  
+  .leftCol {
+      height: 450px;
+      justify-content: flex-end;
+  }   
+}
