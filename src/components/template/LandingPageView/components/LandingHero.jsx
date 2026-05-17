@@ -53,7 +53,7 @@ export default function LandingHero({ cmsData }) {
                         }
                       }
                       else if (index === 2)
-                        router.push("/products");
+                        router.push("/news-and-updates");
                     }}
                   />
                 </Col>
