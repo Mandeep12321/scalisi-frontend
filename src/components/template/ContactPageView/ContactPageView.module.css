@@ -77,6 +77,18 @@
   overflow: hidden !important;
 }
 
+.mainDiv table td:nth-child(1) {
+  flex: 0 0 20% !important;
+}
+
+.mainDiv table td:nth-child(2) {
+  flex: 0 0 32% !important;
+}
+
+.mainDiv table td:nth-child(3) {
+  flex: 0 0 20% !important;
+}
+
 .mainDiv table tbody tr td div {
   font-size: 21px !important;
   padding-block: 2px;
