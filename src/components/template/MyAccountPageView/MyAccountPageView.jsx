@@ -355,6 +355,9 @@ export default function MyAccountPageView() {
               </div>
             </Col> */}
           </Row>
+        </Container>
+
+        <Container>
           <Row className="g-0">
             <Col md={6} lg={6}>
               <div className={mergeClass(classes.announcementLeft)}>
