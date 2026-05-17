@@ -47,9 +47,9 @@ export default function ChefsPlannerView() {
   return (
     <div className={classes.main}>
       <Container className="pt-5">
-        <div className="mb-5">
-          <h1 className="fs-49 fw-700 black-color mb-3 text-center">Chef's Planners</h1>
-          <p className={mergeClass("fs-18 fw-500 text-color-v3 text-center", classes.subHeading)}>
+        <div className={classes.headerSection}>
+          <h1 className={classes.mainHeading}>Chef's Planners</h1>
+          <p className={classes.subHeading}>
             Monthly guides that are useful as a quick reference to products that are particular to the month, season, and time of year.
           </p>
         </div>
