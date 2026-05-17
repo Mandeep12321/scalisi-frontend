@@ -11,15 +11,34 @@
   background-color: var(--body-color);
 }
 
+.headerSection {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .mainHeading {
-  margin-bottom: 1rem;
-  color: var(--heading-text-color);
+  font-weight: 700 !important;
+  font-family: var(--inter);
+  line-height: 1.15 !important;
+  color: var(--black-color);
+  letter-spacing: -0.02em;
+  text-align: left;
+  font-size: 43px !important;
+  margin-bottom: 24px;
 }
 
 .subHeading {
-  /* max-width: 800px; */
-  line-height: 1.6;
-  color: var(--text-color-v3);
+  font-family: var(--inter);
+  color: #2E2E2E;
+  font-weight: 400 !important;
+  text-align: left;
+  max-width: 100%;
+  width: 100%;
+  margin-inline: 0;
+  line-height: 28px !important;
+  font-size: 19px !important;
 }
 
 .plannerRow {
@@ -108,14 +127,68 @@
   max-height: 100%;
 }
 
+/* Media Queries for responsive heading/description sizes matched with About Us */
+@media (max-width: 1440px) {
+  .mainHeading {
+    line-height: 48px !important;
+    font-size: 38px !important;
+  }
+}
+
+@media (max-width: 1399px) {
+  .mainHeading {
+    line-height: 43px !important;
+    font-size: 35px !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  .mainHeading {
+    font-size: 33px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .mainHeading {
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 1122px) {
+  .mainHeading {
+    font-size: 28px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainHeading {
+    font-size: 26px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .mainHeading {
+    font-size: 30px !important;
+    line-height: 40px !important;
+  }
+  .subHeading {
+    font-size: 18px !important;
+    line-height: 24px !important;
+    width: 95%;
+  }
+}
+
 @media (max-width: 768px) {
   .mainHeading {
-    font-size: 2rem;
+    line-height: 34px !important;
+    font-size: 25px !important;
+    margin-bottom: 14px;
   }
-  
   .subHeading {
-    font-size: 1rem;
-    padding: 0 15px;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-weight: 500 !important;
+    width: 95%;
   }
 }
 
