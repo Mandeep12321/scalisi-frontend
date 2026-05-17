@@ -20,12 +20,16 @@ import ProductListView from "@/components/organisms/ProductListView/ProductListV
 import useProducts from "@/resources/hooks/useProducts";
 import useDebounce from "@/resources/hooks/useDebounce";
 import { ABOUT_US_PAGE_DATA } from "@/developmentContent/mock-data";
+import Cookies from "js-cookie";
+import { handleDecrypt } from "@/resources/utils/helper";
 
 export default function ProductsPageView({ cmsData }) {
   const _cmsData = cmsData;
   const router = useRouter();
   const dispatch = useDispatch();
-  const { isLogin, location } = useSelector((state) => state.authReducer);
+  const { isLogin: reduxIsLogin, location } = useSelector((state) => state.authReducer);
+  const accessToken = handleDecrypt(Cookies.get("_xpdx"));
+  const isLogin = reduxIsLogin && !!accessToken;
 
   const [showLocationsModal, setShowLocationsModal] = useState(false);
   const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[0]);

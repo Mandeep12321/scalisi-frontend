@@ -33,31 +33,41 @@ export default function LandingHero({ cmsData }) {
         <Col md={12}>
           <div className={`my-3 ${classes.afterHeroCard}`}>
             <Row>
-              {(cmsData?.homeCards?.arr || HOME_PAGE_DATA?.featureSection)?.map((item, index) => (
-                <Col
-                  md={4}
-                  sm={12}
-                  key={index}
-                  className={classes.featureCardContainer}
-                >
-                  <FeatureCard
-                    cardHome={classes.FeatureCardHome}
-                    data={item}
-                    onclick={() => {
-                      if (index === 0) router.push("chefs-planner");
-                      else if (index === 1) {
-                        if (isLogin) {
-                          router.push("/?tab=orderGuide");
-                        } else {
-                          router.push("/order-guide");
+              {(cmsData?.homeCards?.arr || HOME_PAGE_DATA?.featureSection)?.map((item, index) => {
+                const googleTrans = Cookies.get("googtrans");
+                const isSpanish = googleTrans === "/en/es";
+                const isSecondCardAndGuest = index === 1 && !isLogin;
+                
+                const cardData = isSecondCardAndGuest
+                  ? { ...item, title: isSpanish ? "Todos los productos" : "All Products" }
+                  : item;
+
+                return (
+                  <Col
+                    md={4}
+                    sm={12}
+                    key={index}
+                    className={classes.featureCardContainer}
+                  >
+                    <FeatureCard
+                      cardHome={classes.FeatureCardHome}
+                      data={cardData}
+                      onclick={() => {
+                        if (index === 0) router.push("chefs-planner");
+                        else if (index === 1) {
+                          if (isLogin) {
+                            router.push("/?tab=orderGuide");
+                          } else {
+                            router.push("/products");
+                          }
                         }
-                      }
-                      else if (index === 2)
-                        router.push("/news-and-updates");
-                    }}
-                  />
-                </Col>
-              ))}
+                        else if (index === 2)
+                          router.push("/news-and-updates");
+                      }}
+                    />
+                  </Col>
+                );
+              })}
             </Row>
           </div>
         </Col>

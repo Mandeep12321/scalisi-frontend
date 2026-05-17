@@ -22,14 +22,14 @@ export const jackApi = {
       url += `&sort=${encodeURIComponent(sort)}`;
     }
 
-    return jackApiClient.get(url);
+    return jackApiClient.get(url, { skipAuth: true });
   },
 
   // ===============================
   // 📂 GET SUBCATEGORIES
   // ===============================
   getSubCategories: () => {
-    return jackApiClient.get(`${JACK_BASE}/subcategories`);
+    return jackApiClient.get(`${JACK_BASE}/subcategories`, { skipAuth: true });
   },
 
   // ===============================

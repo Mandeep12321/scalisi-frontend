@@ -25,8 +25,8 @@ jackApiClient.interceptors.request.use(
       "Content-Type": "application/json",
       timezone: momentTimezone.tz.guess(),
 
-      // ✅ Attach token if exists
-      ...(token && {
+      // ✅ Attach token if exists and skipAuth is not true
+      ...(!config.skipAuth && token && {
         Authorization: `Bearer ${handleDecrypt(token)}`,
       }),
 

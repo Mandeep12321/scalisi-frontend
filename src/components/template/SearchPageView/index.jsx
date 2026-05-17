@@ -17,7 +17,8 @@ import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
-import { mergeClass } from "@/resources/utils/helper";
+import { mergeClass, handleDecrypt } from "@/resources/utils/helper";
+import Cookies from "js-cookie";
 import LandingFilters from "../LandingPageView/components/LandingFilters";
 import classes from "./SearchPageView.module.css";
 
@@ -25,7 +26,9 @@ export default function SearchPageView({ cmsSupportData, cmsUpdateData }) {
     const router = useRouter();
     const dispatch = useDispatch();
     const searchParams = useSearchParams();
-    const { isLogin, location } = useSelector((state) => state.authReducer);
+    const { isLogin: reduxIsLogin, location } = useSelector((state) => state.authReducer);
+    const accessToken = handleDecrypt(Cookies.get("_xpdx"));
+    const isLogin = reduxIsLogin && !!accessToken;
     const { search: globalSearch } = useSelector((state) => state?.commonReducer);
 
     // Seed local search from URL param on first render
