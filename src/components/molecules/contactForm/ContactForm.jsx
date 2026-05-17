@@ -4,6 +4,7 @@ import { contactValidationSchema } from "@/formik/schema/contact";
 import { mergeClass } from "@/resources/utils/helper";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
+import Script from "next/script";
 import { Button } from "../../atoms/Button";
 import TextArea from "../../atoms/TextArea";
 import classes from "./contactForm.module.css";
@@ -38,25 +39,77 @@ export default function ContactForm() {
 
   const handleSubmit = async (values, resetForm) => {
     setLoading("loading");
-    const body = {
-      fullName: values.fullName,
-      phoneNumber: values.phoneNumber,
-      email: values.email,
-      subject: values.subject,
-      message: values.message,
-    };
-    const url = "contact-us";
-    const { response } = await Post({
-      route: `${url}`,
-      data: body,
-    });
-    if (response) {
-      RenderToast({
-        message: isSpanish ? "Enviado exitosamente" : "Submitted Successfully",
-        type: "success",
+
+    try {
+      if (typeof window === "undefined" || !window.grecaptcha) {
+        RenderToast({
+          message: isSpanish 
+            ? "reCAPTCHA no está listo. Por favor, intenta de nuevo." 
+            : "reCAPTCHA is not ready. Please try again.",
+          type: "error",
+        });
+        setLoading("");
+        return;
+      }
+
+      const recaptchaToken = await new Promise((resolve) => {
+        window.grecaptcha.ready(async () => {
+          try {
+            const token = await window.grecaptcha.execute(
+              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+              { action: "submit" }
+            );
+            resolve(token);
+          } catch (err) {
+            console.error("reCAPTCHA execution error:", err);
+            resolve(null);
+          }
+        });
       });
-      resetForm();
+
+      if (!recaptchaToken) {
+        RenderToast({
+          message: isSpanish 
+            ? "La verificación de reCAPTCHA falló." 
+            : "reCAPTCHA verification failed.",
+          type: "error",
+        });
+        setLoading("");
+        return;
+      }
+
+      const body = {
+        fullName: values.fullName,
+        phoneNumber: values.phoneNumber,
+        email: values.email,
+        subject: values.subject,
+        message: values.message,
+        recaptchaToken: recaptchaToken,
+      };
+
+      const url = "contact-us";
+      const { response } = await Post({
+        route: `${url}`,
+        data: body,
+      });
+
+      if (response) {
+        RenderToast({
+          message: isSpanish ? "Enviado exitosamente" : "Submitted Successfully",
+          type: "success",
+        });
+        resetForm();
+      }
+    } catch (e) {
+      console.error(e);
+      RenderToast({
+        message: isSpanish 
+          ? "Ocurrió un error. Inténtalo de nuevo." 
+          : "An error occurred. Please try again.",
+        type: "error",
+      });
     }
+
     setLoading("");
   };
 
@@ -66,6 +119,10 @@ export default function ContactForm() {
 
   return (
     <div className={classes.mainForm}>
+      <Script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        strategy="lazyOnload"
+      />
       <div className={classes.main}>
         <h1 className={`fs-24 ${classes.contactHeading}`}>
           Contact Form
