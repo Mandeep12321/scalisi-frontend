@@ -69,10 +69,17 @@ const CustomPhoneInput = ({
   const [error, setError] = useState(""); // Local state for error handling
 
   const handlePhoneChange = (phone) => {
-    if (typeof phone === "string" && phone.trim() !== "") {
-      const phoneNumberObj = parsePhoneNumberFromString(`${phone}`);
+    if (phone && typeof phone === "string" && phone.trim() !== "") {
+      const phoneNumberObj = parsePhoneNumberFromString(`${phone}`, defaultCountry);
       if (phoneNumberObj && phoneNumberObj.country) {
         const nationalNumber = phoneNumberObj.nationalNumber;
+
+        // Always sync the value to Formik so it never complains it is empty/required
+        setValue({
+          callingCode: phoneNumberObj.countryCallingCode,
+          phoneNumber: nationalNumber,
+          country: phoneNumberObj.country,
+        });
 
         // Check for repeated digits first
         if (hasRepeatedDigits(nationalNumber)) {
@@ -85,18 +92,28 @@ const CustomPhoneInput = ({
           phoneNumberObj.country
         );
 
-        setValue({
-          callingCode: phoneNumberObj.countryCallingCode,
-          phoneNumber: nationalNumber,
-          country: phoneNumberObj.country, // Add country code to the value
-        });
-
         if (!isValid) {
           setError("Invalid phone number");
         } else {
           setError("");
         }
+      } else {
+        // Fallback for partial/in-progress numbers so Formik stays updated
+        const cleanPhone = phone.replace(/\D/g, "");
+        setValue({
+          callingCode: "",
+          phoneNumber: cleanPhone,
+          country: "",
+        });
       }
+    } else {
+      // Clear values when input is fully emptied
+      setValue({
+        callingCode: "",
+        phoneNumber: "",
+        country: "",
+      });
+      setError("");
     }
   };
 
