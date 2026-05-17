@@ -12,7 +12,7 @@ import { USER_ACCOUNT_KEYS } from "@/formik/initial-values/initial-values";
 import { MY_ACCOUNT_SCHEMA } from "@/formik/schema/MyAccountSchma";
 import UpdatePasswordModal from "@/modals/UpdatePasswordModal/UpdatePasswordModal";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
-import { mergeClass } from "@/resources/utils/helper";
+import { changeGoogleTranslateLanguage, mergeClass } from "@/resources/utils/helper";
 import { signOutRequest } from "@/store/auth/authSlice";
 import { clearCart } from "@/store/cart/cartSlice";
 import { Country } from "country-state-city";
@@ -147,32 +147,15 @@ export default function MyAccountPageView() {
 
   //   handleLanguageChange
   const handleLanguageChange = (selectedLanguage) => {
-    const googleTrans = Cookies.get("googtrans");
-    let oldData = googleTrans;
-
-    // Remove existing translation cookies
-    Cookies.remove("googtrans", {
-      path: "/",
-      domain: `${window?.location?.hostname}`,
-    });
-    Cookies.remove("googtrans", {
-      path: "/",
-      domain: `.${window?.location?.hostname}`,
-    });
-
-    // Set new translation based on selected language
-    if (selectedLanguage?.value === "ES") {
-      Cookies.set("googtrans", `/en/es`);
-    } else if (selectedLanguage?.value === "HT") {
-      Cookies.set("googtrans", `/en/ht`);
-    } else {
-      Cookies.set("googtrans", `/en/en`);
-    }
+    changeGoogleTranslateLanguage(
+      selectedLanguage?.value === "ES"
+        ? "ES"
+        : selectedLanguage?.value === "HT"
+        ? "HT"
+        : "EN"
+    );
 
     setLanguage(selectedLanguage?.value);
-
-    // Reload page to apply translation
-    window.location.reload();
   };
 
   return (

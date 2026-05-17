@@ -5,6 +5,37 @@ import {
 import { NextResponse } from "next/server";
 import { handleDecrypt } from "./resources/utils/helper";
 
+// Decodes JWT payload and checks if expired
+function isTokenExpired(token) {
+  if (!token) return true;
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 3) return true;
+    
+    // Decode base64url payload safely (adding back base64 padding)
+    const base64Url = parts[1];
+    let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    while (base64.length % 4) {
+      base64 += "=";
+    }
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    
+    const payload = JSON.parse(jsonPayload);
+    if (!payload.exp) return false;
+    
+    const currentTime = Math.floor(Date.now() / 1000);
+    return currentTime >= payload.exp;
+  } catch (error) {
+    console.error("Token expiration check failed:", error);
+    return true;
+  }
+}
+
 export function middleware(request) {
   const pathname = request.nextUrl.pathname;
 
@@ -20,9 +51,18 @@ export function middleware(request) {
 
   console.log("Middleware triggered for path:", pathname);
 
-  const accessToken = handleDecrypt(request.cookies.get("_xpdx")?.value);
+  const decryptedToken = handleDecrypt(request.cookies.get("_xpdx")?.value);
+  
+  // Only validate expiration when trying to access auth pages (login/signup) to prevent loops.
+  // This isolates the check and prevents any false positives on protected catalog/checkout pages.
+  let isExpired = false;
+  if (decryptedToken && AUTH_ROUTES.includes(pathname)) {
+    isExpired = isTokenExpired(decryptedToken);
+  }
+  
+  const accessToken = isExpired ? "" : decryptedToken;
 
-  console.log("Access token:", accessToken);
+  console.log("Access token status: valid =", !!accessToken);
 
   if (!accessToken && PROTECTED_ROUTES.includes(pathname)) {
     console.log("No access token, redirecting to home");

@@ -1,4 +1,5 @@
 import CryptoJS from "crypto-js";
+import Cookies from "js-cookie";
 import { config } from "@/config";
 
 export const mediaUrl = (url) => {
@@ -16,6 +17,58 @@ export const mediaUrl = (url) => {
 //
 export const mergeClass = (...classes) => {
   return classes.join(" ");
+};
+
+const getGoogleTranslateValue = (selectedLanguage) => {
+  if (selectedLanguage === "ES") return "/en/es";
+  if (selectedLanguage === "HT") return "/en/ht";
+  return "/en/en";
+};
+
+const removeGoogleTranslateCookie = () => {
+  if (typeof window === "undefined") return;
+
+  const hostname = window.location.hostname;
+  const cookieOptions = [
+    { path: "/", domain: hostname },
+    { path: "/", domain: `.${hostname}` },
+    { path: "/" },
+  ];
+
+  cookieOptions.forEach((options) => {
+    Cookies.remove("googtrans", options);
+  });
+};
+
+export const changeGoogleTranslateLanguage = (selectedLanguage) => {
+  if (typeof window === "undefined") return;
+
+  const translateValue = getGoogleTranslateValue(selectedLanguage);
+  removeGoogleTranslateCookie();
+
+  const hostname = window.location.hostname;
+  const cookieOptions = [
+    { path: "/", domain: hostname },
+    { path: "/", domain: `.${hostname}` },
+    { path: "/" },
+  ];
+
+  cookieOptions.forEach((options) => {
+    Cookies.set("googtrans", translateValue, options);
+  });
+
+  const languageCode = translateValue.split("/").pop();
+  const translateSelect = document.querySelector(".goog-te-combo");
+
+  if (translateSelect) {
+    translateSelect.value = languageCode;
+    translateSelect.dispatchEvent(new Event("change"));
+    return;
+  }
+
+  if (typeof window.googleTranslateElementInit === "function") {
+    window.googleTranslateElementInit();
+  }
 };
 
 export const getFormattedPrice = (price, currency = "$") => {

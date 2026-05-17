@@ -55,7 +55,7 @@ jackApiClient.interceptors.response.use(
       // 🔐 Handle Unauthorized
       if (status === 401) {
         if (typeof window !== "undefined") {
-          Cookies.remove("_xpdx"); // ✅ remove cookie
+          Cookies.remove("_xpdx", { path: "/" }); // ✅ remove cookie with path
           window.location.href = "/login";
         }
       }

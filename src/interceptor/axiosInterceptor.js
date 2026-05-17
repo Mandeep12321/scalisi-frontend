@@ -118,10 +118,12 @@ let handleRequest = async ({
         if (dispatch) {
           dispatch(signOutRequest());
         }
-        Cookies.remove("_xpdx");
-        Cookies.remove("_xpdx_rf");
+        Cookies.remove("_xpdx", { path: "/" });
+        Cookies.remove("_xpdx_rf", { path: "/" });
 
-        typeof window !== "undefined" && window.location === "/login";
+        if (typeof window !== "undefined") {
+          window.location.href = "/login";
+        }
       }
     }
 
