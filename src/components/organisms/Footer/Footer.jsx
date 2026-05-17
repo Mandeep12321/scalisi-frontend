@@ -283,10 +283,21 @@ export default function Footer() {
                     </div>
                   </div>
                   <div className={classes.footerBottom}>
-                    <p className="fs-15 fw-700">
-                      © {new Date().getFullYear()} - Scalisi Produce | All
-                      rights reserved
-                    </p>
+                  <p className="fs-15 fw-700">
+                    © {new Date().getFullYear()} - Scalisi Produce | All rights
+                    reserved
+                    <span className="d-block d-md-inline ms-md-2" style={{ color: "inherit" }}>
+                      {" "}| Website by{" "}
+                      <a
+                        href="https://societywebsolutions.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "inherit", textDecoration: "underline" }}
+                      >
+                        Society Web Solutions.
+                      </a>
+                    </span>
+                  </p>
                   </div>
                 </Col>
               </Row>
@@ -391,6 +402,17 @@ export default function Footer() {
                   <p className="fs-15 fw-700">
                     © {new Date().getFullYear()} - Scalisi Produce | All rights
                     reserved
+                    <span className="d-block d-md-inline ms-md-2" style={{ color: "inherit" }}>
+                      {" "}| Website by{" "}
+                      <a
+                        href="https://societywebsolutions.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "inherit", textDecoration: "underline" }}
+                      >
+                        Society Web Solutions.
+                      </a>
+                    </span>
                   </p>
                   <div className={classes.socialIcon}>
                     {socialData?.map((social, i) => (
