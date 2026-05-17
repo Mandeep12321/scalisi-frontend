@@ -312,7 +312,15 @@ const MobileHeader = ({
                       onClick={() => setIsDrawerOpen(false)}
                     >
                       {Icon && <Icon size={18} />}
-                      {item?.imageUrl && <ReactSVG src={item?.imageUrl} />}
+                      {item?.imageUrl && (
+  <ReactSVG
+    src={item?.imageUrl}
+    beforeInjection={(svg) => {
+      svg.setAttribute("width", "18");
+      svg.setAttribute("height", "18");
+    }}
+  />
+)}
                       {item?.label}
                     </Link>
                   )}
