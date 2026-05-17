@@ -200,17 +200,13 @@ export default function Footer() {
                           {column.blogPosts?.map((post, idx) => (
                             <div key={idx} className={classes.blogDiv}>
                               <span>
-                                <p className="fs-16 fw-700 maxLine1 ">
-                                  {truncateTitle(post.title)}
-                                </p>
+                                <Link href="/news-and-updates" className={classes.blogTitleLink}>
+                                  <p className="fs-16 fw-700 maxLine1 cursor-pointer">
+                                    {truncateTitle(post.title)}
+                                  </p>
+                                </Link>
                                 <p className="fs-16 fw-500">{post.date}</p>
                               </span>
-                              {/* <p
-                            className={classes.rm}
-                            onClick={() => router?.push(`/news-and-updates`)}
-                          >
-                            Read more
-                          </p> */}
                             </div>
                           ))}
                         </div>
@@ -340,9 +336,11 @@ export default function Footer() {
                       {column.blogPosts?.map((post, idx) => (
                         <div key={idx} className={classes.blogDiv}>
                           <span>
-                            <p className="fs-16 fw-700 maxLine1 ">
-                              {truncateTitle(post.title)}
-                            </p>
+                            <Link href="/news-and-updates" className={classes.blogTitleLink}>
+                              <p className="fs-16 fw-700 maxLine1 cursor-pointer">
+                                {truncateTitle(post.title)}
+                              </p>
+                            </Link>
                             <p className="fs-16 fw-500">{post.date}</p>
                           </span>
                         </div>

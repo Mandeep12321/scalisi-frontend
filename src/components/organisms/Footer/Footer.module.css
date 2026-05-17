@@ -269,3 +269,14 @@
     max-width: 50% !important;
   }
 }
+
+.blogTitleLink {
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: color 0.2s ease;
+}
+
+.blogTitleLink:hover p {
+  color: var(--primary-color) !important;
+  text-decoration: underline !important;
+}
