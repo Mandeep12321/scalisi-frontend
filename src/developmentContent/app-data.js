@@ -125,7 +125,7 @@ export const FOOTER_DATA = [
       { label: "My Account", path: "/my-account" },
       { label: "My Orders", path: "/my-orders" },
       { label: "My Invoices", path: "/my-invoices" },
-      { label: "Settings", path: "/settings" },
+      // { label: "Settings", path: "/settings" },
       { label: "Help & Support", path: "/contact-us" },
     ],
   },
