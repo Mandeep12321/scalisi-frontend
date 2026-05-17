@@ -118,13 +118,13 @@
 .callToActionDiv {
   display: flex;
   flex-direction: column;
-  gap: 42px;
+  gap: 36px;
   margin-top: 0;
 }
 
 .ctaInner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 }
 
@@ -136,8 +136,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
-  width: 30px;
+  height: 31px;
+  width: 31px;
 }
 
 .ctaInner p {
@@ -146,6 +146,7 @@
   max-width: 80%;
   white-space: pre-line;
   word-break: break-word;
+  color: #141414;
 }
 
 @media (max-width: 1440px) {

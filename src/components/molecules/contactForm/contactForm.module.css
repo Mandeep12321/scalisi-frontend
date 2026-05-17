@@ -1,5 +1,5 @@
 .main {
-  padding: 20px 27px 30px 21px;
+  padding: 33px 27px 43px 22px;
   box-shadow: 0px 5px 25px #0000000d;
   border-radius: 6px;
   background-color: var(--white-color);
@@ -24,7 +24,7 @@
 .main h1 {
   font-weight: bold;
   color: var(--red-color);
-  padding: 14px 0px !important;
+  padding-bottom: 28px !important;
   font-size: 28px !important;
   letter-spacing: -0.3px;
 }
@@ -81,7 +81,7 @@
   .main :global([class*="labelText"]) {
     font-size: 18px !important;
     font-weight: 600 !important;
-    margin: 0 0 10px !important;
+    margin: 0 0 21px !important;
   }
 
   .formGroup {
@@ -89,7 +89,7 @@
   }
 
   .main .inputClass {
-    margin: 0 0 15px !important;
+    margin: 0 0 23px !important;
   }
 
   .main :global([class*="phoneNumberInput"]) {

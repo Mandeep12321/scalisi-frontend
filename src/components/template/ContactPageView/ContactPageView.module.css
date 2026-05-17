@@ -3,7 +3,7 @@
   align-items: flex-start;
   width: 100%;
   gap: 50px;
-  padding: 50px 0px 50px 0px !important;
+  padding: 123px 10px 72px 50px !important;
 }
 
 .aboutTitleContact {
@@ -503,10 +503,10 @@
   }
 
   .contactDiv {
-    margin-block: 60px !important;
+    margin-block: 56px !important;
   }
 
   .mainDiv table tbody tr td>div {
     font-size: 21px !important;
   }
-}
+}

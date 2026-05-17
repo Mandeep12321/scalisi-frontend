@@ -872,7 +872,7 @@ export const BLOGS_DETAIL_DATA = {
 export const CONTACT_PAGE_DATA = {
   heroSection: {
     title: "Contact Us",
-    heading: `<p>If you are interested in <strong style="color: #BB090D;">ordering online </strong> or if you have any <strong style="color: #BB090D;">questions regarding your account</strong> please contact your sales representative or any of the customer service agents listed below. </p>`,
+    heading: `<p style="font-size:29px">If you are interested in <strong style="color: #BC0A0E;">ordering online </strong> or if you have any <strong style="color: #BC0A0E;">questions regarding your account</strong> please contact your sales representative or any of the customer service agents listed below. </p>`,
     image: aboutUsHeroImage,
     calToAction: [
       {
