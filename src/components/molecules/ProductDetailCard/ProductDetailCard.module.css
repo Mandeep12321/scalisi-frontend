@@ -387,7 +387,7 @@
   border: none;
   font-size: 14px;
   font-weight: 600;
-  color: var(--primary-color);
+  color: #000000;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -398,7 +398,7 @@
 }
 
 .counterDiv button[class*="noteTriggerBtn"]:hover {
-  color: #1a1a7a;
+  color: #4b5563;
 }
 
 .counterDiv button[class*="noteTriggerBtnHasNote"] {
