@@ -6,14 +6,16 @@
   min-height: 831px;
   margin-right: 20px;
 }
-
+.mb-19 {
+  margin-bottom: 19px;
+}
 .inputClass {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
 .inputClassWithError {
-  margin-top: 10px;
+  margin-bottom: 10px;
   margin-bottom: 0px;
 }
 
@@ -69,7 +71,6 @@
 .phoneInputClassWithError {
   margin-block: 10px 0px !important;
 }
-
 @media (max-width: 1199px) {
   .main {
     margin-right: 0px;

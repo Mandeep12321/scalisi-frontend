@@ -102,8 +102,8 @@ export default function ContactForm() {
 
       if (!recaptchaToken) {
         RenderToast({
-          message: isSpanish 
-            ? "La verificación de reCAPTCHA falló. Por favor, intenta de nuevo." 
+          message: isSpanish
+            ? "La verificación de reCAPTCHA falló. Por favor, intenta de nuevo."
             : "reCAPTCHA verification failed. Please try again.",
           type: "error",
         });
@@ -136,8 +136,8 @@ export default function ContactForm() {
     } catch (e) {
       console.error(e);
       RenderToast({
-        message: isSpanish 
-          ? "Ocurrió un error. Inténtalo de nuevo." 
+        message: isSpanish
+          ? "Ocurrió un error. Inténtalo de nuevo."
           : "An error occurred. Please try again.",
         type: "error",
       });
@@ -181,8 +181,8 @@ export default function ContactForm() {
             }
             labelClass={
               contactForm.touched.phoneNumber && contactForm.errors.phoneNumber
-                ? classes.labelClassWithError
-                : ""
+                ? `${classes.labelClassWithError} mb-19`
+                : "mb-19"
             }
             value={
               contactForm.values.phoneNumber == ""
