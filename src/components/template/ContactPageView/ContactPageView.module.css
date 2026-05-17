@@ -3,7 +3,7 @@
   align-items: flex-start;
   width: 100%;
   gap: 50px;
-  padding: 50px 0px 50px 0px !important;
+  padding: 123px 10px 72px 50px !important;
 }
 
 .aboutTitleContact {
@@ -75,18 +75,6 @@
   flex: 1 1 0 !important;
   min-width: 0 !important;
   overflow: hidden !important;
-}
-
-.mainDiv table td:nth-child(1) {
-  flex: 0 0 20% !important;
-}
-
-.mainDiv table td:nth-child(2) {
-  flex: 0 0 32% !important;
-}
-
-.mainDiv table td:nth-child(3) {
-  flex: 0 0 20% !important;
 }
 
 .mainDiv table tbody tr td div {
@@ -188,6 +176,7 @@
 }
 
 @media (max-width: 1200px) {
+
   .announcementRight,
   .announcementLeft {
     padding-top: 40px;
@@ -233,6 +222,7 @@
 }
 
 @media (max-width: 992px) {
+
   .announcementLeft,
   .announcementRight {
     padding-top: 30px;
@@ -515,10 +505,10 @@
   }
 
   .contactDiv {
-    margin-block: 60px !important;
+    margin-block: 56px !important;
   }
 
   .mainDiv table tbody tr td>div {
     font-size: 21px !important;
   }
-}
+}
