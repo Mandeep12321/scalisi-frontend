@@ -49,10 +49,10 @@
   }
 }
 
-@media(max-width: 576px) {
+/* @media(max-width: 576px) {
   .productCard__wrapper {
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 12px !important;
       margin-top: -10px;
   }
-}
+} */
