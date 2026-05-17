@@ -6,7 +6,7 @@ import PaginationComponent from "@/components/molecules/PaginationComponent";
 import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
 import { mergeClass, handleDecrypt } from "@/resources/utils/helper";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,8 @@ import LocationsModal from "@/modals/LocationsModal/LocationsModal";
 
 export default function LandingPageView({ cmsData }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
   const { isLogin: reduxIsLogin, location } = useSelector((state) => state.authReducer);
   const authState = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -159,7 +161,25 @@ useEffect(() => {
     catalogRef.current = type;
     setCatalogType(type);
     resetPageAndFetch();
+
+    if (type === "orderGuide") {
+      router.replace("/?tab=orderGuide", { scroll: false });
+    } else {
+      router.replace("/", { scroll: false });
+    }
   };
+
+  useEffect(() => {
+    if (tabParam === "orderGuide" && isLogin) {
+      handleCatalogTypeChange("orderGuide");
+      setTimeout(() => {
+        const element = document.querySelector(".mainCatalog_outer") || document.getElementById("products-section");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    }
+  }, [tabParam, isLogin]);
 
   const handleSubCategoryChange = (val) => {
     subCatRef.current = val;

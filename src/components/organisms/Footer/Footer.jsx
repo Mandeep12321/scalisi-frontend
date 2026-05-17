@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-import { mediaUrl, mergeClass } from "@/resources/utils/helper";
+import { mediaUrl, mergeClass, handleDecrypt } from "@/resources/utils/helper";
 import classes from "./Footer.module.css";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import AccordionComponent from "@/components/atoms/AccordionComponent";
@@ -28,10 +28,17 @@ export default function Footer() {
   const isSpanish = googleTrans === "/en/es";
 
   const [is768, setIs768] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     isMobileViewHook(setIs768, 768);
   });
+
+  const accessToken = mounted ? handleDecrypt(Cookies?.get("_xpdx")) : null;
 
   // Helper function to truncate title to 4 words
   const truncateTitle = (title) => {
@@ -164,16 +171,18 @@ export default function Footer() {
                     </h3> */}
                       {column.links ? (
                         <ul className={classes.listItems}>
-                          {column.links.map((link, idx) => (
-                            <li key={idx}>
-                              <Link
-                                href={link.path}
-                                className="text-decoration-none fs-16 fw-500"
-                              >
-                                {link.label}
-                              </Link>
-                            </li>
-                          ))}
+                          {column.links
+                            .filter((link) => accessToken || link.label !== "Order Guide")
+                            .map((link, idx) => (
+                              <li key={idx}>
+                                <Link
+                                  href={link.path}
+                                  className="text-decoration-none fs-16 fw-500"
+                                >
+                                  {link.label}
+                                </Link>
+                              </li>
+                            ))}
                         </ul>
                       ) : (
                         <div className={classes.subDiv}>
@@ -313,16 +322,18 @@ export default function Footer() {
                   <h3 className="text-green fw-700 fs-22">{column.heading}</h3>
                   {column.links ? (
                     <ul className={classes.listItems}>
-                      {column.links.map((link, idx) => (
-                        <li key={idx}>
-                          <Link
-                            href={link.path}
-                            className="text-decoration-none fs-16 fw-500"
-                          >
-                            {link.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {column.links
+                        .filter((link) => accessToken || link.label !== "Order Guide")
+                        .map((link, idx) => (
+                          <li key={idx}>
+                            <Link
+                              href={link.path}
+                              className="text-decoration-none fs-16 fw-500"
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
                     </ul>
                   ) : (
                     <div className={classes.subDiv}>

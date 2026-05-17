@@ -70,7 +70,7 @@ export const MOBILE_HEADER_LINK = [
   },
   {
     label: "Order Guide",
-    path: "/order-guide",
+    path: "/?tab=orderGuide",
     imageUrl: "/assets/images/svg/orderGuide.svg",
   },
   // line with pedding block
@@ -105,7 +105,7 @@ export const FOOTER_DATA = [
     links: [
       { label: "Home", path: "/" },
       { label: "Order Now", path: "/products" },
-      { label: "Order Guide", path: "/order-guide" },
+      { label: "Order Guide", path: "/?tab=orderGuide" },
       { label: "Chef's Planner", path: "/chefs-planner" },
       { label: "Produce PDF List", path: "/pdf" },
     ],

@@ -1,12 +1,19 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import Cookies from "js-cookie";
 import UnderWorkingPageTemplate from "@/components/template/UnderWorkingPageTemplate/UnderWorkingPageTemplate";
 
 export default function OrderGuidePage() {
   const router = useRouter();
   const { isLogin } = useSelector((state) => state?.authReducer);
+
+  useEffect(() => {
+    if (isLogin) {
+      router.replace("/?tab=orderGuide");
+    }
+  }, [isLogin, router]);
 
   // Language detection
   const googleTrans = Cookies.get("googtrans");

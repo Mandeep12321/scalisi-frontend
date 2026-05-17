@@ -2,14 +2,22 @@
 
 import { FOOTER_DATA } from "@/developmentContent/app-data";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-import { mergeClass } from "@/resources/utils/helper";
+import { mergeClass, handleDecrypt } from "@/resources/utils/helper";
 import classes from "./MobileFooter.module.css";
+import Cookies from "js-cookie";
 
 export default function MobileFooter() {
   const [data, setData] = useState(FOOTER_DATA);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const accessToken = mounted ? handleDecrypt(Cookies?.get("_xpdx")) : null;
 
   // Function to get social media URL based on icon path
   const getSocialMediaUrl = (iconPath) => {
@@ -37,18 +45,20 @@ export default function MobileFooter() {
               }`}
             >
               <h3 className="text-green fw-700 fs-22">{column.heading}</h3>
-              {column.links ? (
+               {column.links ? (
                 <ul className={classes.listItems}>
-                  {column.links.map((link, idx) => (
-                    <li key={idx}>
-                      <a
-                        href={link.path}
-                        className="text-decoration-none fs-16 fw-500"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
+                  {column.links
+                    .filter((link) => accessToken || link.label !== "Order Guide")
+                    .map((link, idx) => (
+                      <li key={idx}>
+                        <a
+                          href={link.path}
+                          className="text-decoration-none fs-16 fw-500"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
                 </ul>
               ) : (
                 <div className={classes.subDiv}>
