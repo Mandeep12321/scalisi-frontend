@@ -7,7 +7,7 @@ export const contactValidationSchema = Yup.object({
   //   .matches(/^\d{11}$/, "Phone Number must be exactly 11 digits")
   //   .required("Phone Number is required"),
   callingCode: Yup.string().optional(),
-  phoneNumber: Yup.string().required("Phone number is required."),
+  phoneNumber: Yup.string().optional(),
   email: Yup.string()
     .trim()
     .email("Invalid email address")

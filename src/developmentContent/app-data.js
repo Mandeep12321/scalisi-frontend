@@ -44,11 +44,11 @@ export const MOBILE_HEADER_LINK = [
     path: "/my-invoices",
     imageUrl: "/assets/images/svg/myInvoices.svg",
   },
-  {
-    label: "Settings",
-    path: "/settings",
-    imageUrl: "/assets/images/svg/settingsIcon.svg",
-  },
+  // {
+  //   label: "Settings",
+  //   path: "/settings",
+  //   imageUrl: "/assets/images/svg/settingsIcon.svg",
+  // },
   {
     label: "Help & Support",
     path: "/contact-us",
@@ -125,7 +125,7 @@ export const FOOTER_DATA = [
       { label: "My Account", path: "/my-account" },
       { label: "My Orders", path: "/my-orders" },
       { label: "My Invoices", path: "/my-invoices" },
-      { label: "Settings", path: "/settings" },
+      // { label: "Settings", path: "/settings" },
       { label: "Help & Support", path: "/contact-us" },
     ],
   },
