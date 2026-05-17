@@ -187,6 +187,20 @@
   padding-left: 27px;
 }
 
+@media(min-width: 768px) {
+  .announcementLeft, .announcementRight {
+      padding-top: 35px !important;
+      padding-bottom: 80px !important;
+  }
+}
+
+@media(min-width: 1200px) {
+  .announcementLeft, .announcementRight {
+      padding-top: 85px !important;
+      padding-bottom: 150px !important;
+  }
+}
+
 .MdInfo {
   font-size: 25px;
 }
@@ -211,27 +225,15 @@
     flex-wrap: wrap;
   }
 
-  .announcementRight,
-  .announcementLeft {
-    padding-top: 70px;
-    padding-bottom: 80px;
-  }
+  /* Removed overlapping max-width announcement paddings */
 }
 
 @media (max-width: 1024px) {
-  .announcementLeft,
-  .announcementRight {
-    padding-top: 60px;
-    padding-bottom: 70px;
-  }
+  /* Removed overlapping max-width announcement paddings */
 }
 
 @media (max-width: 991px) {
-  .announcementLeft,
-  .announcementRight {
-    padding-top: 60px;
-    padding-bottom: 70px;
-  }
+  /* Removed overlapping max-width announcement paddings */
   .announcementLeft {
     padding-right: 10px;
   }
@@ -418,8 +420,13 @@
     padding-bottom: 0px;
   }
 
+  .announcementLeft, .announcementRight {
+      padding-top: 0 !important;
+  }
+
   .announcementLeft {
-    padding-top: 40px;
+    padding-top: 40px !important;
+    margin-top: -10px !important;
     padding-bottom: 40px;
     padding-right: 0px !important;
   }
