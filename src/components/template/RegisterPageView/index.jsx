@@ -411,7 +411,7 @@ export default function RegisterPageView({ data: _data = null }) {
 
         <div className="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
           <Button label="Return to Home" variant="primary" onClick={() => router.push("/")} className="px-4 px-md-5" />
-          <Button label="Contact Support" variant="secondaryButton" onClick={() => router.push("/contact")} className="px-4 px-md-5" />
+          <Button label="Contact Support" variant="secondaryButton" onClick={() => router.push("/contact-us")} className="px-4 px-md-5" />
         </div>
       </div>
     </div>

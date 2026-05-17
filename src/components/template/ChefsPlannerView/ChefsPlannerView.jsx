@@ -75,13 +75,7 @@ export default function ChefsPlannerView() {
                   variant="primary"
                   label="DOWNLOAD"
                   onClick={() => handleDownload(item.pdfUrl)}
-                  customStyle={{
-                    width: "100%",
-                    fontWeight: "bold",
-                    padding:"17px 25px",
-                    backgroundColor: "var(--primary-color)",
-                    borderColor: "var(--primary-color)",
-                  }}
+                  className="px-4 px-md-5 w-100"
                 />
               </div>
             </Col>
