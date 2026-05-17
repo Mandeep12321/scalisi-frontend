@@ -105,7 +105,8 @@
 @media (max-width: 550px) {
   .mainDiv {
     width: 100%;
-    height: 170px;
+    min-height: 170px;
+    height: auto !important;
   }
 
   .imageDiv {

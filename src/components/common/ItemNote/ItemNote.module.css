@@ -18,6 +18,7 @@
   text-underline-offset: 3px;
   transition: color 0.18s ease;
   white-space: nowrap;
+  font-family: inherit;
 }
 
 .noteIcon {
@@ -90,6 +91,7 @@
   color: #6b7280;
   cursor: pointer;
   transition: all 0.15s ease;
+  font-family: inherit;
 }
 
 .noteCancelBtn:hover {
@@ -108,11 +110,18 @@
   color: #ef4444;
   cursor: pointer;
   transition: all 0.15s ease;
+  font-family: inherit;
 }
 
 .noteRemoveBtn:hover {
   background: #fef2f2;
   border-color: #ef4444;
+}
+
+.noteTextarea::placeholder {
+  font-family: inherit;
+  color: #9ca3af;
+  font-weight: 400;
 }
 
 .notePreview {
