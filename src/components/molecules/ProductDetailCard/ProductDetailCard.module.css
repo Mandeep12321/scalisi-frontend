@@ -379,40 +379,6 @@
   display: contents !important;
 }
 
-.counterDiv button[class*="noteTriggerBtn"] {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: #000000;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: color 0.18s ease;
-  white-space: nowrap;
-  height: 39px;
-  align-self: center;
-}
-
-.counterDiv button[class*="noteTriggerBtn"]:hover {
-  color: #4b5563;
-}
-
-.counterDiv button[class*="noteTriggerBtnHasNote"] {
-  color: #16a34a;
-}
-
-.counterDiv button[class*="noteTriggerBtnSave"] {
-  color: #16a34a;
-  text-decoration: underline;
-}
-
-.counterDiv button[class*="noteTriggerBtnSave"]:hover {
-  color: #15803d;
-}
 
 /* Force expanded note wrapper and textarea below the controls row */
 .counterDiv div[class*="noteWrapper"] {
