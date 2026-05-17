@@ -31,7 +31,8 @@
 }
 
 .productDetail>div {
-  height: 252px !important;
+  min-height: 252px !important;
+  height: auto !important;
 }
 
 .productDetail>div>div:first-child {
@@ -61,7 +62,8 @@
 
 .productDetail>div>div:last-child>*:nth-child(3) {
   gap: 30px !important;
-  height: 52px !important;
+  min-height: 52px !important;
+  height: auto !important;
   margin-bottom: 12px !important;
 }
 

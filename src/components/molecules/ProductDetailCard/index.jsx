@@ -157,9 +157,8 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
                 }
                 className={mergeClass(classes.removeFromCartButton, classes.button)}
               />
-            </div>
 
-            <div className="w-100 mt-3">
+              {/* Existing Add to Note feature rendered right next to Add to Cart */}
               <ItemNote
                 item={data}
                 productId={data?.itemid}
