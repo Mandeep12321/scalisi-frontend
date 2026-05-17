@@ -73,6 +73,11 @@ export const MOBILE_HEADER_LINK = [
     path: "/?tab=orderGuide",
     imageUrl: "/assets/images/svg/orderGuide.svg",
   },
+  {
+    label: "News & Updates",
+    path: "/news-and-updates",
+    imageUrl: "/assets/images/svg/newAndUpdates.svg",
+  },
   // line with pedding block
   {
     separator: true, // Another separator here
@@ -117,6 +122,7 @@ export const FOOTER_DATA = [
       { label: "Distribution Map", path: "/distribution-map" },
       { label: "Vendors", path: "/vendors" },
       { label: "Contact", path: "/contact-us" },
+      { label: "News & Updates", path: "/news-and-updates" },
     ],
   },
   {
