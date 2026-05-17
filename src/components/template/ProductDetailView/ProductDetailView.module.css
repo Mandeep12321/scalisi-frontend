@@ -588,3 +588,9 @@
     width: 210px !important;
   }
 }
+
+@media(min-width: 1581px) {
+    body .productDetail>div>div:last-child>:nth-child(3)>div:first-child>div>div>div {
+        width: 400px !important;
+    }
+}
