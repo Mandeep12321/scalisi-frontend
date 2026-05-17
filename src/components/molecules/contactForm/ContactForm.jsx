@@ -4,7 +4,6 @@ import { contactValidationSchema } from "@/formik/schema/contact";
 import { mergeClass } from "@/resources/utils/helper";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-import Script from "next/script";
 import { Button } from "../../atoms/Button";
 import TextArea from "../../atoms/TextArea";
 import classes from "./contactForm.module.css";
@@ -22,6 +21,36 @@ export default function ContactForm() {
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
 
+  useEffect(() => {
+    isMobileViewHook(setIs375, 376);
+
+    // Bulletproof Programmatic Script Injection
+    const scriptId = "google-recaptcha-v3-script";
+    let script = document.getElementById(scriptId);
+
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    // Cleanup to prevent dangling badges and scripts on other pages!
+    return () => {
+      const badge = document.querySelector(".grecaptcha-badge");
+      if (badge) {
+        badge.remove();
+      }
+      const scripts = document.querySelectorAll(`script[src*="recaptcha/api.js"]`);
+      scripts.forEach((s) => s.remove());
+      if (window.grecaptcha) {
+        delete window.grecaptcha;
+      }
+    };
+  }, []);
+
   const contactForm = useFormik({
     initialValues: {
       fullName: "",
@@ -37,41 +66,45 @@ export default function ContactForm() {
     },
   });
 
+  const executeRecaptcha = () => {
+    return new Promise((resolve) => {
+      let attempts = 0;
+      const checkGrecaptcha = () => {
+        if (typeof window !== "undefined" && window.grecaptcha && window.grecaptcha.ready) {
+          window.grecaptcha.ready(async () => {
+            try {
+              const token = await window.grecaptcha.execute(
+                process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+                { action: "submit" }
+              );
+              resolve(token);
+            } catch (err) {
+              console.error("reCAPTCHA execution error:", err);
+              resolve(null);
+            }
+          });
+        } else if (attempts < 15) {
+          attempts++;
+          setTimeout(checkGrecaptcha, 300);
+        } else {
+          resolve(null);
+        }
+      };
+      checkGrecaptcha();
+    });
+  };
+
   const handleSubmit = async (values, resetForm) => {
     setLoading("loading");
 
     try {
-      if (typeof window === "undefined" || !window.grecaptcha) {
-        RenderToast({
-          message: isSpanish 
-            ? "reCAPTCHA no está listo. Por favor, intenta de nuevo." 
-            : "reCAPTCHA is not ready. Please try again.",
-          type: "error",
-        });
-        setLoading("");
-        return;
-      }
-
-      const recaptchaToken = await new Promise((resolve) => {
-        window.grecaptcha.ready(async () => {
-          try {
-            const token = await window.grecaptcha.execute(
-              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-              { action: "submit" }
-            );
-            resolve(token);
-          } catch (err) {
-            console.error("reCAPTCHA execution error:", err);
-            resolve(null);
-          }
-        });
-      });
+      const recaptchaToken = await executeRecaptcha();
 
       if (!recaptchaToken) {
         RenderToast({
           message: isSpanish 
-            ? "La verificación de reCAPTCHA falló." 
-            : "reCAPTCHA verification failed.",
+            ? "La verificación de reCAPTCHA falló. Por favor, intenta de nuevo." 
+            : "reCAPTCHA verification failed. Please try again.",
           type: "error",
         });
         setLoading("");
@@ -113,16 +146,8 @@ export default function ContactForm() {
     setLoading("");
   };
 
-  useEffect(() => {
-    isMobileViewHook(setIs375, 376);
-  }, []);
-
   return (
     <div className={classes.mainForm}>
-      <Script
-        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-        strategy="lazyOnload"
-      />
       <div className={classes.main}>
         <h1 className={`fs-24 ${classes.contactHeading}`}>
           Contact Form
