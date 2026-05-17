@@ -470,7 +470,7 @@ export const ABOUT_US_PAGE_DATA = {
     title: "About Us",
     description:
       "Our relationships with both national and international vendor partners ensures delivery of the finest quality produce and products.",
-    heading: `<p>Jack Scalisi Wholesale Fruit &amp; Produce distributes <strong style="color: #BB090D;">over 400 fresh produce items</strong><strong> </strong>from all over the world <strong style="color: #BB090D;">every day.</strong></p>`,
+    heading: `<p style="font-size:26px !important">Jack Scalisi Wholesale Fruit &amp; Produce distributes <strong style="color: #BC0A0E;">over 400 fresh produce items</strong><strong> </strong>from all over the world <strong style="color: #BC0A0E;">every day.</strong></p>`,
     image: aboutUsHeroImage,
   },
   companyHistory: {
