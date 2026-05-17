@@ -63,6 +63,7 @@ export default function LeedCertifiedFaculty({ data }) {
             label={"View Our Emergency Operating Plan Statement"}
             className={mergeClass(classes.buttonClass)}
             variant="primary"
+            onClick={() => window.open("/assets/pdf/emergency-plan.pdf", "_blank")}
           />
         </div>
       </div>

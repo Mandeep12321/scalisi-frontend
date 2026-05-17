@@ -107,7 +107,7 @@ export const FOOTER_DATA = [
       { label: "Order Now", path: "/products" },
       { label: "Order Guide", path: "/?tab=orderGuide" },
       { label: "Chef's Planner", path: "/chefs-planner" },
-      { label: "Produce PDF List", path: "/pdf" },
+      // { label: "Produce PDF List", path: "/pdf" },
     ],
   },
   {

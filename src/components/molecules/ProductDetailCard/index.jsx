@@ -157,13 +157,15 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
                 }
                 className={mergeClass(classes.removeFromCartButton, classes.button)}
               />
-              <div className={classes.noteBtn}>
-                <ItemNote
-                  item={data}
-                  productId={data?.itemid}
-                  productVariant={data?.selectedVariant?.value}
-                />
-              </div>
+            </div>
+
+            <div className="w-100 mt-3">
+              <ItemNote
+                item={data}
+                productId={data?.itemid}
+                productVariant={data?.selectedVariant?.value}
+                hidePreview={true}
+              />
             </div>
           </>
         ) : (
