@@ -205,6 +205,7 @@
 
   .footerMobile .footerBottom {
     align-items: center;
+    justify-content: center !important;
   }
 
   .footerMobile .cardsIcon {
@@ -239,7 +240,7 @@
 
   .footerBottom p {
     text-align: center;
-    line-height: 15px;
+    line-height: 1.4 !important;
     font-size: 15px;
   }
 
