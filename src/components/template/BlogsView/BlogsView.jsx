@@ -97,7 +97,7 @@ export default function BlogsView({ cmsData }) {
                 />
               </div>
             </Col>
-            <Col md={12} className="mb-5">
+            <Col md={12} >
               <div className={`my-3 ${classes.blogCardWrapper}`}>
                 <Row className="gx-md-5 gx-3">
                   {data?.slice(1).map((data, index) => (
