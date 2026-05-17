@@ -95,7 +95,7 @@
 }
 
 .supportSpanish button {
-  padding: 17px 15px !important;
+  padding: 17px 7px !important;
   white-space: wrap !important;
 }
 
@@ -205,7 +205,8 @@
     width: calc(82% - 0px);
     gap: 40px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-right: 10px;
   }
 
   .support button {
@@ -249,6 +250,9 @@
     width: 278px;
     margin-top: 4px;
     margin-inline-start: 1px;
+  }
+    .contentContainer {
+    align-items: center;
   }
 
   .subscribeContainer input {
@@ -314,8 +318,8 @@
     display: block;
     z-index: 1;
     position: relative;
-    width: 241px;
-    height: 150px;
+    width: 165px;
+    height: 100px;
     margin-left: 2.5px;
     margin-bottom: 0px;
   }
