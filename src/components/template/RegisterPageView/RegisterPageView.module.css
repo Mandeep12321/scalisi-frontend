@@ -467,3 +467,12 @@
     margin-top: 25px;
   }
 }
+
+/* Override absolute positioning of error containers in registration form to prevent overlaps */
+.formBox :global([class*="errorContainer"]),
+.formBox2 :global([class*="errorContainer"]) {
+  position: relative !important;
+  top: auto !important;
+  margin-top: 4px !important;
+  margin-bottom: 12px !important;
+}

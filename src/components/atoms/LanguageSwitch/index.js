@@ -1,28 +1,32 @@
 import { Switch } from "@mui/material";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { changeGoogleTranslateLanguage } from "@/resources/utils/helper";
 import classes from "./LanguageSwitch.module.css";
 
 function LanguageSwitch() {
-  const [googleTrans, setGoogleTrans] = useState(() => Cookies.get("googtrans"));
+  const googleTrans = Cookies.get("googtrans");
+  let oldData = null;
   const [loading, setLoading] = useState(false);
 
   const handleChangeLanguage = async () => {
     setLoading(true);
-
-    const nextLanguage =
-      googleTrans === "/en/es" ? "HT" : googleTrans === "/en/ht" ? "EN" : "ES";
-
-    changeGoogleTranslateLanguage(nextLanguage);
-    setGoogleTrans(getGoogleTransValue(nextLanguage));
-    setLoading(false);
-  };
-
-  const getGoogleTransValue = (lang) => {
-    if (lang === "ES") return "/en/es";
-    if (lang === "HT") return "/en/ht";
-    return "/en/en";
+    oldData = googleTrans;
+    Cookies.remove("googtrans", {
+      path: "/",
+      domain: `${window?.location?.hostname}`,
+    });
+    Cookies.remove("googtrans", {
+      path: "/",
+      domain: `.${window?.location?.hostname}`,
+    });
+    if (oldData == "/en/es") {
+      Cookies.set("googtrans", `/en/ht`);
+    } else if (oldData == "/en/ht") {
+      Cookies.set("googtrans", `/en/en`);
+    } else {
+      Cookies.set("googtrans", `/en/es`);
+    }
+    window.location.reload();
   };
 
   const getCurrentLanguage = () => {

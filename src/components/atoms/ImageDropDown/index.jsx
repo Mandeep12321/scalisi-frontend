@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactFlagsSelect from "react-flags-select";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { changeGoogleTranslateLanguage } from "@/resources/utils/helper";
+import Cookies from "js-cookie";
 
 export default function ImageDropDown({ options, dropDown, setDropdown }) {
   const dropdownRef = useRef(null);
@@ -11,11 +11,34 @@ export default function ImageDropDown({ options, dropDown, setDropdown }) {
   const onSelect = async (code) => {
     setLoading(true);
 
+    // Handle language translation similar to LanguageSwitch
+    const googleTrans = Cookies.get("googtrans");
+    let oldData = googleTrans;
+
+    // Remove existing translation cookies
+    Cookies.remove("googtrans", {
+      path: "/",
+      domain: `${window?.location?.hostname}`,
+    });
+    Cookies.remove("googtrans", {
+      path: "/",
+      domain: `.${window?.location?.hostname}`,
+    });
+
+    // Set new translation based on selected language
+    if (code === "ES") {
+      Cookies.set("googtrans", `/en/es`);
+    } else if (code === "HT") {
+      Cookies.set("googtrans", `/en/ht`);
+    } else {
+      Cookies.set("googtrans", `/en/en`);
+    }
+
     setDropdown(code);
     setIsOpen(false);
 
-    changeGoogleTranslateLanguage(code === "ES" ? "ES" : code === "HT" ? "HT" : "EN");
-    setLoading(false);
+    // Reload page to apply translation
+    window.location.reload();
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
