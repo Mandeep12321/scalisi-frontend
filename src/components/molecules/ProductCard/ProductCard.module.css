@@ -482,7 +482,7 @@
       width: 100% !important;
   }
   
-  :global(.css-16yv45q-control) {
+  .dropdownWidthClass :global(.css-16yv45q-control) {
       font-size: 12px !important;
   }
 }
