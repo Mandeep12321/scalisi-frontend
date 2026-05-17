@@ -52,7 +52,7 @@
 .blogDiv span {
   display: flex;
   flex-direction: column;
-  gap: 23px;
+  gap: 21px;
   color: var(--black-color-v4);
 }
 
@@ -63,14 +63,14 @@
 }
 
 .footerMain h3 {
-  padding-bottom: 30px !important;
+  padding-bottom: 27px !important;
   line-height: 1;
 }
 
 .subDiv {
   display: flex;
   flex-direction: column;
-  gap: 45px;
+  gap: 40px;
 }
 
 .rm {
