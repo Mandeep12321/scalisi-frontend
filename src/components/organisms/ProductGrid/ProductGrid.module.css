@@ -36,3 +36,23 @@
 .skeleton {
   width: 100% !important;
 }
+
+@media(min-width: 768px) {
+  .productCard__wrapper {
+      margin-bottom: 0px !important;
+  }
+}
+
+@media(min-width: 1200px) {
+  .productCard__wrapper {
+      margin-bottom: 26px !important;
+  }
+}
+
+@media(max-width: 576px) {
+  .productCard__wrapper {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+      margin-top: -10px;
+  }
+}

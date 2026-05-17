@@ -134,3 +134,40 @@
         padding-top: 16px;
     }
 }
+
+@media(min-width: 769px) {
+    .headerSection {
+        padding-top: 52px !important;
+        padding-bottom: 52px !important;
+    }
+    .contentRow {
+        margin-bottom: 46px !important;
+    }
+    .announcementLeft, .announcementRight {
+        padding-top: 0 !important;
+        padding-bottom: 80px !important;
+    }
+    .announcementRow {
+        margin-bottom: 0px !important;
+    }
+}
+
+@media(min-width: 1200px) {
+    .announcementLeft, .announcementRight {
+        padding-bottom: 150px !important;
+    }
+}
+
+@media(max-width: 768px) {
+    .contentRow {
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+    }
+    .announcementRow {
+        margin-top: -10px !important;
+    }
+    .announcementLeft, .announcementRight {
+        padding-bottom: 40px !important;
+        padding-top: 0 !important;
+    }
+}

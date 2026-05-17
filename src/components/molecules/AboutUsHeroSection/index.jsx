@@ -5,12 +5,14 @@ import classes from "./AboutUsHeroSection.module.css";
 import { useEffect, useState } from "react";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import { CONTACT_PAGE_DATA } from "@/developmentContent/mock-data";
+import { FaFilePdf } from "react-icons/fa";
 export default function AboutUsHeroSection({
   data,
   hasImage = true,
   styles = {},
   lineHeight,
   aboutStyle = {},
+  showEmergencyLink = false,
 }) {
   const [isMobile, setIsMobile] = useState(false);
   const [is375, setIs375] = useState(false);
@@ -38,6 +40,20 @@ export default function AboutUsHeroSection({
         >
           {data?.description}
         </p>
+
+        {showEmergencyLink && (
+          <div className="mt-4">
+            <a
+              href="/assets/pdf/emergency-plan.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary fs-16 fw-600 d-inline-flex align-items-center"
+            >
+              <FaFilePdf size={20} className="me-2" />
+              View Our Emergency Operating Plan Statement
+            </a>
+          </div>
+        )}
       </div>
       <div className={mergeClass(hasImage ? classes.rightCol : classes.rightColText, !hasImage ? styles?.contactRightCol : "")}>
         {hasImage ? (

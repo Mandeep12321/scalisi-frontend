@@ -13,7 +13,14 @@ import classes from "./ItemNote.module.css";
  * Shared ItemNote component used in Product Cards and Checkout.
  * Manages its own local state via useItemNote and syncs with Redux.
  */
-const ItemNote = ({ item, productId, productVariant, onSave }) => {
+const ItemNote = ({
+  item,
+  productId,
+  productVariant,
+  onSave,
+  hidePreview = false,
+  customHeader = null,
+}) => {
   const dispatch = useDispatch();
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
@@ -61,19 +68,38 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
 
   return (
     <div className={classes.noteSection}>
-      <button
-        className={mergeClass(
-          classes.noteTriggerBtn,
-          hasNote && !isEditing && classes.noteTriggerBtnHasNote,
-          isEditing && classes.noteTriggerBtnSave,
-        )}
-        onClick={handleClick}
-      >
-        <span className={classes.noteIcon}>
-          {isEditing ? <MdOutlineEdit size={18} /> : <MdOutlineNoteAdd size={18} />}
-        </span>
-        <span className={classes.noteBtnText}>{noteBtnLabel}</span>
-      </button>
+      {customHeader ? (
+        <div className="d-flex justify-content-between align-items-center w-100 mb-2">
+          {customHeader}
+          <button
+            className={mergeClass(
+              classes.noteTriggerBtn,
+              hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+              isEditing && classes.noteTriggerBtnSave,
+            )}
+            onClick={handleClick}
+          >
+            <span className={classes.noteIcon}>
+              {isEditing ? <MdOutlineEdit size={18} /> : <MdOutlineNoteAdd size={18} />}
+            </span>
+            <span className={classes.noteBtnText}>{noteBtnLabel}</span>
+          </button>
+        </div>
+      ) : (
+        <button
+          className={mergeClass(
+            classes.noteTriggerBtn,
+            hasNote && !isEditing && classes.noteTriggerBtnHasNote,
+            isEditing && classes.noteTriggerBtnSave,
+          )}
+          onClick={handleClick}
+        >
+          <span className={classes.noteIcon}>
+            {isEditing ? <MdOutlineEdit size={18} /> : <MdOutlineNoteAdd size={18} />}
+          </span>
+          <span className={classes.noteBtnText}>{noteBtnLabel}</span>
+        </button>
+      )}
 
       {isEditing && (
         <div className={classes.noteWrapper}>
@@ -86,27 +112,29 @@ const ItemNote = ({ item, productId, productVariant, onSave }) => {
             autoComplete="off"
             spellCheck={false}
           />
-          <div className={classes.noteActions}>
-            <button className={classes.noteCancelBtn} onClick={handleCancelNote}>
-              {isSpanish ? "Cancelar" : "Cancel"}
-            </button>
-            {hasNote && (
-              <button className={classes.noteRemoveBtn} onClick={() => {
-                handleRemoveNote();
-                dispatch(updateNoteInCart({
-                  note: "",
-                  productId: productId || item?.itemid || item?._id,
-                  productVariant: productVariant || item?.selectedVariant?.value,
-                }));
-              }}>
-                {isSpanish ? "Eliminar" : "Remove"}
+          {!hidePreview && (
+            <div className={classes.noteActions}>
+              <button className={classes.noteCancelBtn} onClick={handleCancelNote}>
+                {isSpanish ? "Cancelar" : "Cancel"}
               </button>
-            )}
-          </div>
+              {hasNote && (
+                <button className={classes.noteRemoveBtn} onClick={() => {
+                  handleRemoveNote();
+                  dispatch(updateNoteInCart({
+                    note: "",
+                    productId: productId || item?.itemid || item?._id,
+                    productVariant: productVariant || item?.selectedVariant?.value,
+                  }));
+                }}>
+                  {isSpanish ? "Eliminar" : "Remove"}
+                </button>
+              )}
+            </div>
+          )}
         </div>
       )}
 
-      {hasNote && !isEditing && (
+      {hasNote && !isEditing && !hidePreview && (
         <p className={classes.notePreview}>{noteValue}</p>
       )}
     </div>
