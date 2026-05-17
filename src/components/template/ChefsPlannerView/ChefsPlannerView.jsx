@@ -48,8 +48,8 @@ export default function ChefsPlannerView() {
     <div className={classes.main}>
       <Container className="pt-5">
         <div className="mb-5">
-          <h1 className="fs-49 fw-700 black-color mb-3">Chef's Planners</h1>
-          <p className={mergeClass("fs-18 fw-500 text-color-v3", classes.subHeading)}>
+          <h1 className="fs-49 fw-700 black-color mb-3 text-center">Chef's Planners</h1>
+          <p className={mergeClass("fs-18 fw-500 text-color-v3 text-center", classes.subHeading)}>
             Monthly guides that are useful as a quick reference to products that are particular to the month, season, and time of year.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function ChefsPlannerView() {
           {data?.map((item, index) => (
             <Col key={index} sm={6} md={4} lg={3} className={classes.plannerCol}>
               <div className={classes.plannerCard}>
-                <h3 className={mergeClass("fs-24 fw-600", classes.monthName)}>
+                <h3 className={mergeClass("chefsPlanner_month fw-600", classes.monthName)}>
                   {item.name}
                 </h3>
                 <div className={classes.imageContainer}>
@@ -65,8 +65,8 @@ export default function ChefsPlannerView() {
                     <Image
                       src={mediaUrl(item.imageUrl)}
                       alt={item.name}
-                      width={200}
-                      height={200}
+                      width={237}
+                      height={157}
                       className={classes.plannerImage}
                     />
                   )}
@@ -77,8 +77,8 @@ export default function ChefsPlannerView() {
                   onClick={() => handleDownload(item.pdfUrl)}
                   customStyle={{
                     width: "100%",
-                    marginTop: "20px",
                     fontWeight: "bold",
+                    padding:"17px 25px",
                     backgroundColor: "var(--primary-color)",
                     borderColor: "var(--primary-color)",
                   }}
