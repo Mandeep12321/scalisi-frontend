@@ -107,7 +107,7 @@ export default function LandingFilters({
       <Row className="align-items-center">
         {/* LEFT SECTION — Catalog Type Tabs (hidden when hideCatalogTabs is true) */}
         {!hideCatalogTabs && (
-          <Col md={4} sm={12} lg={4} className="d-flex align-items-center mainCatalog_outer">
+          <Col md={4} sm={12} lg={4} className="px-0 d-flex align-items-center mainCatalog_outer">
             <div className={classes.catalogTabsRow}>
 
               {/* ORDER GUIDE — only for logged-in users */}
@@ -156,7 +156,7 @@ export default function LandingFilters({
           md={8}
           lg={8}
           sm={12}
-          className="d-flex justify-content-end align-items-center"
+          className="d-flex justify-content-end align-items-center px-0"
         >
           <div className={classes.filtersDiv}>
             {/* DROPDOWNS */}

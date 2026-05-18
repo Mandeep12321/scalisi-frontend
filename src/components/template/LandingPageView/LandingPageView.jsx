@@ -203,7 +203,7 @@ useEffect(() => {
 
   return (
     <Container>
-      <Row>
+      <Row className="justify-content-center">
         {/* HERO */}
         <Col md={12}>
           <LandingHero cmsData={cmsData} />
