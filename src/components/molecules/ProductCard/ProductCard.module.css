@@ -483,4 +483,8 @@
   .dropdownWidthClass :global(.css-16yv45q-control) {
       font-size: 12px !important;
   }
+  
+  .mobileActionRow .counterDiv {
+      width: 100%;
+  }
 }

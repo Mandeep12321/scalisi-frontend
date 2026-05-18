@@ -174,8 +174,30 @@
 
 @media (max-device-width: 767px) {
   .footerMain {
-    padding-block: 30px 40px;
+    padding-block: 30px 25px;
     margin-top: 24px;
+  }
+
+  .footerMain :global(.accordion-button) {
+    font-size: 18px !important;
+  }
+
+  .footerMain :global(.accordion-button img.open-icon) {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footerMain :global(.g-0.row) {
+    gap: 10px;
+  }
+
+  :global(.container) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .subDiv {
+    gap: 16px;
   }
 
   .footerMobile .financeDiv {
@@ -194,12 +216,14 @@
   .footerMobile .footerBreadcrum {
     display: flex;
     align-items: center;
-    justify-content: end;
-    padding-block: 20px 30px;
+    justify-content: center;
+    padding-bottom: 16px;
+    padding-top: 25px;
+    margin-top: 15px !important;
   }
 
   .footerBreadcrum span p {
-    font-size: 16px !important;
+    font-size: 13px !important;
     color: #363636;
   }
 
@@ -216,7 +240,7 @@
 
   .listItems {
     margin-bottom: 0px;
-    gap: 0px;
+    gap: 8px;
   }
 
   .cardsIcon img {
@@ -229,19 +253,19 @@
   }
 
   .listItems li {
-    height: 35px !important;
+    height: auto !important;
   }
 
   .footerMobile .listItems a {
-    font-size: 19px;
+    font-size: 13px !important;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 1.4 !important;
   }
 
   .footerBottom p {
     text-align: center;
     line-height: 1.4 !important;
-    font-size: 15px;
+    font-size: 12px !important;
   }
 
   .socialIcon {
@@ -250,14 +274,18 @@
   }
 
   .socialIcon img {
-    width: 25px;
-    height: 23px;
+    width: 20px;
+    height: 20px;
   }
 
   .blogDiv span {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
+  }
+
+  .blogDiv span p {
+    font-size: 13px !important;
   }
 }
 

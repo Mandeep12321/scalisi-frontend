@@ -22,7 +22,7 @@ export default function useCategories() {
 
       const formatted = [
         {
-          label: "Category",
+          label: "All",
           value: null, // important → matches your API logic
         },
         ...uniqueCategories.map((item) => ({

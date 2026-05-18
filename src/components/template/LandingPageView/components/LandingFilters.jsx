@@ -162,23 +162,29 @@ export default function LandingFilters({
             {/* DROPDOWNS */}
             <div className={classes.sortByDiv}>
               {/* CATEGORY */}
-              <DropDown
-                placeholder="Category"
-                dropDownContainer={classes.dropDownContainer}
-                value={subCategory}
-                setValue={setSubCategory}
-                options={subCategoryOptions}
-              />
+              <div className="d-flex align-items-center gap-3">
+                <p className={mergeClass("fs-18 mb-0", classes.sortByLabel)} style={{ whiteSpace: "nowrap" }}>Category</p>
+                <DropDown
+                  placeholder="All"
+                  dropDownContainer={classes.dropDownContainer}
+                  value={subCategory}
+                  setValue={setSubCategory}
+                  options={subCategoryOptions}
+                />
+              </div>
 
               {/* SORT */}
-              <DropDown
-                placeholder="Sort"
-                isHoverColor
-                dropDownContainer={classes.dropDownContainer}
-                value={dropDown}
-                setValue={setDropDown}
-                options={SORT_BY_DROPDOWN}
-              />
+              <div className="d-flex align-items-center gap-3">
+                <p className={mergeClass("fs-18 mb-0", classes.sortByLabel)} style={{ whiteSpace: "nowrap" }}>Sort By</p>
+                <DropDown
+                  placeholder="Sort"
+                  isHoverColor
+                  dropDownContainer={classes.dropDownContainer}
+                  value={dropDown}
+                  setValue={setDropDown}
+                  options={SORT_BY_DROPDOWN}
+                />
+              </div>
             </div>
 
             {/* VIEW TOGGLE */}
