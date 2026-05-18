@@ -460,16 +460,14 @@
   /* or 8px */
 }
 
-@media(max-width: 576px) {
-  .title {
+
+@media(max-width: 767px) {
+    .title {
       font-size: 14px !important;
       line-height: 1.4 !important;
       min-height: 40px !important;
       margin-bottom: 12px !important;
   }
-}
-
-@media(max-width: 576px) {
   .mobileActionRow {
       flex-direction: column !important;
   }
