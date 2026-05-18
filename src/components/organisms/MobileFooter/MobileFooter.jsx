@@ -103,11 +103,11 @@ export default function MobileFooter() {
 
           <Col xs={12} sm={12} md={12}>
             <div className={classes.footerBreadcrum}>
-              <span>
+              {/* <span>
                 <p className="fs-16 ">Legal</p>
                 <p className={mergeClass("fs-16 ", classes.bar)}>|</p>
                 <p className="fs-16 ">Privacy</p>
-              </span>
+              </span> */}
             </div>
             <div className={classes.footerBottom}>
               <p className="fs-15 fw-700">

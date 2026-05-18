@@ -259,7 +259,7 @@ export default function Footer() {
                       classes.mobileFooterBreadcrum
                     )}
                   >
-                    <span>
+                    {/* <span>
                       <p
                         className="fs-16 cursor-pointer"
                         onClick={() => router.push("/legal")}
@@ -273,7 +273,7 @@ export default function Footer() {
                       >
                         Privacy
                       </p>
-                    </span>
+                    </span> */}
                     <div className={classes.socialIcon}>
                       {socialData?.map((social, i) => (
                         <a
@@ -393,7 +393,7 @@ export default function Footer() {
 
               <Col xs={12} sm={12} md={12}>
                 <div className={classes.footerBreadcrum}>
-                  <span>
+                  {/* <span>
                     <p
                       className="fs-16 cursor-pointer"
                       onClick={() => router.push("/legal")}
@@ -407,7 +407,7 @@ export default function Footer() {
                     >
                       Privacy
                     </p>
-                  </span>
+                  </span> */}
                 </div>
                 <div className={classes.footerBottom}>
                   <p className="fs-15 fw-700">
