@@ -7,9 +7,9 @@ import momentTimezone from "moment-timezone";
 import {
   BaseURL,
   handleDecrypt,
-  handleEncrypt,
   mediaUrl,
 } from "@/resources/utils/helper";
+import { handleEncrypt } from "@/resources/utils/encryption";
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import store from "@/store";
 

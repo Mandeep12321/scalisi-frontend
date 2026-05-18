@@ -104,7 +104,7 @@ export default function Footer() {
     const path = (iconPath || "").toLowerCase();
     const fallback = (fallbackUrl || "").toLowerCase();
     if (path.includes("fb-icon") || path.includes("facebook") || path.includes("fb") || fallback.includes("facebook.com")) {
-      return "https://www.facebook.com/people/Jack-Scalisi-Wholesale-Fruit-Produce/100067056498461/#";
+      return "https://www.facebook.com/jackscalisiproduce/";
     }
     if (path.includes("instagram") || fallback.includes("instagram.com")) {
       return "https://www.instagram.com/scalisiproduce/";
@@ -113,7 +113,7 @@ export default function Footer() {
       return "https://x.com/scalisiproduce";
     }
     if (path.includes("linkedin") || fallback.includes("linkedin.com")) {
-      return "https://www.linkedin.com/in/jack-scalisi-a8101672";
+      return "https://www.linkedin.com/company/jack-scalisi-wholesale-fruit-produce";
     }
     return fallbackUrl;
   };
@@ -129,7 +129,7 @@ export default function Footer() {
     return [
       {
         icon: "/assets/images/svg/fb-icon.svg",
-        url: "https://www.facebook.com/people/Jack-Scalisi-Wholesale-Fruit-Produce/100067056498461/#",
+        url: "https://www.facebook.com/jackscalisiproduce/",
       },
       {
         icon: "/assets/images/svg/instagram-icon.svg",
@@ -141,7 +141,7 @@ export default function Footer() {
       },
       {
         icon: "/assets/images/svg/linkedin-icon.svg",
-        url: "https://www.linkedin.com/in/jack-scalisi-a8101672",
+        url: "https://www.linkedin.com/company/jack-scalisi-wholesale-fruit-produce",
       },
     ];
   }, [cmsData, _cmsData]);
