@@ -162,7 +162,7 @@ export default function LandingFilters({
             {/* DROPDOWNS */}
             <div className={classes.sortByDiv}>
               {/* CATEGORY */}
-              <div className="d-flex align-items-center gap-3 w-100">
+              <div className="d-flex align-items-center gap-1 gap-md-3 w-50">
                 <p className={mergeClass("mb-0", classes.sortByLabel)} style={{ whiteSpace: "nowrap" }}>Category</p>
                 <DropDown
                   placeholder="All"
@@ -174,7 +174,7 @@ export default function LandingFilters({
               </div>
 
               {/* SORT */}
-              <div className="d-flex align-items-center gap-3 w-100">
+              <div className="d-flex align-items-center gap-1 gap-md-3 w-50">
                 <p className={mergeClass("mb-0", classes.sortByLabel)} style={{ whiteSpace: "nowrap" }}>Sort By</p>
                 <DropDown
                   placeholder="Sort"

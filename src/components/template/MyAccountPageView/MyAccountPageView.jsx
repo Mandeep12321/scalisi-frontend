@@ -6,7 +6,7 @@ import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import { AnnouncementCard } from "@/components/molecules/AnnouncementCard/AnnouncementCard";
 import DropDown from "@/components/molecules/DropDown/DropDown";
 import HeroSection from "@/components/molecules/HeroSection";
-import { LANGUAGE_DROPDOWN } from "@/developmentContent/dropdown-options";
+import { LANGUAGE_DROPDOWN, UNITS_DROPDOWN } from "@/developmentContent/dropdown-options";
 import { MY_ACCOUNT_DATA } from "@/developmentContent/mock-data";
 import { USER_ACCOUNT_KEYS } from "@/formik/initial-values/initial-values";
 import { MY_ACCOUNT_SCHEMA } from "@/formik/schema/MyAccountSchma";
@@ -37,7 +37,9 @@ export default function MyAccountPageView() {
     if (googleTrans === "/en/ht") return "HT";
     return "US";
   });
-  const [units, setUnits] = useState();
+  const [units, setUnits] = useState(() => {
+    return Cookies.get("_xpdx_units") || "pounds";
+  });
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState("");
@@ -173,6 +175,12 @@ export default function MyAccountPageView() {
 
     // Reload page to apply translation
     window.location.reload();
+  };
+
+  // handleUnitsChange
+  const handleUnitsChange = (selectedUnit) => {
+    Cookies.set("_xpdx_units", selectedUnit?.value, { expires: 365 });
+    setUnits(selectedUnit?.value);
   };
 
   return (
@@ -338,7 +346,7 @@ export default function MyAccountPageView() {
                 </div>
               </div>
             </Col>
-            {/* <Col md={12}>
+            <Col md={12}>
               <div className={classes.displayDiv}>
                 <h3 className="fs-25 fw-400"> Display Units</h3>
                 <div className={classes.displayDivField}>
@@ -347,13 +355,15 @@ export default function MyAccountPageView() {
                     backgroundColor={"#FCFCFC"}
                     labelClassName={classes.labelClassName}
                     placeholder={"Show all units in pounds/gallons"}
-                    value={units}
-                    setValue={setUnits}
+                    value={UNITS_DROPDOWN.find(
+                      (option) => option.value === units
+                    )}
+                    setValue={handleUnitsChange}
                     options={UNITS_DROPDOWN}
                   />
                 </div>
               </div>
-            </Col> */}
+            </Col>
           </Row>
         </Container>
 
