@@ -486,5 +486,15 @@
   
   .mobileActionRow .counterDiv {
       width: 100%;
+      justify-content: center;
+  }
+  
+  .mobileActionRow .counterDiv > div {
+      flex: 1;
+  }
+  
+  .mobileActionRow .counterDiv > div :global([class*="controlButtons"]) {
+      width: 100% !important;
+      max-width: 100% !important;
   }
 }

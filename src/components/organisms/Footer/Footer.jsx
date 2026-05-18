@@ -56,23 +56,23 @@ export default function Footer() {
         title: blog.title,
         date: blog.createdAt
           ? new Date(blog.createdAt)
-              .toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-              .replace(/(\d+)/, (match) => {
-                const day = parseInt(match);
-                const suffix =
-                  day === 1 || day === 21 || day === 31
-                    ? "st"
-                    : day === 2 || day === 22
+            .toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+            .replace(/(\d+)/, (match) => {
+              const day = parseInt(match);
+              const suffix =
+                day === 1 || day === 21 || day === 31
+                  ? "st"
+                  : day === 2 || day === 22
                     ? "nd"
                     : day === 3 || day === 23
-                    ? "rd"
-                    : "th";
-                return day + suffix;
-              })
+                      ? "rd"
+                      : "th";
+              return day + suffix;
+            })
           : blog.date || "No date",
       }));
     }
@@ -167,11 +167,10 @@ export default function Footer() {
                     // md={3}
                     // sm={6}
                     xs={12}
-                    className={`${classes?.linksColContainer} ${
-                      index == updatedFooterData.length - 1
-                        ? classes.linksColLastContainer
-                        : ""
-                    }`}
+                    className={`${classes?.linksColContainer} ${index == updatedFooterData.length - 1
+                      ? classes.linksColLastContainer
+                      : ""
+                      }`}
                   >
                     <AccordionComponent
                       defaultKey="0"
@@ -294,17 +293,17 @@ export default function Footer() {
                     </div>
                   </div>
                   <div className={classes.footerBottom}>
-                  <p className="fs-15 fw-700">
-                    © {new Date().getFullYear()} Scalisi Produce. Website by{" "}
-                    <a
-                      href="https://societywebsolutions.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: "inherit", textDecoration: "underline" }}
-                    >
-                      Society Web Solutions
-                    </a>
-                  </p>
+                    <p className="fs-15 fw-700">
+                      © {new Date().getFullYear()} Scalisi Produce. Website by{" "}
+                      <a
+                        href="https://societywebsolutions.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "inherit", textDecoration: "underline" }}
+                      >
+                        Society Web Solutions
+                      </a>.
+                    </p>
                   </div>
                 </Col>
               </Row>
@@ -327,11 +326,10 @@ export default function Footer() {
                   md={3}
                   sm={6}
                   xs={6}
-                  className={`${classes?.linksColContainer} ${
-                    index == updatedFooterData.length - 1
-                      ? classes.linksColLastContainer
-                      : ""
-                  }`}
+                  className={`${classes?.linksColContainer} ${index == updatedFooterData.length - 1
+                    ? classes.linksColLastContainer
+                    : ""
+                    }`}
                 >
                   <h3 className="text-green fw-700 fs-22">{column.heading}</h3>
                   {column.links ? (
@@ -415,7 +413,7 @@ export default function Footer() {
                       style={{ color: "inherit", textDecoration: "underline" }}
                     >
                       Society Web Solutions
-                    </a>
+                    </a>.
                   </p>
                   <div className={classes.socialIcon}>
                     {socialData?.map((social, i) => (
