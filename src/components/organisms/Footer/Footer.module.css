@@ -191,7 +191,8 @@
     gap: 10px;
   }
 
-  .footerMain :global(.container) {
+  .footerMain :global(.container),
+  .footerMobile :global(.container) {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }

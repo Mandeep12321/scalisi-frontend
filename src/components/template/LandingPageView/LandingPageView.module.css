@@ -404,8 +404,13 @@
   }
 
   .gridIcon {
-    width: 24px;
-    height: 16px;
+    width: 26px !important;
+    height: 16px !important;
+  }
+
+  .gridIcon img {
+    object-position: 50% 35% !important;
+    object-fit: cover !important;
   }
 
   .filtersDiv {
@@ -418,12 +423,15 @@
   .sortByDiv {
     align-items: start;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    width: 100%;
   }
 
   .dropDownContainer {
-    min-width: 150px;
-    max-width: 150px !important;
+    flex: 1 !important;
+    width: auto !important;
+    min-width: unset !important;
+    max-width: unset !important;
     height: 40px;
   }
 
@@ -638,9 +646,11 @@
   .filtersDiv {
       display: block !important;
       padding-top: 0 !important;
+      width: 100% !important;
   }
   .dropDownContainer {
-      width: 100% !important;
+      flex: 1 !important;
+      width: auto !important;
       min-width: unset !important;
       max-width: unset !important;
   }
@@ -649,5 +659,20 @@
 @media(max-width: 576px) {
   .cardTitle {
       font-size: 16px !important;
+  }
+}
+
+.sortByLabel {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black-color-v4);
+}
+
+@media(max-width: 767px) {
+  .sortByLabel {
+    font-size: 13px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    display: inline-block;
   }
 }
