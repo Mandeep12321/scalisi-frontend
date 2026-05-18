@@ -20,14 +20,22 @@ export default function MobileFooter() {
   const accessToken = mounted ? handleDecrypt(Cookies?.get("_xpdx")) : null;
 
   // Function to get social media URL based on icon path
-  const getSocialMediaUrl = (iconPath) => {
-    const socialMapping = {
-      "/assets/images/svg/fb-icon.svg": "https://www.facebook.com",
-      "/assets/images/svg/instagram-icon.svg": "https://www.instagram.com",
-      "/assets/images/svg/twitter-icon.svg": "https://www.twitter.com",
-      "/assets/images/svg/linkedin-icon.svg": "https://www.linkedin.com",
-    };
-    return socialMapping[iconPath] || "#";
+  const getSocialMediaUrl = (iconPath, fallbackUrl = "#") => {
+    const path = (iconPath || "").toLowerCase();
+    const fallback = (fallbackUrl || "").toLowerCase();
+    if (path.includes("fb-icon") || path.includes("facebook") || path.includes("fb") || fallback.includes("facebook.com")) {
+      return "https://www.facebook.com/people/Jack-Scalisi-Wholesale-Fruit-Produce/100067056498461/#";
+    }
+    if (path.includes("instagram") || fallback.includes("instagram.com")) {
+      return "https://www.instagram.com/scalisiproduce/";
+    }
+    if (path.includes("twitter") || path.includes("x.com") || fallback.includes("twitter.com") || fallback.includes("x.com")) {
+      return "https://x.com/scalisiproduce";
+    }
+    if (path.includes("linkedin") || fallback.includes("linkedin.com")) {
+      return "https://www.linkedin.com/in/jack-scalisi-a8101672";
+    }
+    return fallbackUrl;
   };
 
   return (

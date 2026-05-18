@@ -113,6 +113,7 @@ export const FOOTER_DATA = [
       { label: "Order Guide", path: "/?tab=orderGuide" },
       { label: "Chef's Planner", path: "/chefs-planner" },
       // { label: "Produce PDF List", path: "/pdf" },
+      { label: "News & Updates", path: "/news-and-updates" },
     ],
   },
   {
@@ -122,7 +123,6 @@ export const FOOTER_DATA = [
       { label: "Distribution Map", path: "/distribution-map" },
       { label: "Vendors", path: "/vendors" },
       { label: "Contact", path: "/contact-us" },
-      { label: "News & Updates", path: "/news-and-updates" },
     ],
   },
   {

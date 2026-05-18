@@ -100,40 +100,51 @@ export default function Footer() {
   }, [data, recentBlogs]);
 
   // Function to get social media URL based on icon path
-  const getSocialMediaUrl = (iconPath) => {
-    const socialMapping = {
-      "/assets/images/svg/fb-icon.svg": "https://www.facebook.com",
-      "/assets/images/svg/instagram-icon.svg": "https://www.instagram.com",
-      "/assets/images/svg/twitter-icon.svg": "https://www.twitter.com",
-      "/assets/images/svg/linkedin-icon.svg": "https://www.linkedin.com",
-    };
-    return socialMapping[iconPath] || "#";
+  const getSocialMediaUrl = (iconPath, fallbackUrl = "#") => {
+    const path = (iconPath || "").toLowerCase();
+    const fallback = (fallbackUrl || "").toLowerCase();
+    if (path.includes("fb-icon") || path.includes("facebook") || path.includes("fb") || fallback.includes("facebook.com")) {
+      return "https://www.facebook.com/people/Jack-Scalisi-Wholesale-Fruit-Produce/100067056498461/#";
+    }
+    if (path.includes("instagram") || fallback.includes("instagram.com")) {
+      return "https://www.instagram.com/scalisiproduce/";
+    }
+    if (path.includes("twitter") || path.includes("x.com") || fallback.includes("twitter.com") || fallback.includes("x.com")) {
+      return "https://x.com/scalisiproduce";
+    }
+    if (path.includes("linkedin") || fallback.includes("linkedin.com")) {
+      return "https://www.linkedin.com/in/jack-scalisi-a8101672";
+    }
+    return fallbackUrl;
   };
 
   // Use CMS data from Redux store, fallback to hardcoded data if not available
   const socialData = useMemo(() => {
     if (cmsData && _cmsData) {
-      return _cmsData;
+      return _cmsData.map((social) => ({
+        ...social,
+        url: getSocialMediaUrl(social.icon, social.url),
+      }));
     }
     return [
       {
         icon: "/assets/images/svg/fb-icon.svg",
-        url: "https://www.facebook.com",
+        url: "https://www.facebook.com/people/Jack-Scalisi-Wholesale-Fruit-Produce/100067056498461/#",
       },
       {
         icon: "/assets/images/svg/instagram-icon.svg",
-        url: "https://www.instagram.com",
+        url: "https://www.instagram.com/scalisiproduce/",
       },
       {
         icon: "/assets/images/svg/twitter-icon.svg",
-        url: "https://www.twitter.com",
+        url: "https://x.com/scalisiproduce",
       },
       {
         icon: "/assets/images/svg/linkedin-icon.svg",
-        url: "https://www.linkedin.com",
+        url: "https://www.linkedin.com/in/jack-scalisi-a8101672",
       },
     ];
-  }, [cmsData]);
+  }, [cmsData, _cmsData]);
 
   console.log("_cmsData8000", socialData);
 
