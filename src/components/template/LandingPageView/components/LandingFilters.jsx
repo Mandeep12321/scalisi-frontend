@@ -104,7 +104,7 @@ export default function LandingFilters({
   // ── Default mode: full catalog filter bar ─────────────────────────────────
   return (
     <>
-      <Row className="align-items-center mx-0">
+      <Row className={mergeClass("align-items-center mx-0", classes.filtersRow)}>
         {/* LEFT SECTION — Catalog Type Tabs (hidden when hideCatalogTabs is true) */}
         {!hideCatalogTabs && (!isMob768 || isLogin) && (
           <Col md={4} sm={12} lg={4} className="d-flex align-items-center mainCatalog_outer px-0">

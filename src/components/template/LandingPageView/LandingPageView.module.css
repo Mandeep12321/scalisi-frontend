@@ -844,22 +844,22 @@
         gap: 20px !important;
     }
     
-    :global(.mainCatalog_outer) {
+    .filtersRow :global(.mainCatalog_outer) {
         width: auto !important;
         margin-right: auto !important;
     }
     
-    :global(.mainCatalog_outer) + div {
+    .filtersRow :global(.mainCatalog_outer) + div {
         width: auto !important;
     }
 }
 
 @media(min-width: 768px) and (max-width: 1200px) {
-    :global(.mainCatalog_outer), :global(.mainCatalog_outer) + div {
+    .filtersRow :global(.mainCatalog_outer), .filtersRow :global(.mainCatalog_outer) + div {
         width: 100% !important;
     }
     
-    :global(.mainCatalog_outer) + div {
+    .filtersRow :global(.mainCatalog_outer) + div {
         justify-content: flex-start;
     }
     
@@ -868,7 +868,7 @@
         width: 100% !important;
     }
     
-    :global(.mainCatalog_outer) {
+    .filtersRow :global(.mainCatalog_outer) {
         margin-bottom: 10px !important;
     }
 }
