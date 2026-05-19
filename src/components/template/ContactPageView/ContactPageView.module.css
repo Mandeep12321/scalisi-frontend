@@ -141,17 +141,23 @@
 }
 
 .articleImg {
+  position: relative !important;
   width: 100%;
   height: 499px;
   box-shadow: 0px 5px 25px #0000000d;
   border-radius: 6px;
+  overflow: hidden;
 }
 
 .articleImg img {
-  position: relative !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   border-radius: 6px;
-  object-fit: cover;
-  object-position: left;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 .contactMapCol {
