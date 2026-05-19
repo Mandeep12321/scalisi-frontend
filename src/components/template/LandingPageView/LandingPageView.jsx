@@ -220,20 +220,22 @@ export default function LandingPageView({ cmsData }) {
           </div>
         </Col>
 
-        <LandingFilters
-          dropDown={dropDown}
-          setCatalogType={handleCatalogTypeChange}
-          setDropDown={handleSortChange}
-          cardViewType={cardViewType}
-          setCardViewType={setCardViewType}
-          isMob768={isMob768}
-          is375={is375}
-          subCategory={subCategory}
-          setSubCategory={handleSubCategoryChange}
-          subCategoryOptions={categories}
-          catalogType={catalogType}
-          isLogin={isLogin}
-        />
+        <Col md={12}>
+          <LandingFilters
+            dropDown={dropDown}
+            setCatalogType={handleCatalogTypeChange}
+            setDropDown={handleSortChange}
+            cardViewType={cardViewType}
+            setCardViewType={setCardViewType}
+            isMob768={isMob768}
+            is375={is375}
+            subCategory={subCategory}
+            setSubCategory={handleSubCategoryChange}
+            subCategoryOptions={categories}
+            catalogType={catalogType}
+            isLogin={isLogin}
+          />
+        </Col>
 
         {/* CONTENT */}
         <Col md={12} style={{ marginTop: "40px" }}>

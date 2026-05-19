@@ -175,20 +175,22 @@ export default function ProductsPageView({ cmsData }) {
         </Col>
 
         {/* Catalog type tabs (Order Guide / Full Catalog) + right-side filters */}
-        <LandingFilters
-          dropDown={dropDown}
-          setCatalogType={handleCatalogTypeChange}
-          setDropDown={handleDropDownChange}
-          cardViewType={cardViewType}
-          setCardViewType={setCardViewType}
-          isMob768={isMob768}
-          is375={is375}
-          subCategory={subCategory}
-          setSubCategory={handleSubCategoryChange}
-          subCategoryOptions={categories}
-          catalogType={catalogType}
-          isLogin={isLogin}
-        />
+        <Col md={12}>
+          <LandingFilters
+            dropDown={dropDown}
+            setCatalogType={handleCatalogTypeChange}
+            setDropDown={handleDropDownChange}
+            cardViewType={cardViewType}
+            setCardViewType={setCardViewType}
+            isMob768={isMob768}
+            is375={is375}
+            subCategory={subCategory}
+            setSubCategory={handleSubCategoryChange}
+            subCategoryOptions={categories}
+            catalogType={catalogType}
+            isLogin={isLogin}
+          />
+        </Col>
 
         {/* CONTENT */}
         <Col md={12} style={{ marginTop: "40px" }}>
