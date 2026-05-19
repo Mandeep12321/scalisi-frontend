@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/atoms/Input/Input";
-import { getFormattedPrice, mergeClass } from "@/resources/utils/helper";
+import { getFormattedPrice, mergeClass, getDisplayUnitAndPrice } from "@/resources/utils/helper";
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../../atoms/Button";
@@ -37,6 +37,17 @@ export default function OrderSummary({
     const itemPrice = finalUom?.price || 0;
 
     return total + itemPrice * item?.selectedCount;
+  }, 0);
+
+  const totalAmountDisplay = data?.reduce((total, item) => {
+    const selectedUom = item?.uoms?.find(
+      (uom) => uom.erp_uom === item?.selectedVariant?.value
+    );
+    const finalUom = selectedUom || item?.uoms?.[0];
+    const itemPrice = finalUom?.price || 0;
+    const display = getDisplayUnitAndPrice(item?.selectedVariant?.value || "CASE", itemPrice);
+
+    return total + display.price * item?.selectedCount;
   }, 0);
 
   const totalQuantity = data?.reduce(
@@ -141,7 +152,7 @@ export default function OrderSummary({
             "fs-24 fw-700"
           )}
         >
-          {getFormattedPrice(totalAmount)}
+          {getFormattedPrice(totalAmountDisplay)}
         </h6>
       </div>
       <Button

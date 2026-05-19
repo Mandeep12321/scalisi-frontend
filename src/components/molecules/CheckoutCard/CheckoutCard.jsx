@@ -1,7 +1,7 @@
 "use client";
 
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
-import { mergeClass, getFormattedPrice } from "@/resources/utils/helper";
+import { mergeClass, getFormattedPrice, getDisplayUnitAndPrice } from "@/resources/utils/helper";
 import {
   updateQuantity,
   removeProductFromCart,
@@ -31,18 +31,26 @@ const CheckoutCard = ({ tableData }) => {
     );
     const finalUom = selectedUom || item?.uoms?.[0];
     const itemPrice = finalUom?.price || 0;
-    const totalPrice = itemPrice * item?.selectedCount;
+    const display = getDisplayUnitAndPrice(item?.selectedVariant?.value || "CASE", itemPrice);
+    const totalPrice = display.price * item?.selectedCount;
     return getFormattedPrice(totalPrice);
   };
 
   return (
     <div className={classes.checkoutCardMain}>
-      {tableData?.map((item) => (
-        <div className={classes.cardContainer} key={item._id}>
-          <div className={classes.cardTop}>
-            <p className={mergeClass("fw-600 cursor-pointer", classes.type)}>
-              {item?.selectedVariant?.value || "CASE"}
-            </p>
+      {tableData?.map((item) => {
+        const selectedUom = item?.uoms?.find(
+          (uom) => uom.erp_uom === item?.selectedVariant?.value
+        );
+        const finalUom = selectedUom || item?.uoms?.[0];
+        const display = getDisplayUnitAndPrice(item?.selectedVariant?.value || "CASE", finalUom?.price || 0);
+
+        return (
+          <div className={classes.cardContainer} key={item._id}>
+            <div className={classes.cardTop}>
+              <p className={mergeClass("fw-600 cursor-pointer", classes.type)}>
+                {display.uom || "CASE"}
+              </p>
             <p
               className={mergeClass(
                 "fs-15 fw-600 cursor-pointer",
@@ -94,21 +102,7 @@ const CheckoutCard = ({ tableData }) => {
 
           <div className={classes.cardEnd}>
             <div className={classes.cardBottom}>
-              <ItemNote
-                item={item}
-                productId={item?.itemid}
-                productVariant={item?.selectedVariant?.value}
-                onSave={(note) => {
-                  dispatch(
-                    updateNoteInCart({
-                      note,
-                      productId: item?.itemid,
-                      productVariant: item?.selectedVariant?.value,
-                    })
-                  );
-                }}
-              />
-              <div className={classes.counterDiv}>
+              <div className={classes.counterDiv} style={{ marginLeft: "auto" }}>
                 <Counter
                   data={item?.selectedCount}
                   setData={(newCount) => {
@@ -123,10 +117,28 @@ const CheckoutCard = ({ tableData }) => {
                 />
               </div>
             </div>
+            <div style={{ marginTop: "12px", width: "100%" }}>
+              <ItemNote
+                item={item}
+                productId={item?.itemid}
+                productVariant={item?.selectedVariant?.value}
+                hidePreview={true}
+                onSave={(note) => {
+                  dispatch(
+                    updateNoteInCart({
+                      note,
+                      productId: item?.itemid,
+                      productVariant: item?.selectedVariant?.value,
+                    })
+                  );
+                }}
+              />
+            </div>
           </div>
         </div>
-      ))}
-    </div>
+      );
+    })}
+  </div>
   );
 };
 

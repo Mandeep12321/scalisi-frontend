@@ -18,6 +18,7 @@ import { ORDER_SHIPPING_DETAILS_SCHEMA } from "@/formik/schema/OrderShippingDeta
 import { Post } from "@/interceptor/axiosInterceptor";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import {
+  getDisplayUnitAndPrice,
   getFormattedPrice,
   handleDecrypt,
   mergeClass,
@@ -396,22 +397,8 @@ export default function OrdersPageView() {
       style: { width: "20%", fontWeight: 700, textAlign: "end" },
       renderValue: (item, index) => {
         return (
-          <div className={classes.priceDiv}>
+          <div className={classes.priceDiv} style={{ justifyContent: "center" }}>
             <p className="fs-22 fw-700">{item?.price}</p>
-            <ItemNote
-              item={data[index]}
-              productId={item?._id}
-              productVariant={data[index]?.selectedVariant?.value}
-              onSave={(note) => {
-                dispatch(
-                  updateNoteInCart({
-                    note,
-                    productId: item?._id,
-                    productVariant: data[index]?.selectedVariant?.value,
-                  })
-                );
-              }}
-            />
           </div>
         );
       },
@@ -427,7 +414,8 @@ export default function OrdersPageView() {
       e?.uoms?.[0];
 
     const itemPrice = selectedUom?.price || 0;
-    const totalPrice = itemPrice * e?.selectedCount;
+    const display = getDisplayUnitAndPrice(e?.selectedVariant?.value || "CASE", itemPrice);
+    const totalPrice = display.price * e?.selectedCount;
 
     const tableItem = {
       item: {
@@ -436,7 +424,7 @@ export default function OrdersPageView() {
         productId: e?.itemid || e?.productId,
       },
       quantity: {
-        type: e?.selectedVariant?.value,
+        type: display.uom,
         count: e?.selectedCount,
       },
       price: getFormattedPrice(totalPrice),
@@ -564,6 +552,25 @@ export default function OrdersPageView() {
                         tableHead={classes.tableHeadClass}
                         tableBodyClass={classes.tableBodyClass}
                         custTableClass={classes.custTableClass}
+                        renderRowBottom={(item, index) => (
+                          <div style={{ paddingInline: "48px", marginTop: "-10px" }}>
+                            <ItemNote
+                              item={data[index]}
+                              productId={item?.item?.productId}
+                              productVariant={data[index]?.selectedVariant?.value}
+                              hidePreview={true}
+                              onSave={(note) => {
+                                dispatch(
+                                  updateNoteInCart({
+                                    note,
+                                    productId: item?.item?.productId,
+                                    productVariant: data[index]?.selectedVariant?.value,
+                                  })
+                                );
+                              }}
+                            />
+                          </div>
+                        )}
                       />
                     ) : (
                       <div className={classes.cardDiv}>

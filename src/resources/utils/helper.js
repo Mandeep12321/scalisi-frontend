@@ -20,7 +20,6 @@ export const mergeClass = (...classes) => {
 
 export const getDisplayUnitAndPrice = (uom, price) => {
   const unitsSetting = Cookies.get("_xpdx_units") || "pounds";
-  console.log("DEBUG: getDisplayUnitAndPrice - unitsSetting fetched from cookie:", unitsSetting);
   if (!uom) return { uom: "", price: price };
 
   const uomUpper = uom.toUpperCase().trim();

@@ -8,6 +8,7 @@ import { Post } from "@/interceptor/axiosInterceptor";
 import EmptyCartModal from "@/modals/EmptyCartModal/EmptyCartModal";
 import LocationsModal from "@/modals/LocationsModal/LocationsModal";
 import {
+  getDisplayUnitAndPrice,
   getFormattedPrice,
   handleDecrypt,
   mergeClass,
@@ -189,7 +190,8 @@ const DesktopHeader = ({
                                   ) || curr?.uoms?.[0];
 
                                 const itemPrice = selectedUom?.price || 0;
-                                return acc + itemPrice * curr?.selectedCount;
+                                const display = getDisplayUnitAndPrice(curr?.selectedVariant?.value || "CASE", itemPrice);
+                                return acc + display.price * curr?.selectedCount;
                               }, 0)
                             )}
                           </h6>

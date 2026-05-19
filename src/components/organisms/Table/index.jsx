@@ -18,6 +18,7 @@ export default function Table({
   noteIndex,
   addNote,
   setAddNote,
+  renderRowBottom,
 }) {
   return (
     <>
@@ -118,22 +119,9 @@ export default function Table({
                           </td>
                         ))}
                       </tr>
-                      {(item?.note || noteIndex === index) && (
-                        <div
-                          style={{
-                            paddingBottom: "10px",
-                          }}
-                        >
-                          <Input
-                            type="text"
-                            inputClass={classes.inputClass}
-                            placeholder={"Add a Note"}
-                            value={
-                              noteIndex == index ? addNote : item?.note || ""
-                            }
-                            setValue={setAddNote}
-                            disabled={noteIndex !== index}
-                          />
+                      {renderRowBottom && (
+                        <div style={{ width: "100%", paddingBottom: "15px" }}>
+                          {renderRowBottom(item, index)}
                         </div>
                       )}
                     </div>
