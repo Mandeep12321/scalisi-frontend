@@ -471,7 +471,7 @@
   }
 
   .contactRightCol {
-    margin-top: 40px !important;
+    margin-top: 46px !important;
   }
 
   .contactDiv {
@@ -508,6 +508,7 @@
 @media(min-width: 1200px) {
   .aboutTitleContact {
     margin-bottom: 34px !important;
+    padding-bottom: 0px !important;
   }
 
   .tableHeading {
@@ -519,7 +520,7 @@
   }
 
   .contactRightCol {
-    margin-top: 55px !important;
+    margin-top: 62px !important;
   }
 
   .contactDiv {
