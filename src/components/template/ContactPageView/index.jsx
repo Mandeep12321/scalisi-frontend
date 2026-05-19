@@ -143,9 +143,10 @@ export default function ContactPageView({ cmsData }) {
                         </div>
                         <div className={classes.articleImg}>
                           <Image
-                            src="/assets/images/cms-images/contact-us-image.png"
+                            src="/assets/images/cms-images/contactUsImage.png"
                             className={classes.cardImage}
                             fill
+                            unoptimized={true}
                             alt="Contact Us"
                           />
                         </div>
