@@ -18,10 +18,11 @@
 
 .modalMain {
   background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 400px;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 450px;
   margin: 0 auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .btnContainer {
@@ -59,11 +60,9 @@
 
 @media (max-device-width: 767px) {
   .main {
-    height: 335px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    box-shadow: 0px 0px 16px #0000000f;
-    max-width: 727px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 100%;
   }
 
   .main > div {
@@ -75,7 +74,8 @@
   }
 
   .modalMain {
-    padding-block: 21px;
+    padding: 24px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .btnContainer {
