@@ -41,6 +41,9 @@ export default function MyInvoicesPage() {
       showLoginButton={!isLogin}
       onLoginClick={handleLoginClick}
       isWorking={false}
+      imageSrc="/assets/images/cms-images/support.png"
+      objectFit="contain"
+      transparentWrapper={true}
     />
   );
 }

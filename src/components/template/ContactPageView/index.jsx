@@ -142,25 +142,12 @@ export default function ContactPageView({ cmsData }) {
                           <ContactFormMap />
                         </div>
                         <div className={classes.articleImg}>
-                          {is375 ? (
-                            <Image
-                              src={mediaUrl(
-                                _cmsData?.contactSectionImage?.image375 ||
-                                CONTACT_PAGE_DATA?.image
-                              )}
-                              className={classes.cardImage}
-                              fill
-                            />
-                          ) : (
-                            <Image
-                              src={mediaUrl(
-                                _cmsData?.contactSectionImage?.image ||
-                                CONTACT_PAGE_DATA?.image
-                              )}
-                              className={classes.cardImage}
-                              fill
-                            />
-                          )}
+                          <Image
+                            src="/assets/images/cms-images/contact-us-image.png"
+                            className={classes.cardImage}
+                            fill
+                            alt="Contact Us"
+                          />
                         </div>
                       </div>
                     </Col>
