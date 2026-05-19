@@ -397,8 +397,24 @@ export default function OrdersPageView() {
       style: { width: "20%", fontWeight: 700, textAlign: "end" },
       renderValue: (item, index) => {
         return (
-          <div className={classes.priceDiv} style={{ justifyContent: "center" }}>
+          <div className={classes.priceDiv}>
             <p className="fs-22 fw-700">{item?.price}</p>
+            <ItemNote
+              item={data[index]}
+              productId={item?.item?.productId}
+              productVariant={data[index]?.selectedVariant?.value}
+              hidePreview={true}
+              noteWrapperClass={classes.noteExpandedWrapper}
+              onSave={(note) => {
+                dispatch(
+                  updateNoteInCart({
+                    note,
+                    productId: item?.item?.productId,
+                    productVariant: data[index]?.selectedVariant?.value,
+                  })
+                );
+              }}
+            />
           </div>
         );
       },
@@ -552,25 +568,6 @@ export default function OrdersPageView() {
                         tableHead={classes.tableHeadClass}
                         tableBodyClass={classes.tableBodyClass}
                         custTableClass={classes.custTableClass}
-                        renderRowBottom={(item, index) => (
-                          <div style={{ paddingInline: "48px", marginTop: "-10px" }}>
-                            <ItemNote
-                              item={data[index]}
-                              productId={item?.item?.productId}
-                              productVariant={data[index]?.selectedVariant?.value}
-                              hidePreview={true}
-                              onSave={(note) => {
-                                dispatch(
-                                  updateNoteInCart({
-                                    note,
-                                    productId: item?.item?.productId,
-                                    productVariant: data[index]?.selectedVariant?.value,
-                                  })
-                                );
-                              }}
-                            />
-                          </div>
-                        )}
                       />
                     ) : (
                       <div className={classes.cardDiv}>

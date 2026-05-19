@@ -79,7 +79,6 @@
 .cardDetails span {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-top: 10px;
 }
 
@@ -135,7 +134,9 @@
 }
 
 .price {
-  margin-top: 5px;
+  margin-top: 0;
+  margin-left: auto;
+  align-self: flex-start;
 }
 
 .noteRow {

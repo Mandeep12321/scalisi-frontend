@@ -20,6 +20,8 @@ const ItemNote = ({
   onSave,
   hidePreview = false,
   customHeader = null,
+  noteWrapperClass = "",
+  hideTextarea = false,
 }) => {
   const dispatch = useDispatch();
   const googleTrans = Cookies.get("googtrans");
@@ -107,8 +109,8 @@ const ItemNote = ({
         </button>
       )}
 
-      {isEditing && (
-        <div className={classes.noteWrapper}>
+      {isEditing && !hideTextarea && (
+        <div className={mergeClass(classes.noteWrapper, noteWrapperClass)}>
           <textarea
             rows={2}
             placeholder={isSpanish ? "Añadir una nota…" : "Add a note for this item…"}

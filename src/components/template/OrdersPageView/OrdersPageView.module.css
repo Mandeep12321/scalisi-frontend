@@ -94,6 +94,21 @@
   justify-content: space-between;
   flex-direction: column;
   min-height: 120px;
+  position: relative;
+}
+
+.noteExpandedWrapper {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 320px;
+  z-index: 10;
+  background: #fff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+  margin-top: 4px;
 }
 
 .cardWrapper {

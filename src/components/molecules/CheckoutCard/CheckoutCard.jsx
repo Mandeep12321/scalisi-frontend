@@ -92,9 +92,6 @@ const CheckoutCard = ({ tableData }) => {
                   <p className={mergeClass("fs-15 fw-500", classes.productId)}>
                     {item?.itemid || item?.productId}
                   </p>
-                  <p className={mergeClass(classes.price, "fs-22 fw-600")}>
-                    {calculateItemPrice(item)}
-                  </p>
                 </span>
               </div>
             </div>
@@ -116,6 +113,9 @@ const CheckoutCard = ({ tableData }) => {
                   }}
                 />
               </div>
+              <p className={mergeClass(classes.price, "fs-22 fw-600")}>
+                {calculateItemPrice(item)}
+              </p>
             </div>
             <div style={{ marginTop: "12px", width: "100%" }}>
               <ItemNote
