@@ -483,7 +483,6 @@
   .dropdownWidthClass :global(.css-16yv45q-control) {
       font-size: 12px !important;
   }
-  
   .mobileActionRow .counterDiv {
       width: 100%;
       justify-content: center;
@@ -494,7 +493,7 @@
   }
   
   .mobileActionRow .counterDiv > div :global([class*="controlButtons"]) {
-      width: 100% !important;
+      /* width: 100% !important; */
       max-width: 100% !important;
   }
 }
