@@ -4,6 +4,8 @@ import { Container } from "react-bootstrap";
 import Image from "next/image";
 import { Button } from "@/components/atoms/Button";
 
+const mergeClass = (...classes) => classes.filter(Boolean).join(" ");
+
 const UnderWorkingPageTemplate = ({
   title,
   description,
@@ -12,6 +14,9 @@ const UnderWorkingPageTemplate = ({
   showLoginButton,
   onLoginClick,
   isWorking = true,
+  imageSrc,
+  objectFit = "cover",
+  transparentWrapper = false,
 }) => {
   return (
     <Container>
@@ -52,12 +57,16 @@ const UnderWorkingPageTemplate = ({
               </div>
             )}
           </div>
-          <div className={classes.imageWrapper}>
+          <div className={mergeClass(
+            classes.imageWrapper,
+            transparentWrapper && classes.transparentWrapper
+          )}>
             <Image
-              src="/assets/images/cms-images/working.jpg"
-              alt="Page under construction"
+              src={imageSrc || "/assets/images/cms-images/working.jpg"}
+              alt={title || "Under construction"}
               fill
               className={classes.constructionImage}
+              style={{ objectFit: objectFit }}
               priority
             />
           </div>

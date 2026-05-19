@@ -3,7 +3,7 @@
 import UnderWorkingPageTemplate from "@/components/template/UnderWorkingPageTemplate/UnderWorkingPageTemplate";
 import Cookies from "js-cookie";
 
-export default async function MyOrdersPage() {
+export default function MyOrdersPage() {
   // Language detection
   const googleTrans = Cookies.get("googtrans");
   const isSpanish = googleTrans === "/en/es";
@@ -19,6 +19,9 @@ export default async function MyOrdersPage() {
       email={"info@scaliciproducts.com"}
       descriptionSuffix={!isSpanish && " to check your order status."}
       isWorking={false}
+      imageSrc="/assets/images/cms-images/support.png"
+      objectFit="contain"
+      transparentWrapper={true}
     />
   );
 }
