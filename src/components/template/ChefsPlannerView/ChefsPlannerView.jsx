@@ -45,15 +45,21 @@ export default function ChefsPlannerView() {
   }
 
   return (
+    <>
     <div className={classes.main}>
-      <Container className="pt-5">
+      <Container className="py-5">
         <div className={classes.headerSection}>
           <h1 className={classes.mainHeading}>Chef's Planners</h1>
           <p className={classes.subHeading}>
             Monthly guides that are useful as a quick reference to products that are particular to the month, season, and time of year.
           </p>
         </div>
-        <Row className={mergeClass("gx-0", classes.plannerRow)}>
+      </Container>
+        </div>
+
+      <div className="chefPlanner_grid">
+      <Container>
+      <Row className={mergeClass("gx-0", classes.plannerRow)}>
           {data?.map((item, index) => (
             <Col key={index} sm={6} md={4} lg={3} className={classes.plannerCol}>
               <div className={classes.plannerCard}>
@@ -80,9 +86,10 @@ export default function ChefsPlannerView() {
               </div>
             </Col>
           ))}
-        </Row>
-      </Container>
-      
+        </Row>  
+      </Container>  
+      </div>  
+
       <div className={classes.announcementSection}>
         <Container>
           <Row className="g-0">
@@ -105,6 +112,6 @@ export default function ChefsPlannerView() {
           </Row>
         </Container>
       </div>
-    </div>
+      </>
   );
 }
