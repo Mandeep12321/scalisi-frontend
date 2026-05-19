@@ -251,3 +251,8 @@ input::-webkit-inner-spin-button {
     padding-inline: 8px !important;
   }
 }
+
+/* Hide Google reCAPTCHA Badge */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

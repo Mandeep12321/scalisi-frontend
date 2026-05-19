@@ -54,6 +54,7 @@ export default function Footer() {
     if (blogs && blogs.length > 0) {
       return blogs.slice(0, 2).map((blog) => ({
         title: blog.title,
+        slug: blog.slug,
         date: blog.createdAt
           ? new Date(blog.createdAt)
             .toLocaleDateString("en-US", {
@@ -210,7 +211,7 @@ export default function Footer() {
                           {column.blogPosts?.map((post, idx) => (
                             <div key={idx} className={classes.blogDiv}>
                               <span>
-                                <Link href="/news-and-updates" className={classes.blogTitleLink}>
+                                <Link href={post.slug ? `/news-and-updates/${post.slug}` : "/news-and-updates"} className={classes.blogTitleLink}>
                                   <p className="fs-16 fw-700 maxLine1 cursor-pointer">
                                     {truncateTitle(post.title)}
                                   </p>
@@ -352,7 +353,7 @@ export default function Footer() {
                       {column.blogPosts?.map((post, idx) => (
                         <div key={idx} className={classes.blogDiv}>
                           <span>
-                            <Link href="/news-and-updates" className={classes.blogTitleLink}>
+                            <Link href={post.slug ? `/news-and-updates/${post.slug}` : "/news-and-updates"} className={classes.blogTitleLink}>
                               <p className="fs-16 fw-700 maxLine1 cursor-pointer">
                                 {truncateTitle(post.title)}
                               </p>
