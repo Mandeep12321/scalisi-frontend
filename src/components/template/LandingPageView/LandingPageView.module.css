@@ -767,3 +767,108 @@
     margin-right: 6px !important;
   }
 }
+
+.listViewTypeDiv .listIcon {
+    height: 17px !important;
+    width: 22px !important;
+}
+
+@media(min-width: 1541px) {
+    .filtersDiv :global(.DropdownOptionContainer.css-if7atb-control) {
+        min-width: 193px !important;
+    }
+}
+
+@media(min-width: 1200px) and (max-width: 1540px) {
+    .filtersDiv :global(.DropdownOptionContainer.css-if7atb-control) {
+        min-width: 184px !important;
+        font-size: 14px !important;
+    }
+    
+    .filtersDiv .sortByLabel {
+        font-size: 15px !important;
+    }
+    
+    .filtersDiv .sortByDiv > div {
+        gap: 10px !important;
+    }
+    
+    .filtersDiv .sortByDiv {
+        gap: 16px !important;
+    }
+    
+    .filtersDiv .viewCardTypeDiv {
+        padding-left: 0 !important;
+    }
+    
+    .filtersDiv .cardViewDivMain {
+        gap: 12px !important;
+    }
+    
+    .viewTypeDiv .gridIcon {
+        margin-top: 2px !important;
+    }
+    
+    .catalogTabActive .cardTitle {
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .catalogTab p {
+        font-size: 16px !important;
+    }
+    
+    .catalogTabIcon {
+        width: 22px !important;
+        height: 22px !important;
+    }
+    
+    .catalogTabIcon svg {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    
+    .catalogTabsRow {
+        gap: 16px !important;
+    }
+    
+    .catalogTab {
+        gap: 8px !important;
+    }
+    
+    .viewTypeDiv {
+        gap: 10px !important;
+    }
+    
+    .cardsView {
+        gap: 20px !important;
+    }
+    
+    :global(.mainCatalog_outer) {
+        width: auto !important;
+        margin-right: auto !important;
+    }
+    
+    :global(.mainCatalog_outer) + div {
+        width: auto !important;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 1200px) {
+    :global(.mainCatalog_outer), :global(.mainCatalog_outer) + div {
+        width: 100% !important;
+    }
+    
+    :global(.mainCatalog_outer) + div {
+        justify-content: flex-start;
+    }
+    
+    .filtersDiv {
+        justify-content: start !important;
+        width: 100% !important;
+    }
+    
+    :global(.mainCatalog_outer) {
+        margin-bottom: 10px !important;
+    }
+}
