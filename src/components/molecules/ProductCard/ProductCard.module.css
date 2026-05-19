@@ -126,6 +126,7 @@
 
   .productId {
     padding-top: 13px;
+    font-size: 12px !important;
   }
 
   .dropdownDiv {

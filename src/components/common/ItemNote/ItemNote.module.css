@@ -137,3 +137,14 @@
   white-space: normal;
   word-break: break-word;
 }
+
+@media(max-width: 767px) {
+  .noteTriggerBtn {
+    font-size: 11px !important;
+  }
+  .noteIcon svg {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: -4px !important;
+  }
+}
