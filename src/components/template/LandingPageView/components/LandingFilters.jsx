@@ -106,7 +106,7 @@ export default function LandingFilters({
     <>
       <Row className="align-items-center">
         {/* LEFT SECTION — Catalog Type Tabs (hidden when hideCatalogTabs is true) */}
-        {!hideCatalogTabs && (
+        {!hideCatalogTabs && (!isMob768 || isLogin) && (
           <Col md={4} sm={12} lg={4} className="px-0 d-flex align-items-center mainCatalog_outer">
             <div className={classes.catalogTabsRow}>
 
