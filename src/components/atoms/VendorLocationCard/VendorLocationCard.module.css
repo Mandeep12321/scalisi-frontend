@@ -68,6 +68,7 @@
   .mapCardText {
     gap: 5.9px !important;
     margin-block-start: 11px;
+    margin-top: 7px !important;
   }
   .locationDesc {
     font-weight: 400;
@@ -81,6 +82,9 @@
   }
   .cardNumber p {
     font-size: 18px;
+  }
+  .cardNumber {
+    flex: 0 0 auto !important;
   }
 }
 
