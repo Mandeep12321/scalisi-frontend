@@ -705,9 +705,7 @@
   .title {
     margin-bottom: 10px;
   }
-}
 
-@media(min-width: 768px) {
   .leftCol.false {
     padding-bottom: 30px;
     height: 483px;
@@ -730,6 +728,7 @@
     margin-block: 0;
   }
 }
+
 
 @media(min-width: 768px) and (max-width: 1199px) {
   .mainDiv {
