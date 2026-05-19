@@ -37,7 +37,7 @@ export default function LandingFilters({
         </Col>
 
         {/* RIGHT — Sort + View */}
-        <Col xs={12} sm={8} md={9} className="d-flex justify-content-end align-items-center">
+        <Col xs={12} sm={8} md={9} className="d-flex justify-content-end align-items-center px-0">
           <div className={classes.filtersDiv}>
             <div className={classes.sortByDiv}>
               <p className={mergeClass("fs-18", classes.sortByLabel)}>Sort by</p>
@@ -104,10 +104,10 @@ export default function LandingFilters({
   // ── Default mode: full catalog filter bar ─────────────────────────────────
   return (
     <>
-      <Row className="align-items-center">
+      <Row className="align-items-center mx-0">
         {/* LEFT SECTION — Catalog Type Tabs (hidden when hideCatalogTabs is true) */}
         {!hideCatalogTabs && (!isMob768 || isLogin) && (
-          <Col md={4} sm={12} lg={4} className="px-0 d-flex align-items-center mainCatalog_outer">
+          <Col md={4} sm={12} lg={4} className="d-flex align-items-center mainCatalog_outer px-0">
             <div className={classes.catalogTabsRow}>
 
               {/* ORDER GUIDE — only for logged-in users */}

@@ -35,9 +35,9 @@ export default function LandingPageView({ cmsData }) {
   const isLogin = reduxIsLogin && !!accessToken;
 
 
-useEffect(() => {
-  console.log("Auth State:", authState);
-}, [authState]);
+  useEffect(() => {
+    console.log("Auth State:", authState);
+  }, [authState]);
 
   // ── UI state (drives rendering only) ──────────────────────────────────────
   const [page, setPage] = useState(1);
@@ -256,16 +256,16 @@ useEffect(() => {
 
         {/* PAGINATION */}
         {totalRecords > PRODUCT_RECORDS_LIMIT && (
-            <Col md={12}>
-              <div style={{ marginTop: "40px" }}>
-                <PaginationComponent
-                  totalRecords={totalRecords}
-                  currentPage={page}
-                  setCurrentPage={goToPage}
-                />
-              </div>
-            </Col>
-          )}
+          <Col md={12}>
+            <div style={{ marginTop: "40px" }}>
+              <PaginationComponent
+                totalRecords={totalRecords}
+                currentPage={page}
+                setCurrentPage={goToPage}
+              />
+            </div>
+          </Col>
+        )}
       </Row>
 
       {/* ANNOUNCEMENTS */}
