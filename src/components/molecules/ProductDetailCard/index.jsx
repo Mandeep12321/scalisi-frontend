@@ -3,6 +3,7 @@
 import { Button } from "@/components/atoms/Button";
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import {
+  getDisplayUnitAndPrice,
   getFormattedPrice,
   handleDecrypt,
   mediaUrl,
@@ -57,11 +58,22 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
     )?.selectedCount || 1
     : data?.selectedCount || 1;
 
-  const dropDownOptions = data?.productVariant?.map((e) => ({
-    label: `${e?.type} / ${getFormattedPrice(e?.price || 0)}`,
-    value: e?.value,
-    price: e?.price || 0,
-  }));
+  const dropDownOptions = data?.productVariant?.map((e) => {
+    const display = getDisplayUnitAndPrice(e?.type, e?.price || 0);
+    return {
+      label: `${display.uom} / ${getFormattedPrice(display.price)}`,
+      value: e?.value,
+      price: e?.price || 0,
+    };
+  });
+
+  const selectedVariantDisplay = data?.selectedVariant ? (() => {
+    const display = getDisplayUnitAndPrice(data.selectedVariant.value, data.selectedVariant.price);
+    return {
+      ...data.selectedVariant,
+      label: `${display.uom} / ${getFormattedPrice(display.price)}`
+    };
+  })() : undefined;
 
   // Set default variant if not selected
   useEffect(() => {
@@ -132,7 +144,7 @@ export default function ProductDetailCard({ data, setVariantSelect }) {
                     selectedCount: data.selectedCount || 1,
                   });
                 }}
-                value={data?.selectedVariant}
+                value={selectedVariantDisplay}
               />
               <Counter
                 data={currentQuantity}

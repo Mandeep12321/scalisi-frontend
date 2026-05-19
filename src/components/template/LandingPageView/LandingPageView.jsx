@@ -41,7 +41,7 @@ useEffect(() => {
 
   // ── UI state (drives rendering only) ──────────────────────────────────────
   const [page, setPage] = useState(1);
-  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN[0]);
+  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN[2]);
   // Guests always start on fullCatalog; logged-in users start on orderGuide
   const [catalogType, setCatalogType] = useState(
     isLogin ? "orderGuide" : "fullCatalog"
@@ -58,7 +58,7 @@ useEffect(() => {
   // ── Refs: authoritative values for API calls ───────────────────────────────
   // These are always up-to-date synchronously; the fetch effect reads from them.
   const pageRef = useRef(1);
-  const dropDownRef = useRef(SORT_BY_DROPDOWN[0]);
+  const dropDownRef = useRef(SORT_BY_DROPDOWN[2]);
   const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
   const subCatRef = useRef(null);
   const locationRef = useRef(location);

@@ -3,6 +3,7 @@
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
 import {
+  getDisplayUnitAndPrice,
   getFormattedPrice,
   handleDecrypt,
   mergeClass,
@@ -60,16 +61,30 @@ export default function ProductListCard({
   });
 
   const dropDownOptions = !isApi
-    ? data?.productVariant?.map((e) => ({
-      label: `${e?.type} / ${getFormattedPrice(e?.price)}`,
-      value: e?.value,
-      price: e?.price,
-    }))
-    : data?.uoms?.map((e) => ({
-      label: `${e?.erp_uom} / ${getFormattedPrice(e?.price)}`,
-      value: e?.erp_uom,
-      price: e?.price,
-    }));
+    ? data?.productVariant?.map((e) => {
+      const display = getDisplayUnitAndPrice(e?.type, e?.price);
+      return {
+        label: `${display.uom} / ${getFormattedPrice(display.price)}`,
+        value: e?.value,
+        price: e?.price,
+      };
+    })
+    : data?.uoms?.map((e) => {
+      const display = getDisplayUnitAndPrice(e?.erp_uom, e?.price);
+      return {
+        label: `${display.uom} / ${getFormattedPrice(display.price)}`,
+        value: e?.erp_uom,
+        price: e?.price,
+      };
+    });
+
+  const selectedVariantDisplay = data?.selectedVariant ? (() => {
+    const display = getDisplayUnitAndPrice(data.selectedVariant.value, data.selectedVariant.price);
+    return {
+      ...data.selectedVariant,
+      label: `${display.uom} / ${getFormattedPrice(display.price)}`
+    };
+  })() : undefined;
 
   // Check if this product is in cart
   const isInCart = cart.some(
@@ -190,7 +205,7 @@ export default function ProductListCard({
                       selectedCount: data.selectedCount || 1,
                     });
                   }}
-                  value={data?.selectedVariant}
+                  value={selectedVariantDisplay}
                 />
 
                 <div className={classes.counterDiv}>
@@ -279,7 +294,7 @@ export default function ProductListCard({
                       selectedCount: data.selectedCount || 1,
                     });
                   }}
-                  value={data?.selectedVariant}
+                  value={selectedVariantDisplay}
                 />
                 <Counter
                   data={currentQuantity}

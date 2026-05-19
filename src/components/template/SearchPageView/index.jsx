@@ -36,7 +36,7 @@ export default function SearchPageView({ cmsSupportData, cmsUpdateData }) {
     const [localSearch, setLocalSearch] = useState(urlQuery || globalSearch || "");
 
     const [page, setPage] = useState(1);
-    const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN[0]);
+    const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN[2]);
     const [cardViewType, setCardViewType] = useState("card");
     const [subCategory, setSubCategory] = useState(null);
     const [catalogType, setCatalogType] = useState(
@@ -48,7 +48,7 @@ export default function SearchPageView({ cmsSupportData, cmsUpdateData }) {
     const debouncedSearch = useDebounce(localSearch, 500);
 
     const pageRef = useRef(1);
-    const dropDownRef = useRef(dropDown);
+    const dropDownRef = useRef(SORT_BY_DROPDOWN[2]);
     const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
     const subCatRef = useRef(null);
     const locationRef = useRef(location);

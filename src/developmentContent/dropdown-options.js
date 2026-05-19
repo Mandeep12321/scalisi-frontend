@@ -45,7 +45,6 @@ export const YEARS_DROPDOWN = [
 ];
 
 export const UNITS_DROPDOWN = [
-  { label: "Pounds ", value: "pounds" },
-  { label: "Gallon ", value: "gallon" },
-  { label: "KG ", value: "kg" },
+  { label: "Pounds / Gallons", value: "pounds" },
+  { label: "Kilograms / Liters", value: "kg" },
 ];

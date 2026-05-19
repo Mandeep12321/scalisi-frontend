@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 import { config } from "@/config";
 
@@ -13,9 +14,37 @@ export const mediaUrl = (url) => {
   return imageRenderUrl;
 };
 
-//
 export const mergeClass = (...classes) => {
   return classes.join(" ");
+};
+
+export const getDisplayUnitAndPrice = (uom, price) => {
+  const unitsSetting = Cookies.get("_xpdx_units") || "pounds";
+  console.log("DEBUG: getDisplayUnitAndPrice - unitsSetting fetched from cookie:", unitsSetting);
+  if (!uom) return { uom: "", price: price };
+
+  const uomUpper = uom.toUpperCase().trim();
+  const isLb = uomUpper.includes("LB") || uomUpper.includes("POUND") || uomUpper.includes("LBS");
+  const isGal = uomUpper.includes("GAL") || uomUpper.includes("GALLON") || uomUpper.includes("GALS");
+
+  if (unitsSetting === "kg") {
+    if (isLb) {
+      return {
+        uom: "KG",
+        price: parseFloat(price) / 0.45359237
+      };
+    } else if (isGal) {
+      return {
+        uom: "Ltr",
+        price: parseFloat(price) / 3.785411784
+      };
+    }
+  }
+
+  return {
+    uom: isLb ? "Lbs" : (isGal ? "Gal" : uom),
+    price: parseFloat(price)
+  };
 };
 
 export const getFormattedPrice = (price, currency = "$") => {

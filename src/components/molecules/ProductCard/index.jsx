@@ -2,6 +2,7 @@
 
 import RenderToast from "@/components/atoms/RenderToast/RenderToast";
 import {
+  getDisplayUnitAndPrice,
   getFormattedPrice,
   handleDecrypt,
   mergeClass,
@@ -57,11 +58,22 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
     return null;
   }
 
-  const dropDownOptions = data?.uoms?.map((e) => ({
-    label: `${e?.erp_uom} / ${getFormattedPrice(e?.price)}`,
-    value: e?.erp_uom,
-    price: e?.price,
-  }));
+  const dropDownOptions = data?.uoms?.map((e) => {
+    const display = getDisplayUnitAndPrice(e?.erp_uom, e?.price);
+    return {
+      label: `${display.uom} / ${getFormattedPrice(display.price)}`,
+      value: e?.erp_uom,
+      price: e?.price,
+    };
+  });
+
+  const selectedVariantDisplay = data?.selectedVariant ? (() => {
+    const display = getDisplayUnitAndPrice(data.selectedVariant.value, data.selectedVariant.price);
+    return {
+      ...data.selectedVariant,
+      label: `${display.uom} / ${getFormattedPrice(display.price)}`
+    };
+  })() : undefined;
 
   // Check if this product is in cart
   const isInCart = cart.some(
@@ -185,7 +197,7 @@ export default function ProductCard({ data, setVariantSelect, onClick }) {
                     selectedCount: data.selectedCount || 1,
                   });
                 }}
-                value={data?.selectedVariant}
+                value={selectedVariantDisplay}
               />
 
               <div className={mergeClass(classes.counterDivTwo, classes.counterDiv)}>

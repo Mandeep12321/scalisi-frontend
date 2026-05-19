@@ -7,7 +7,7 @@ import ProductDetailCard from "@/components/molecules/ProductDetailCard";
 import { PRODUCT_RECORDS_LIMIT } from "@/developmentContent/constants";
 import { SORT_BY_DROPDOWN } from "@/developmentContent/dropdown-options";
 import { isMobileViewHook } from "@/resources/hooks/isMobileViewHook";
-import { getFormattedPrice, mergeClass } from "@/resources/utils/helper";
+import { getDisplayUnitAndPrice, getFormattedPrice, mergeClass } from "@/resources/utils/helper";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -48,7 +48,7 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
 
   // ── Related products list / filter state ──────────────────────────────────
   const [page, setPage] = useState(1);
-  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[0]);
+  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[2]);
   const [cardViewType, setCardViewType] = useState("card");
   const [isMob768, setIsMob768] = useState(false);
   const [is375, setIs375] = useState(false);
@@ -65,7 +65,7 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
 
   // ── Refs – same pattern as ProductsPageView ────────────────────────────────
   const pageRef = useRef(1);
-  const dropDownRef = useRef(dropDown);
+  const dropDownRef = useRef(SORT_BY_DROPDOWN[2]);
   const subCatRef = useRef(initialCatOption);   // pre-seeded → category goes in API
   const locationRef = useRef(location);
 
@@ -100,6 +100,10 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
       return;
     }
     if (commonProductData?.uoms) {
+      const display = getDisplayUnitAndPrice(
+        commonProductData.uoms[0]?.erp_uom,
+        commonProductData.uoms[0]?.price || 0
+      );
       setProductData({
         ...commonProductData,
         productVariant: commonProductData.uoms.map((uom) => ({
@@ -108,9 +112,7 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
           price: uom.price || 0,
         })),
         selectedVariant: {
-          label: `${commonProductData.uoms[0]?.erp_uom} / ${getFormattedPrice(
-            commonProductData.uoms[0]?.price || 0
-          )}`,
+          label: `${display.uom} / ${getFormattedPrice(display.price)}`,
           value: commonProductData.uoms[0]?.erp_uom,
           price: commonProductData.uoms[0]?.price || 0,
         },
@@ -219,7 +221,7 @@ export default function ProductDetailView({ cmsUpdateData, cmsSupportData }) {
                   }}
                   container
                   value={dropDown}
-                  setValue={setDropDown}
+                  setValue={handleDropDownChange}
                   options={SORT_BY_DROPDOWN}
                 />
               </div>

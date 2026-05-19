@@ -32,7 +32,7 @@ export default function ProductsPageView({ cmsData }) {
   const isLogin = reduxIsLogin && !!accessToken;
 
   const [showLocationsModal, setShowLocationsModal] = useState(false);
-  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[0]);
+  const [dropDown, setDropDown] = useState(SORT_BY_DROPDOWN?.[2]);
   const [page, setPage] = useState(1);
   const [cardViewType, setCardViewType] = useState("card");
   const [isMob768, setIsMob768] = useState(false);
@@ -47,7 +47,7 @@ export default function ProductsPageView({ cmsData }) {
 
   // ── Refs for stable API values ────────────────────────────────────────────────
   const pageRef = useRef(1);
-  const dropDownRef = useRef(dropDown);
+  const dropDownRef = useRef(SORT_BY_DROPDOWN[2]);
   const catalogRef = useRef(isLogin ? "orderGuide" : "fullCatalog");
   const subCatRef = useRef(null);
   const locationRef = useRef(location);
