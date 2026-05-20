@@ -194,8 +194,6 @@ export default function SearchPageView({ cmsSupportData, cmsUpdateData }) {
                         subCategoryOptions={categories}
                         catalogType={catalogType}
                         isLogin={isLogin}
-                        hideCatalogTabs={true}
-                        totalRecords={!loading ? totalRecords : null}
                     />
                 </Container>
             </div>
